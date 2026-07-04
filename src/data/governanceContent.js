@@ -1,0 +1,202 @@
+import {
+  FOUNDATION_COMMERCIAL_CONTACT_PATH,
+  FOUNDATION_LICENCE_LABEL,
+  SUPPORT_PATH,
+  TLA169_DISPLAY_ID,
+  TLA169_FIELD_COUNT,
+  TLA185_DISPLAY_ID,
+  TLA185_FIELD_COUNT
+} from './foundationWing.js'
+
+/**
+ * Foundation mission and Foundation Standards (five pillars).
+ * Wording distinguishes live public standard work from incorporation-era goals.
+ */
+export function buildFoundationGovernanceSections({
+  fieldCount = TLA185_FIELD_COUNT,
+  baseFieldCount = TLA169_FIELD_COUNT
+} = {}) {
+  return Object.freeze([
+    {
+      id: 'standard-stewardship',
+      heading: 'Standard stewardship',
+      paragraphs: [
+        'The Landscape Archive Foundation serves a role distinct from the commercial product stack.',
+        'The Landscape Vault Pty Ltd holds proprietary intellectual property — TLA Brain automation, three-dimensional assets, populated datasets, and implementation code. The Landscape Archive Pty Ltd operates commercially: subscriptions, Studio+™, Revit integration, and enterprise delivery.',
+        'The Foundation maintains the canonical specification as independent public infrastructure — a shared reference that no single vendor controls, so criteria for botanically informed digital representation remain open to scrutiny and revision through governance.'
+      ]
+    },
+    {
+      id: 'truth-telling',
+      heading: 'Truth and truth-telling',
+      paragraphs: [
+        'Landscape projects carry claims — about species, climate suitability, sustainability outcomes, cultural context, and the provenance of visual assets. The Foundation exists so those claims can be expressed, checked, and questioned in a shared vocabulary rather than buried in proprietary exports or marketing copy.',
+        'Truth-telling here is practical, not rhetorical: documented taxon IDs instead of vague planting labels; banded site context instead of unverifiable “native” assertions; evidence URIs and method notes on sustainability fields; sensitivity classes that keep restricted cultural detail out of open bundles; lineage metadata on synthetic or derivative assets.',
+        'The Foundation does not certify that a project is “true” in every sense — verification remains with practitioners, clients, regulators, and communities. It publishes the information architecture that makes honest disclosure possible and greenwashing harder: what was claimed, what evidence supports it, and what must stay restricted.',
+        'Open specification work is itself a form of truth-telling. Criteria, schemas, and conformance checks are published where anyone can read them — distinct from vendor credentials, sales language, or unreleased models.'
+      ],
+      bullets: [
+        'Botanical truth — harmonised names, taxon IDs, and growth form in interchange bundles',
+        'Climate and sustainability truth — auditable fields, not unaudited marketing claims',
+        'Cultural truth — protocol-aware metadata; restricted detail stays off public repositories',
+        'Provenance truth — attribution and lineage for synthetic or derivative nature assets',
+        'Institutional truth — clear separation of Foundation Approved (open conformance) from Archive Certified (vendor credential)'
+      ]
+    },
+    {
+      id: 'three-entity-structure',
+      heading: 'Three-entity structure',
+      paragraphs: [
+        'Commercial assets remain within the Vault and Archive. The public specification resides in the Foundation layer.'
+      ],
+      facts: [
+        { label: 'The Landscape Vault Pty Ltd', value: 'Private holding company. Proprietary IP: TLA Brain, 3D assets, databases, and pipelines.' },
+        { label: 'The Landscape Archive Pty Ltd', value: 'Commercial operator under Vault licence. Products, sales, and interim Foundation hosting.' },
+        { label: 'The Landscape Archive Foundation', value: `Intended independent steward (incorporation in progress). Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specifications under CC BY-NC-ND 4.0.` }
+      ]
+    },
+    {
+      id: 'who-can-change-what',
+      heading: 'Governance scope',
+      paragraphs: [
+        "Governance applies to the public specification only. Members, partners, and contributors do not use the Foundation to direct another organisation's business, intellectual property, or internal tooling.",
+        'Within scope: admitted members electing Council representatives and approving schema proposals through the published process.',
+        'Outside scope: redirecting Foundation brand or releases; publishing competing forks under the Foundation name; using Council seats to set Archive pricing or Vault licensing terms.'
+      ],
+      facts: [
+        { label: `${TLA185_DISPLAY_ID} extension (e.g. climate screening)`, value: 'Foundation Council — request for comment, working group, simple majority' },
+        { label: `${TLA169_DISPLAY_ID} minor release (1.x)`, value: 'Foundation Council — request for comment, working group, simple majority' },
+        { label: `${TLA169_DISPLAY_ID} / ${TLA185_DISPLAY_ID} major revision`, value: 'Foundation Council — request for comment, two-thirds super-majority' },
+        { label: 'Cultural context and badge criteria', value: 'Council with First Nations advisory review before adoption' },
+        { label: 'Foundation budget, brand, and domain', value: 'Foundation Council — simple majority; not-for-profit' },
+        { label: 'GitHub releases and organisation administration', value: 'Foundation officers — public pull requests; merges via officers' },
+        { label: 'Member practice (HR, clients, delivery)', value: 'Each member organisation — outside Foundation remit' },
+        { label: 'Member proprietary IP and unreleased models', value: 'Each member — specification contribution does not transfer project IP' },
+        { label: 'Landscape Archive products and pricing', value: 'The Landscape Archive Pty Ltd — implementation partners hold no Foundation voting seat' },
+        { label: 'Landscape Vault IP (Brain, assets, pipelines)', value: 'The Landscape Vault Pty Ltd — not Foundation-governed' },
+        { label: 'Commercial implementation licence', value: 'The Landscape Archive Pty Ltd — separate from non-commercial reference use' },
+        { label: 'Client project exchange records', value: 'Project author — restricted cultural material does not belong in open repositories' }
+      ]
+    },
+    {
+      id: 'foundation-vs-archive',
+      heading: 'Foundation and Archive responsibilities',
+      paragraphs: [
+        'Three entities, three distinct roles. Practitioner certification remains commercial; published conformance criteria (Foundation Approved) reside with the Foundation.',
+        'Foundation Approved is vendor-neutral and denotes conformance with the published specification. Landscape Archive Certified is a paid practitioner credential — not government accreditation and not “Foundation certification.”'
+      ],
+      facts: [
+        { label: 'Vault — TLA Brain, assets, datasets, pipelines', value: 'Proprietary IP holding company — not Foundation-governed' },
+        { label: `Foundation — ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID}, schemas, open assessment tools`, value: 'Public specification steward — CC BY-NC-ND 4.0' },
+        { label: 'Foundation — Foundation Approved criteria', value: 'Interchange baseline — published conformance criteria, formally assessable' },
+        { label: 'Foundation — cultural-context policy and audit checklist', value: 'Policy and checklists only — not datasets or applications' },
+        { label: 'Archive — Library, Revit, Studio+™, shop, Brain delivery', value: 'Commercial products implementing the specification' },
+        { label: 'Archive — practitioner certification programme', value: 'Paid tiers, cohorts, credential verification — vendor credential' },
+        { label: 'Archive — species library, Run-01, export assist', value: 'Licensed data — remains outside the open GitHub layer' },
+        { label: 'Layer 1 · Foundation Approved', value: 'Foundation — exchange record meets published conformance assessment' },
+        { label: 'Layer 2 · Archive Certified', value: 'Archive — training on Archive tools (paid)' },
+        { label: 'Layer 3 · Institutional attestation (future)', value: 'Foundation policy; Archive may be one issuer among many' }
+      ],
+      bullets: [
+        'Public usage: “Foundation Approved” denotes open specification conformance; “Archive Certified” denotes a practitioner credential',
+        'Practitioner certification, commerce, and licensed datasets remain with the Archive'
+      ],
+      actions: [{ label: 'Commercial licensing', href: FOUNDATION_COMMERCIAL_CONTACT_PATH, external: true }]
+    },
+    {
+      id: 'charter-pillars',
+      heading: 'Foundation Standards',
+      paragraphs: [
+        'The Foundation’s public work is organised around five interrelated Foundation Standards. Each pillar describes a domain in which landscape project metadata either already falls short of professional and public expectation, or is likely to do so as climate reporting, digital twin adoption, and synthetic visualisation accelerate. The pillars are not product modules; they are statements of public purpose — what the open specification exists to make possible, and what remains explicitly outside Foundation remit.',
+        'Read together, they articulate a single argument: that truth in landscape documentation is an infrastructural problem, solvable only through shared definitions, open governance, and a clear boundary between public reference work and commercial implementation. The sections that follow develop each standard in turn.'
+      ]
+    },
+    {
+      id: 'pillar-botanical-truth',
+      heading: '1 · Botanical truth and reference standard',
+      paragraphs: [
+        'Landscape architecture has long depended on planting schedules, species palettes, and visual representations that imply botanical knowledge without always encoding it. A drawing may show “coastal banksia” or “native grass mix” while leaving unresolved whether the name is current, whether the taxon is appropriate to the site, or whether the digital asset corresponds to a living plant at all. The first Foundation Standard addresses that gap: not by supplying a commercial species library, but by stewarding the information architecture through which botanical claims can be stated precisely, exchanged between organisations, and held open to scrutiny.',
+        `The public specification — presently ${TLA185_DISPLAY_ID}, with ${fieldCount} documented elements extending the earlier ${TLA169_DISPLAY_ID} profile at ${baseFieldCount} fields — defines modules for taxonomy and identity, traits and morphology, botanical asset rows, and the metadata required for BIM delivery. Accepted scientific names, Darwin Core taxon identifiers, controlled synonym handling, native status, and growth form are treated as first-class interchange elements rather than informal annotations. Implementations may reference this schema freely; they do not, however, receive populated species records or trait matrices from the Foundation itself. That separation is deliberate. The open layer establishes what ought to be said about a plant in a project record; the Archive and Vault hold the proprietary datasets and automation that populate those fields at production scale.`,
+        'At minimum, a Foundation Approved exchange bundle is expected to carry at least one botanical asset row sufficient for an independent reader to reconstruct planting intent: a taxon identifier, a scientific name, native status, and growth form, without reliance on proprietary joins or undisclosed lookup tables. This is a modest bar, but it is a truthful one. It converts implicit horticultural assumption into documented assertion.',
+        'Looking forward, the Foundation intends to formalise processes for specification revision, publish explicit criteria for botanical accuracy in digital representation, and develop frameworks that respect both scientific taxonomy and Indigenous ecological knowledge — including appropriate attribution, sensitivity classification, and governance review where cultural context fields are involved. Those criteria will remain distinct from product marketing and from vendor certification; they belong to the public reference layer, where they can be debated, cited, and revised through the Foundation’s open governance process.'
+      ]
+    },
+    {
+      id: 'pillar-climate-compliance',
+      heading: '2 · Climate and environmental disclosure',
+      paragraphs: [
+        'Climate adaptation, environmental risk, and sustainability performance are now routine subjects in landscape project documentation — yet the digital record of such claims often lags far behind the rhetoric of drawings and reports. Projects may be described as “climate resilient,” “water sensitive,” or “nature positive” without a corresponding, auditable statement of what was assessed, under which disclosure framework, with what evidence, and within what spatial or temporal bounds. The second pillar holds that environmental truth-telling in landscape metadata requires a shared vocabulary for those statements, not merely a place to attach PDF evidence after the fact.',
+        `The ${TLA185_DISPLAY_ID} specification extends the baseline environment and sustainability modules with site context bands, mid-century climate screening fields, environmental risk metadata, and structured sustainability disclosure. Practitioners may record, for example, which disclosure standard they mapped to, what proportion of planting is native by the project’s own definition, whether water-sensitive design principles were applied, and where supporting evidence resides — together with method notes that explain how figures were derived. Site context is expressed as summarised bands (Köppen classification, rainfall and temperature ranges, microclimate commentary) rather than as raw environmental rasters or occurrence coordinates embedded in every open bundle. That design choice keeps interchange legible and reviewable without treating each project export as a public environmental dataset in its own right.`,
+        'It is essential to state what this pillar does not claim. The Foundation does not calculate entity-level greenhouse-gas inventories, produce audited financial-climate filings, or certify compliance with any particular regulatory regime. Its role is definitional: to specify the metadata shape within which practitioners, clients, and advisers can populate honest disclosure and within which software can validate structural completeness. Verification of substance — whether a claim is justified — remains with the project team and the institutions that govern them.',
+        'Work continues toward open auditing checklists, documented conformance signals for three-dimensional assets, and public crosswalk notes that relate specification fields to commonly encountered disclosure concepts in procurement and reporting. Those instruments will be published through the same open governance process as the schema itself, so that climate-ready project documentation becomes a matter of inspectable information architecture rather than proprietary assertion.'
+      ]
+    },
+    {
+      id: 'pillar-open-infrastructure',
+      heading: '3 · Open research infrastructure',
+      paragraphs: [
+        `Universities, research groups, and independent practitioners need a stable reference if landscape information is to be taught, cited, and reproduced consistently across cohorts and jurisdictions. When the field dictionary lives only inside commercial products, curriculum design becomes dependent on vendor access, licence terms shift with product roadmaps, and students learn an interface rather than a discipline. The third pillar commits the Foundation to maintaining open research infrastructure: the canonical specification, schema artefacts, worked examples, and reference validation tools that make ${TLA185_DISPLAY_ID} and ${TLA169_DISPLAY_ID} legitimate objects of academic study.`,
+        'That infrastructure is already partially in place. The specification is released on GitHub under semantic versioning; a schema portal allows browsing of modules without downloading the full dictionary; worked example bundles illustrate how sustainability and site context fields compose in real project records; and a reference validator supports structural and Foundation Approved checks in local or browser environments. Revit crosswalk documentation connects the open model to common delivery workflows. Any party may inspect, cite, and teach these materials under the non-commercial licence terms — attributing the specification, refraining from redistributing modified copies, and implementing through their own tooling or a licensed vendor where commercial use is required.',
+        'The distinction between open research infrastructure and commercial production systems is not a matter of quality alone; it is a matter of governance and access. TLA Brain automation, high-fidelity three-dimensional assets, Studio+™ delivery, and populated species libraries remain licensed products of the Archive and Vault. The Foundation layer exists so that the conceptual framework — the “grammar” of landscape project metadata — is not captive to any single implementation. That separation protects academic independence while allowing industry partners to compete on execution rather than on ownership of the underlying vocabulary.',
+        'Further Foundation-maintained tooling — conformance assessment utilities, reference API patterns, and continuous-integration-friendly validator packages — is planned under licences suited to academic and research reuse. Such tools will extend the public layer without substituting for the commercial stack; they are intended to lower the cost of rigorous teaching, replication, and third-party critique.'
+      ]
+    },
+    {
+      id: 'pillar-government',
+      heading: '4 · Public-sector and digital twin interface',
+      paragraphs: [
+        'Public-sector agencies, utilities, and standards bodies increasingly require reference architectures that can be cited in procurement, audited by third parties, and adapted across programmes without lock-in to a single vendor’s data model. Landscape planting metadata sits at the intersection of biodiversity policy, urban greening targets, climate adaptation, and digital twin initiatives — yet it is often represented either informally in CAD layers or opaquely inside proprietary platforms. The fourth pillar positions the Foundation as a potential interlocutor with government and standards communities: not as a supplier seeking sole-source adoption, but as the steward of an openly documented environmental information standard that agencies may reference independently of commercial implementation choices.',
+        `In its present form, the ${TLA185_DISPLAY_ID} specification is suitable as a reference layer in procurement documentation, digital twin metadata discussions, and ISO 19650-style information-management conversations. An agency may adopt the schema as a non-commercial reference under the published licence while licensing BIM integration, populated datasets, and automation separately through commercial channels. Foundation Approved provides a machine-checkable baseline for interchange — a statement about bundle structure and minimum disclosure, not a product endorsement or government accreditation.`,
+        'The charter envisages a Council composition that includes practice, academic, public-body, and First Nations advisory representation, with protocol review on cultural-context rules before adoption. No single vendor is intended to hold a voting majority. Interim Foundation pages are informational only; no government affiliation is claimed until formal agreements exist. Incorporation, memoranda of understanding with digital twin programmes and environmental agencies, and published advocacy for open planting metadata remain forward work — but the intellectual basis for that engagement is already public.',
+        'For public institutions, the practical proposition is straightforward. Reference the open specification freely in policy and procurement language; implement through whichever licensed partners meet operational requirements; and assess interchange records against published conformance criteria rather than against marketing claims. That model preserves institutional sovereignty while giving landscape metadata a durable, citable home outside any one product roadmap.'
+      ]
+    },
+    {
+      id: 'pillar-ai-ethics',
+      heading: '5 · Ethics of synthetic nature and attribution',
+      paragraphs: [
+        'Generative and synthetic imagery has entered landscape visualisation faster than the professions have developed shared rules for provenance, attribution, and permissible reuse. A rendered planting scene may combine photographic texture, modelled geometry, and algorithmically inferred foliage with no record of which elements derive from living reference, which from licensed assets, and which from unattributed source material. The fifth pillar addresses the ethical dimension of that shift: synthetic nature is not inherently dishonest, but undocumented synthetic nature makes truth-telling impossible.',
+        'The Foundation’s contribution begins at the metadata layer. The public specification already separates open schema from commercial data and assets, and cultural-context modules include sensitivity classes — open, restricted, and not-for-publication — so that restricted detail is not casually replicated in open repositories. Where cultural knowledge cannot be published, the specification provides for pointers and protocol authority references rather than silent omission or inappropriate exposure. On the commercial side, Archive legal instruments governing responsible AI use, data and machine-learning restrictive licensing, and contributor terms protect proprietary and contributor intellectual property; the Foundation layer, by contrast, publishes the rules for how lineage and attribution should be described in interchange, not the assets themselves.',
+        'Planned Foundation policy will define ethical synthetic nature in terms assessable within exchange bundles: creator attribution, derivation lineage, and explicit marking where visual assets are synthetic or composite. The aim is not merely legal compliance but professional integrity — a record that allows a reviewer to ask, and answer, where a representation came from and under what conditions it may be reused. Advocacy against predatory training use of landscape visualisation work complements that technical work; metadata lineage is necessary but not sufficient without broader industry norms.',
+        'This pillar recognises that truth-telling in synthetic nature is a collective problem. The Foundation cannot enforce ethical behaviour in model training markets or in every studio’s internal workflow. It can, however, establish that honest project records describe provenance, that restricted cultural material stays out of open bundles, and that interchange conformance increasingly expects attribution fields to be populated rather than left blank. That expectation, published openly and revised through governance, is the Foundation’s proper instrument.'
+      ]
+    },
+    {
+      id: 'licence-sovereignty',
+      heading: 'Licence and sovereignty',
+      paragraphs: [
+        `The public specification (${fieldCount} documented elements) and schema documentation are published under ${FOUNDATION_LICENCE_LABEL}:`
+      ],
+      bullets: [
+        'BY (Attribution) — the canonical specification must be credited',
+        'NC (Non-Commercial) — commercial use requires a separate licence from The Landscape Archive Pty Ltd',
+        'ND (No Derivatives) — modified redistributions are not permitted; updates are issued through Foundation semver releases only'
+      ]
+    },
+    {
+      id: 'interim-stewardship',
+      heading: 'Interim stewardship',
+      paragraphs: [
+        'The Landscape Archive Foundation is not yet an incorporated entity and is not affiliated with, endorsed by, or representative of any professional institute or government body. The Landscape Archive Pty Ltd provides interim hosting as implementation partner.',
+        'The public specification layer is intended to be assigned to the Foundation on incorporation. This page is informational only and is not legal advice.'
+      ],
+      bullets: [
+        `Specification published under ${FOUNDATION_LICENCE_LABEL}`,
+        'Species values, automation, and commercial assets excluded from the public open layer',
+        'Path toward autonomous governance through advisory board and non-profit incorporation'
+      ]
+    },
+    {
+      id: 'commercial-bridge',
+      heading: 'Commercial bridge',
+      paragraphs: [
+        'Non-commercial reference use (teaching, research, open government documentation) may be permitted under the NC licence terms. Organisations requiring commercial implementation — enterprise BIM, TLA Brain automation, or high-fidelity three-dimensional assets — license through The Landscape Archive Pty Ltd.',
+        'The Foundation establishes the shared information architecture. The Archive and Vault deliver licensed production assets and automation at scale.'
+      ],
+      actions: [
+        { label: 'Commercial licensing', href: FOUNDATION_COMMERCIAL_CONTACT_PATH, external: true },
+        { label: 'Support the standard', href: SUPPORT_PATH }
+      ]
+    }
+  ])
+}

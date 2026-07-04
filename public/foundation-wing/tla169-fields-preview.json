@@ -1,0 +1,425 @@
+{
+  "standardId": "169",
+  "standardLabel": "169 — Landscape Archive metadata standard",
+  "version": "1.0.0",
+  "fieldCount": 24,
+  "generatedAt": "2026-07-04T03:53:19.063Z",
+  "licence": {
+    "publicStandard": "CC-BY-NC-ND-4.0",
+    "documentation": "CC-BY-NC-ND-4.0"
+  },
+  "steward": "The Landscape Archive Foundation",
+  "modules": [
+    {
+      "id": "taxonomy",
+      "label": "Taxonomy & identity",
+      "fieldCount": 2,
+      "totalFieldCount": 15
+    },
+    {
+      "id": "traits",
+      "label": "Traits & morphology",
+      "fieldCount": 2,
+      "totalFieldCount": 12
+    },
+    {
+      "id": "environment",
+      "label": "Environment & site risk",
+      "fieldCount": 2,
+      "totalFieldCount": 18
+    },
+    {
+      "id": "provenance",
+      "label": "Provenance",
+      "fieldCount": 2,
+      "totalFieldCount": 7
+    },
+    {
+      "id": "licensing",
+      "label": "Licensing & rights",
+      "fieldCount": 2,
+      "totalFieldCount": 5
+    },
+    {
+      "id": "product",
+      "label": "Product & publisher",
+      "fieldCount": 2,
+      "totalFieldCount": 5
+    },
+    {
+      "id": "project",
+      "label": "Project record",
+      "fieldCount": 2,
+      "totalFieldCount": 12
+    },
+    {
+      "id": "site-context",
+      "label": "Site context (standard bands)",
+      "fieldCount": 2,
+      "totalFieldCount": 14
+    },
+    {
+      "id": "sustainability",
+      "label": "Sustainability disclosure",
+      "fieldCount": 2,
+      "totalFieldCount": 9
+    },
+    {
+      "id": "cultural-context",
+      "label": "Cultural context",
+      "fieldCount": 2,
+      "totalFieldCount": 6
+    },
+    {
+      "id": "botanical-asset",
+      "label": "Botanical asset",
+      "fieldCount": 2,
+      "totalFieldCount": 6
+    },
+    {
+      "id": "revit-shared-parameter",
+      "label": "Revit shared parameters",
+      "fieldCount": 2,
+      "totalFieldCount": 11
+    },
+    {
+      "id": "revit-download-form",
+      "label": "Revit download form",
+      "fieldCount": 0,
+      "totalFieldCount": 43
+    },
+    {
+      "id": "delivery",
+      "label": "Delivery & BIM",
+      "fieldCount": 0,
+      "totalFieldCount": 6
+    }
+  ],
+  "fields": [
+    {
+      "id": "169-001",
+      "key": "speciesKey",
+      "label": "Species key",
+      "module": "taxonomy",
+      "type": "string",
+      "description": "Stable Landscape Archive identifier for a canonical species record.",
+      "source": "Landscape Archive",
+      "jsonPath": "record.speciesKey",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Taxonomy & identity"
+    },
+    {
+      "id": "169-002",
+      "key": "taxonID",
+      "label": "Taxon ID",
+      "module": "taxonomy",
+      "type": "string",
+      "description": "Darwin Core taxon identifier (typically GBIF speciesKey).",
+      "source": "Darwin Core / GBIF",
+      "jsonPath": "sourceData.taxonomy.taxonID",
+      "required": true,
+      "enumValues": null,
+      "moduleLabel": "Taxonomy & identity"
+    },
+    {
+      "id": "169-016",
+      "key": "growthForms",
+      "label": "Growth forms",
+      "module": "traits",
+      "type": "array<string>",
+      "description": "Practice-oriented growth-form tags (tree, shrub, grass, etc.).",
+      "source": "Landscape Archive / AusTraits",
+      "jsonPath": "sourceData.traits.growthForms",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Traits & morphology"
+    },
+    {
+      "id": "169-017",
+      "key": "totalObservations",
+      "label": "Trait observations",
+      "module": "traits",
+      "type": "integer",
+      "description": "Count of trait observations contributing to the species profile.",
+      "source": "AusTraits",
+      "jsonPath": "sourceData.traits.totalObservations",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Traits & morphology"
+    },
+    {
+      "id": "169-028",
+      "key": "locationMethod",
+      "label": "Location method",
+      "module": "environment",
+      "type": "string",
+      "description": "How the environmental sample point was chosen.",
+      "source": "Run-01 / SILO",
+      "jsonPath": "sourceData.environment.locationMethod",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Environment & site risk"
+    },
+    {
+      "id": "169-029",
+      "key": "latitude",
+      "label": "Latitude",
+      "module": "environment",
+      "type": "number",
+      "description": "WGS84 latitude for environmental context.",
+      "source": "Run-01",
+      "jsonPath": "sourceData.environment.latitude",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Environment & site risk"
+    },
+    {
+      "id": "169-046",
+      "key": "packageType",
+      "label": "Package type",
+      "module": "provenance",
+      "type": "string",
+      "description": "Revit or mesh package type identifier.",
+      "source": "LA package manifest",
+      "jsonPath": "sourceData.provenance.packageType",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Provenance"
+    },
+    {
+      "id": "169-047",
+      "key": "downloadId",
+      "label": "Download ID",
+      "module": "provenance",
+      "type": "string",
+      "description": "Unique issued download identifier.",
+      "source": "LA entitlement",
+      "jsonPath": "sourceData.provenance.downloadId",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Provenance"
+    },
+    {
+      "id": "169-053",
+      "key": "commercialUsePlan",
+      "label": "Commercial use plan",
+      "module": "licensing",
+      "type": "string",
+      "description": "Entitlement tier governing commercial use.",
+      "source": "LA entitlement",
+      "jsonPath": "sourceData.licensing.commercialUsePlan",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Licensing & rights"
+    },
+    {
+      "id": "169-054",
+      "key": "rightsStatus",
+      "label": "Rights status",
+      "module": "licensing",
+      "type": "string",
+      "description": "Overall rights posture for the package.",
+      "source": "LA governance",
+      "jsonPath": "sourceData.licensing.rightsStatus",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Licensing & rights"
+    },
+    {
+      "id": "169-058",
+      "key": "revitArchetype",
+      "label": "Revit archetype",
+      "module": "product",
+      "type": "string",
+      "description": "Landscape Archive Revit archetype key.",
+      "source": "LA Revit",
+      "jsonPath": "sourceData.product.revitArchetype",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Product & publisher"
+    },
+    {
+      "id": "169-059",
+      "key": "revitArchetypeConfidence",
+      "label": "Revit archetype confidence",
+      "module": "product",
+      "type": "number",
+      "description": "Confidence score for archetype assignment.",
+      "source": "LA Revit",
+      "jsonPath": "sourceData.product.revitArchetypeConfidence",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Product & publisher"
+    },
+    {
+      "id": "169-063",
+      "key": "federationSchemaVersion",
+      "label": "Schema version",
+      "module": "project",
+      "type": "string",
+      "description": "TLA bundle schema version (legacy key name retained in v1).",
+      "source": "Foundation standard",
+      "jsonPath": "project.federationSchemaVersion",
+      "required": true,
+      "enumValues": null,
+      "moduleLabel": "Project record"
+    },
+    {
+      "id": "169-064",
+      "key": "projectId",
+      "label": "Project ID",
+      "module": "project",
+      "type": "string",
+      "description": "Stable project identifier within the publishing organisation.",
+      "source": "Foundation standard",
+      "jsonPath": "project.projectId",
+      "required": true,
+      "enumValues": null,
+      "moduleLabel": "Project record"
+    },
+    {
+      "id": "169-075",
+      "key": "soilProfile.order",
+      "label": "Soil order",
+      "module": "site-context",
+      "type": "string",
+      "description": "High-level soil order classification band.",
+      "source": "Foundation site-context",
+      "jsonPath": "siteContext.soilProfile.order",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Site context (standard bands)"
+    },
+    {
+      "id": "169-076",
+      "key": "soilProfile.clayPercentBand",
+      "label": "Clay percent band",
+      "module": "site-context",
+      "type": "string",
+      "description": "Clay content band for site context.",
+      "source": "Foundation site-context",
+      "jsonPath": "siteContext.soilProfile.clayPercentBand",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Site context (standard bands)"
+    },
+    {
+      "id": "169-089",
+      "key": "climatePositiveClaim",
+      "label": "Climate positive claim",
+      "module": "sustainability",
+      "type": "boolean",
+      "description": "Whether the project claims climate-positive outcomes.",
+      "source": "Foundation sustainability",
+      "jsonPath": "sustainability.climatePositiveClaim",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Sustainability disclosure"
+    },
+    {
+      "id": "169-090",
+      "key": "carbonSequestration_kgCO2e_perYear",
+      "label": "Carbon sequestration (kg CO₂e/yr)",
+      "module": "sustainability",
+      "type": "number",
+      "description": "Estimated annual sequestration.",
+      "source": "Foundation sustainability",
+      "jsonPath": "sustainability.carbonSequestration_kgCO2e_perYear",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Sustainability disclosure"
+    },
+    {
+      "id": "169-098",
+      "key": "sensitivityClass",
+      "label": "Sensitivity class",
+      "module": "cultural-context",
+      "type": "enum",
+      "description": "Controls public vs restricted cultural metadata.",
+      "source": "Foundation cultural-context",
+      "jsonPath": "culturalContext.sensitivityClass",
+      "required": true,
+      "enumValues": [
+        "open",
+        "restricted",
+        "not-for-publication"
+      ],
+      "moduleLabel": "Cultural context"
+    },
+    {
+      "id": "169-099",
+      "key": "culturalEngagementLevel",
+      "label": "Cultural engagement level",
+      "module": "cultural-context",
+      "type": "enum",
+      "description": "Documented level of Connection to Country engagement.",
+      "source": "Foundation cultural-context",
+      "jsonPath": "culturalContext.culturalEngagementLevel",
+      "required": false,
+      "enumValues": [
+        "none",
+        "acknowledged",
+        "consulted",
+        "collaborative",
+        "co-designed"
+      ],
+      "moduleLabel": "Cultural context"
+    },
+    {
+      "id": "169-104",
+      "key": "assetId",
+      "label": "Asset ID",
+      "module": "botanical-asset",
+      "type": "string",
+      "description": "Stable botanical asset identifier within a project bundle.",
+      "source": "Foundation botanical-asset",
+      "jsonPath": "botanicalAssets[].assetId",
+      "required": true,
+      "enumValues": null,
+      "moduleLabel": "Botanical asset"
+    },
+    {
+      "id": "169-105",
+      "key": "quantity",
+      "label": "Quantity",
+      "module": "botanical-asset",
+      "type": "number",
+      "description": "Planned or placed quantity for the asset.",
+      "source": "Foundation botanical-asset",
+      "jsonPath": "botanicalAssets[].quantity",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Botanical asset"
+    },
+    {
+      "id": "169-110",
+      "key": "LA_BotanicalName",
+      "label": "Botanical Name",
+      "module": "revit-shared-parameter",
+      "type": "string",
+      "description": "Revit shared parameter LA_BotanicalName mapped to TLA-169.",
+      "source": "LA Revit shared parameters",
+      "jsonPath": "revit.parameters.LA_BotanicalName",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Revit shared parameters"
+    },
+    {
+      "id": "169-111",
+      "key": "LA_CommonName",
+      "label": "Common Name",
+      "module": "revit-shared-parameter",
+      "type": "string",
+      "description": "Revit shared parameter LA_CommonName mapped to TLA-169.",
+      "source": "LA Revit shared parameters",
+      "jsonPath": "revit.parameters.LA_CommonName",
+      "required": false,
+      "enumValues": null,
+      "moduleLabel": "Revit shared parameters"
+    }
+  ],
+  "preview": true,
+  "totalFieldCount": 169,
+  "previewFieldCount": 24
+}

@@ -1,0 +1,101 @@
+---
+import '../styles/global.css'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+import DraftBanner from '../components/DraftBanner.astro'
+import { SITE_ORIGIN, SITE_DESCRIPTION, FOUNDATION_DISPLAY_NAME } from '../data/site.js'
+import { OPEN_STANDARD_GITHUB_URL, FEDERATION_SCHEMA_PORTAL_URL } from '../data/foundationWing.js'
+
+interface Props {
+  title: string
+  description?: string
+  /** Route path for canonical URL + active nav (e.g. "/governance"). */
+  path?: string
+  ogImage?: string
+  showDraftBanner?: boolean
+}
+
+const {
+  title,
+  description = SITE_DESCRIPTION,
+  path = Astro.url.pathname,
+  // TODO: replace with a 1200×630 PNG social card; SVG is a safe non-404 default.
+  ogImage = '/foundation-mark.svg',
+  showDraftBanner = true
+} = Astro.props
+
+const canonical = new URL(path === '/' ? '/' : path.replace(/\/+$/, ''), SITE_ORIGIN).toString()
+const fullTitle =
+  title === FOUNDATION_DISPLAY_NAME ? title : `${title} · The Landscape Archive Foundation`
+const ogImageUrl = new URL(ogImage, SITE_ORIGIN).toString()
+
+// Organization structured data — helps search engines model the standards body.
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: FOUNDATION_DISPLAY_NAME,
+  alternateName: 'TLA Foundation',
+  url: SITE_ORIGIN,
+  description: SITE_DESCRIPTION,
+  logo: new URL('/foundation-mark.svg', SITE_ORIGIN).toString(),
+  sameAs: [OPEN_STANDARD_GITHUB_URL, FEDERATION_SCHEMA_PORTAL_URL]
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/foundation-mark.svg" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2c4436" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={FOUNDATION_DISPLAY_NAME} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="en" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} is:inline />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {showDraftBanner && <DraftBanner />}
+    <SiteHeader activePath={path} />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+
+    <style>
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 0;
+        z-index: 40;
+        background: var(--accent-strong);
+        color: #fff;
+        padding: 0.6rem 1rem;
+        border-radius: 0 0 var(--radius-sm) 0;
+      }
+      .skip-link:focus {
+        left: 0;
+      }
+    </style>
+  </body>
+</html>

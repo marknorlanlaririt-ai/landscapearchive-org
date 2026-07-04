@@ -1,0 +1,15 @@
+# Cloudflare Pages headers for landscapearchive.org
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Hashed Astro assets are immutable
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Registry data can be cached briefly
+/foundation-wing/*
+  Cache-Control: public, max-age=3600

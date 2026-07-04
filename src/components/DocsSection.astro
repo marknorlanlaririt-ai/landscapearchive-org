@@ -1,0 +1,126 @@
+---
+// Renders one editorial content section: heading, paragraphs, bullets,
+// a fact list (optionally collapsible via native <details>), and actions.
+interface Action {
+  label: string
+  href: string
+  external?: boolean
+}
+interface Fact {
+  label: string
+  value: string
+}
+interface Props {
+  id?: string
+  heading?: string
+  paragraphs?: string[]
+  bullets?: string[]
+  facts?: Fact[]
+  factsCollapsible?: boolean
+  factsToggleLabel?: string
+  actions?: Action[]
+}
+const {
+  id,
+  heading,
+  paragraphs = [],
+  bullets = [],
+  facts = [],
+  factsCollapsible = false,
+  factsToggleLabel = 'Show details',
+  actions = []
+} = Astro.props
+---
+
+<section id={id} class="section-block">
+  <div class="prose">
+    {heading && <h2>{heading}</h2>}
+    {paragraphs.map((text) => <p set:html={text} />)}
+
+    {
+      bullets.length > 0 && (
+        <ul class="bullet-list">
+          {bullets.map((item) => (
+            <li set:html={item} />
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      facts.length > 0 &&
+        (factsCollapsible ? (
+          <details class="fact-details">
+            <summary>{factsToggleLabel}</summary>
+            <dl class="fact-list">
+              {facts.map((fact) => (
+                <div class="fact-list__row">
+                  <dt class="fact-list__label">{fact.label}</dt>
+                  <dd class="fact-list__value">{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </details>
+        ) : (
+          <dl class="fact-list">
+            {facts.map((fact) => (
+              <div class="fact-list__row">
+                <dt class="fact-list__label">{fact.label}</dt>
+                <dd class="fact-list__value">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        ))
+    }
+
+    {
+      actions.length > 0 && (
+        <div class="action-row">
+          {actions.map((action, index) => (
+            <a
+              href={action.href}
+              class:list={['btn', { 'btn--primary': index === 0 }]}
+              rel={action.external ? 'noopener' : undefined}
+              target={action.external ? '_blank' : undefined}
+            >
+              {action.label}
+              {action.external && <span class="btn__ext" aria-hidden="true">↗</span>}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .fact-list dt,
+  .fact-list dd {
+    margin: 0;
+  }
+
+  .fact-details {
+    margin-top: 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--paper-raised);
+    padding: 0 1rem;
+  }
+
+  .fact-details > summary {
+    cursor: pointer;
+    padding: 0.85rem 0;
+    font-weight: 600;
+    color: var(--accent-strong);
+    list-style-position: inside;
+  }
+
+  .fact-details[open] > summary {
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .fact-details .fact-list {
+    margin: 0 0 0.8rem;
+    border-top: 0;
+  }
+</style>

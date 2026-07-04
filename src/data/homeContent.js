@@ -1,0 +1,93 @@
+import {
+  FOUNDATION_COMMERCIAL_CONTACT_PATH,
+  FOUNDATION_SUPPORT_CONTACT_PATH,
+  FEDERATION_SCHEMA_PORTAL_URL,
+  GOVERNANCE_PATH,
+  OPEN_STANDARD_GITHUB_TAG_URL,
+  OPEN_STANDARD_GITHUB_URL,
+  TLA169_DISPLAY_ID,
+  TLA185_DISPLAY_ID,
+  TLA185_FIELD_COUNT,
+  TLA185_REGISTRY_PREVIEW_FIELD_LIMIT
+} from './foundationWing.js'
+import { FOUNDATION_SUPPORT_BANK_FACTS } from './support.js'
+
+export function buildFoundationHomeSections({
+  fieldCount = TLA185_FIELD_COUNT,
+  previewFieldLimit = TLA185_REGISTRY_PREVIEW_FIELD_LIMIT
+} = {}) {
+  return Object.freeze([
+    {
+      id: 'about-us',
+      heading: 'About us',
+      paragraphs: [
+        "A successful landscape project demands more than aesthetic appeal. It requires a verifiable declaration of truth: the species used, the site's specific context, the evidence for every claim, the status of restricted cultural artifacts, and a clear chain of custody for synthetic assets. An open specification provides this shared vocabulary, making truth transparent and auditable.",
+        `At the heart of our ecosystem lies the Landscape Vault, which safeguards the proprietary code and intellectual property. The Landscape Archive drives commercial operations, while the Foundation ensures the integrity of the whole system through an open specification. We call this ${TLA185_DISPLAY_ID} — the public infrastructure for truth in landscape metadata, covering botanical authenticity, auditable climate data, honest sustainability, and ethical synthetic nature.`,
+        'We recognize that a private operator is a replicable asset, but an open specification — endorsed by universities, regulators, and public bodies — becomes a foundational standard. It is this standard that is hard to displace. By keeping the production assets and automation securely within the Vault, we ensure that while the specification is public, the operational superiority remains uniquely ours.'
+      ],
+      actions: [{ label: 'Read the Foundation Standards', href: GOVERNANCE_PATH }]
+    },
+    {
+      id: 'truth-telling',
+      heading: 'Truth and truth-telling',
+      paragraphs: [
+        'Landscape drawings and models often look definitive while the underlying claims stay implicit — “native planting,” “climate resilient,” “sustainable,” “culturally appropriate.” The Foundation publishes the field dictionary and conformance rules so those claims can be stated precisely, evidenced, and reviewed.',
+        'Truth-telling is not a marketing slogan. It is structural: taxon IDs and growth forms in exchange bundles; banded climate context instead of hand-waved suitability; evidence links on sustainability fields; sensitivity classes that keep restricted cultural detail out of open repositories; lineage metadata on synthetic assets.',
+        'The Foundation defines how honest disclosure should be encoded. It does not replace professional judgement, client sign-off, regulatory audit, or community protocol — but it gives practitioners and institutions a shared language for what was claimed and what supports it.'
+      ],
+      actions: [{ label: 'Read the truth-telling charter', href: `${GOVERNANCE_PATH}#truth-telling` }]
+    },
+    {
+      id: 'use-the-standard',
+      heading: 'The specification in practice',
+      paragraphs: [
+        `${TLA185_DISPLAY_ID} articulates ${fieldCount} documented elements across Australian landscape projects — taxonomy, site context, mid-century climate screening, environmental risk, sustainability, cultural sensitivity, and BIM interoperability. The earlier ${TLA169_DISPLAY_ID} profile remains supported for legacy exchange records. The published layer comprises structural definitions only; it does not include species inventories, trait values, or client records.`,
+        'The canonical specification, JSON Schema modules, and worked examples are published on GitHub and the schema portal. GitHub is the authoritative source. The open repository is world-readable.'
+      ],
+      actions: [
+        { label: 'Read canonical specification', href: OPEN_STANDARD_GITHUB_TAG_URL, external: true },
+        { label: 'Open schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
+        { label: 'View repository', href: OPEN_STANDARD_GITHUB_URL, external: true }
+      ]
+    },
+    {
+      id: 'governance',
+      heading: 'Governance and licence',
+      paragraphs: [
+        'The Landscape Archive Foundation is the intended independent steward of the public specification layer. Interim hosting is provided by The Landscape Archive Pty Ltd until incorporation.',
+        'The public specification and schema documentation are published under CC BY-NC-ND 4.0 — attribution required; non-commercial reference without modification.'
+      ],
+      actions: [{ label: 'Governance and Foundation Standards', href: GOVERNANCE_PATH }]
+    },
+    {
+      id: 'commercial',
+      heading: 'Commercial implementation',
+      paragraphs: [
+        'High-fidelity assets, TLA Brain automation, enterprise BIM integration, Archive Certified practitioner training, and certified practice tooling are licensed separately through The Landscape Archive Pty Ltd.',
+        'Foundation Approved designates conformance with the open specification and remains distinct from Archive Certified, the paid vendor credential. See governance for the full responsibility split.'
+      ],
+      actions: [
+        { label: 'Commercial licensing', href: FOUNDATION_COMMERCIAL_CONTACT_PATH, external: true },
+        { label: 'Foundation vs Archive responsibilities', href: GOVERNANCE_PATH }
+      ]
+    },
+    {
+      id: 'support',
+      heading: 'Support the standard',
+      paragraphs: [
+        'The Landscape Archive Foundation is not yet incorporated and cannot issue tax-deductible donation receipts today.',
+        `Voluntary contributions for hosting, documentation, and incorporation are received interim by The Landscape Archive Pty Ltd (implementation partner). Support is optional — not required to reference ${TLA185_DISPLAY_ID} or ${TLA169_DISPLAY_ID} under CC BY-NC-ND 4.0.`,
+        'Bank transfer (Australia): expand the bank details below. Include the payment reference so we can reconcile your transfer.'
+      ],
+      facts: [...FOUNDATION_SUPPORT_BANK_FACTS],
+      factsCollapsible: true,
+      factsToggleLabel: 'Show bank transfer details',
+      bullets: [
+        'Payments are not tax-deductible until the Foundation is incorporated and registered as a deductible gift recipient (if applicable).',
+        'We only publish these bank details on our official Landscape Archive websites (landscapearchive.org and landscapearchive.com.au) — never by SMS or from a personal email address.',
+        'For invoicing, recurring support, or amounts over $5,000 AUD, contact us first.'
+      ],
+      actions: [{ label: 'Questions about support', href: FOUNDATION_SUPPORT_CONTACT_PATH, external: true }]
+    }
+  ])
+}

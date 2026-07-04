@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DocsSection from '../components/DocsSection.astro'
+import { buildFoundationGovernanceSections } from '../data/governanceContent.js'
+import { SITE_NAV_LINKS } from '../data/site.js'
+
+const sections = buildFoundationGovernanceSections()
+---
+
+<BaseLayout
+  title="Governance"
+  description="Governance and the five Foundation Standards — three-entity structure, standard stewardship, truth-telling, licence, and interim stewardship of the open TLA-185 specification."
+  path="/governance"
+>
+  <div class="page gov">
+    <div class="gov__intro prose">
+      <p class="eyebrow">Governance · Foundation Standards</p>
+      <h1>How the standard is stewarded</h1>
+      <p>
+        The Foundation maintains the canonical specification as independent public infrastructure —
+        a shared reference that no single vendor controls. This page sets out the three-entity
+        structure, the five Foundation Standards, the licence, and the interim stewardship
+        arrangement in force until incorporation.
+      </p>
+    </div>
+
+    <nav class="gov__toc" aria-label="On this page">
+      {sections.map((section) => <a href={`#${section.id}`}>{section.heading}</a>)}
+    </nav>
+
+    {sections.map((section) => <DocsSection {...section} />)}
+  </div>
+</BaseLayout>
+
+<style>
+  .gov__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 1rem;
+  }
+
+  .gov__toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.9rem;
+    padding: 1.1rem 0 0.4rem;
+    margin-bottom: 0.5rem;
+    border-block: 1px solid var(--line-soft);
+  }
+
+  .gov__toc a {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  .gov__toc a:hover {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+</style>

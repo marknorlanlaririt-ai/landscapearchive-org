@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DocsSection from '../components/DocsSection.astro'
+import { buildFoundationHomeSections } from '../data/homeContent.js'
+
+const support = buildFoundationHomeSections().find((section) => section.id === 'support')
+---
+
+<BaseLayout
+  title="Support the standard"
+  description="Voluntary contributions toward hosting, documentation, and incorporation of The Landscape Archive Foundation. Optional — not required to reference the open TLA-185 / TLA-169 standard."
+  path="/support"
+>
+  <div class="page support">
+    <div class="support__intro prose">
+      <p class="eyebrow">The Landscape Archive Foundation</p>
+      <h1>Support the standard</h1>
+      <p>
+        Referencing the open specification is free under CC BY-NC-ND 4.0. Voluntary contributions
+        help fund hosting, documentation, and the path to incorporation.
+      </p>
+    </div>
+    {support && <DocsSection {...support} />}
+  </div>
+</BaseLayout>
+
+<style>
+  .support__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 0.5rem;
+  }
+</style>

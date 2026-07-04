@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DocsSection from '../components/DocsSection.astro'
+import { foundationTopicPages } from '../data/topicPages.js'
+
+export function getStaticPaths() {
+  return Object.values(foundationTopicPages).map((page) => ({
+    params: { topic: page.slug },
+    props: { page }
+  }))
+}
+
+const { page } = Astro.props
+---
+
+<BaseLayout title={page.title} description={page.lead} path={`/${page.slug}`}>
+  <div class="page topic">
+    <div class="topic__intro prose">
+      <p class="eyebrow">The Landscape Archive Foundation</p>
+      <h1>{page.title}</h1>
+      <p class="topic__lead">{page.lead}</p>
+      {page.placeholder && <p class="topic__flag">In preparation — interim working-group material.</p>}
+    </div>
+
+    {page.sections.map((section) => <DocsSection {...section} />)}
+  </div>
+</BaseLayout>
+
+<style>
+  .topic__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 0.5rem;
+  }
+
+  .topic__lead {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+
+  .topic__flag {
+    display: inline-block;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    background: var(--accent-tint);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+</style>

@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import FoundationMark from '../components/FoundationMark.astro'
+import DocsSection from '../components/DocsSection.astro'
+import { buildFoundationHomeSections } from '../data/homeContent.js'
+import { FOUNDATION_CHARTER_PILLARS, FOUNDATION_PILLARS_LABEL } from '../data/charterPillars.js'
+import {
+  GOVERNANCE_PATH,
+  REGISTRY_PATH,
+  TLA185_DISPLAY_ID,
+  TLA185_FIELD_COUNT,
+  TLA169_DISPLAY_ID,
+  TLA169_FIELD_COUNT
+} from '../data/foundationWing.js'
+
+const sections = buildFoundationHomeSections()
+---
+
+<BaseLayout
+  title="The Landscape Archive Foundation"
+  description="The international home of the open TLA-185 landscape metadata standard — truth in botanical, climate, sustainability, and synthetic-nature disclosure."
+  path="/"
+>
+  <section class="hero">
+    <div class="page hero__inner">
+      <FoundationMark size={64} class="hero__mark" />
+      <p class="eyebrow">Open standard · International</p>
+      <h1 class="hero__title">Public infrastructure for truth in landscape metadata.</h1>
+      <p class="hero__lead">
+        The Landscape Archive Foundation stewards <strong>{TLA185_DISPLAY_ID}</strong> — an open,
+        citable specification for how landscape projects declare their botanical, climate,
+        sustainability, cultural, and synthetic-nature claims. Published for anyone to read,
+        reference, and build on.
+      </p>
+      <div class="action-row">
+        <a class="btn btn--primary" href={GOVERNANCE_PATH}>Read the Foundation Standards</a>
+        <a class="btn" href={REGISTRY_PATH}>Browse the field registry</a>
+      </div>
+      <dl class="hero__stats">
+        <div>
+          <dt>{TLA185_FIELD_COUNT}</dt>
+          <dd>documented elements ({TLA185_DISPLAY_ID})</dd>
+        </div>
+        <div>
+          <dt>{TLA169_FIELD_COUNT}</dt>
+          <dd>legacy baseline ({TLA169_DISPLAY_ID})</dd>
+        </div>
+        <div>
+          <dt>CC BY-NC-ND</dt>
+          <dd>open reference licence</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="page">
+    {sections.map((section) => <DocsSection {...section} />)}
+
+    <section class="section-block" aria-label={FOUNDATION_PILLARS_LABEL}>
+      <div class="prose">
+        <p class="eyebrow">{FOUNDATION_PILLARS_LABEL}</p>
+        <h2>Five standards, one argument</h2>
+        <p>
+          Truth in landscape documentation is an infrastructural problem — solvable only through
+          shared definitions, open governance, and a clear boundary between public reference work
+          and commercial implementation.
+        </p>
+      </div>
+      <ol class="pillars">
+        {
+          FOUNDATION_CHARTER_PILLARS.map((pillar, index) => (
+            <li class="pillar">
+              <span class="pillar__num">{String(index + 1).padStart(2, '0')}</span>
+              <h3 class="pillar__title">{pillar.title}</h3>
+              <p class="pillar__desc">{pillar.description}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="action-row">
+        <a class="btn" href={GOVERNANCE_PATH}>Read all five in full</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    border-bottom: 1px solid var(--line-soft);
+    background:
+      radial-gradient(120% 90% at 85% -10%, var(--accent-tint), transparent 60%),
+      var(--paper);
+  }
+
+  .hero__inner {
+    padding-block: clamp(3rem, 8vw, 6rem) clamp(2.4rem, 5vw, 4rem);
+    max-width: 52rem;
+  }
+
+  .hero__mark {
+    color: var(--accent-strong);
+    margin-bottom: 1.4rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2.3rem, 5.5vw, 3.7rem);
+    max-width: 18ch;
+  }
+
+  .hero__lead {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 40rem;
+  }
+
+  .hero__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.4rem;
+    margin: 2.6rem 0 0;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .hero__stats div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__stats dt {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--ink);
+  }
+
+  .hero__stats dd {
+    margin: 0.15rem 0 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+  }
+
+  .pillars {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pillar {
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+  }
+
+  .pillar__num {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+
+  .pillar__title {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0.5rem;
+  }
+
+  .pillar__desc {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+</style>

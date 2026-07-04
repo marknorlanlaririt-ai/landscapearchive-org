@@ -1,0 +1,153 @@
+---
+import FoundationMark from './FoundationMark.astro'
+import { ARCHIVE_ORIGIN, SITE_NAV_LINKS } from '../data/site.js'
+import {
+  FEDERATION_SCHEMA_PORTAL_URL,
+  FOUNDATION_HOSTING_NOTICE,
+  FOUNDATION_LICENCE_LABEL,
+  FOUNDATION_LICENCE_SUMMARY,
+  FOUNDATION_LICENCE_URL,
+  OPEN_STANDARD_GITHUB_URL
+} from '../data/foundationWing.js'
+
+const year = new Date().getFullYear()
+---
+
+<footer class="site-footer">
+  <div class="page site-footer__inner">
+    <div class="site-footer__brand">
+      <FoundationMark size={34} />
+      <p class="site-footer__name">The Landscape Archive Foundation</p>
+      <p class="site-footer__licence">
+        {FOUNDATION_LICENCE_SUMMARY} Published under
+        <a href={FOUNDATION_LICENCE_URL} rel="license noopener" target="_blank">{FOUNDATION_LICENCE_LABEL}</a>.
+      </p>
+    </div>
+
+    <nav class="site-footer__col" aria-label="Foundation">
+      <h2 class="site-footer__heading">Foundation</h2>
+      {SITE_NAV_LINKS.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+
+    <nav class="site-footer__col" aria-label="Open standard">
+      <h2 class="site-footer__heading">Open standard</h2>
+      <a href={OPEN_STANDARD_GITHUB_URL} rel="noopener" target="_blank">GitHub repository</a>
+      <a href={FEDERATION_SCHEMA_PORTAL_URL} rel="noopener" target="_blank">Schema portal</a>
+      <a href="/registry">Field registry</a>
+    </nav>
+
+    <nav class="site-footer__col" aria-label="Commercial">
+      <h2 class="site-footer__heading">Landscape Archive</h2>
+      <a href={ARCHIVE_ORIGIN} rel="noopener" target="_blank">Commercial site</a>
+      <a href={`${ARCHIVE_ORIGIN}/shop`} rel="noopener" target="_blank">Products & licensing</a>
+      <a href={`${ARCHIVE_ORIGIN}/contact?topic=foundation-support`} rel="noopener" target="_blank">Support the standard</a>
+    </nav>
+  </div>
+
+  <div class="page site-footer__base">
+    <p class="site-footer__notice">{FOUNDATION_HOSTING_NOTICE}</p>
+    <p class="site-footer__copy">© {year} The Landscape Archive Foundation (interim: The Landscape Archive Pty Ltd).</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 3rem;
+    background: var(--accent-strong);
+    color: #dfe6e0;
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+    gap: 2rem;
+    padding-block: 3rem 2rem;
+  }
+
+  .site-footer__brand {
+    color: #eef2ee;
+    max-width: 24rem;
+  }
+
+  .site-footer__name {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    margin: 0.7rem 0 0.5rem;
+    color: #ffffff;
+  }
+
+  .site-footer__licence {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #c4cfc6;
+    margin: 0;
+  }
+
+  .site-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .site-footer__heading {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #9fb0a3;
+    margin: 0 0 0.3rem;
+  }
+
+  .site-footer__col a {
+    color: #dfe6e0;
+    font-size: 0.88rem;
+    text-decoration: none;
+  }
+
+  .site-footer__col a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .site-footer__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.6rem 2rem;
+    padding-block: 1.3rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .site-footer__notice {
+    max-width: 46rem;
+    margin: 0;
+    font-size: 0.74rem;
+    line-height: 1.5;
+    color: #a9b8ac;
+  }
+
+  .site-footer__copy {
+    margin: 0;
+    font-size: 0.74rem;
+    color: #a9b8ac;
+  }
+
+  a[rel~='license'] {
+    color: #eef2ee;
+  }
+
+  @media (max-width: 860px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import { FOUNDATION_DRAFT_BANNER } from '../data/foundationWing.js'
+---
+
+<aside class="draft-banner" role="note">
+  <div class="page draft-banner__inner">
+    <span class="draft-banner__tag">Interim</span>
+    <p class="draft-banner__text">{FOUNDATION_DRAFT_BANNER}</p>
+  </div>
+</aside>
+
+<style>
+  .draft-banner {
+    background: var(--accent-tint);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .draft-banner__inner {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    padding-block: 0.7rem;
+  }
+
+  .draft-banner__tag {
+    flex-shrink: 0;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+  }
+
+  .draft-banner__text {
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+</style>
