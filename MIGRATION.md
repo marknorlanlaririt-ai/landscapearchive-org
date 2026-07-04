@@ -27,9 +27,14 @@ routes stay live and 301 here once this site is on the domain.
 | `src/pages/FoundationGovernance.vue` | `src/pages/governance.astro` |
 | `src/pages/FoundationWingRegistry.vue` (preview only) | `src/pages/registry.astro` |
 | `src/pages/FoundationTopicPage.vue` | `src/pages/[topic].astro` |
-| `src/components/foundation/FoundationMark.vue` | `src/components/FoundationMark.astro` |
-| `public/foundation-wing/foundation-mark.svg` | `public/foundation-mark.svg` |
 | `public/foundation-wing/tla185-fields-preview.json` | `public/foundation-wing/` + `src/data/` |
+
+### Brand mark
+
+The placeholder braced-cross (`FoundationMark`) has been retired in favour of the
+**TLA wordmark logo** (`public/tla-foundation-logo.png`), used in the header, hero,
+footer, favicon, apple-touch-icon, and Organization JSON-LD. A matching 1200×630
+social card lives at `public/og-foundation.png`.
 
 ### Path re-rooting
 
@@ -44,6 +49,12 @@ Standalone site is apex-rooted: `/foundation` → `/`, `/foundation/governance` 
   was auth-gated by a Pages Function; not carried here).
 - Commercial + support links are **absolute** URLs to `landscapearchive.com.au`.
 
+## Done since scaffold
+
+- [x] **GitHub**: pushed to `github.com/marknorlanlaririt-ai/landscapearchive-org` (public).
+- [x] **Logo**: TLA wordmark adopted across header/hero/footer/favicon/JSON-LD.
+- [x] **OG image**: 1200×630 social card at `public/og-foundation.png`.
+
 ## Not yet moved / open items
 
 - [ ] **Schema portal** (`federation/` + `la-federation-schema` Pages project →
@@ -55,7 +66,6 @@ Standalone site is apex-rooted: `/foundation` → `/`, `/foundation/governance` 
       `www` → apex 301; Full-strict SSL.
 - [ ] **la-frontend soft cutover**: point marketing `/foundation` links to
       `https://landscapearchive.org` and 301 `/foundation*` once this is live.
-- [ ] **OG image**: add a 1200×630 PNG social card (currently defaults to the SVG mark).
 - [ ] **i18n**: content is English-only; add locales if international audiences need them.
 
 ## Kept on la-frontend (by design)
