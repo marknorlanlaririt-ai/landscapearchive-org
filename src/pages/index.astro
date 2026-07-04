@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import FoundationMark from '../components/FoundationMark.astro'
 import DocsSection from '../components/DocsSection.astro'
 import { buildFoundationHomeSections } from '../data/homeContent.js'
 import { FOUNDATION_CHARTER_PILLARS, FOUNDATION_PILLARS_LABEL } from '../data/charterPillars.js'
@@ -23,7 +22,14 @@ const sections = buildFoundationHomeSections()
 >
   <section class="hero">
     <div class="page hero__inner">
-      <FoundationMark size={64} class="hero__mark" />
+      <img
+        class="hero__mark"
+        src="/tla-foundation-logo.png"
+        width="72"
+        height="72"
+        alt="The Landscape Archive Foundation"
+        decoding="async"
+      />
       <p class="eyebrow">Open standard · International</p>
       <h1 class="hero__title">Public infrastructure for truth in landscape metadata.</h1>
       <p class="hero__lead">
@@ -98,7 +104,11 @@ const sections = buildFoundationHomeSections()
   }
 
   .hero__mark {
-    color: var(--accent-strong);
+    display: block;
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    border: 1px solid var(--line-soft);
     margin-bottom: 1.4rem;
   }
 

@@ -19,8 +19,7 @@ const {
   title,
   description = SITE_DESCRIPTION,
   path = Astro.url.pathname,
-  // TODO: replace with a 1200×630 PNG social card; SVG is a safe non-404 default.
-  ogImage = '/foundation-mark.svg',
+  ogImage = '/og-foundation.png',
   showDraftBanner = true
 } = Astro.props
 
@@ -37,7 +36,7 @@ const orgJsonLd = {
   alternateName: 'TLA Foundation',
   url: SITE_ORIGIN,
   description: SITE_DESCRIPTION,
-  logo: new URL('/foundation-mark.svg', SITE_ORIGIN).toString(),
+  logo: new URL('/tla-foundation-logo.png', SITE_ORIGIN).toString(),
   sameAs: [OPEN_STANDARD_GITHUB_URL, FEDERATION_SCHEMA_PORTAL_URL]
 }
 ---
@@ -47,7 +46,8 @@ const orgJsonLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/foundation-mark.svg" />
+    <link rel="icon" type="image/png" href="/tla-foundation-logo.png" />
+    <link rel="apple-touch-icon" href="/tla-foundation-logo.png" />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />

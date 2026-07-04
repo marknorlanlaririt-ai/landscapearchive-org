@@ -1,5 +1,4 @@
 ---
-import FoundationMark from './FoundationMark.astro'
 import { ARCHIVE_ORIGIN, SITE_NAV_LINKS } from '../data/site.js'
 import {
   FEDERATION_SCHEMA_PORTAL_URL,
@@ -16,7 +15,15 @@ const year = new Date().getFullYear()
 <footer class="site-footer">
   <div class="page site-footer__inner">
     <div class="site-footer__brand">
-      <FoundationMark size={34} />
+      <img
+        class="site-footer__mark"
+        src="/tla-foundation-logo.png"
+        width="34"
+        height="34"
+        alt=""
+        aria-hidden="true"
+        decoding="async"
+      />
       <p class="site-footer__name">The Landscape Archive Foundation</p>
       <p class="site-footer__licence">
         {FOUNDATION_LICENCE_SUMMARY} Published under
@@ -67,6 +74,13 @@ const year = new Date().getFullYear()
   .site-footer__brand {
     color: #eef2ee;
     max-width: 24rem;
+  }
+
+  .site-footer__mark {
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
   }
 
   .site-footer__name {
