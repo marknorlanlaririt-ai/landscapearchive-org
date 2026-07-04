@@ -1,6 +1,7 @@
 ---
 import { ARCHIVE_ORIGIN, SITE_NAV_LINKS } from '../data/site.js'
 import {
+  buildFoundationCopyrightLine,
   FEDERATION_SCHEMA_PORTAL_URL,
   FOUNDATION_HOSTING_NOTICE,
   FOUNDATION_LICENCE_LABEL,
@@ -10,6 +11,7 @@ import {
 } from '../data/foundationWing.js'
 
 const year = new Date().getFullYear()
+const copyrightLine = buildFoundationCopyrightLine(year)
 ---
 
 <footer class="site-footer">
@@ -53,7 +55,7 @@ const year = new Date().getFullYear()
 
   <div class="page site-footer__base">
     <p class="site-footer__notice">{FOUNDATION_HOSTING_NOTICE}</p>
-    <p class="site-footer__copy">© {year} The Landscape Archive Foundation (interim: The Landscape Archive Pty Ltd).</p>
+    <p class="site-footer__copy">{copyrightLine}</p>
   </div>
 </footer>
 

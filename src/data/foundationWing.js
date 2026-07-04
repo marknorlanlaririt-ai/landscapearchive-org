@@ -1,4 +1,4 @@
-import { ARCHIVE_ORIGIN, SCHEMA_PORTAL_URL } from './site.js'
+import { ARCHIVE_ORIGIN, FOUNDATION_DISPLAY_NAME, SCHEMA_PORTAL_URL } from './site.js'
 
 // Standard identity ---------------------------------------------------------
 
@@ -41,6 +41,27 @@ export const FOUNDATION_LICENCE_ID = 'CC-BY-NC-ND-4.0'
 export const FOUNDATION_LICENCE_LABEL = 'CC BY-NC-ND 4.0'
 export const FOUNDATION_LICENCE_URL = 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
 
+// Ownership / entity structure ----------------------------------------------
+//
+// Pre-incorporation, the copyright in the public specification and this site
+// sits with the IP holding company (the Vault), NOT the trading company
+// (the Archive) and NOT the Foundation — which has no legal personality until
+// it is incorporated. On incorporation the public-spec copyright is assigned
+// from the Vault to the Foundation. See governance → "Three-entity structure".
+
+/** Private IP holding company — current copyright owner (interim). */
+export const FOUNDATION_IP_HOLDER = 'The Landscape Vault Pty Ltd'
+
+/** Commercial operating company + interim host / implementation partner. */
+export const FOUNDATION_INTERIM_HOST = 'The Landscape Archive Pty Ltd'
+
+/** Intended eventual owner of the public specification copyright. */
+export const FOUNDATION_ASSIGNEE = FOUNDATION_DISPLAY_NAME
+
+/** Build the interim copyright line shown in the footer. */
+export const buildFoundationCopyrightLine = (year = new Date().getFullYear()) =>
+  `© ${year} ${FOUNDATION_IP_HOLDER}. Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification licensed under ${FOUNDATION_LICENCE_LABEL}; copyright to be assigned to ${FOUNDATION_ASSIGNEE} on incorporation.`
+
 // Commercial + support handoffs → the Archive .com.au site (absolute) --------
 
 export const FOUNDATION_COMMERCIAL_CONTACT_TOPIC = 'foundation-commercial-licence'
@@ -59,7 +80,7 @@ export const FOUNDATION_COMMERCIAL_LICENCE_NOTICE =
   'Commercial use, TLA Brain, enterprise integration, and 3D assets require a separate licence.'
 
 export const FOUNDATION_HOSTING_NOTICE =
-  'Hosted by The Landscape Archive Pty Ltd (interim implementation partner). Public standard copyright intended for assignment to The Landscape Archive Foundation upon incorporation.'
+  `Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification copyright is held by ${FOUNDATION_IP_HOLDER} (IP holding company). Interim hosting by ${FOUNDATION_INTERIM_HOST} (implementation partner). The copyright is intended for assignment to ${FOUNDATION_ASSIGNEE} on incorporation.`
 
 export const FOUNDATION_DRAFT_BANNER =
   'Draft governance (interim). The Landscape Archive Foundation is not yet an incorporated entity and is not affiliated with, endorsed by, or representative of any professional institute or government body. The Landscape Archive Pty Ltd provides interim hosting as implementation partner. This page is informational only and is not legal advice.'

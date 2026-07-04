@@ -177,11 +177,12 @@ export function buildFoundationGovernanceSections({
       id: 'interim-stewardship',
       heading: 'Interim stewardship',
       paragraphs: [
-        'The Landscape Archive Foundation is not yet an incorporated entity and is not affiliated with, endorsed by, or representative of any professional institute or government body. The Landscape Archive Pty Ltd provides interim hosting as implementation partner.',
-        'The public specification layer is intended to be assigned to the Foundation on incorporation. This page is informational only and is not legal advice.'
+        'The Landscape Archive Foundation is not yet an incorporated entity and is not affiliated with, endorsed by, or representative of any professional institute or government body. Because it has no legal personality yet, it cannot itself hold copyright today. The Landscape Archive Pty Ltd provides interim hosting as implementation partner.',
+        'In the interim, copyright in the public specification is held by The Landscape Vault Pty Ltd (the IP holding company) and is intended to be assigned to the Foundation on incorporation. This page is informational only and is not legal advice.'
       ],
       bullets: [
         `Specification published under ${FOUNDATION_LICENCE_LABEL}`,
+        'Interim copyright held by The Landscape Vault Pty Ltd, pending assignment to the Foundation',
         'Species values, automation, and commercial assets excluded from the public open layer',
         'Path toward autonomous governance through advisory board and non-profit incorporation'
       ]
