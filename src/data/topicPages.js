@@ -102,15 +102,16 @@ export const foundationTopicPages = Object.freeze({
         id: 'categories',
         heading: 'Proposed categories',
         paragraphs: [
-          `The programme is in preparation ahead of incorporation. Categories are organised around what the Foundation actually stewards — open plant data, honest project records, standards advocacy, and the tooling that connects them — not how a landscape looks on presentation day. Each category is vendor-neutral: entries may be project interchange bundles, published reference work, institutional programmes, or open artefacts that advance the ${TLA185_DISPLAY_ID} field registry.`
+          `The programme is in preparation ahead of incorporation. Categories span applied practice, craft, data stewardship, technology, and research — organised around what the Foundation stewards, not how a landscape looks on presentation day. Each category is vendor-neutral: entries may be delivered projects, published reference work, institutional programmes, or open artefacts that advance honest, interoperable landscape metadata under ${TLA185_DISPLAY_ID}.`
         ],
         bullets: [
-          'Open landscape data stewardship — exemplary taxonomic documentation, reference integrity, and open plant metadata in project interchange or published reference work',
-          'Data advocacy & interoperability — institutional adoption, mapping, or public advocacy that advances TLA-185, the field registry, or cross-vendor interchange profiles (Revit, GIS, nursery, council)',
-          'Platform development for practice — validators, schema modules, crosswalks, or reference implementations that make the open standard usable in professional workflows',
-          'Technology advancement in landscape architecture — BIM metadata, digital-twin readiness, parametric or procedural vegetation, and synthetic visualisation with documented provenance and attribution',
-          'Climate, site context & sustainability disclosure — auditable environmental claims, site-context bands, and evidence-linked sustainability metadata in project records',
-          'Research & field validation — scholarship, field trials, or public programmes that test and publish how TLA-185 claims hold up in real project conditions'
+          'Applied landscape architecture — built and documented project work where site context, planting intent, and delivery records remain traceable through construction and handover — not presentation imagery alone',
+          'Technology — BIM metadata, digital-twin readiness, parametric or procedural vegetation, cross-vendor interchange, and synthetic visualisation with documented provenance and attribution',
+          'Craftsmanship — detail documentation, material specification, and construction records that preserve design intent and accountability in landscape delivery — where the record, not the render, carries the claim',
+          'Data — exemplary taxonomic documentation, reference integrity, and open plant metadata in project interchange or published reference work',
+          'AI — responsible use of generative or predictive methods in landscape documentation, with disclosed boundaries, attribution, and machine-checkable provenance in project records',
+          'Research — scholarship, teaching, or public programmes that treat open landscape metadata and the field registry as shared infrastructure for the discipline',
+          'Research studies — field trials, empirical validation, or published studies that test how metadata claims hold up in real project conditions and report results openly'
         ]
       },
       {
