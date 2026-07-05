@@ -35,6 +35,8 @@ const current = normalize(activePath)
             href={link.href}
             class:list={['site-header__link', { 'is-active': normalize(link.href) === current }]}
             aria-current={normalize(link.href) === current ? 'page' : undefined}
+            data-member-only={link.requiresLogin ? '' : undefined}
+            hidden={link.requiresLogin ? true : undefined}
           >
             {link.label}
           </a>

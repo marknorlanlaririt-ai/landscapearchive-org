@@ -12,7 +12,6 @@ export const foundationTopicPages = Object.freeze({
   volunteers: {
     slug: 'volunteers',
     title: 'Volunteers',
-    requiresSignIn: true,
     lead: `Practical ways to help steward the open ${TLA185_DISPLAY_ID} specification — documentation, schema review, crosswalks, and community outreach — while the Foundation completes incorporation.`,
     placeholder: false,
     sections: [
@@ -88,7 +87,6 @@ export const foundationTopicPages = Object.freeze({
   awards: {
     slug: 'awards',
     title: 'Awards',
-    requiresSignIn: true,
     lead: `A vendor-neutral recognition programme for applied landscape architecture and archival stewardship — work that preserves, documents, and transmits landscape practice through inspectable project records, documentation integrity, and reproducible evidence under the public ${TLA185_DISPLAY_ID} field registry.`,
     placeholder: false,
     sections: [

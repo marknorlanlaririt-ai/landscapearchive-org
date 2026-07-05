@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import DocsSection from '../components/DocsSection.astro'
-import SignInGate from '../components/SignInGate.astro'
 import { foundationTopicPages } from '../data/topicPages.js'
+import { isMemberOnlyOrgPath } from '../data/memberAccess.js'
 
 export function getStaticPaths() {
   return Object.values(foundationTopicPages).map((page) => ({
@@ -13,21 +13,20 @@ export function getStaticPaths() {
 
 const { page } = Astro.props
 const pagePath = `/${page.slug}`
+const memberOnly = isMemberOnlyOrgPath(pagePath)
 ---
 
 <BaseLayout title={page.title} description={page.lead} path={pagePath}>
-  <SignInGate path={pagePath} enabled={Boolean(page.requiresSignIn)}>
-    <div class="page topic">
-      <div class="topic__intro prose">
-        <p class="eyebrow">The Landscape Archive Foundation</p>
-        <h1>{page.title}</h1>
-        <p class="topic__lead">{page.lead}</p>
-        {page.placeholder && <p class="topic__flag">In preparation — interim working-group material.</p>}
-      </div>
-
-      {page.sections.map((section) => <DocsSection {...section} />)}
+  <div class="page topic" data-member-only-page={memberOnly ? '' : undefined}>
+    <div class="topic__intro prose">
+      <p class="eyebrow">The Landscape Archive Foundation</p>
+      <h1>{page.title}</h1>
+      <p class="topic__lead">{page.lead}</p>
+      {page.placeholder && <p class="topic__flag">In preparation — interim working-group material.</p>}
     </div>
-  </SignInGate>
+
+    {page.sections.map((section) => <DocsSection {...section} />)}
+  </div>
 </BaseLayout>
 
 <style>

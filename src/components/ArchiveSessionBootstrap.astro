@@ -1,0 +1,52 @@
+---
+import {
+  ARCHIVE_SESSION_VERIFY_URL,
+  MEMBER_ONLY_ORG_PATHS
+} from '../data/memberAccess.js'
+---
+
+<script is:inline define:vars={{ ARCHIVE_SESSION_VERIFY_URL, MEMBER_ONLY_ORG_PATHS }}>
+  (function () {
+    function normalizePath(path) {
+      return String(path || '').replace(/\/+$/, '') || '/'
+    }
+
+    function applyLoggedOutState() {
+      document.documentElement.dataset.archiveLoggedIn = 'false'
+      document.querySelectorAll('[data-member-only]').forEach(function (el) {
+        el.hidden = true
+      })
+
+      if (MEMBER_ONLY_ORG_PATHS.indexOf(normalizePath(window.location.pathname)) >= 0) {
+        window.location.replace('/governance')
+      }
+    }
+
+    function applyLoggedInState() {
+      document.documentElement.dataset.archiveLoggedIn = 'true'
+      document.querySelectorAll('[data-member-only]').forEach(function (el) {
+        el.hidden = false
+      })
+    }
+
+    fetch(ARCHIVE_SESSION_VERIFY_URL, {
+      method: 'GET',
+      credentials: 'include',
+      cache: 'no-store',
+      headers: { accept: 'application/json' }
+    })
+      .then(function (response) {
+        return response.json().catch(function () { return {} })
+      })
+      .then(function (body) {
+        if (body && body.loggedIn) {
+          applyLoggedInState()
+        } else {
+          applyLoggedOutState()
+        }
+      })
+      .catch(function () {
+        applyLoggedOutState()
+      })
+  })()
+</script>

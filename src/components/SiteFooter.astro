@@ -35,7 +35,11 @@ const copyrightLine = buildFoundationCopyrightLine(year)
 
     <nav class="site-footer__col" aria-label="Foundation">
       <h2 class="site-footer__heading">Foundation</h2>
-      {SITE_NAV_LINKS.map((link) => <a href={link.href}>{link.label}</a>)}
+      {SITE_NAV_LINKS.map((link) => (
+        <a href={link.href} data-member-only={link.requiresLogin ? '' : undefined} hidden={link.requiresLogin ? true : undefined}>
+          {link.label}
+        </a>
+      ))}
     </nav>
 
     <nav class="site-footer__col" aria-label="Open standard">
