@@ -1,14 +1,21 @@
 ---
 import {
   ARCHIVE_SESSION_VERIFY_URL,
+  ARCHIVE_ORG_ACCESS_VERIFY_URL,
   MEMBER_ONLY_ORG_PATHS
 } from '../data/memberAccess.js'
 ---
 
-<script is:inline define:vars={{ ARCHIVE_SESSION_VERIFY_URL, MEMBER_ONLY_ORG_PATHS }}>
+<script is:inline define:vars={{ ARCHIVE_SESSION_VERIFY_URL, ARCHIVE_ORG_ACCESS_VERIFY_URL, MEMBER_ONLY_ORG_PATHS }}>
   (function () {
     function normalizePath(path) {
       return String(path || '').replace(/\/+$/, '') || '/'
+    }
+
+    function setLoginBarVisible(visible) {
+      document.querySelectorAll('[data-login-bar]').forEach(function (el) {
+        el.hidden = !visible
+      })
     }
 
     function applyLoggedOutState() {
@@ -16,6 +23,7 @@ import {
       document.querySelectorAll('[data-member-only]').forEach(function (el) {
         el.hidden = true
       })
+      setLoginBarVisible(true)
 
       if (MEMBER_ONLY_ORG_PATHS.indexOf(normalizePath(window.location.pathname)) >= 0) {
         window.location.replace('/governance')
@@ -27,26 +35,90 @@ import {
       document.querySelectorAll('[data-member-only]').forEach(function (el) {
         el.hidden = false
       })
+      setLoginBarVisible(false)
     }
 
-    fetch(ARCHIVE_SESSION_VERIFY_URL, {
-      method: 'GET',
-      credentials: 'include',
-      cache: 'no-store',
-      headers: { accept: 'application/json' }
-    })
-      .then(function (response) {
-        return response.json().catch(function () { return {} })
+    function stripOrgAccessTokenFromUrl() {
+      var url = new URL(window.location.href)
+      if (!url.searchParams.has('la_org_access')) {
+        return
+      }
+      url.searchParams.delete('la_org_access')
+      var next = url.pathname + url.search + url.hash
+      window.history.replaceState({}, '', next)
+    }
+
+    function verifyOrgAccessToken(path, token) {
+      var verifyUrl = new URL(ARCHIVE_ORG_ACCESS_VERIFY_URL)
+      verifyUrl.searchParams.set('token', token)
+      verifyUrl.searchParams.set('path', path)
+
+      return fetch(verifyUrl.toString(), {
+        method: 'GET',
+        credentials: 'include',
+        cache: 'no-store',
+        headers: { accept: 'application/json' }
       })
-      .then(function (body) {
-        if (body && body.loggedIn) {
-          applyLoggedInState()
-        } else {
-          applyLoggedOutState()
+        .then(function (response) {
+          return response.json().catch(function () { return {} })
+        })
+        .then(function (body) {
+          if (body && body.valid) {
+            applyLoggedInState()
+            stripOrgAccessTokenFromUrl()
+            return true
+          }
+          return false
+        })
+        .catch(function () {
+          return false
+        })
+    }
+
+    function verifyArchiveSession() {
+      return fetch(ARCHIVE_SESSION_VERIFY_URL, {
+        method: 'GET',
+        credentials: 'include',
+        cache: 'no-store',
+        headers: { accept: 'application/json' }
+      })
+        .then(function (response) {
+          return response.json().catch(function () { return {} })
+        })
+        .then(function (body) {
+          if (body && body.loggedIn) {
+            applyLoggedInState()
+            return true
+          }
+          return false
+        })
+        .catch(function () {
+          return false
+        })
+    }
+
+    var currentPath = normalizePath(window.location.pathname)
+    var urlParams = new URLSearchParams(window.location.search)
+    var orgAccessToken = urlParams.get('la_org_access') || ''
+
+    if (orgAccessToken && MEMBER_ONLY_ORG_PATHS.indexOf(currentPath) >= 0) {
+      verifyOrgAccessToken(currentPath, orgAccessToken).then(function (valid) {
+        if (valid) {
+          return
         }
+        verifyArchiveSession().then(function (loggedIn) {
+          if (!loggedIn) {
+            applyLoggedOutState()
+          }
+        })
       })
-      .catch(function () {
+      return
+    }
+
+    verifyArchiveSession().then(function (loggedIn) {
+      if (!loggedIn) {
         applyLoggedOutState()
-      })
+      }
+    })
   })()
 </script>
