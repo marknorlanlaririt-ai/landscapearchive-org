@@ -94,7 +94,7 @@ export const foundationTopicPages = Object.freeze({
         id: 'why-awards',
         heading: 'Recognising honest practice',
         paragraphs: [
-          `The Foundation's programme recognises honest project records, standards advocacy, and the open tooling that makes ${TLA185_DISPLAY_ID} usable in practice — not presentation-day aesthetics.`,
+          `The Foundation's programme recognises honest project records, standards advocacy, and the open tooling that makes ${TLA185_DISPLAY_ID} usable in practice.`,
           'The awards are deliberately independent of any product. Entry does not require Landscape Archive software or any vendor’s tooling — only an exchange record, validator, crosswalk, or advocacy outcome that meets published, machine-checkable criteria. Recognition is vendor-neutral by design, so it stays credible to universities, agencies, and practices alike.'
         ]
       },
@@ -102,16 +102,16 @@ export const foundationTopicPages = Object.freeze({
         id: 'categories',
         heading: 'Proposed categories',
         paragraphs: [
-          `The programme is in preparation ahead of incorporation. Categories span applied practice, craft, data stewardship, technology, and research — organised around what the Foundation stewards, not how a landscape looks on presentation day. Each category is vendor-neutral: entries may be delivered projects, published reference work, institutional programmes, or open artefacts that advance honest, interoperable landscape metadata under ${TLA185_DISPLAY_ID}.`
+          `The programme is in preparation ahead of incorporation. Categories span applied practice, craft, data stewardship, technology, and research — each focused on documented landscape metadata under ${TLA185_DISPLAY_ID}. Each category is vendor-neutral: entries may be delivered projects, published reference work, institutional programmes, or open artefacts that advance honest, interoperable landscape metadata.`
         ],
         bullets: [
-          'Applied landscape architecture — built and documented project work where site context, planting intent, and delivery records remain traceable through construction and handover — not presentation imagery alone',
+          'Applied landscape architecture — built and documented project work with traceable site context, planting intent, and delivery records through construction and handover',
           'Technology — BIM metadata, digital-twin readiness, parametric or procedural vegetation, cross-vendor interchange, and synthetic visualisation with documented provenance and attribution',
-          'Craftsmanship — detail documentation, material specification, and construction records that preserve design intent and accountability in landscape delivery — where the record, not the render, carries the claim',
+          'Craftsmanship — detail documentation, material specification, and construction records that preserve design intent and accountability through landscape delivery',
           'Data — exemplary taxonomic documentation, reference integrity, and open plant metadata in project interchange or published reference work',
-          'AI — responsible use of generative or predictive methods in landscape documentation, with disclosed boundaries, attribution, and machine-checkable provenance in project records',
+          'AI — generative or predictive methods in landscape documentation, with disclosed boundaries, attribution, and machine-checkable provenance in project records',
           'Research — scholarship, teaching, or public programmes that treat open landscape metadata and the field registry as shared infrastructure for the discipline',
-          'Research studies — field trials, empirical validation, or published studies that test how metadata claims hold up in real project conditions and report results openly'
+          'Research studies — field trials, empirical validation, or published studies that test how metadata claims hold up in real project conditions and share methodology and findings for review'
         ]
       },
       {
