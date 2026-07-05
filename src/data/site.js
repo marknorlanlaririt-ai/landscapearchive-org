@@ -29,4 +29,4 @@ export const SITE_NAV_LINKS = Object.freeze([
 ])
 
 export const SITE_DESCRIPTION =
-  'The Landscape Archive Foundation stewards the open TLA-185 / TLA-169 specification — public infrastructure for truth in landscape metadata: botanical authenticity, auditable climate disclosure, honest sustainability, and ethical synthetic nature.'
+  'The Landscape Archive Foundation stewards the open TLA-185 / TLA-169 specification — public infrastructure for archival stewardship and truth in landscape metadata: applied practice documentation, botanical authenticity, auditable climate disclosure, honest sustainability, and ethical synthetic nature.'
