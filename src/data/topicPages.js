@@ -84,19 +84,54 @@ export const foundationTopicPages = Object.freeze({
       }
     ]
   },
+  awards: {
+    slug: 'awards',
+    title: 'Awards',
+    lead: 'An open, vendor-neutral programme recognising landscape work that documents its claims honestly — projects, research, and tools that advance truthful, interoperable landscape metadata.',
+    placeholder: false,
+    sections: [
+      {
+        id: 'why-awards',
+        heading: 'Recognising honest practice',
+        paragraphs: [
+          `Most awards celebrate how a landscape looks. The Foundation's programme recognises something quieter and, over time, more consequential: how honestly a project <em>documents</em> what it claims. As climate reporting, digital twins, and synthetic visualisation reshape the profession, the work that records its botanical, climate, cultural, and provenance claims in the open ${TLA185_DISPLAY_ID} vocabulary deserves recognition on its own terms.`,
+          'The awards are deliberately independent of any product. Entry does not require Landscape Archive software or any vendor’s tooling — only an exchange record that meets the published, machine-checkable criteria. Recognition is vendor-neutral by design, so it stays credible to universities, agencies, and practices alike.'
+        ]
+      },
+      {
+        id: 'categories',
+        heading: 'Proposed categories',
+        paragraphs: [
+          'The programme is in preparation ahead of incorporation. The intended categories reflect the five Foundation Standards rather than aesthetics:'
+        ],
+        bullets: [
+          'Botanical truth — the most rigorously documented planting record (taxon IDs, native status, growth form) in an interchange bundle',
+          'Climate & sustainability disclosure — auditable, evidence-linked environmental claims rather than unaudited assertions',
+          'Cultural respect — protocol-aware metadata developed with Traditional Owner organisations, honouring sensitivity classes',
+          'Open research & education — teaching, tools, or scholarship that advances the open standard',
+          'Synthetic nature & attribution — exemplary provenance and lineage on synthetic or derivative visual assets'
+        ]
+      },
+      {
+        id: 'how-it-works',
+        heading: 'How it will work',
+        paragraphs: [
+          'Entries will be assessed against published conformance criteria — the same open baseline as Foundation Approved — by a panel that includes practice, academic, public-body, and First Nations advisory representation. Criteria and results are intended to be public, so recognition can be inspected rather than taken on trust.',
+          'The awards confer recognition, not accreditation. They are not a government endorsement, not a certification, and not a substitute for professional or regulatory review. Like the specification itself, they are a public reference point that anyone may cite.'
+        ],
+        actions: [
+          { label: 'The Foundation Standards', href: GOVERNANCE_PATH },
+          { label: 'Register interest', href: `${FOUNDATION_SUPPORT_CONTACT_PATH}&intent=awards`, external: true }
+        ]
+      }
+    ]
+  },
   media: {
     slug: 'media',
     title: 'Media',
     lead: `Press kit, brand assets, spokesperson contacts, and embargoed launch material for journalists covering the open ${TLA185_DISPLAY_ID} standard.`,
     placeholder: true,
     sections: [{ id: 'media-soon', heading: 'Media centre', paragraphs: [placeholderLead] }]
-  },
-  articles: {
-    slug: 'articles',
-    title: 'Articles',
-    lead: 'Essays, field notes, and working-group explainers on botanical metadata, climate screening, cultural protocol, and open BIM interchange.',
-    placeholder: true,
-    sections: [{ id: 'articles-soon', heading: 'Articles', paragraphs: [placeholderLead] }]
   },
   events: {
     slug: 'events',

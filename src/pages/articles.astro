@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import {
+  PUBLISHED_FIELD_NOTES,
+  PLANNED_FIELD_NOTES,
+  formatArticleDate
+} from '../data/articles.js'
+---
+
+<BaseLayout
+  title="Field Notes"
+  description="Essays and working-group explainers from The Landscape Archive Foundation — on shared vocabulary, data as design material, the economics of open standards, and honest project records."
+  path="/articles"
+>
+  <div class="page fieldnotes">
+    <div class="fieldnotes__intro prose">
+      <p class="eyebrow">Field Notes</p>
+      <h1>Essays on landscape data, meaning, and the open standard</h1>
+      <p class="fieldnotes__lead">
+        Writing from the Foundation and its working group — on why a fragmented profession needs a shared
+        vocabulary, how definitional terms get debated and revised, and what open metadata means for
+        education, economics, and honest disclosure.
+      </p>
+    </div>
+
+    {
+      PUBLISHED_FIELD_NOTES.length > 0 && (
+        <section class="fieldnotes__list" aria-label="Published essays">
+          {PUBLISHED_FIELD_NOTES.map((article) => (
+            <article class="note-card">
+              <div class="note-card__meta">
+                {article.topics?.map((topic) => <span class="note-card__topic">{topic}</span>)}
+              </div>
+              <h2 class="note-card__title">
+                <a href={`/articles/${article.slug}`}>{article.title}</a>
+              </h2>
+              <p class="note-card__dek">{article.dek}</p>
+              <p class="note-card__byline">
+                {formatArticleDate(article.date)}
+                {article.readingTime && <span> · {article.readingTime}</span>}
+              </p>
+            </article>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      PLANNED_FIELD_NOTES.length > 0 && (
+        <section class="fieldnotes__planned" aria-label="In preparation">
+          <h2 class="fieldnotes__planned-head">In preparation</h2>
+          <ul class="planned-list">
+            {PLANNED_FIELD_NOTES.map((article) => (
+              <li class="planned-item">
+                <div class="note-card__meta">
+                  {article.topics?.map((topic) => <span class="note-card__topic">{topic}</span>)}
+                </div>
+                <h3 class="planned-item__title">{article.title}</h3>
+                <p class="planned-item__dek">{article.dek}</p>
+              </li>
+            ))}
+          </ul>
+          <p class="fieldnotes__note">
+            Commissioning and contributions are open. If you would like to write for Field Notes or respond to a
+            published essay, the specification repository and working group are the place to start.
+          </p>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .fieldnotes__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 0.5rem;
+  }
+
+  .fieldnotes__lead {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+
+  .fieldnotes__list {
+    display: grid;
+    gap: 1.2rem;
+    padding-block: 1.5rem 2.5rem;
+  }
+
+  .note-card {
+    padding: 1.6rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+  }
+
+  .note-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .note-card__topic {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    background: var(--accent-tint);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+  }
+
+  .note-card__title {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    margin: 0 0 0.5rem;
+  }
+
+  .note-card__title a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .note-card__title a:hover {
+    color: var(--accent-strong);
+  }
+
+  .note-card__dek {
+    margin: 0 0 0.8rem;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+
+  .note-card__byline {
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: var(--ink-muted);
+  }
+
+  .fieldnotes__planned {
+    padding-block: 1.5rem 3rem;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .fieldnotes__planned-head {
+    font-size: 1.15rem;
+  }
+
+  .planned-list {
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1rem;
+  }
+
+  .planned-item {
+    padding: 1.2rem;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
+  }
+
+  .planned-item__title {
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem;
+  }
+
+  .planned-item__dek {
+    margin: 0;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  .fieldnotes__note {
+    margin: 2rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line-soft);
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    max-width: var(--measure);
+  }
+</style>

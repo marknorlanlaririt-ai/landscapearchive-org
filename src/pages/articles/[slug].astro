@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import DocsSection from '../../components/DocsSection.astro'
+import { PUBLISHED_FIELD_NOTES, formatArticleDate } from '../../data/articles.js'
+
+export function getStaticPaths() {
+  return PUBLISHED_FIELD_NOTES.map((article) => ({
+    params: { slug: article.slug },
+    props: { article }
+  }))
+}
+
+const { article } = Astro.props
+
+// Article structured data — helps the essay surface as a citable Article.
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.dek,
+  datePublished: article.date,
+  author: { '@type': 'Organization', name: article.author },
+  publisher: { '@type': 'Organization', name: 'The Landscape Archive Foundation' }
+}
+---
+
+<BaseLayout title={article.title} description={article.dek} path={`/articles/${article.slug}`}>
+  <article class="page essay">
+    <div class="essay__head prose">
+      <p class="eyebrow"><a class="essay__back" href="/articles">Field Notes</a></p>
+      <h1>{article.title}</h1>
+      <p class="essay__dek">{article.dek}</p>
+      <p class="essay__byline">
+        {article.author} · {formatArticleDate(article.date)}
+        {article.readingTime && <span> · {article.readingTime}</span>}
+      </p>
+      {
+        article.topics && (
+          <div class="essay__topics">
+            {article.topics.map((topic) => <span class="essay__topic">{topic}</span>)}
+          </div>
+        )
+      }
+    </div>
+
+    {article.sections.map((section) => <DocsSection {...section} />)}
+
+    <footer class="essay__foot">
+      <p>
+        Published by The Landscape Archive Foundation under
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">
+          CC BY-NC-ND 4.0</a>. Cite with the title and this page URL.
+      </p>
+      <p><a href="/articles">← All Field Notes</a></p>
+    </footer>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} is:inline />
+</BaseLayout>
+
+<style>
+  .essay {
+    max-width: 46rem;
+  }
+
+  .essay__head {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 0.5rem;
+  }
+
+  .essay__back {
+    color: var(--accent-strong);
+    text-decoration: none;
+  }
+
+  .essay__dek {
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .essay__byline {
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--ink-muted);
+  }
+
+  .essay__topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+  }
+
+  .essay__topic {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    background: var(--accent-tint);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+  }
+
+  .essay__foot {
+    margin-top: 2.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line-soft);
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+  }
+
+  .essay__foot a {
+    color: var(--accent-strong);
+  }
+</style>

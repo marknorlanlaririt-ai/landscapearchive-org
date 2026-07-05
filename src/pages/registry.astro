@@ -7,6 +7,9 @@ import {
   TLA185_DISPLAY_ID,
   TLA185_FIELD_COUNT
 } from '../data/foundationWing.js'
+import { SCHEMA_PORTAL_URL } from '../data/site.js'
+
+const DICTIONARY_URL = `${SCHEMA_PORTAL_URL}/dictionary`
 
 const modules = preview.modules ?? []
 const fields = preview.fields ?? []
@@ -33,11 +36,15 @@ for (const field of fields) {
         The published specification describes <strong>{TLA185_FIELD_COUNT} documented elements</strong>
         across {modules.length} modules — structural definitions only, with no species inventories,
         trait values, or client records. Below is a public preview of {fields.length} representative
-        fields. The full dictionary, JSON Schema modules, and worked examples live on GitHub and the
-        schema portal.
+        fields. The full, searchable <a href={DICTIONARY_URL} rel="noopener" target="_blank">Landscape Data
+        Dictionary</a> — every term with a definition, a stable citable identifier, and a way to propose a
+        change — plus JSON Schema modules and worked examples live on the schema portal and GitHub.
       </p>
       <div class="action-row">
-        <a class="btn btn--primary" href={OPEN_STANDARD_GITHUB_TAG_URL} rel="noopener" target="_blank">
+        <a class="btn btn--primary" href={DICTIONARY_URL} rel="noopener" target="_blank">
+          Full Data Dictionary <span class="btn__ext" aria-hidden="true">↗</span>
+        </a>
+        <a class="btn" href={OPEN_STANDARD_GITHUB_TAG_URL} rel="noopener" target="_blank">
           Canonical specification <span class="btn__ext" aria-hidden="true">↗</span>
         </a>
         <a class="btn" href={FEDERATION_SCHEMA_PORTAL_URL} rel="noopener" target="_blank">
