@@ -87,39 +87,117 @@ export const foundationTopicPages = Object.freeze({
   awards: {
     slug: 'awards',
     title: 'Awards',
-    lead: 'An open, vendor-neutral programme recognising landscape work that documents its claims honestly — projects, research, and tools that advance truthful, interoperable landscape metadata.',
+    lead: `A vendor-neutral recognition programme for landscape architecture practice, research, and open infrastructure that advances auditable project metadata — documentation integrity, interchange conformance, and reproducible evidence under the public ${TLA185_DISPLAY_ID} field registry.`,
     placeholder: false,
     sections: [
       {
-        id: 'why-awards',
-        heading: 'Recognising honest practice',
+        id: 'scope-and-purpose',
+        heading: 'Scope and evaluative purpose',
         paragraphs: [
-          `The Foundation's programme recognises honest project records, standards advocacy, and the open tooling that makes ${TLA185_DISPLAY_ID} usable in practice.`,
-          'The awards are deliberately independent of any product. Entry does not require Landscape Archive software or any vendor’s tooling — only an exchange record, validator, crosswalk, or advocacy outcome that meets published, machine-checkable criteria. Recognition is vendor-neutral by design, so it stays credible to universities, agencies, and practices alike.'
+          `The Landscape Archive Foundation Awards recognise work that strengthens the information architecture of landscape practice: project records, reference datasets, validators, crosswalks, and published scholarship that make landscape claims inspectable rather than implicit. Evaluation centres on what can be verified in an exchange bundle or open artefact — taxonomic nomenclature, site and climate context, sustainability disclosures, cultural sensitivity classes, and asset lineage — not on presentation imagery or proprietary marketing narratives.`,
+          'The programme is independent of any commercial product stack. Entry does not require Landscape Archive software, a particular authoring environment, or membership in any vendor ecosystem. Submissions may originate from any practice, institution, or open-source contributor, provided they demonstrate conformance to published criteria and supply sufficient material for independent review.',
+          'Recognition is intended as a public reference point for universities, public agencies, professional bodies, and peer reviewers — analogous to how the Foundation stewards the open specification itself. Awards confer honour and citation value; they do not substitute for statutory certification, client sign-off, regulatory audit, or community protocol.'
         ]
       },
       {
-        id: 'categories',
-        heading: 'Proposed categories',
+        id: 'methodological-framing',
+        heading: 'Methodological framing',
         paragraphs: [
-          `The programme is in preparation ahead of incorporation. Categories span applied practice, craft, data stewardship, technology, and research — each focused on documented landscape metadata under ${TLA185_DISPLAY_ID}. Each category is vendor-neutral: entries may be delivered projects, published reference work, institutional programmes, or open artefacts that advance honest, interoperable landscape metadata.`
+          'Assessment follows a documentation-first epistemology familiar to empirical landscape research and building-information modelling practice. A claim is treated as admissible when it is encoded in a machine-readable field, linked to evidence or method notes where the schema requires them, and traceable through project phases without reliance on oral tradition or unreleased native files.',
+          'Where entries involve built work, reviewers examine continuity between design intent, construction records, and handover metadata — including species assignments harmonised to accepted taxonomic authorities, growth-form and planting-density fields that remain consistent across drawing, model, and schedule exports, and phytogeographic or ecological context stated at appropriate spatial resolution rather than as undifferentiated “native” labels.',
+          'Where entries involve tooling or research, reviewers examine reproducibility: published schemas, test fixtures, validator rules, or study protocols that a third party could re-run. Cross-vendor interchange — for example, Revit, IFC, GIS, nursery, or council exchange profiles mapped to Foundation fields — is evaluated on fidelity of mapping and loss documentation, not on brand affiliation.',
+          'Synthetic, procedural, or AI-assisted assets are not excluded; they are evaluated on provenance metadata, attribution boundaries, and conformance with the Foundation’s lineage and sensitivity fields. The methodological baseline aligns with Foundation Approved conformance where applicable, without conflating open recognition with Archive Certified commercial credentials.'
+        ]
+      },
+      {
+        id: 'evaluation-criteria',
+        heading: 'Evaluation criteria',
+        paragraphs: [
+          'Published rubrics will translate the Foundation Standards into category-specific checkpoints. The following dimensions apply across all categories unless a category rubric explicitly narrows scope.',
+          'Documentation integrity requires that stated claims appear in interchange metadata, not only in narrative reports or visual boards. Fields must be populated consistently, with null or restricted values explained where sensitivity classes apply.',
+          'Interchange standards conformance requires that submitted bundles validate against published schema versions, use registered field identifiers from the public registry, and document any extensions or local profiles through crosswalk notes.',
+          'Reproducibility and auditability require that evidence URIs, method notes, or open repositories cited in metadata remain accessible to reviewers for the assessment window, and that material differences between design, construction, and as-maintained records are disclosed rather than smoothed over.',
+          'Institutional and cultural accountability requires that entries involving Indigenous knowledge, restricted cultural detail, or community co-design respect published sensitivity classes — keeping restricted material out of open repositories while still documenting that protocol was followed.'
         ],
-        bullets: [
-          'Applied landscape architecture — built and documented project work with traceable site context, planting intent, and delivery records through construction and handover',
-          'Technology — BIM metadata, digital-twin readiness, parametric or procedural vegetation, cross-vendor interchange, and synthetic visualisation with documented provenance and attribution',
-          'Craftsmanship — detail documentation, material specification, and construction records that preserve design intent and accountability through landscape delivery',
-          'Data — exemplary taxonomic documentation, reference integrity, and open plant metadata in project interchange or published reference work',
-          'AI — generative or predictive methods in landscape documentation, with disclosed boundaries, attribution, and machine-checkable provenance in project records',
-          'Research — scholarship, teaching, or public programmes that treat open landscape metadata and the field registry as shared infrastructure for the discipline',
-          'Research studies — field trials, empirical validation, or published studies that test how metadata claims hold up in real project conditions and share methodology and findings for review'
+        facts: [
+          { label: 'Documentation integrity', value: 'Claims encoded in machine-readable fields with consistent phase-to-phase traceability' },
+          { label: 'Interchange conformance', value: 'Schema validation, registered field IDs, documented crosswalks and loss notes' },
+          { label: 'Reproducibility', value: 'Open fixtures, validators, or study protocols sufficient for independent re-examination' },
+          { label: 'Provenance and lineage', value: 'Attribution, derivation, and synthetic-asset disclosure per Foundation metadata rules' },
+          { label: 'Ecological and taxonomic rigour', value: 'Harmonised nomenclature, growth form, and site context at defensible resolution' },
+          { label: 'Vendor neutrality', value: 'No preference for proprietary stacks; assessment on artefact quality alone' }
         ]
       },
       {
-        id: 'how-it-works',
-        heading: 'How it will work',
+        id: 'category-applied',
+        heading: 'Applied landscape architecture',
         paragraphs: [
-          'Entries will be assessed against published criteria — aligned with the open baseline for Foundation Approved where applicable — by a panel that includes practice, academic, public-body, and First Nations advisory representation. Criteria and results are intended to be public, so recognition can be inspected rather than taken on trust.',
-          'The awards confer recognition, not accreditation. They are not a government endorsement, not a certification, and not a substitute for professional or regulatory review. Like the specification itself, they are a public reference point that anyone may cite.'
+          'This category honours delivered landscape architecture where the project record remains legible after construction and handover — when site analysis, planting design intent, material specification, and maintenance assumptions survive translation from concept through tender, construction administration, and asset handover without collapsing into undifferentiated graphics.',
+          'Strong entries document biophysical context at a scale appropriate to design decisions: soil and hydrology constraints, microclimate bands, existing vegetation communities, and disturbance history where they inform planting palettes and structural soil assemblies. Planting schedules carry harmonised taxonomic identifiers and growth-form classes rather than common-name-only lists that cannot be reconciled across jurisdictions.',
+          'Reviewers look for phase continuity — alignment between planting plans, BIM or CAD exports, specifications, and as-built or as-maintained updates — and for honest disclosure where design adaptations occurred during delivery. Visual presentation may accompany a submission but is not itself evidential; the interchange record and supporting construction documentation carry evaluative weight.'
+        ]
+      },
+      {
+        id: 'category-technology',
+        heading: 'Technology',
+        paragraphs: [
+          'This category recognises tools, pipelines, and digital workflows that improve landscape metadata fidelity across authoring environments — including BIM authoring, IFC export, parametric and procedural vegetation systems, digital-twin readiness, and geospatial integration — without locking practitioners into a single vendor stack.',
+          'Eligible work includes validators, schema bindings, API adapters, crosswalk implementations, and reference integrations that map foreign property sets to Foundation fields with documented transformation rules and known loss. Digital-twin interoperability is assessed on whether landscape assets and planting metadata can be ingested, queried, and updated in operational models while preserving taxonomic and provenance fields.',
+          'Synthetic visualisation and procedural planting systems are admissible when lineage metadata identifies training data boundaries, derivative status, and attribution obligations. Technology entries are judged on openness of documentation, test coverage against published conformance fixtures, and demonstrated interchange with at least one non-proprietary export path.'
+        ]
+      },
+      {
+        id: 'category-craftsmanship',
+        heading: 'Craftsmanship',
+        paragraphs: [
+          'This category addresses the detail documentation traditions of landscape architecture — grading and drainage assemblies, paving and edge conditions, planting pit and structural soil specifications, irrigation and soil-amendment schedules, and custom fabrication records — where craft knowledge must be transmitted to contractors and maintainers with precision.',
+          'Craftsmanship, in this evaluative frame, is not ornamental refinement alone. It is the disciplined encoding of constructible detail: dimensioned sections, material grades, installation sequences, and tolerance notes that remain bound to landscape metadata rather than isolated in static drawing sets. Entries should show how detail selections connect to planting establishment criteria, permeability targets, or maintenance access requirements declared elsewhere in the bundle.',
+          'Reviewers examine whether construction records preserve design intent under field variation — documented substitutions, remediation notes, and inspection hold-points — and whether handover packages give facility managers operable metadata, not merely archival PDFs.'
+        ]
+      },
+      {
+        id: 'category-data',
+        heading: 'Data',
+        paragraphs: [
+          'This category recognises exemplary stewardship of plant and site reference data — taxonomic nomenclature aligned to accepted authorities, trait and establishment attributes with cited sources, and registry contributions that improve communal reference integrity for the discipline.',
+          'Strong entries supply open or project-local datasets that validate against published schema, document update cadence and versioning, and distinguish authoritative measurements from inferred or modelled values. Phytogeographic and ecological documentation is evaluated on spatial explicitness, citation of survey or literature evidence, and appropriate uncertainty when extrapolating beyond observation.',
+          'Data work may include nursery or supplier catalogues mapped to Foundation fields, council or agency planting lists harmonised for interchange, herbarium or arboretum reference exports, or maintenance of public registry entries. Reviewers favour transparent provenance chains — who measured, when, under what method — over opaque aggregates that cannot be audited.'
+        ]
+      },
+      {
+        id: 'category-ai',
+        heading: 'AI',
+        paragraphs: [
+          'This category addresses generative, predictive, and assistive computational methods applied to landscape documentation — species recommendation, planting layout synthesis, climate or establishment risk screening, image-derived species identification, and procedural vegetation authoring — under explicit methodological disclosure.',
+          'Entries must state model or algorithm boundaries: training data scope, known failure modes, human review steps, and fields where AI output remains provisional pending practitioner confirmation. Machine-checkable provenance is required for synthetic or AI-modified assets — lineage identifiers, derivative flags, and attribution consistent with Foundation metadata rules.',
+          'Reviewers do not reward novelty of model architecture alone. They examine whether AI-assisted workflows improve honest disclosure — for example, by surfacing uncertainty bands, linking recommendations to cited trait evidence, or preventing silent substitution of harmonised taxa — and whether project records distinguish AI-generated values from practitioner-verified values in interchange exports.'
+        ]
+      },
+      {
+        id: 'category-research',
+        heading: 'Research',
+        paragraphs: [
+          'This category honours scholarship, studio pedagogy, and public programmes that treat open landscape metadata and the field registry as shared disciplinary infrastructure — not as a proprietary product feature.',
+          'Eligible work includes curriculum that teaches schema literacy and conformance testing; theoretical or historical research on landscape representation, ecological documentation, or digital interchange ethics; policy analyses that reference Foundation fields in public-sector briefs; and institutional adoption programmes that publish reading guides, crosswalks, or governance models for open metadata.',
+          'Reviewers assess clarity of argument, fidelity to published specification versions, and contribution to communal understanding — for example, framing how taxonomic harmonisation supports longitudinal monitoring, or how sensitivity classes enable ethical collaboration with Traditional Owner organisations without exposing restricted detail in open repositories.'
+        ]
+      },
+      {
+        id: 'category-research-studies',
+        heading: 'Research studies',
+        paragraphs: [
+          'This category recognises empirical and field-based inquiry that tests how metadata claims perform under real project conditions — establishment monitoring, post-occupancy planting performance, interchange loss measurement, validator false-positive and false-negative rates, or comparative trials of crosswalk fidelity across authoring tools.',
+          'Strong studies publish protocols, datasets or de-identified fixtures sufficient for replication, and limitations openly. Hypotheses should relate to Foundation fields — for instance, whether banded climate context improves survival forecasting compared to unaudited suitability labels, or whether IFC export preserves growth-form metadata through round-trip workflows.',
+          'Reviewers apply standards familiar to landscape performance research and reproducible computational science: defined sampling frames, reported effect sizes or conformance rates, and separation between vendor-specific observations and conclusions transferable to open interchange practice.'
+        ]
+      },
+      {
+        id: 'programme-governance',
+        heading: 'Programme governance and assessment process',
+        paragraphs: [
+          'The awards programme is in preparation ahead of Foundation incorporation. When active, entries will be assessed by a panel comprising landscape architecture practice, academic research, public-sector delivery, and First Nations advisory representation — with published conflict-of-interest rules and category rubrics released before each cycle.',
+          'Assessment will be blind to entrant commercial affiliation where practical. Criteria, anonymised scoring rationales, and aggregate results are intended to be public so recognition can be inspected and cited in academic or institutional contexts.',
+          'Awards confer recognition, not accreditation. They are not a government endorsement, professional registration, or regulatory approval. Like the open specification, they exist so practitioners, researchers, and institutions can point to independently reviewed exemplars of documentation integrity and interchange discipline.'
         ],
         actions: [
           { label: 'The Foundation Standards', href: GOVERNANCE_PATH },
