@@ -94,7 +94,7 @@ export const foundationTopicPages = Object.freeze({
         id: 'why-awards',
         heading: 'Recognising honest practice',
         paragraphs: [
-          `Most awards celebrate how a landscape looks. The Foundation's programme recognises honest project records, standards advocacy, and the open tooling that makes ${TLA185_DISPLAY_ID} usable in practice — not presentation-day aesthetics.`,
+          `The Foundation's programme recognises honest project records, standards advocacy, and the open tooling that makes ${TLA185_DISPLAY_ID} usable in practice — not presentation-day aesthetics.`,
           'The awards are deliberately independent of any product. Entry does not require Landscape Archive software or any vendor’s tooling — only an exchange record, validator, crosswalk, or advocacy outcome that meets published, machine-checkable criteria. Recognition is vendor-neutral by design, so it stays credible to universities, agencies, and practices alike.'
         ]
       },
