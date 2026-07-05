@@ -102,15 +102,15 @@ export const foundationTopicPages = Object.freeze({
         id: 'categories',
         heading: 'Proposed categories',
         paragraphs: [
-          'The programme is in preparation ahead of incorporation. Categories are organised around what the Foundation actually stewards — open plant data, honest project records, standards advocacy, and the tooling that connects them — not how a landscape looks on presentation day.'
+          `The programme is in preparation ahead of incorporation. Categories are organised around what the Foundation actually stewards — open plant data, honest project records, standards advocacy, and the tooling that connects them — not how a landscape looks on presentation day. Each category is vendor-neutral: entries may be project interchange bundles, published reference work, institutional programmes, or open artefacts that advance the ${TLA185_DISPLAY_ID} field registry.`
         ],
         bullets: [
-          'Plant & botanical data stewardship — exemplary taxonomic documentation, reference integrity, and open plant metadata in project interchange or published reference work',
-          'Data advocacy & standards interoperability — institutional adoption, mapping, or public advocacy that advances TLA-185, the field registry, or cross-vendor interchange profiles',
-          'Open tooling & interchange development — validators, schema modules, crosswalks, or reference implementations that make the open standard usable in practice',
-          'Digital practice & technological advancement — BIM metadata, digital-twin readiness, parametric or procedural vegetation, and synthetic visualisation with documented provenance',
+          'Open landscape data stewardship — exemplary taxonomic documentation, reference integrity, and open plant metadata in project interchange or published reference work',
+          'Data advocacy & interoperability — institutional adoption, mapping, or public advocacy that advances TLA-185, the field registry, or cross-vendor interchange profiles (Revit, GIS, nursery, council)',
+          'Platform development for practice — validators, schema modules, crosswalks, or reference implementations that make the open standard usable in professional workflows',
+          'Technology advancement in landscape architecture — BIM metadata, digital-twin readiness, parametric or procedural vegetation, and synthetic visualisation with documented provenance and attribution',
           'Climate, site context & sustainability disclosure — auditable environmental claims, site-context bands, and evidence-linked sustainability metadata in project records',
-          'Research, teaching & public reference — scholarship, curriculum, or public programmes that treat TLA-185 as shared infrastructure'
+          'Research & field validation — scholarship, field trials, or public programmes that test and publish how TLA-185 claims hold up in real project conditions'
         ]
       },
       {
