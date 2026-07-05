@@ -1,0 +1,196 @@
+---
+import {
+  ARCHIVE_ORG_ACCESS_VERIFY_URL,
+  ORG_ACCESS_STORAGE_KEY,
+  buildArchiveOrgAccessGateUrl,
+  isGatedOrgPath,
+  normalizeOrgPath
+} from '../data/authGate.js'
+
+interface Props {
+  /** Route path for this page (e.g. "/awards"). */
+  path: string
+  /** When omitted, falls back to {@link isGatedOrgPath}. */
+  enabled?: boolean
+}
+
+const { path, enabled } = Astro.props
+const normalizedPath = normalizeOrgPath(path)
+const gateEnabled = enabled ?? isGatedOrgPath(normalizedPath)
+const signInUrl = buildArchiveOrgAccessGateUrl(normalizedPath)
+---
+
+{gateEnabled ? (
+  <div class="sign-in-gate" data-sign-in-gate data-org-path={normalizedPath} data-verify-url={ARCHIVE_ORG_ACCESS_VERIFY_URL} data-storage-key={ORG_ACCESS_STORAGE_KEY} data-sign-in-url={signInUrl}>
+    <div class="sign-in-gate__overlay" data-sign-in-gate-overlay>
+      <div class="sign-in-gate__panel">
+        <p class="eyebrow">Member access</p>
+        <h2 class="sign-in-gate__title">Sign in required</h2>
+        <p class="sign-in-gate__lead">
+          Awards and volunteer programme pages are available to signed-in Landscape Archive members.
+          Sign in on the commercial site — we will return you here when your session is verified.
+        </p>
+        <div class="sign-in-gate__actions">
+          <a class="btn btn--primary" href={signInUrl}>Sign in to continue</a>
+          <a class="btn" href="/">Back to overview</a>
+        </div>
+        <p class="sign-in-gate__status" data-sign-in-gate-status aria-live="polite">Checking access…</p>
+      </div>
+    </div>
+    <div class="sign-in-gate__content" data-sign-in-gate-content hidden>
+      <slot />
+    </div>
+  </div>
+) : (
+  <slot />
+)}
+
+<script is:inline define:vars={{ normalizedPath, ARCHIVE_ORG_ACCESS_VERIFY_URL, ORG_ACCESS_STORAGE_KEY, signInUrl }}>
+  (function () {
+    var root = document.querySelector('[data-sign-in-gate]');
+    if (!root) return;
+
+    var overlay = root.querySelector('[data-sign-in-gate-overlay]');
+    var content = root.querySelector('[data-sign-in-gate-content]');
+    var status = root.querySelector('[data-sign-in-gate-status]');
+    var verifyUrl = root.getAttribute('data-verify-url') || ARCHIVE_ORG_ACCESS_VERIFY_URL;
+    var storageKey = root.getAttribute('data-storage-key') || ORG_ACCESS_STORAGE_KEY;
+    var orgPath = root.getAttribute('data-org-path') || normalizedPath;
+    var gateUrl = root.getAttribute('data-sign-in-url') || signInUrl;
+
+    function readStoredAccess() {
+      try {
+        var raw = window.sessionStorage.getItem(storageKey);
+        if (!raw) return null;
+        var parsed = JSON.parse(raw);
+        if (!parsed || parsed.path !== orgPath) return null;
+        if (!parsed.token || !parsed.expiresAt || Number(parsed.expiresAt) <= Date.now()) {
+          window.sessionStorage.removeItem(storageKey);
+          return null;
+        }
+        return parsed;
+      } catch {
+        return null;
+      }
+    }
+
+    function storeAccess(token, expiresAt) {
+      try {
+        window.sessionStorage.setItem(storageKey, JSON.stringify({
+          path: orgPath,
+          token: token,
+          expiresAt: Number(expiresAt)
+        }));
+      } catch {}
+    }
+
+    function revealContent() {
+      if (overlay) overlay.hidden = true;
+      if (content) content.hidden = false;
+      if (status) status.textContent = '';
+    }
+
+    function redirectToGate() {
+      window.location.replace(gateUrl);
+    }
+
+    function stripAccessParam() {
+      try {
+        var url = new URL(window.location.href);
+        if (!url.searchParams.has('la_org_access')) return;
+        url.searchParams.delete('la_org_access');
+        window.history.replaceState({}, '', url.toString());
+      } catch {}
+    }
+
+    function verifyToken(token) {
+      var requestUrl = new URL(verifyUrl);
+      requestUrl.searchParams.set('token', token);
+      requestUrl.searchParams.set('path', orgPath);
+
+      return fetch(requestUrl.toString(), {
+        method: 'GET',
+        credentials: 'omit',
+        cache: 'no-store',
+        headers: { accept: 'application/json' }
+      }).then(function (response) {
+        return response.json().catch(function () { return {}; }).then(function (body) {
+          return Boolean(response.ok && body && body.valid);
+        });
+      });
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var incomingToken = params.get('la_org_access') || '';
+    var stored = readStoredAccess();
+    var tokenToVerify = incomingToken || (stored && stored.token) || '';
+
+    if (!tokenToVerify) {
+      redirectToGate();
+      return;
+    }
+
+    verifyToken(tokenToVerify).then(function (valid) {
+      if (!valid) {
+        try { window.sessionStorage.removeItem(storageKey); } catch {}
+        redirectToGate();
+        return;
+      }
+
+      var expiresAt = stored && stored.token === tokenToVerify
+        ? stored.expiresAt
+        : Number(String(tokenToVerify).split('.')[1] || 0);
+
+      storeAccess(tokenToVerify, expiresAt);
+      stripAccessParam();
+      revealContent();
+    }).catch(function () {
+      if (status) status.textContent = 'Could not verify access. Redirecting to sign in…';
+      window.setTimeout(redirectToGate, 900);
+    });
+  })();
+</script>
+
+<style>
+  .sign-in-gate__overlay {
+    min-height: 52vh;
+    display: grid;
+    place-items: center;
+    padding: clamp(2rem, 6vw, 4rem) 0;
+  }
+
+  .sign-in-gate__panel {
+    width: min(100%, 34rem);
+    padding: clamp(1.4rem, 3vw, 2rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+    box-shadow: 0 18px 42px rgba(28, 31, 34, 0.06);
+  }
+
+  .sign-in-gate__title {
+    margin: 0.35rem 0 0.75rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.55rem, 3vw, 2rem);
+    line-height: 1.15;
+  }
+
+  .sign-in-gate__lead {
+    margin: 0 0 1.25rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  .sign-in-gate__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sign-in-gate__status {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+</style>
