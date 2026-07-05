@@ -8,8 +8,14 @@ import {
 
 <script is:inline define:vars={{ ARCHIVE_SESSION_VERIFY_URL, ARCHIVE_ORG_ACCESS_VERIFY_URL, MEMBER_ONLY_ORG_PATHS }}>
   (function () {
+    var ORG_ACCESS_STORAGE_KEY = 'la-foundation-org-access'
+
     function normalizePath(path) {
       return String(path || '').replace(/\/+$/, '') || '/'
+    }
+
+    function isMemberOnlyPath(path) {
+      return MEMBER_ONLY_ORG_PATHS.indexOf(normalizePath(path)) >= 0
     }
 
     function setLoginBarVisible(visible) {
@@ -25,7 +31,7 @@ import {
       })
       setLoginBarVisible(true)
 
-      if (MEMBER_ONLY_ORG_PATHS.indexOf(normalizePath(window.location.pathname)) >= 0) {
+      if (isMemberOnlyPath(window.location.pathname)) {
         window.location.replace('/governance')
       }
     }
@@ -38,6 +44,42 @@ import {
       setLoginBarVisible(false)
     }
 
+    function readStoredOrgAccess() {
+      try {
+        var raw = sessionStorage.getItem(ORG_ACCESS_STORAGE_KEY)
+        if (!raw) {
+          return null
+        }
+
+        var data = JSON.parse(raw)
+        if (!data || !data.token || !data.expiresAt || Number(data.expiresAt) <= Date.now()) {
+          sessionStorage.removeItem(ORG_ACCESS_STORAGE_KEY)
+          return null
+        }
+
+        return data
+      } catch (error) {
+        return null
+      }
+    }
+
+    function writeStoredOrgAccess(token, expiresAt) {
+      try {
+        sessionStorage.setItem(ORG_ACCESS_STORAGE_KEY, JSON.stringify({
+          token: token,
+          expiresAt: Number(expiresAt)
+        }))
+      } catch (error) {
+        // Private mode — session still works until tab close.
+      }
+    }
+
+    function clearStoredOrgAccess() {
+      try {
+        sessionStorage.removeItem(ORG_ACCESS_STORAGE_KEY)
+      } catch (error) {}
+    }
+
     function stripOrgAccessTokenFromUrl() {
       var url = new URL(window.location.href)
       if (!url.searchParams.has('la_org_access')) {
@@ -48,10 +90,18 @@ import {
       window.history.replaceState({}, '', next)
     }
 
+    function resolveVerifyPath(path) {
+      var normalized = normalizePath(path)
+      if (isMemberOnlyPath(normalized)) {
+        return normalized
+      }
+      return MEMBER_ONLY_ORG_PATHS[0] || '/awards'
+    }
+
     function verifyOrgAccessToken(path, token) {
       var verifyUrl = new URL(ARCHIVE_ORG_ACCESS_VERIFY_URL)
       verifyUrl.searchParams.set('token', token)
-      verifyUrl.searchParams.set('path', path)
+      verifyUrl.searchParams.set('path', resolveVerifyPath(path))
 
       return fetch(verifyUrl.toString(), {
         method: 'GET',
@@ -64,6 +114,7 @@ import {
         })
         .then(function (body) {
           if (body && body.valid) {
+            writeStoredOrgAccess(token, body.expiresAt || Date.now() + 12 * 60 * 60 * 1000)
             applyLoggedInState()
             stripOrgAccessTokenFromUrl()
             return true
@@ -97,28 +148,36 @@ import {
         })
     }
 
-    var currentPath = normalizePath(window.location.pathname)
-    var urlParams = new URLSearchParams(window.location.search)
-    var orgAccessToken = urlParams.get('la_org_access') || ''
+    function bootstrapMemberAccess() {
+      var currentPath = normalizePath(window.location.pathname)
+      var urlParams = new URLSearchParams(window.location.search)
+      var orgAccessToken = urlParams.get('la_org_access') || ''
+      var stored = readStoredOrgAccess()
+      var token = orgAccessToken || (stored && stored.token) || ''
 
-    if (orgAccessToken && MEMBER_ONLY_ORG_PATHS.indexOf(currentPath) >= 0) {
-      verifyOrgAccessToken(currentPath, orgAccessToken).then(function (valid) {
-        if (valid) {
-          return
-        }
-        verifyArchiveSession().then(function (loggedIn) {
-          if (!loggedIn) {
-            applyLoggedOutState()
+      if (token) {
+        verifyOrgAccessToken(currentPath, token).then(function (valid) {
+          if (valid) {
+            return
           }
+
+          clearStoredOrgAccess()
+          verifyArchiveSession().then(function (loggedIn) {
+            if (!loggedIn) {
+              applyLoggedOutState()
+            }
+          })
         })
+        return
+      }
+
+      verifyArchiveSession().then(function (loggedIn) {
+        if (!loggedIn) {
+          applyLoggedOutState()
+        }
       })
-      return
     }
 
-    verifyArchiveSession().then(function (loggedIn) {
-      if (!loggedIn) {
-        applyLoggedOutState()
-      }
-    })
+    bootstrapMemberAccess()
   })()
 </script>

@@ -1,0 +1,90 @@
+---
+import { ARCHIVE_COOKIE_POLICY_URL } from '../data/memberAccess.js'
+---
+
+<aside class="cookie-notice" data-cookie-notice hidden role="region" aria-label="Cookie notice">
+  <p class="cookie-notice__copy">
+    This site uses cookies for sign-in handoffs, security, and service reliability on Landscape Archive
+    properties. We do not use them for cross-app tracking.
+    <a class="cookie-notice__link" href={ARCHIVE_COOKIE_POLICY_URL} rel="noopener">Cookie Policy</a>
+  </p>
+  <button type="button" class="cookie-notice__dismiss" data-cookie-dismiss>OK</button>
+</aside>
+
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = 'la-cookie-banner-dismissed'
+    var notice = document.querySelector('[data-cookie-notice]')
+    var dismiss = document.querySelector('[data-cookie-dismiss]')
+
+    if (!notice || !dismiss) {
+      return
+    }
+
+    try {
+      if (localStorage.getItem(STORAGE_KEY) === 'true') {
+        return
+      }
+    } catch (error) {
+      // Private mode — show the notice each visit.
+    }
+
+    notice.hidden = false
+
+    dismiss.addEventListener('click', function () {
+      try {
+        localStorage.setItem(STORAGE_KEY, 'true')
+      } catch (error) {}
+      notice.hidden = true
+    })
+  })()
+</script>
+
+<style>
+  .cookie-notice {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.9rem;
+    width: 100%;
+    min-height: 58px;
+    padding: 0.74rem 1.06rem;
+    background: #f4f1e9;
+    border-top: 1px solid rgba(44, 68, 54, 0.12);
+    color: #171b1f;
+    box-shadow: 0 -7px 18px rgba(13, 18, 17, 0.08);
+  }
+
+  .cookie-notice__copy {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1.38;
+  }
+
+  .cookie-notice__link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+  }
+
+  .cookie-notice__dismiss {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    white-space: nowrap;
+  }
+</style>

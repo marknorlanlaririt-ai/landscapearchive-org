@@ -5,6 +5,7 @@ import SiteFooter from '../components/SiteFooter.astro'
 import DraftBanner from '../components/DraftBanner.astro'
 import FoundationLoginBar from '../components/FoundationLoginBar.astro'
 import ArchiveSessionBootstrap from '../components/ArchiveSessionBootstrap.astro'
+import CookieNotice from '../components/CookieNotice.astro'
 import { SITE_ORIGIN, SITE_DESCRIPTION, FOUNDATION_DISPLAY_NAME } from '../data/site.js'
 import { OPEN_STANDARD_GITHUB_URL, FEDERATION_SCHEMA_PORTAL_URL } from '../data/foundationWing.js'
 
@@ -85,6 +86,7 @@ const orgJsonLd = {
     </main>
     <SiteFooter />
     <ArchiveSessionBootstrap />
+    <CookieNotice />
 
     <style>
       .skip-link {

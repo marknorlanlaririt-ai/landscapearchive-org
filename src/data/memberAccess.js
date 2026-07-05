@@ -13,6 +13,9 @@ export const MEMBER_ONLY_ORG_PATHS = Object.freeze([
 export const ARCHIVE_SESSION_VERIFY_URL = `${ARCHIVE_ORIGIN}/api/foundation/session-verify`
 export const ARCHIVE_ORG_ACCESS_VERIFY_URL = `${ARCHIVE_ORIGIN}/api/foundation/org-access-verify`
 
+/** Canonical cookie policy (shared with landscapearchive.com.au SPA). */
+export const ARCHIVE_COOKIE_POLICY_URL = `${ARCHIVE_ORIGIN}/legal?tab=cookie-policy`
+
 export function normalizeOrgPath(path = '') {
   const raw = String(path || '').trim()
   if (!raw) {
