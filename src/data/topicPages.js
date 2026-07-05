@@ -94,29 +94,30 @@ export const foundationTopicPages = Object.freeze({
         id: 'why-awards',
         heading: 'Recognising honest practice',
         paragraphs: [
-          `Most awards celebrate how a landscape looks. The Foundation's programme recognises something quieter and, over time, more consequential: how honestly a project <em>documents</em> what it claims. As climate reporting, digital twins, and synthetic visualisation reshape the profession, the work that records its botanical, climate, cultural, and provenance claims in the open ${TLA185_DISPLAY_ID} vocabulary deserves recognition on its own terms.`,
-          'The awards are deliberately independent of any product. Entry does not require Landscape Archive software or any vendor’s tooling — only an exchange record that meets the published, machine-checkable criteria. Recognition is vendor-neutral by design, so it stays credible to universities, agencies, and practices alike.'
+          `Most awards celebrate how a landscape looks. The Foundation's programme recognises honest project records, standards advocacy, and the open tooling that makes ${TLA185_DISPLAY_ID} usable in practice — not presentation-day aesthetics.`,
+          'The awards are deliberately independent of any product. Entry does not require Landscape Archive software or any vendor’s tooling — only an exchange record, validator, crosswalk, or advocacy outcome that meets published, machine-checkable criteria. Recognition is vendor-neutral by design, so it stays credible to universities, agencies, and practices alike.'
         ]
       },
       {
         id: 'categories',
         heading: 'Proposed categories',
         paragraphs: [
-          'The programme is in preparation ahead of incorporation. The intended categories reflect the five Foundation Standards rather than aesthetics:'
+          'The programme is in preparation ahead of incorporation. Categories are organised around what the Foundation actually stewards — open plant data, honest project records, standards advocacy, and the tooling that connects them — not how a landscape looks on presentation day.'
         ],
         bullets: [
-          'Botanical truth — the most rigorously documented planting record (taxon IDs, native status, growth form) in an interchange bundle',
-          'Climate & sustainability disclosure — auditable, evidence-linked environmental claims rather than unaudited assertions',
-          'Cultural respect — protocol-aware metadata developed with Traditional Owner organisations, honouring sensitivity classes',
-          'Open research & education — teaching, tools, or scholarship that advances the open standard',
-          'Synthetic nature & attribution — exemplary provenance and lineage on synthetic or derivative visual assets'
+          'Plant & botanical data stewardship — exemplary taxonomic documentation, reference integrity, and open plant metadata in project interchange or published reference work',
+          'Data advocacy & standards interoperability — institutional adoption, mapping, or public advocacy that advances TLA-185, the field registry, or cross-vendor interchange profiles',
+          'Open tooling & interchange development — validators, schema modules, crosswalks, or reference implementations that make the open standard usable in practice',
+          'Digital practice & technological advancement — BIM metadata, digital-twin readiness, parametric or procedural vegetation, and synthetic visualisation with documented provenance',
+          'Climate, site context & sustainability disclosure — auditable environmental claims, site-context bands, and evidence-linked sustainability metadata in project records',
+          'Research, teaching & public reference — scholarship, curriculum, or public programmes that treat TLA-185 as shared infrastructure'
         ]
       },
       {
         id: 'how-it-works',
         heading: 'How it will work',
         paragraphs: [
-          'Entries will be assessed against published conformance criteria — the same open baseline as Foundation Approved — by a panel that includes practice, academic, public-body, and First Nations advisory representation. Criteria and results are intended to be public, so recognition can be inspected rather than taken on trust.',
+          'Entries will be assessed against published criteria — aligned with the open baseline for Foundation Approved where applicable — by a panel that includes practice, academic, public-body, and First Nations advisory representation. Criteria and results are intended to be public, so recognition can be inspected rather than taken on trust.',
           'The awards confer recognition, not accreditation. They are not a government endorsement, not a certification, and not a substitute for professional or regulatory review. Like the specification itself, they are a public reference point that anyone may cite.'
         ],
         actions: [
