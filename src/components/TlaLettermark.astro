@@ -8,8 +8,11 @@ interface Props {
 const {
   size = 34,
   class: className = '',
-  title = 'The Landscape Archive'
+  title = 'The Landscape Archive Foundation'
 } = Astro.props
+
+/** Bluish rules — frozen at #8fa3b0; see la-frontend docs/FOUNDATION_LETTERMARK.md */
+const LINE_COLOR = '#8fa3b0'
 ---
 
 <svg
@@ -21,7 +24,7 @@ const {
   role="img"
   aria-label={title}
 >
-  <rect x="6" y="8" width="36" height="2.25" rx="0.5" fill="#8fa3b0" />
+  <rect x="6" y="8" width="36" height="2.25" rx="0.5" fill={LINE_COLOR} />
   <text
     x="24"
     y="29.5"
@@ -31,13 +34,13 @@ const {
     font-weight="500"
     letter-spacing="0.18em"
     fill="currentColor">TLA</text>
-  <rect x="6" y="35" width="22" height="2.25" rx="0.5" fill="#8fa3b0" />
+  <rect x="6" y="35" width="22" height="2.25" rx="0.5" fill={LINE_COLOR} />
 </svg>
 
 <style>
   .tla-lettermark {
     display: block;
     flex-shrink: 0;
-    color: var(--ink, #4a443f);
+    color: var(--tla-lettermark-text, var(--ink, #4a443f));
   }
 </style>

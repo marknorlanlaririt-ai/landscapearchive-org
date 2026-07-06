@@ -1,6 +1,7 @@
 ---
 import { ARCHIVE_ORIGIN, SITE_NAV_LINKS } from '../data/site.js'
 import TlaLettermark from './TlaLettermark.astro'
+import FoundationNewsletterSignup from './FoundationNewsletterSignup.astro'
 import {
   buildFoundationCopyrightLine,
   ARCHIVE_CITATIONS_PATH,
@@ -26,6 +27,7 @@ const copyrightLine = buildFoundationCopyrightLine(year)
         {FOUNDATION_LICENCE_SUMMARY} Published under
         <a href={FOUNDATION_LICENCE_URL} rel="license noopener" target="_blank">{FOUNDATION_LICENCE_LABEL}</a>.
       </p>
+      <FoundationNewsletterSignup />
     </div>
 
     <nav class="site-footer__col" aria-label="Foundation">
