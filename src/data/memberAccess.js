@@ -4,9 +4,8 @@ import { ARCHIVE_ORIGIN, SITE_ORIGIN } from './site.js'
 export const ARCHIVE_ORG_ACCESS_GATE_PATH = '/foundation/org-access'
 
 /** Foundation org pages visible only to signed-in Archive members. */
+/** Internal working sessions only — programme charter pages stay public. */
 export const MEMBER_ONLY_ORG_PATHS = Object.freeze([
-  '/awards',
-  '/volunteers',
   '/events'
 ])
 
