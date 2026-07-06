@@ -24,10 +24,10 @@ export const AWARDS_PROGRAMME_SLIDES = [
     intro: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Internationally oriented recognition for applied landscape architecture, urban design, ecological practice, and archival stewardship. Programme in preparation — full charter at landscapearchive.org/awards.'
+      'Internationally oriented, vendor-neutral recognition for landscape architecture — from research and theory to built and documented practice — alongside urban design, ecological stewardship, and archival diligence. Programme in preparation — full charter at landscapearchive.org/awards.'
     ],
     webBody: [
-      'The Landscape Archive Foundation Awards recognise exemplary practice worldwide — work that advances the archival and information architecture of landscape architecture, urban design, ecological stewardship, and allied disciplines. Eligible contributions include delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods whose claims remain traceable to cited sources and open to independent review.',
+      'The Landscape Archive Foundation Awards recognise exemplary contributions worldwide — work that advances landscape architecture as a discipline and in applied practice, alongside urban design, ecological stewardship, and allied fields. Eligible contributions include scholarship and pedagogy, delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods whose claims remain traceable to cited sources and open to independent review.',
       'The programme is vendor-neutral and independent of any commercial product stack. Recognition rests on documentary integrity, metadata stewardship, and reproducible assessment material — not stylistic preference, tenure alone, national origin, or affiliation with a particular authoring environment.',
       'Assessment criteria reference the public field registry, including cross-jurisdictional modules and published crosswalks where Australian field origins are adapted for other regions. The awards programme is in preparation under interim draft governance; full charter, category rubrics, and assessment process will be published at landscapearchive.org/awards before entries open.'
     ]
@@ -38,7 +38,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     title: 'Scope',
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Recognises work worldwide that strengthens landscape practice through inspectable project records and open metadata stewardship — delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods.',
+      'Recognises work worldwide that strengthens landscape architecture — from scholarship and pedagogy to delivered projects — through inspectable records and open metadata stewardship: reference data, documentation traditions, research, representation, tooling, and disclosed computational methods.',
       'The programme does not confer government accreditation, professional registration, or vendor certification.'
     ],
     webBody: [
@@ -364,7 +364,7 @@ export function buildFoundationAwardsTopicPage({
 
   return {
     title: 'Awards',
-    lead: `An internationally oriented, vendor-neutral recognition programme for applied landscape architecture, urban design, ecological practice, and archival stewardship — work that preserves, documents, and transmits landscape practice through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry, including cross-jurisdictional modules where published. Programme in preparation under interim draft governance; no entries or winners yet.`,
+    lead: `An internationally oriented, vendor-neutral recognition programme for landscape architecture — from research, education, and theory to built and documented practice — alongside urban design, ecological stewardship, and archival diligence — work that preserves, documents, and transmits the discipline through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry, including cross-jurisdictional modules where published. Programme in preparation under interim draft governance; no entries or winners yet.`,
     placeholder: false,
     sections: [
       {
@@ -419,7 +419,7 @@ export function buildFoundationAwardsTopicPage({
         paragraphs: [
           'The awards programme is in preparation under interim draft governance. When active, entries will be assessed by an international panel comprising landscape architecture and urban design practice, academic research, public-sector delivery, Indigenous advisory representation, and interchange specialists — with published conflict-of-interest rules and category rubrics released before each cycle.',
           'Assessment will be blind to entrant commercial affiliation where practical. Criteria, anonymised scoring rationales, and aggregate results are intended to be public so recognition can be inspected and cited in academic or institutional contexts worldwide.',
-          'Awards confer documented recognition within the programme\'s published scope: independently reviewed exemplars of applied landscape architecture, archival stewardship, and interchange discipline that universities, agencies, and peers may cite alongside the open specification and field registry. They do not confer government accreditation, professional registration, or vendor certification.'
+          'Awards confer documented recognition within the programme\'s published scope: independently reviewed exemplars of landscape architecture — in research, theory, and applied practice — archival stewardship, and interchange discipline that universities, agencies, and peers may cite alongside the open specification and field registry. They do not confer government accreditation, professional registration, or vendor certification.'
         ],
         actions: [
           { label: 'The Foundation Standards', href: governancePath },
