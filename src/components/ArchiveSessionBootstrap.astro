@@ -21,12 +21,6 @@ import {
       return MEMBER_ONLY_ORG_PATHS.indexOf(normalizePath(path)) >= 0
     }
 
-    function setLoginBarVisible(visible) {
-      document.querySelectorAll('[data-login-bar]').forEach(function (el) {
-        el.hidden = !visible
-      })
-    }
-
     function setSessionChrome(loggedIn, email) {
       document.querySelectorAll('[data-session-chrome]').forEach(function (el) {
         el.hidden = !loggedIn
@@ -52,7 +46,6 @@ import {
       document.querySelectorAll('[data-member-only]').forEach(function (el) {
         el.hidden = true
       })
-      setLoginBarVisible(true)
       setSessionChrome(false, '')
       if (isMemberOnlyPath(window.location.pathname)) {
         window.location.replace('/governance')
@@ -64,7 +57,6 @@ import {
       document.querySelectorAll('[data-member-only]').forEach(function (el) {
         el.hidden = false
       })
-      setLoginBarVisible(false)
       setSessionChrome(true, email || '')
     }
 

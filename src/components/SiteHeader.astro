@@ -49,9 +49,8 @@ const current = normalize(activePath)
     position: sticky;
     top: 0;
     z-index: 20;
-    background: color-mix(in srgb, var(--paper) 88%, transparent);
-    backdrop-filter: saturate(1.1) blur(10px);
-    border-bottom: 1px solid var(--line-soft);
+    background: var(--accent-strong);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .site-header__inner {
@@ -72,7 +71,7 @@ const current = normalize(activePath)
     display: inline-flex;
     align-items: center;
     gap: var(--foundation-header-brand-gap);
-    color: var(--ink);
+    color: #eef2ee;
     text-decoration: none;
     flex-shrink: 0;
     min-width: 0;
@@ -90,6 +89,7 @@ const current = normalize(activePath)
   .site-header__logo {
     width: var(--foundation-header-mark-size);
     height: var(--foundation-header-mark-size);
+    --tla-lettermark-text: #eef2ee;
   }
 
   .site-header__wordmark {
@@ -102,12 +102,12 @@ const current = normalize(activePath)
     font-size: var(--foundation-header-word-size);
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ink-muted);
+    color: #c4cfc6;
   }
 
   .site-header__word--strong {
     font-weight: 600;
-    color: var(--ink);
+    color: #ffffff;
     letter-spacing: 0.2em;
   }
 
@@ -130,7 +130,7 @@ const current = normalize(activePath)
 
   .site-header__link {
     font-size: 0.82rem;
-    color: var(--ink-soft);
+    color: #dfe6e0;
     text-decoration: none;
     padding: 0.3rem 0;
     border-bottom: 2px solid transparent;
@@ -139,12 +139,12 @@ const current = normalize(activePath)
   }
 
   .site-header__link:hover {
-    color: var(--accent-strong);
+    color: #ffffff;
   }
 
   .site-header__link.is-active {
-    color: var(--ink);
-    border-bottom-color: var(--accent);
+    color: #ffffff;
+    border-bottom-color: #9fb0a3;
   }
 
   @media (max-width: 720px) {

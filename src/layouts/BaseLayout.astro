@@ -3,7 +3,6 @@ import '../styles/global.css'
 import SiteHeader from '../components/SiteHeader.astro'
 import SiteFooter from '../components/SiteFooter.astro'
 import DraftBanner from '../components/DraftBanner.astro'
-import FoundationLoginBar from '../components/FoundationLoginBar.astro'
 import ArchiveSessionBootstrap from '../components/ArchiveSessionBootstrap.astro'
 import CookieNotice from '../components/CookieNotice.astro'
 import { SITE_ORIGIN, SITE_DESCRIPTION, FOUNDATION_DISPLAY_NAME } from '../data/site.js'
@@ -83,7 +82,6 @@ const orgJsonLd = {
     <a class="skip-link" href="#main">Skip to content</a>
     <SiteHeader activePath={path} />
     {showDraftBanner && <DraftBanner />}
-    <FoundationLoginBar activePath={path} />
     <main id="main">
       <slot />
     </main>
