@@ -29,11 +29,11 @@ const LINE_COLOR = '#8fa3b0'
     x="24"
     y="29.5"
     text-anchor="middle"
+    class="tla-lettermark__text"
     font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
     font-size="13.5"
     font-weight="500"
-    letter-spacing="0.18em"
-    fill="currentColor">TLA</text>
+    letter-spacing="0.18em">TLA</text>
   <rect x="6" y="35" width="22" height="2.25" rx="0.5" fill={LINE_COLOR} />
 </svg>
 
@@ -42,5 +42,9 @@ const LINE_COLOR = '#8fa3b0'
     display: block;
     flex-shrink: 0;
     color: var(--tla-lettermark-text, var(--ink, #4a443f));
+  }
+
+  .tla-lettermark__text {
+    fill: var(--tla-lettermark-text, currentColor);
   }
 </style>

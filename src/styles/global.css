@@ -135,35 +135,40 @@ a:hover {
 
 .btn {
   display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.62rem 1.1rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--paper-raised);
-  color: var(--ink);
-  font-size: 0.9rem;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.45rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--accent-strong);
+  border-radius: 0;
+  background: transparent;
+  color: var(--accent-strong);
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
   font-weight: 500;
+  letter-spacing: 0.015em;
   text-decoration: none;
-  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+  transition: color 140ms ease, border-color 140ms ease;
 }
 
 .btn:hover {
-  border-color: var(--accent);
-  color: var(--accent-strong);
-  transform: translateY(-1px);
+  border-color: var(--ink);
+  color: var(--ink);
+  transform: none;
 }
 
 .btn--primary {
-  background: var(--accent-strong);
-  border-color: var(--accent-strong);
-  color: #f4f6f3;
+  padding: 0.52rem 0.9rem;
+  border: 1px solid var(--accent-strong);
+  border-bottom: 1px solid var(--accent-strong);
+  background: transparent;
+  color: var(--accent-strong);
 }
 
 .btn--primary:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #ffffff;
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: #f4f6f3;
 }
 
 .btn__ext {

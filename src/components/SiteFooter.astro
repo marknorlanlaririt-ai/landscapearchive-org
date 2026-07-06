@@ -156,6 +156,27 @@ const copyrightLine = buildFoundationCopyrightLine(year)
     color: #eef2ee;
   }
 
+  .site-footer :global(.btn) {
+    color: #eef2ee;
+    border-bottom-color: rgba(238, 242, 238, 0.55);
+  }
+
+  .site-footer :global(.btn:hover) {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+  }
+
+  .site-footer :global(.btn--primary) {
+    border-color: rgba(238, 242, 238, 0.45);
+    color: #eef2ee;
+  }
+
+  .site-footer :global(.btn--primary:hover) {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
   @media (max-width: 860px) {
     .site-footer__inner {
       grid-template-columns: 1fr 1fr;

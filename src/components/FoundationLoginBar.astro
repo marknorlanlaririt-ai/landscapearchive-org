@@ -7,15 +7,15 @@ interface Props {
 }
 
 const { activePath = '/' } = Astro.props
-const handoffPath = isMemberOnlyOrgPath(activePath) ? activePath : '/awards'
+const handoffPath = isMemberOnlyOrgPath(activePath) ? activePath : '/events'
 const signInUrl = buildArchiveOrgAccessGateUrl(handoffPath)
 ---
 
 <aside class="foundation-login-bar" data-login-bar hidden aria-label="Sign in">
   <div class="page foundation-login-bar__inner">
     <p class="foundation-login-bar__text">
-      Member programme pages (Awards, Volunteers, Events) use your Landscape Archive account. The open
-      specification, registry, and governance content stays public — no sign-in required.
+      Member programme pages (Events) use your Landscape Archive account. The open specification,
+      registry, governance, awards, and volunteer programme stay public — no sign-in required.
     </p>
     <a class="foundation-login-bar__action" href={signInUrl}>Sign in</a>
   </div>
@@ -49,19 +49,21 @@ const signInUrl = buildArchiveOrgAccessGateUrl(handoffPath)
     align-items: center;
     justify-content: center;
     min-height: 2rem;
-    padding: 0.35rem 0.95rem;
+    padding: 0.35rem 0.85rem;
+    font-family: var(--font-serif);
     font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     text-decoration: none;
-    color: #fff;
-    background: var(--accent-strong);
-    border-radius: 999px;
-    border: 1px solid transparent;
+    color: var(--accent-strong);
+    background: transparent;
+    border-radius: 2px;
+    border: 1px solid var(--accent-strong);
   }
 
   .foundation-login-bar__action:hover {
-    background: var(--accent);
+    background: var(--accent-strong);
+    color: #f4f6f3;
   }
 
   .foundation-login-bar__action:focus-visible {

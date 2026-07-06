@@ -22,7 +22,7 @@ const apiUrl = `${ARCHIVE_ORIGIN}/api/foundation/newsletter`
       placeholder="you@example.org"
       required
     />
-    <button class="foundation-newsletter__submit" type="submit">Subscribe</button>
+    <button class="btn btn--primary foundation-newsletter__submit" type="submit">Subscribe</button>
   </div>
   <input class="foundation-newsletter__honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
   <p class="foundation-newsletter__status" data-status hidden></p>
@@ -142,19 +142,10 @@ const apiUrl = `${ARCHIVE_ORIGIN}/api/foundation/newsletter`
   }
 
   .foundation-newsletter__submit {
-    padding: 0.55rem 1rem;
-    border: 0;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.14);
-    color: #ffffff;
-    font: inherit;
+    flex: 0 0 auto;
+    font-family: var(--font-serif);
     font-size: 0.84rem;
-    font-weight: 600;
     cursor: pointer;
-  }
-
-  .foundation-newsletter__submit:hover {
-    background: rgba(255, 255, 255, 0.22);
   }
 
   .foundation-newsletter__submit:disabled {
