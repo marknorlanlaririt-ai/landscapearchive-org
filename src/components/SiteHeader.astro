@@ -13,7 +13,7 @@ const current = normalize(activePath)
 ---
 
 <header class="site-header">
-  <div class="page site-header__inner">
+  <div class="site-header__inner">
     <a class="site-header__brand" href="/" aria-label={`${FOUNDATION_DISPLAY_NAME} home`}>
       <TlaLettermark class="site-header__logo" size={56} />
       <span class="site-header__wordmark">
@@ -22,23 +22,25 @@ const current = normalize(activePath)
       </span>
     </a>
 
-    <nav class="site-header__nav" aria-label="Foundation navigation">
-      {
-        SITE_NAV_LINKS.map((link) => (
-          <a
-            href={link.href}
-            class:list={['site-header__link', { 'is-active': normalize(link.href) === current }]}
-            aria-current={normalize(link.href) === current ? 'page' : undefined}
-            data-member-only={link.requiresLogin ? '' : undefined}
-            hidden={link.requiresLogin ? true : undefined}
-          >
-            {link.label}
-          </a>
-        ))
-      }
-    </nav>
+    <div class="site-header__end">
+      <nav class="site-header__nav" aria-label="Foundation navigation">
+        {
+          SITE_NAV_LINKS.map((link) => (
+            <a
+              href={link.href}
+              class:list={['site-header__link', { 'is-active': normalize(link.href) === current }]}
+              aria-current={normalize(link.href) === current ? 'page' : undefined}
+              data-member-only={link.requiresLogin ? '' : undefined}
+              hidden={link.requiresLogin ? true : undefined}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
 
-    <FoundationSessionChrome activePath={activePath} />
+      <FoundationSessionChrome activePath={activePath} />
+    </div>
   </div>
 </header>
 
@@ -56,9 +58,14 @@ const current = normalize(activePath)
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1rem 1.25rem;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: clamp(1.1rem, 4vw, 2.5rem);
     min-height: var(--foundation-header-min-height);
     padding-block: 0.35rem;
+    flex-wrap: nowrap;
   }
 
   .site-header__brand {
@@ -68,7 +75,16 @@ const current = normalize(activePath)
     color: var(--ink);
     text-decoration: none;
     flex-shrink: 0;
-    max-width: min(100%, 22rem);
+    min-width: 0;
+  }
+
+  .site-header__end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem 1rem;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .site-header__logo {
@@ -97,17 +113,29 @@ const current = normalize(activePath)
 
   .site-header__nav {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.15rem;
+    flex-wrap: nowrap;
+    gap: 0.25rem clamp(0.45rem, 1vw, 0.85rem);
     justify-content: flex-end;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .site-header__nav::-webkit-scrollbar {
+    display: none;
   }
 
   .site-header__link {
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     color: var(--ink-soft);
     text-decoration: none;
     padding: 0.3rem 0;
     border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .site-header__link:hover {
@@ -119,7 +147,7 @@ const current = normalize(activePath)
     border-bottom-color: var(--accent);
   }
 
-  @media (max-width: 860px) {
+  @media (max-width: 720px) {
     .site-header__inner {
       flex-direction: column;
       align-items: flex-start;
@@ -127,8 +155,17 @@ const current = normalize(activePath)
       padding-block: 0.7rem;
     }
 
+    .site-header__end {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     .site-header__nav {
       justify-content: flex-start;
+      width: 100%;
+      flex-wrap: wrap;
+      overflow-x: visible;
     }
   }
 </style>
