@@ -37,6 +37,7 @@ const contactLink = SITE_NAV_LINKS.find((link) => link.id === 'contact')
               href={link.href}
               class:list={['site-header__link', { 'is-active': normalize(link.href) === current }]}
               aria-current={normalize(link.href) === current ? 'page' : undefined}
+              data-animate-stagger
               data-member-only={link.requiresLogin ? '' : undefined}
               hidden={link.requiresLogin ? true : undefined}
             >
@@ -54,6 +55,7 @@ const contactLink = SITE_NAV_LINKS.find((link) => link.id === 'contact')
                   { 'is-active': normalize(contactLink.href) === current }
                 ]}
                 aria-current={normalize(contactLink.href) === current ? 'page' : undefined}
+                data-animate-stagger
               >
                 {contactLink.label}
               </a>

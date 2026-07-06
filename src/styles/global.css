@@ -262,20 +262,95 @@ a:hover {
   fill: #ffffff;
 }
 
+/* Header load animations ---------------------------------------------------- */
+
+@keyframes foundation-letter-from-top {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -0.6em, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes foundation-letter-from-bottom {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.6em, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header__letter {
+    display: inline-block;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  html.js-header-animate-ready .site-header__letter.is-header-visible {
+    animation: foundation-letter-from-top 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--letter-index, 0) * 32ms + 60ms);
+  }
+
+  html.js-header-animate-ready .site-header__letter[data-from='bottom'].is-header-visible {
+    animation-name: foundation-letter-from-bottom;
+  }
+
+  html.js-header-animate-ready .site-header [data-animate-stagger]:not(.is-header-visible) {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+
+  html.js-header-animate-ready .site-header [data-animate-stagger] {
+    transition:
+      opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--header-stagger-delay, 0ms);
+    will-change: transform, opacity;
+  }
+
+  html.js-header-animate-ready .site-header [data-animate-stagger].is-header-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__letter {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+
+  .site-header [data-animate-stagger] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Scroll-triggered entrance animations ------------------------------------ */
 
 @media (prefers-reduced-motion: no-preference) {
   html.js-animate-ready [data-animate-in]:not(.is-visible) {
     opacity: 0;
-    transform: translate3d(0, 12px, 0);
+    transform: translate3d(0, 24px, 0);
   }
 
   [data-animate-in] {
     --animate-delay: 0ms;
     transition:
-      opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
-      transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 640ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
     transition-delay: var(--animate-delay, 0ms);
+    will-change: transform, opacity;
   }
 
   [data-animate-in].is-visible {
