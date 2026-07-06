@@ -2,7 +2,10 @@ import {
   FOUNDATION_SUPPORT_CONTACT_PATH,
   GOVERNANCE_PATH,
   OPEN_STANDARD_GITHUB_URL,
-  TLA185_DISPLAY_ID
+  OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE,
+  TLA185_DISPLAY_ID,
+  FEDERATION_SCHEMA_PORTAL_URL,
+  isOpenStandardGithubPubliclyAvailable
 } from './foundationWing.js'
 import { buildFoundationAwardsTopicPage } from './foundationAwardsProgramme.js'
 
@@ -28,7 +31,7 @@ export const foundationTopicPages = Object.freeze({
         id: 'ways-to-contribute',
         heading: 'Ways to contribute',
         bullets: [
-          'Schema and documentation review — clarity, examples, and conformance notes on GitHub',
+          'Schema and documentation review — clarity, examples, and conformance notes on the schema portal',
           'Crosswalk and mapping work — Revit, GIS, nursery, and council exchange profiles',
           'Truth-telling field trials — documenting how claims are evidenced in real project bundles',
           'Translation and accessibility — plain-language summaries and screen-reader-friendly docs',
@@ -39,11 +42,16 @@ export const foundationTopicPages = Object.freeze({
         id: 'how-to-start',
         heading: 'How to start',
         paragraphs: [
-          'The canonical repository is the best entry point for technical contributions. For structured volunteer onboarding, working-group placement, or institutional partnership, contact the interim team first so we can match your skills to published needs.',
+          'The schema portal and field dictionary are the best entry points for technical contributions. For structured volunteer onboarding, working-group placement, or institutional partnership, contact the interim team first so we can match your skills to published needs.',
+          ...(isOpenStandardGithubPubliclyAvailable()
+            ? []
+            : [OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE]),
           'Until incorporation, volunteer coordination runs through The Landscape Archive Pty Ltd as interim implementation partner.'
         ],
         actions: [
-          { label: 'Open specification repository', href: OPEN_STANDARD_GITHUB_URL, external: true },
+          ...(isOpenStandardGithubPubliclyAvailable()
+            ? [{ label: 'Open specification repository', href: OPEN_STANDARD_GITHUB_URL, external: true }]
+            : [{ label: 'Open schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true }]),
           { label: 'Volunteer enquiry', href: `${FOUNDATION_SUPPORT_CONTACT_PATH}&intent=volunteer`, external: true }
         ]
       }

@@ -5,10 +5,12 @@ import {
   GOVERNANCE_PATH,
   OPEN_STANDARD_GITHUB_TAG_URL,
   OPEN_STANDARD_GITHUB_URL,
+  OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE,
   TLA169_DISPLAY_ID,
   TLA185_DISPLAY_ID,
   TLA185_FIELD_COUNT,
-  TLA185_REGISTRY_PREVIEW_FIELD_LIMIT
+  TLA185_REGISTRY_PREVIEW_FIELD_LIMIT,
+  isOpenStandardGithubPubliclyAvailable
 } from './foundationWing.js'
 import { FOUNDATION_SUPPORT_BANK_FACTS } from './support.js'
 
@@ -42,12 +44,20 @@ export function buildFoundationHomeSections({
       heading: 'The specification in practice',
       paragraphs: [
         `${TLA185_DISPLAY_ID} articulates ${fieldCount} documented elements across Australian landscape projects — taxonomy, site context, mid-century climate screening, environmental risk, sustainability, cultural sensitivity, and BIM interoperability. The earlier ${TLA169_DISPLAY_ID} profile remains supported for legacy exchange records. The published layer comprises structural definitions — field types, modules, and conformance rules — while populated species inventories, trait values, and client records reside in licensed implementation datasets.`,
-        'The canonical specification, JSON Schema modules, and worked examples are published on GitHub and the schema portal. GitHub is the authoritative source. The open repository is world-readable.'
+        ...(isOpenStandardGithubPubliclyAvailable()
+          ? [
+              'The canonical specification, JSON Schema modules, and worked examples are published on GitHub and the schema portal. GitHub is the authoritative source. The open repository is world-readable.'
+            ]
+          : [OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE])
       ],
       actions: [
-        { label: 'Read canonical specification', href: OPEN_STANDARD_GITHUB_TAG_URL, external: true },
-        { label: 'Open schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
-        { label: 'View repository', href: OPEN_STANDARD_GITHUB_URL, external: true }
+        ...(isOpenStandardGithubPubliclyAvailable()
+          ? [
+              { label: 'Read canonical specification', href: OPEN_STANDARD_GITHUB_TAG_URL, external: true },
+              { label: 'View repository', href: OPEN_STANDARD_GITHUB_URL, external: true }
+            ]
+          : []),
+        { label: 'Open schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true }
       ]
     },
     {

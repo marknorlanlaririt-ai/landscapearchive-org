@@ -4,13 +4,16 @@ import preview from '../data/tla185-fields-preview.json'
 import LicenceNotice from '../components/LicenceNotice.astro'
 import {
   OPEN_STANDARD_GITHUB_TAG_URL,
+  OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE,
   FEDERATION_SCHEMA_PORTAL_URL,
   TLA185_DISPLAY_ID,
-  TLA185_FIELD_COUNT
+  TLA185_FIELD_COUNT,
+  isOpenStandardGithubPubliclyAvailable
 } from '../data/foundationWing.js'
 import { SCHEMA_PORTAL_URL } from '../data/site.js'
 
 const DICTIONARY_URL = `${SCHEMA_PORTAL_URL}/dictionary`
+const githubAvailable = isOpenStandardGithubPubliclyAvailable()
 
 const modules = preview.modules ?? []
 const fields = preview.fields ?? []
@@ -39,15 +42,26 @@ for (const field of fields) {
         trait values, or client records. Below is a public preview of {fields.length} representative
         fields. The full, searchable <a href={DICTIONARY_URL} rel="noopener" target="_blank">Landscape Data
         Dictionary</a> — every term with a definition, a stable citable identifier, and a way to propose a
-        change — plus JSON Schema modules and worked examples live on the schema portal and GitHub.
+        change — plus JSON Schema modules and worked examples live on the schema portal{
+          githubAvailable ? ' and GitHub' : ''
+        }.
       </p>
+      {
+        !githubAvailable && (
+          <p class="reg__github-notice" role="note">{OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE}</p>
+        )
+      }
       <div class="action-row">
         <a class="btn btn--primary" href={DICTIONARY_URL} rel="noopener" target="_blank">
           Full Data Dictionary <span class="btn__ext" aria-hidden="true">↗</span>
         </a>
-        <a class="btn" href={OPEN_STANDARD_GITHUB_TAG_URL} rel="noopener" target="_blank">
-          Canonical specification <span class="btn__ext" aria-hidden="true">↗</span>
-        </a>
+        {
+          githubAvailable && (
+            <a class="btn" href={OPEN_STANDARD_GITHUB_TAG_URL} rel="noopener" target="_blank">
+              Canonical specification <span class="btn__ext" aria-hidden="true">↗</span>
+            </a>
+          )
+        }
         <a class="btn" href={FEDERATION_SCHEMA_PORTAL_URL} rel="noopener" target="_blank">
           Schema portal <span class="btn__ext" aria-hidden="true">↗</span>
         </a>
@@ -106,6 +120,14 @@ for (const field of fields) {
 <style>
   .reg__intro {
     padding-block: clamp(2.6rem, 6vw, 4rem) 1.5rem;
+  }
+
+  .reg__github-notice {
+    margin: 1rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: var(--measure);
   }
 
   .reg__modules {

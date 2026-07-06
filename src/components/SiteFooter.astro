@@ -11,11 +11,14 @@ import {
   FOUNDATION_LICENCE_SUMMARY,
   FOUNDATION_LICENCE_URL,
   OPEN_STANDARD_GITHUB_URL,
-  REGISTRY_PATH
+  OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE,
+  REGISTRY_PATH,
+  isOpenStandardGithubPubliclyAvailable
 } from '../data/foundationWing.js'
 
 const year = new Date().getFullYear()
 const copyrightLine = buildFoundationCopyrightLine(year)
+const githubAvailable = isOpenStandardGithubPubliclyAvailable()
 ---
 
 <footer class="site-footer">
@@ -41,7 +44,15 @@ const copyrightLine = buildFoundationCopyrightLine(year)
 
     <nav class="site-footer__col" aria-label="Open standard">
       <h2 class="site-footer__heading">Open standard</h2>
-      <a href={OPEN_STANDARD_GITHUB_URL} rel="noopener" target="_blank">GitHub repository</a>
+      {
+        githubAvailable ? (
+          <a href={OPEN_STANDARD_GITHUB_URL} rel="noopener" target="_blank">GitHub repository</a>
+        ) : (
+          <span class="site-footer__muted" title={OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE}>
+            GitHub repository (temporarily unavailable)
+          </span>
+        )
+      }
       <a href={FEDERATION_SCHEMA_PORTAL_URL} rel="noopener" target="_blank">Schema portal</a>
       <a href={REGISTRY_PATH}>Field registry</a>
       <a href="/governance#citation-guidance">Citation guidance</a>
@@ -127,6 +138,12 @@ const copyrightLine = buildFoundationCopyrightLine(year)
     color: #ffffff;
     text-decoration: underline;
     text-underline-offset: 0.18em;
+  }
+
+  .site-footer__muted {
+    color: #a9b8ac;
+    font-size: 0.88rem;
+    cursor: help;
   }
 
   .site-footer__base {

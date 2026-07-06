@@ -30,6 +30,15 @@ export const FOUNDATION_MARK_ASSET = '/foundation-mark.svg'
 
 // GitHub / schema portal — public-first: link directly (no sign-in gate) -----
 
+export const OPEN_STANDARD_GITHUB_TEMPORARILY_UNAVAILABLE = true
+
+export const OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE =
+  'The public GitHub repository is temporarily unavailable while we review access controls and security posture. The TLA-185 specification remains documented on this site and through the schema portal.'
+
+export function isOpenStandardGithubPubliclyAvailable() {
+  return !OPEN_STANDARD_GITHUB_TEMPORARILY_UNAVAILABLE
+}
+
 export const OPEN_STANDARD_GITHUB_REPO = 'marknorlanlaririt-ai/landscape-archive-foundation'
 export const OPEN_STANDARD_GITHUB_URL = `https://github.com/${OPEN_STANDARD_GITHUB_REPO}`
 export const OPEN_STANDARD_GITHUB_TAG_URL = `https://github.com/${OPEN_STANDARD_GITHUB_REPO}/releases/tag/185-v1.0.0`

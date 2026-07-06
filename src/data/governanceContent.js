@@ -2,15 +2,18 @@ import {
   FOUNDATION_COMMERCIAL_CONTACT_PATH,
   FOUNDATION_LICENCE_LABEL,
   ARCHIVE_CITATIONS_PATH,
+  FEDERATION_SCHEMA_PORTAL_URL,
   FOUNDATION_GOVERNANCE_CITATION_URL,
   OPEN_STANDARD_GITHUB_TAG_URL,
+  OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE,
   REGISTRY_PATH,
   SUPPORT_PATH,
   TLA169_DISPLAY_ID,
   TLA169_FIELD_COUNT,
   TLA185_DISPLAY_ID,
   TLA185_FIELD_COUNT,
-  TLA185_VERSION
+  TLA185_VERSION,
+  isOpenStandardGithubPubliclyAvailable
 } from './foundationWing.js'
 
 /**
@@ -198,13 +201,18 @@ export function buildFoundationGovernanceSections({
       paragraphs: [
         'When you reference the open standard in academic work, procurement, or public documentation, cite the specification and steward — not individual contributors by default.',
         `Recommended format: The Landscape Archive Foundation. ${TLA185_DISPLAY_ID} Landscape Metadata Standard, version ${TLA185_VERSION}. ${FOUNDATION_GOVERNANCE_CITATION_URL} (accessed [date]). Licensed under ${FOUNDATION_LICENCE_LABEL}.`,
-        'For the field registry or a specific release tag, add the registry URL or GitHub release identifier. For the commercial Archive product (Library, Studio+™, datasets), cite The Landscape Archive separately at landscapearchive.com.au/citations.',
+        'For the field registry or a specific release tag, add the registry URL or GitHub release identifier when the public repository is available. For the commercial Archive product (Library, Studio+™, datasets), cite The Landscape Archive separately at landscapearchive.com.au/citations.',
+        ...(isOpenStandardGithubPubliclyAvailable()
+          ? []
+          : [OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE]),
         'Standard bibliographic citation should reference the specification and steward. Individual author names are optional unless your style guide requires them for technical reports.'
       ],
       actions: [
         { label: 'Archive citation hub', href: ARCHIVE_CITATIONS_PATH, external: true },
         { label: 'Field registry', href: REGISTRY_PATH },
-        { label: 'Release tag 185-v1.0.0', href: OPEN_STANDARD_GITHUB_TAG_URL, external: true }
+        ...(isOpenStandardGithubPubliclyAvailable()
+          ? [{ label: 'Release tag 185-v1.0.0', href: OPEN_STANDARD_GITHUB_TAG_URL, external: true }]
+          : [{ label: 'Schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true }])
       ]
     },
     {
