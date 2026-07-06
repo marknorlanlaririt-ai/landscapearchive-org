@@ -1,5 +1,5 @@
 ---
-import { buildArchiveOrgAccessGateUrl, isMemberOnlyOrgPath } from '../data/memberAccess.js'
+import { ORG_SIGN_IN_PATH } from '../data/memberAccess.js'
 
 interface Props {
   /** Current route path — used to tailor the handoff target when on a member page. */
@@ -7,8 +7,7 @@ interface Props {
 }
 
 const { activePath = '/' } = Astro.props
-const handoffPath = isMemberOnlyOrgPath(activePath) ? activePath : '/events'
-const signInUrl = buildArchiveOrgAccessGateUrl(handoffPath)
+const signInPageUrl = ORG_SIGN_IN_PATH
 ---
 
 <aside class="foundation-login-bar" data-login-bar hidden aria-label="Sign in">
@@ -17,7 +16,7 @@ const signInUrl = buildArchiveOrgAccessGateUrl(handoffPath)
       Member programme pages (Events) use your Landscape Archive account. The open specification,
       registry, governance, awards, and volunteer programme stay public — no sign-in required.
     </p>
-    <a class="foundation-login-bar__action" href={signInUrl}>Sign in</a>
+    <a class="foundation-login-bar__action" href={signInPageUrl}>Sign in</a>
   </div>
 </aside>
 

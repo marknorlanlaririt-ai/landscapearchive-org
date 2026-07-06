@@ -1,0 +1,86 @@
+---
+import {
+  buildArchiveOrgAccessGateUrl,
+  ORG_SIGN_IN_PATH,
+  resolveOrgAccessHandoffPath
+} from '../data/memberAccess.js'
+
+interface Props {
+  activePath?: string
+}
+
+const { activePath = '/' } = Astro.props
+const handoffPath = resolveOrgAccessHandoffPath(activePath)
+const signInUrl = buildArchiveOrgAccessGateUrl(handoffPath)
+const signInPageUrl = ORG_SIGN_IN_PATH
+---
+
+<div class="foundation-session-chrome" data-session-chrome hidden aria-live="polite">
+  <span class="foundation-session-chrome__label" data-session-email></span>
+  <button type="button" class="foundation-session-chrome__action" data-session-sign-out>
+    Log out
+  </button>
+</div>
+
+<a
+  class="foundation-session-chrome foundation-session-chrome--guest"
+  data-session-guest
+  href={signInPageUrl}
+  data-session-sign-in-archive={signInUrl}
+>
+  Sign in
+</a>
+
+<style>
+  .foundation-session-chrome {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-shrink: 0;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .foundation-session-chrome[hidden] {
+    display: none;
+  }
+
+  .foundation-session-chrome__label {
+    max-width: 16rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .foundation-session-chrome__action,
+  .foundation-session-chrome--guest {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: 0.35rem 0.75rem;
+    font-family: var(--font-serif);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--accent-strong);
+    background: transparent;
+    border-radius: 2px;
+    border: 1px solid var(--line);
+    cursor: pointer;
+  }
+
+  .foundation-session-chrome__action:hover,
+  .foundation-session-chrome--guest:hover {
+    border-color: var(--accent-strong);
+    color: var(--accent-strong);
+  }
+
+  .foundation-session-chrome__action:focus-visible,
+  .foundation-session-chrome--guest:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>

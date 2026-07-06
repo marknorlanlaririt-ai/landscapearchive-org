@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { ARCHIVE_ORIGIN } from '../data/site.js'
+import {
+  buildArchiveOrgAccessGateUrl,
+  ORG_SIGN_IN_PATH
+} from '../data/memberAccess.js'
+
+const handoffUrl = buildArchiveOrgAccessGateUrl(ORG_SIGN_IN_PATH)
+---
+
+<BaseLayout
+  title="Sign in"
+  description="Sign in with your Landscape Archive account for Foundation member programme pages. The open specification, registry, and governance pages remain public."
+  path={ORG_SIGN_IN_PATH}
+  showDraftBanner={false}
+>
+  <div class="page sign-in">
+    <div class="sign-in__intro prose">
+      <p class="eyebrow">The Landscape Archive Foundation</p>
+      <h1>Sign in</h1>
+      <p class="sign-in__lead">
+        Foundation member programme pages (Events) use your existing Landscape Archive account for accountable
+        access. The open TLA-185 / TLA-169 specification, registry, governance, awards, and volunteer
+        programme remain public — no sign-in required.
+      </p>
+    </div>
+
+    <section class="sign-in__panel" aria-labelledby="sign-in-panel-title">
+      <h2 id="sign-in-panel-title">Continue with your Archive account</h2>
+      <p>
+        Sign-in is handled on the commercial Archive site (<code>landscapearchive.com.au</code>) where your
+        account already lives. After you authenticate, we return you here with a short-lived session for
+        member pages on <code>landscapearchive.org</code>.
+      </p>
+      <ul class="sign-in__list">
+        <li><strong>Public read</strong> — schema modules, dictionary, governance, awards charter, registry preview.</li>
+        <li><strong>Signed in</strong> — Events working sessions; future governance update subscriptions and proposal workflows.</li>
+        <li><strong>Schema portal</strong> — specification documentation stays public; the same sign-in appears for continuity.</li>
+      </ul>
+      <div class="sign-in__actions">
+        <a class="sign-in__primary" href={handoffUrl}>Sign in with Landscape Archive</a>
+        <a class="sign-in__secondary" href="/governance">Continue without signing in</a>
+      </div>
+      <p class="sign-in__foot">
+        Need an account?
+        <a href={`${ARCHIVE_ORIGIN}/sign-up`} rel="noopener">Create one on landscapearchive.com.au</a>
+      </p>
+      <p class="sign-in__status" data-sign-in-status hidden aria-live="polite"></p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .sign-in__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 0.5rem;
+  }
+
+  .sign-in__lead {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 42rem;
+  }
+
+  .sign-in__panel {
+    margin-block: 1.5rem 4rem;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    background: var(--paper-raised);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    max-width: 42rem;
+  }
+
+  .sign-in__panel h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sign-in__list {
+    margin: 0 0 1.25rem;
+    padding-left: 1.2rem;
+    color: var(--ink-soft);
+  }
+
+  .sign-in__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .sign-in__primary,
+  .sign-in__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: var(--font-serif);
+    font-size: 0.92rem;
+  }
+
+  .sign-in__primary {
+    background: var(--accent-strong);
+    color: #f4f6f3;
+    border: 1px solid var(--accent-strong);
+  }
+
+  .sign-in__secondary {
+    color: var(--accent-strong);
+    border: 1px solid var(--line);
+  }
+
+  .sign-in__foot {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .sign-in__status {
+    margin: 1rem 0 0;
+    font-size: 0.92rem;
+    color: var(--accent-strong);
+  }
+
+  .sign-in__status[hidden] {
+    display: none;
+  }
+</style>

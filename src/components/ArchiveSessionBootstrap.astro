@@ -2,11 +2,14 @@
 import {
   ARCHIVE_SESSION_VERIFY_URL,
   ARCHIVE_ORG_ACCESS_VERIFY_URL,
-  MEMBER_ONLY_ORG_PATHS
+  ARCHIVE_FOUNDATION_SIGN_OUT_URL,
+  MEMBER_ONLY_ORG_PATHS,
+  ORG_SIGN_IN_PATH,
+  SESSION_HANDOFF_ORG_PATHS
 } from '../data/memberAccess.js'
 ---
 
-<script is:inline define:vars={{ ARCHIVE_SESSION_VERIFY_URL, ARCHIVE_ORG_ACCESS_VERIFY_URL, MEMBER_ONLY_ORG_PATHS }}>
+<script is:inline define:vars={{ ARCHIVE_SESSION_VERIFY_URL, ARCHIVE_ORG_ACCESS_VERIFY_URL, ARCHIVE_FOUNDATION_SIGN_OUT_URL, MEMBER_ONLY_ORG_PATHS, ORG_SIGN_IN_PATH, SESSION_HANDOFF_ORG_PATHS }}>
   (function () {
     var ORG_ACCESS_STORAGE_KEY = 'la-foundation-org-access'
 
@@ -24,24 +27,45 @@ import {
       })
     }
 
+    function setSessionChrome(loggedIn, email) {
+      document.querySelectorAll('[data-session-chrome]').forEach(function (el) {
+        el.hidden = !loggedIn
+      })
+      document.querySelectorAll('[data-session-guest]').forEach(function (el) {
+        el.hidden = loggedIn
+      })
+      document.querySelectorAll('[data-session-email]').forEach(function (el) {
+        el.textContent = email ? ('Signed in as ' + email) : 'Signed in'
+      })
+      document.querySelectorAll('[data-sign-in-status]').forEach(function (el) {
+        if (!email || normalizePath(window.location.pathname) !== ORG_SIGN_IN_PATH) {
+          el.hidden = true
+          return
+        }
+        el.hidden = false
+        el.textContent = 'Signed in as ' + email + '. Member programme pages are now available in the navigation.'
+      })
+    }
+
     function applyLoggedOutState() {
       document.documentElement.dataset.archiveLoggedIn = 'false'
       document.querySelectorAll('[data-member-only]').forEach(function (el) {
         el.hidden = true
       })
       setLoginBarVisible(true)
-
+      setSessionChrome(false, '')
       if (isMemberOnlyPath(window.location.pathname)) {
         window.location.replace('/governance')
       }
     }
 
-    function applyLoggedInState() {
+    function applyLoggedInState(email) {
       document.documentElement.dataset.archiveLoggedIn = 'true'
       document.querySelectorAll('[data-member-only]').forEach(function (el) {
         el.hidden = false
       })
       setLoginBarVisible(false)
+      setSessionChrome(true, email || '')
     }
 
     function readStoredOrgAccess() {
@@ -50,28 +74,26 @@ import {
         if (!raw) {
           return null
         }
-
         var data = JSON.parse(raw)
         if (!data || !data.token || !data.expiresAt || Number(data.expiresAt) <= Date.now()) {
           sessionStorage.removeItem(ORG_ACCESS_STORAGE_KEY)
           return null
         }
-
         return data
       } catch (error) {
         return null
       }
     }
 
-    function writeStoredOrgAccess(token, expiresAt) {
+    function writeStoredOrgAccess(token, expiresAt, path, email) {
       try {
         sessionStorage.setItem(ORG_ACCESS_STORAGE_KEY, JSON.stringify({
           token: token,
-          expiresAt: Number(expiresAt)
+          expiresAt: Number(expiresAt),
+          path: path || ORG_SIGN_IN_PATH,
+          email: String(email || '').trim()
         }))
-      } catch (error) {
-        // Private mode — session still works until tab close.
-      }
+      } catch (error) {}
     }
 
     function clearStoredOrgAccess() {
@@ -86,23 +108,23 @@ import {
         return
       }
       url.searchParams.delete('la_org_access')
-      var next = url.pathname + url.search + url.hash
-      window.history.replaceState({}, '', next)
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash)
     }
 
-    function resolveVerifyPath(path) {
-      var normalized = normalizePath(path)
-      if (isMemberOnlyPath(normalized)) {
-        return normalized
+    function resolveVerifyPath(currentPath, storedPath) {
+      if (storedPath) {
+        return normalizePath(storedPath)
       }
-      return MEMBER_ONLY_ORG_PATHS[0] || '/awards'
+      if (isMemberOnlyPath(currentPath)) {
+        return normalizePath(currentPath)
+      }
+      return ORG_SIGN_IN_PATH
     }
 
-    function verifyOrgAccessToken(path, token) {
+    function verifyOrgAccessToken(path, token, storedPath) {
       var verifyUrl = new URL(ARCHIVE_ORG_ACCESS_VERIFY_URL)
       verifyUrl.searchParams.set('token', token)
-      verifyUrl.searchParams.set('path', resolveVerifyPath(path))
-
+      verifyUrl.searchParams.set('path', resolveVerifyPath(path, storedPath))
       return fetch(verifyUrl.toString(), {
         method: 'GET',
         credentials: 'include',
@@ -114,8 +136,13 @@ import {
         })
         .then(function (body) {
           if (body && body.valid) {
-            writeStoredOrgAccess(token, body.expiresAt || Date.now() + 12 * 60 * 60 * 1000)
-            applyLoggedInState()
+            writeStoredOrgAccess(
+              token,
+              body.expiresAt || Date.now() + 12 * 60 * 60 * 1000,
+              body.path || storedPath || ORG_SIGN_IN_PATH,
+              body.email || ''
+            )
+            applyLoggedInState(body.email || '')
             stripOrgAccessTokenFromUrl()
             return true
           }
@@ -138,7 +165,7 @@ import {
         })
         .then(function (body) {
           if (body && body.loggedIn) {
-            applyLoggedInState()
+            applyLoggedInState(body.email || body.displayName || '')
             return true
           }
           return false
@@ -148,7 +175,22 @@ import {
         })
     }
 
+    function signOut() {
+      clearStoredOrgAccess()
+      fetch(ARCHIVE_FOUNDATION_SIGN_OUT_URL, {
+        method: 'POST',
+        credentials: 'include',
+        cache: 'no-store',
+        headers: { accept: 'application/json' }
+      }).catch(function () {})
+      applyLoggedOutState()
+    }
+
     function bootstrapMemberAccess() {
+      document.querySelectorAll('[data-session-sign-out]').forEach(function (button) {
+        button.addEventListener('click', signOut)
+      })
+
       var currentPath = normalizePath(window.location.pathname)
       var urlParams = new URLSearchParams(window.location.search)
       var orgAccessToken = urlParams.get('la_org_access') || ''
@@ -156,11 +198,10 @@ import {
       var token = orgAccessToken || (stored && stored.token) || ''
 
       if (token) {
-        verifyOrgAccessToken(currentPath, token).then(function (valid) {
+        verifyOrgAccessToken(currentPath, token, stored && stored.path).then(function (valid) {
           if (valid) {
             return
           }
-
           clearStoredOrgAccess()
           verifyArchiveSession().then(function (loggedIn) {
             if (!loggedIn) {
