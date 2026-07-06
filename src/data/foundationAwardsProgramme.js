@@ -24,12 +24,12 @@ export const AWARDS_PROGRAMME_SLIDES = [
     intro: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'A vendor-neutral recognition programme for applied landscape architecture and archival stewardship. Programme in preparation — full charter at landscapearchive.org/awards.'
+      'Internationally oriented recognition for applied landscape architecture, urban design, ecological practice, and archival stewardship. Programme in preparation — full charter at landscapearchive.org/awards.'
     ],
     webBody: [
-      'The Landscape Archive Foundation Awards recognise work that advances the archival and information architecture of landscape practice — delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods whose claims remain traceable to cited sources and open to independent review.',
-      'The programme is vendor-neutral and independent of any commercial product stack. Recognition rests on documentary integrity, metadata stewardship, and reproducible assessment material — not stylistic preference, tenure alone, or affiliation with a particular authoring environment.',
-      'The awards programme is in preparation under interim draft governance. Full charter, category rubrics, and assessment process will be published at landscapearchive.org/awards before entries open.'
+      'The Landscape Archive Foundation Awards recognise exemplary practice worldwide — work that advances the archival and information architecture of landscape architecture, urban design, ecological stewardship, and allied disciplines. Eligible contributions include delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods whose claims remain traceable to cited sources and open to independent review.',
+      'The programme is vendor-neutral and independent of any commercial product stack. Recognition rests on documentary integrity, metadata stewardship, and reproducible assessment material — not stylistic preference, tenure alone, national origin, or affiliation with a particular authoring environment.',
+      'Assessment criteria reference the public field registry, including cross-jurisdictional modules and published crosswalks where Australian field origins are adapted for other regions. The awards programme is in preparation under interim draft governance; full charter, category rubrics, and assessment process will be published at landscapearchive.org/awards before entries open.'
     ]
   },
   {
@@ -38,13 +38,13 @@ export const AWARDS_PROGRAMME_SLIDES = [
     title: 'Scope',
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Recognises work that strengthens landscape practice through inspectable project records and open metadata stewardship — delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods.',
+      'Recognises work worldwide that strengthens landscape practice through inspectable project records and open metadata stewardship — delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods.',
       'The programme does not confer government accreditation, professional registration, or vendor certification.'
     ],
     webBody: [
-      'The programme recognises contributions across the full documentary lifecycle of landscape architecture — from site analysis and planting intent through tender documentation, construction administration, asset maintenance, and the communal reference data practitioners rely on when specifying, establishing, and stewarding living landscapes.',
-      'Eligible work includes delivered and maintained projects; stewardship of plant and site reference data; scholarship and publication; craft documentation and spatial communication; technology and interchange tooling; community engagement and heritage documentation; and institutional programmes that embed open metadata discipline in live practice.',
-      'The programme does not confer government accreditation, professional registration, or vendor certification. Awards document independently reviewed exemplars within the Foundation\'s published scope — recognition that universities, agencies, and peers may cite alongside the open specification and field registry.'
+      'The programme recognises contributions across the full documentary lifecycle of landscape architecture and urban landscape practice — from site analysis and planting intent through tender documentation, construction administration, asset maintenance, and the communal reference data practitioners rely on when specifying, establishing, and stewarding living landscapes in any jurisdiction.',
+      'Eligible work includes delivered and maintained projects; stewardship of plant and site reference data; scholarship and publication; craft documentation and spatial communication; technology and interchange tooling; community engagement and heritage documentation; and institutional programmes that embed open metadata discipline in live practice. Submissions may draw on Australian field modules where they reflect the standard\'s origin, or on crosswalked and extended modules adapted for other regions through the published governance process.',
+      'The programme does not confer government accreditation, professional registration, or vendor certification. Awards document independently reviewed exemplars within the Foundation\'s published scope — recognition that universities, agencies, and peers may cite alongside the open specification and field registry, without implying active Foundation operations in any particular country.'
     ]
   },
   {
@@ -58,9 +58,9 @@ export const AWARDS_PROGRAMME_SLIDES = [
       'Assessment honours archives treated as scholarly infrastructure — accepted nomenclature, inspectable provenance, and reproducible evidence — not stylistic preference or single-vendor workflow loyalty.'
     ],
     webBody: [
-      'Entries are assessed for documentary integrity — whether stated landscape claims remain traceable to cited sources, endure from design intent through construction and long-term stewardship, and can be reviewed by a third party without proprietary tooling or informal briefing.',
+      'Entries are assessed for documentary integrity — whether stated landscape claims remain traceable to cited sources, endure from design intent through construction and long-term stewardship, and can be reviewed by a third party without proprietary tooling or informal briefing, regardless of project geography.',
       'Evaluators prioritise reproducible evidence and archival legibility. A submission demonstrates evaluative purpose when its metadata encodes what was claimed, what supports each claim, and where material changed between project phases — with null or restricted values explained where sensitivity classes apply.',
-      'Assessment is deliberately independent of stylistic preference, media profile, and single-vendor workflow loyalty. Evaluators prioritise whether the archive remains honest, complete, and inspectable for the maintainers and reviewers who inherit it — across design, construction, and long-term stewardship phases.'
+      'Assessment is deliberately independent of stylistic preference, media profile, national prestige, and single-vendor workflow loyalty. Evaluators prioritise whether the archive remains honest, complete, and inspectable for the maintainers and reviewers who inherit it — across design, construction, and long-term stewardship phases.'
     ]
   },
   {
@@ -91,7 +91,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     webBody: [
       'Applied landscape architecture is the programme\'s primary recognition axis. This category honours delivered and maintained work where the project archive remains legible across phases — not only as drawings and renders, but as structured records that encode site analysis, planting intent, grading and drainage logic, construction substitutions, and maintenance assumptions.',
       'Evaluators assess whether planting schedules harmonise accepted nomenclature with establishment context; whether tender and construction records document material changes with phase-to-phase transparency; and whether as-maintained documentation gives future stewards enough evidence to understand what was built, why, and under what performance expectations.',
-      'Recognition is not limited to flagship public realm projects. Equally eligible is rigorous documentation of housing landscapes, campus open space, infrastructure corridors, and restoration work — wherever applied practice produces an inspectable archive that survives beyond presentation day.'
+      'Recognition is not limited to flagship public realm projects or any single region. Equally eligible is rigorous documentation of housing landscapes, campus open space, infrastructure corridors, urban design interventions, and restoration work — wherever applied practice produces an inspectable archive that survives beyond presentation day.'
     ]
   },
   {
@@ -176,12 +176,12 @@ export const AWARDS_PROGRAMME_SLIDES = [
     titleLong: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Landscape documentation that centres First Nations narrative authority — Country-led interpretation, culturally appropriate disclosure handling, and storytelling where permission, provenance, and community review remain inspectable in the project archive.'
+      'Landscape documentation that centres Indigenous and traditional custodial narrative authority — community-led interpretation, culturally appropriate disclosure handling, and storytelling where permission, provenance, and community review remain inspectable in the project archive.'
     ],
     webBody: [
-      'Indigenous storytelling recognises landscape documentation that centres First Nations narrative authority — Country-led interpretation, culturally appropriate disclosure handling, and storytelling where permission, provenance, and community review remain inspectable in the project archive with narrative authority and consent records retained for future reviewers.',
+      'Indigenous storytelling recognises landscape documentation that centres Indigenous and traditional custodial narrative authority — whether Country-led interpretation in Australian contexts, tribal or customary authority elsewhere, or equivalent community-led protocols — with culturally appropriate disclosure handling and storytelling where permission, provenance, and community review remain inspectable in the project archive.',
       'Evaluators assess whether entries respect published sensitivity classes: restricted cultural detail withheld from open repositories while protocol compliance is still documented; attribution and consent records maintained; and narrative claims traceable to authorised sources rather than secondary summarisation.',
-      'This category honours work where storytelling strengthens stewardship — helping future reviewers understand whose knowledge shaped design intent, under what conditions it may be cited, and how landscape records serve community continuity as well as project delivery.'
+      'This category honours work where storytelling strengthens stewardship across regions — helping future reviewers understand whose knowledge shaped design intent, under what conditions it may be cited, and how landscape records serve community continuity as well as project delivery.'
     ]
   },
   {
@@ -194,7 +194,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
       'Work that documents climate and site-context claims with cited evidence — carbon and water disclosure, adaptation performance, lifecycle maintenance intent, and metadata with disclosed methods and reproducible metrics across project phases.'
     ],
     webBody: [
-      'Climate positive impact recognises work that documents climate and site-context claims with cited evidence — carbon and water disclosure, heat and drought adaptation performance, lifecycle maintenance intent, and metadata that endures across project phases with cited baselines, disclosed methods, and reproducible metrics.',
+      'Climate positive impact recognises work that documents climate and site-context claims with cited evidence — carbon and water disclosure, heat and drought adaptation performance, lifecycle maintenance intent, and metadata that endures across project phases with cited baselines, disclosed methods, and reproducible metrics, in any climatic zone.',
       'Evaluators look for banded climate context rather than vague resilience language; planting and material choices linked to stated performance assumptions; and phase-to-phase records when substitutions affect environmental claims. Where calculators or models are used, method notes and input boundaries must be disclosed.',
       'Recognition requires honesty about limits as well as ambition. A strong submission documents what was measured, what was modelled, what remains uncertain, and how maintainers should interpret performance claims after establishment — keeping climate narrative accountable to inspectable records.'
     ]
@@ -297,7 +297,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
       'Documentation of heritage landscapes, cultural sites, and layered place histories — conservation records, sensitivity-aware field disclosure, and archives that respect custodial context while remaining inspectable for future stewardship reviewers.'
     ],
     webBody: [
-      'Heritage and cultural landscape recognises documentation of heritage landscapes, cultural sites, and layered place histories — conservation records, sensitivity-aware field disclosure, and archives that respect custodial context while remaining inspectable for future stewardship reviewers.',
+      'Heritage and cultural landscape recognises documentation of heritage landscapes, cultural sites, and layered place histories — conservation records, sensitivity-aware field disclosure, and archives that respect custodial context while remaining inspectable for future stewardship reviewers, across national and customary heritage frameworks.',
       'Evaluators look for phased documentation of fabric, vegetation, and use; clear distinction between observed condition and inferred history; and sensitivity handling that keeps restricted detail out of open repositories while still proving protocol was followed. Cross-disciplinary collaboration with historians, custodians, and conservators strengthens submissions.',
       'Eligible work includes conservation management plans, heritage impact assessments, cultural landscape studies, and delivery projects where heritage values shaped planting, grading, and materials — provided the archive transmits those decisions with enough evidential depth for successors to steward place without eroding significance.'
     ]
@@ -364,7 +364,7 @@ export function buildFoundationAwardsTopicPage({
 
   return {
     title: 'Awards',
-    lead: `A vendor-neutral recognition programme for applied landscape architecture and archival stewardship — work that preserves, documents, and transmits landscape practice through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry. Programme in preparation under interim draft governance.`,
+    lead: `An internationally oriented, vendor-neutral recognition programme for applied landscape architecture, urban design, ecological practice, and archival stewardship — work that preserves, documents, and transmits landscape practice through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry, including cross-jurisdictional modules where published. Programme in preparation under interim draft governance; no entries or winners yet.`,
     placeholder: false,
     sections: [
       {
@@ -374,7 +374,7 @@ export function buildFoundationAwardsTopicPage({
           ...getSlideWebParagraphs(scopeSlide),
           ...getSlideWebParagraphs(evaluativeSlide),
           ...(introSlide ? getSlideWebParagraphs(introSlide).slice(0, 2) : []),
-          'The programme is independent of any commercial product stack. Submissions may originate from any practice, institution, or open-source contributor, using any authoring environment that meets published criteria and supplies sufficient material for independent review.'
+          'The programme is independent of any commercial product stack. Submissions may originate from any practice, institution, or open-source contributor in any region, using any authoring environment that meets published criteria and supplies sufficient material for independent review — without implying active Foundation programmes or branch operations abroad.'
         ].filter(Boolean)
       },
       {
@@ -396,7 +396,7 @@ export function buildFoundationAwardsTopicPage({
           'Archival legibility requires that submitted material remain interpretable beyond the originating project team — phase-labelled records, harmonised identifiers, and delivery archives that a third party could audit without proprietary tooling or informal briefing.',
           'Interchange standards conformance requires that submitted bundles validate against published schema versions, use registered field identifiers from the public registry, and document any extensions or local profiles through crosswalk notes.',
           'Reproducibility and auditability require that evidence URIs, method notes, or open repositories cited in metadata remain accessible to reviewers for the assessment window, and that material differences between design, construction, and as-maintained records are disclosed with phase-to-phase transparency.',
-          'Institutional and cultural accountability requires that entries involving Indigenous knowledge, restricted cultural detail, or community co-design respect published sensitivity classes — keeping restricted material out of open repositories while still documenting that protocol was followed.'
+          'Institutional and cultural accountability requires that entries involving Indigenous knowledge, restricted cultural detail, or community co-design respect published sensitivity classes — keeping restricted material out of open repositories while still documenting that protocol was followed, under the custodial authority applicable in each jurisdiction.'
         ],
         facts: [
           { label: 'Documentation integrity', value: 'Claims encoded in machine-readable fields with consistent phase-to-phase traceability' },
@@ -417,14 +417,14 @@ export function buildFoundationAwardsTopicPage({
         id: 'programme-governance',
         heading: 'Programme governance and assessment process',
         paragraphs: [
-          'The awards programme is in preparation under interim draft governance. When active, entries will be assessed by a panel comprising landscape architecture practice, academic research, public-sector delivery, and First Nations advisory representation — with published conflict-of-interest rules and category rubrics released before each cycle.',
-          'Assessment will be blind to entrant commercial affiliation where practical. Criteria, anonymised scoring rationales, and aggregate results are intended to be public so recognition can be inspected and cited in academic or institutional contexts.',
+          'The awards programme is in preparation under interim draft governance. When active, entries will be assessed by an international panel comprising landscape architecture and urban design practice, academic research, public-sector delivery, Indigenous advisory representation, and interchange specialists — with published conflict-of-interest rules and category rubrics released before each cycle.',
+          'Assessment will be blind to entrant commercial affiliation where practical. Criteria, anonymised scoring rationales, and aggregate results are intended to be public so recognition can be inspected and cited in academic or institutional contexts worldwide.',
           'Awards confer documented recognition within the programme\'s published scope: independently reviewed exemplars of applied landscape architecture, archival stewardship, and interchange discipline that universities, agencies, and peers may cite alongside the open specification and field registry. They do not confer government accreditation, professional registration, or vendor certification.'
         ],
         actions: [
           { label: 'The Foundation Standards', href: governancePath },
           {
-            label: 'Register interest',
+            label: 'Register interest — entries and international jury advisory',
             href: `${supportContactPath}&intent=awards`,
             external: supportContactExternal
           }
