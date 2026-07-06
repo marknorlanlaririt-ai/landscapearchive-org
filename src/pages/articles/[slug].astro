@@ -12,19 +12,31 @@ export function getStaticPaths() {
 
 const { article } = Astro.props
 
+const articlePath = `/articles/${article.slug}`
+const articleUrl = new URL(articlePath, Astro.site ?? 'https://landscapearchive.org').toString()
+
 // Article structured data — helps the essay surface as a citable Article.
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: article.title,
   description: article.dek,
+  url: articleUrl,
+  mainEntityOfPage: articleUrl,
   datePublished: article.date,
   author: { '@type': 'Organization', name: article.author },
-  publisher: { '@type': 'Organization', name: 'The Landscape Archive Foundation' }
+  publisher: {
+    '@type': 'Organization',
+    name: 'The Landscape Archive Foundation',
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/tla-foundation-mark.svg', Astro.site ?? 'https://landscapearchive.org').toString()
+    }
+  }
 }
 ---
 
-<BaseLayout title={article.title} description={article.dek} path={`/articles/${article.slug}`}>
+<BaseLayout title={article.title} description={article.dek} path={articlePath}>
   <article class="page essay">
     <div class="essay__head prose">
       <p class="eyebrow"><a class="essay__back" href="/articles">Field Notes</a></p>

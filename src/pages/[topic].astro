@@ -16,7 +16,7 @@ const pagePath = `/${page.slug}`
 const memberOnly = isMemberOnlyOrgPath(pagePath)
 ---
 
-<BaseLayout title={page.title} description={page.lead} path={pagePath}>
+<BaseLayout title={page.title} description={page.lead} path={pagePath} noindex={memberOnly}>
   <div class="page topic" data-member-only-page={memberOnly ? '' : undefined}>
     <div class="topic__intro prose">
       <p class="eyebrow">The Landscape Archive Foundation</p>

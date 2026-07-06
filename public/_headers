@@ -1,16 +1,30 @@
 # Cloudflare Pages headers for landscapearchive.org
 
 /*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), clipboard-read=(), clipboard-write=(), display-capture=(), fullscreen=(), geolocation=(), gyroscope=(), hid=(), microphone=(), payment=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-site
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data: https:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; script-src-attr 'none'; connect-src 'self' https://landscapearchive.com.au https://landscapearchive.org; form-action 'self' https://landscapearchive.com.au; upgrade-insecure-requests
 
 /.well-known/security.txt
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=86400
+
+/sign-in
+  X-Robots-Tag: noindex, nofollow
+
+/sign-in.html
+  X-Robots-Tag: noindex, nofollow
+
+/events
+  X-Robots-Tag: noindex, nofollow
+
+/events.html
+  X-Robots-Tag: noindex, nofollow
 
 # Hashed Astro assets are immutable
 /_astro/*
@@ -22,3 +36,6 @@
 
 /scripts/*
   Cache-Control: public, max-age=3600
+
+/og-foundation.png
+  Cache-Control: public, max-age=86400

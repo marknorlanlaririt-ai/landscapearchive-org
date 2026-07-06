@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# Member handoff and internal programme pages — not useful in search indexes.
+Disallow: /sign-in
+Disallow: /events
+
 Sitemap: https://landscapearchive.org/sitemap-index.xml
+
+# Open TLA-185 schema reference (separate host)
+# Sitemap: https://schema.landscapearchive.org/sitemap.xml
