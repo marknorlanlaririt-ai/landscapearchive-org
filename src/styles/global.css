@@ -240,3 +240,15 @@ a:hover {
   white-space: nowrap;
   border: 0;
 }
+
+/* Header/footer lettermark — white TLA on green chrome only (hero/body stay dark) */
+.site-header .tla-lettermark,
+.site-footer .tla-lettermark {
+  --tla-lettermark-text: #ffffff;
+  color: #ffffff;
+}
+
+.site-header .tla-lettermark__text,
+.site-footer .tla-lettermark__text {
+  fill: #ffffff;
+}
