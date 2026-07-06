@@ -1,4 +1,4 @@
-import {
+mport {
   FOUNDATION_COMMERCIAL_CONTACT_PATH,
   FOUNDATION_SUPPORT_CONTACT_PATH,
   FEDERATION_SCHEMA_PORTAL_URL,
@@ -21,7 +21,7 @@ export function buildFoundationHomeSections({
   return Object.freeze([
     {
       id: 'mission-draft',
-      heading: 'Mission (draft)',
+      heading: 'Mission',
       paragraphs: [
         `The intended mission is to advance environmental and social benefit through open, citable infrastructure for honest landscape documentation — botanical authenticity, auditable climate disclosure, culturally protocol-aware metadata, and ethical synthetic-nature provenance. The public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification is the primary instrument: a shared vocabulary that makes project claims inspectable rather than implied.`,
         'That work supports capacity building internationally across landscape architecture, ecology, BIM information management, and allied professions — in teaching, research, procurement, and public-sector digital programmes. This is draft charitable scope for consultation; we do not claim incorporated charity status, active grant programmes, or humanitarian field operations.'
