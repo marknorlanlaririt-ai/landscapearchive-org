@@ -69,7 +69,7 @@ export const FOUNDATION_ASSIGNEE = FOUNDATION_DISPLAY_NAME
 
 /** Build the interim copyright line shown in the footer. */
 export const buildFoundationCopyrightLine = (year = new Date().getFullYear()) =>
-  `© ${year} ${FOUNDATION_IP_HOLDER}. Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification licensed under ${FOUNDATION_LICENCE_LABEL}; copyright to be assigned to ${FOUNDATION_ASSIGNEE} on incorporation.`
+  `© ${year} ${FOUNDATION_IP_HOLDER}. Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification licensed under ${FOUNDATION_LICENCE_LABEL}; copyright intended for assignment to ${FOUNDATION_ASSIGNEE} when a suitable independent entity is established.`
 
 // Commercial + support handoffs → the Archive .com.au site (absolute) --------
 
@@ -93,7 +93,8 @@ export const FOUNDATION_COMMERCIAL_LICENCE_NOTICE =
   'Commercial use, TLA Brain, enterprise integration, and 3D assets require a separate licence.'
 
 export const FOUNDATION_HOSTING_NOTICE =
-  `Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification copyright is held by ${FOUNDATION_IP_HOLDER} (IP holding company). Interim hosting by ${FOUNDATION_INTERIM_HOST} (implementation partner). The copyright is intended for assignment to ${FOUNDATION_ASSIGNEE} on incorporation.`
+  `Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification copyright is held by ${FOUNDATION_IP_HOLDER} (IP holding company). Interim hosting by ${FOUNDATION_INTERIM_HOST} (implementation partner). Copyright is intended for assignment to ${FOUNDATION_ASSIGNEE} when a suitable independent entity is established.`
 
+/** Keep in sync with la-frontend/src/config/foundationWing.js and federation/portal/site-config.js */
 export const FOUNDATION_DRAFT_BANNER =
-  'Draft governance (interim). The Landscape Archive Foundation is proceeding toward incorporation as an independent steward of the public specification. The Landscape Archive Pty Ltd provides interim hosting as implementation partner. These pages describe intended governance and licence terms; consult qualified advisers for legal interpretation.'
+  'Draft governance (interim). The Landscape Archive Foundation name and governance model described here reflect intended stewardship of the public specification once a suitable independent entity is established. The Landscape Archive Pty Ltd provides interim hosting as implementation partner. These pages describe draft governance and licence terms for discussion only; consult qualified advisers for legal interpretation.'

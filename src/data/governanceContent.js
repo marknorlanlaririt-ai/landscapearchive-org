@@ -185,14 +185,14 @@ export function buildFoundationGovernanceSections({
       id: 'interim-stewardship',
       heading: 'Interim stewardship',
       paragraphs: [
-        'The Landscape Archive Foundation is proceeding toward incorporation as an independent steward of the public specification. Interim hosting is provided by The Landscape Archive Pty Ltd (implementation partner). Until incorporation is complete, copyright in the public specification is held by The Landscape Vault Pty Ltd (IP holding company) and is intended to be assigned to the Foundation on registration.',
-        'These pages describe the intended governance model and licence terms. For legal interpretation, consult qualified advisers.'
+        'The Landscape Archive Foundation name and governance model described here reflect intended stewardship of the public specification once a suitable independent entity is established. Interim hosting is provided by The Landscape Archive Pty Ltd (implementation partner). Copyright in the public specification is held by The Landscape Vault Pty Ltd (IP holding company) and is intended for assignment to the Foundation when a suitable independent entity is established.',
+        'These pages describe draft governance and licence terms for discussion only. For legal interpretation, consult qualified advisers.'
       ],
       bullets: [
         `Specification published under ${FOUNDATION_LICENCE_LABEL}`,
-        'Interim copyright held by The Landscape Vault Pty Ltd, pending assignment to the Foundation',
+        'Interim copyright held by The Landscape Vault Pty Ltd, pending intended assignment when a suitable independent entity is established',
         'Species values, automation, and commercial assets excluded from the public open layer',
-        'Path toward autonomous governance through advisory board and non-profit incorporation'
+        'Aspirational path toward autonomous governance through advisory board and independent entity formation'
       ]
     },
     {

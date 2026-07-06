@@ -85,15 +85,15 @@ export function buildFoundationHomeSections({
       id: 'support',
       heading: 'Support the standard',
       paragraphs: [
-        'The Landscape Archive Foundation is proceeding toward incorporation. Until registration is complete, voluntary contributions are received interim by The Landscape Archive Pty Ltd (implementation partner) and are not yet eligible for tax-deductible receipts.',
-        `Referencing ${TLA185_DISPLAY_ID} or ${TLA169_DISPLAY_ID} under CC BY-NC-ND 4.0 requires no payment; voluntary support helps fund hosting, documentation, and incorporation.`,
+        'The Landscape Archive Foundation is not yet an incorporated entity. Voluntary contributions are received interim by The Landscape Archive Pty Ltd (implementation partner) and are not yet eligible for tax-deductible receipts.',
+        `Referencing ${TLA185_DISPLAY_ID} or ${TLA169_DISPLAY_ID} under CC BY-NC-ND 4.0 requires no payment; voluntary support helps fund hosting, documentation, and governance preparation.`,
         'Bank transfer (Australia): expand the bank details below. Include the payment reference so we can reconcile your transfer.'
       ],
       facts: [...FOUNDATION_SUPPORT_BANK_FACTS],
       factsCollapsible: true,
       factsToggleLabel: 'Show bank transfer details',
       bullets: [
-        'Tax-deductible treatment will apply once the Foundation completes incorporation and any applicable deductible gift recipient registration.',
+        'Tax-deductible treatment may apply if and when an independent Foundation entity is established and any applicable deductible gift recipient registration is obtained.',
         'We only publish these bank details on our official Landscape Archive websites (landscapearchive.org and landscapearchive.com.au) — never by SMS or from a personal email address.',
         'For invoicing, recurring support, or amounts over $5,000 AUD, contact us first.'
       ],
