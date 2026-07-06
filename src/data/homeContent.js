@@ -64,7 +64,7 @@ export function buildFoundationHomeSections({
       id: 'governance',
       heading: 'Governance and licence',
       paragraphs: [
-        'The Landscape Archive Foundation is the intended independent steward of the public specification layer. Interim hosting is provided by The Landscape Archive Pty Ltd until incorporation.',
+        'The Landscape Archive Foundation is the intended independent steward of the public specification layer. Interim hosting is provided by The Landscape Archive Pty Ltd (implementation partner) pending establishment of a suitable independent entity.',
         'The public specification and schema documentation are published under CC BY-NC-ND 4.0 — attribution required; non-commercial reference without modification.'
       ],
       actions: [{ label: 'Governance and Foundation Standards', href: GOVERNANCE_PATH }]
