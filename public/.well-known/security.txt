@@ -1,0 +1,6 @@
+Contact: mailto:security@landscapearchive.com.au
+Expires: 2027-07-06T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://landscapearchive.org/.well-known/security.txt
+Policy: https://landscapearchive.com.au/legal?tab=vulnerability-disclosure
+Acknowledgments: https://landscapearchive.com.au/legal?tab=vulnerability-disclosure
