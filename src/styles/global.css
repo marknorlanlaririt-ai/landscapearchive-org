@@ -40,6 +40,15 @@
   color-scheme: light;
 }
 
+@media (max-width: 720px) {
+  :root {
+    --foundation-header-mark-size: 36px;
+    --foundation-header-word-size: 0.72rem;
+    --foundation-header-min-height: 0;
+    --foundation-header-brand-gap: 0.5rem;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -251,4 +260,33 @@ a:hover {
 .site-header .tla-lettermark__text,
 .site-footer .tla-lettermark__text {
   fill: #ffffff;
+}
+
+/* Scroll-triggered entrance animations ------------------------------------ */
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js-animate-ready [data-animate-in]:not(.is-visible) {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+
+  [data-animate-in] {
+    --animate-delay: 0ms;
+    transition:
+      opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--animate-delay, 0ms);
+  }
+
+  [data-animate-in].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate-in] {
+    opacity: 1;
+    transform: none;
+  }
 }
