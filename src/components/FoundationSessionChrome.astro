@@ -84,4 +84,27 @@ const signInPageUrl = ORG_SIGN_IN_PATH
     outline: 2px solid #9fb0a3;
     outline-offset: 2px;
   }
+
+  @media (max-width: 720px) {
+    .foundation-session-chrome--guest {
+      min-height: 1.75rem;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.74rem;
+    }
+
+    .foundation-session-chrome:not(.foundation-session-chrome--guest) {
+      gap: 0.35rem;
+    }
+
+    .foundation-session-chrome__label {
+      max-width: 7.5rem;
+      font-size: 0.72rem;
+    }
+
+    .foundation-session-chrome__action {
+      min-height: 1.75rem;
+      padding: 0.25rem 0.45rem;
+      font-size: 0.74rem;
+    }
+  }
 </style>

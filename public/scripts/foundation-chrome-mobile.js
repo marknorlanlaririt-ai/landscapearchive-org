@@ -1,6 +1,6 @@
 /**
- * Mobile-only Foundation chrome: hide header nav/session on scroll down,
- * reveal on scroll up; collapse draft banner with tap-to-expand.
+ * Mobile-only Foundation chrome: hide header nav on scroll down, keep brand row
+ * and Sign in visible; reveal nav on scroll up; collapse draft banner with tap.
  */
 (function () {
   var MOBILE_QUERY = '(max-width: 720px)'
