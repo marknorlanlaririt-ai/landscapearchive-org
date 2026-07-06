@@ -201,6 +201,17 @@ export const AWARDS_PROGRAMME_SLIDES = [
     body: [
       'Documentation of heritage landscapes, cultural sites, and layered place histories — conservation records, sensitivity-aware field disclosure, and archives that respect custodial context while remaining inspectable for future stewardship reviewers.'
     ]
+  },
+  {
+    filename: '21-distinguished-practitioner.jpg',
+    kicker: 'Award category',
+    title: 'Distinguished practitioner',
+    titleLong: true,
+    footerUrl: 'landscapearchive.org/awards',
+    body: [
+      'Sustained landscape practice over decades — a career portfolio of delivered projects whose archives remain legible after handover, with documented planting intent, site analysis, and maintenance records inspectable across phases rather than isolated flagship submissions alone.',
+      'Recognition includes mentorship, field stewardship, and contribution to botanical and documentation literacy in practice. Assessment follows TLA-185 evaluative framing on reproducible evidence and vendor-neutral excellence — not popularity, tenure alone, or media profile.'
+    ]
   }
 ]
 
