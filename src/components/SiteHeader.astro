@@ -153,12 +153,36 @@ const current = normalize(activePath)
       align-items: flex-start;
       gap: 0.6rem;
       padding-block: 0.7rem;
+      transition:
+        padding 240ms ease,
+        gap 240ms ease;
     }
 
     .site-header__end {
       width: 100%;
       flex-direction: column;
       align-items: flex-start;
+      max-height: 24rem;
+      opacity: 1;
+      overflow: hidden;
+      transition:
+        max-height 280ms ease,
+        opacity 220ms ease,
+        transform 280ms ease;
+    }
+
+    .site-header--chrome-collapsed .site-header__inner {
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
+      padding-block: 0.35rem;
+    }
+
+    .site-header--chrome-collapsed .site-header__end {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-0.35rem);
+      pointer-events: none;
     }
 
     .site-header__nav {
@@ -166,6 +190,13 @@ const current = normalize(activePath)
       width: 100%;
       flex-wrap: wrap;
       overflow-x: visible;
+    }
+  }
+
+  @media (max-width: 720px) and (prefers-reduced-motion: reduce) {
+    .site-header__inner,
+    .site-header__end {
+      transition: none;
     }
   }
 </style>

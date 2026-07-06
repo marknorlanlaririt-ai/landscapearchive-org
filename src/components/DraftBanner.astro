@@ -6,13 +6,24 @@ import {
 } from '../data/foundationWing.js'
 ---
 
-<aside class="draft-banner" role="note">
+<aside class="draft-banner" data-draft-banner role="note">
   <div class="page draft-banner__inner">
     <span class="draft-banner__tag">Interim</span>
-    <p class="draft-banner__text">
-      {FOUNDATION_DRAFT_BANNER}
-      <a class="draft-banner__cta" href={FOUNDATION_GOVERNANCE_UPDATES_URL}>{FOUNDATION_DRAFT_BANNER_CTA_LABEL}</a>.
-    </p>
+    <div class="draft-banner__clip">
+      <p class="draft-banner__text" id="foundation-draft-banner-text">
+        {FOUNDATION_DRAFT_BANNER}
+        <a class="draft-banner__cta" href={FOUNDATION_GOVERNANCE_UPDATES_URL}>{FOUNDATION_DRAFT_BANNER_CTA_LABEL}</a>.
+      </p>
+    </div>
+    <button
+      type="button"
+      class="draft-banner__toggle"
+      data-draft-banner-toggle
+      aria-expanded="false"
+      aria-controls="foundation-draft-banner-text"
+    >
+      Read more
+    </button>
   </div>
 </aside>
 
@@ -27,6 +38,11 @@ import {
     align-items: baseline;
     gap: 0.8rem;
     padding-block: 0.7rem;
+  }
+
+  .draft-banner__clip {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .draft-banner__tag {
@@ -60,5 +76,69 @@ import {
   .draft-banner__cta:hover {
     color: var(--ink);
     text-decoration-color: rgba(47, 42, 32, 0.65);
+  }
+
+  .draft-banner__toggle {
+    display: none;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+    cursor: pointer;
+  }
+
+  .draft-banner__toggle:hover {
+    color: var(--ink);
+  }
+
+  @media (max-width: 720px) {
+    .draft-banner__inner {
+      flex-wrap: wrap;
+      align-items: flex-start;
+      row-gap: 0.35rem;
+    }
+
+    .draft-banner__clip {
+      flex-basis: calc(100% - 4.5rem);
+    }
+
+    .draft-banner:not(.draft-banner--expanded) .draft-banner__clip {
+      max-height: var(--draft-banner-collapsed-max, 2.75rem);
+      overflow: hidden;
+    }
+
+    .draft-banner:not(.draft-banner--expanded) .draft-banner__clip::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1.35rem;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(247, 246, 242, 0), var(--accent-tint));
+    }
+
+    .draft-banner__clip {
+      position: relative;
+    }
+
+    .draft-banner__toggle {
+      display: inline-flex;
+      margin-left: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .draft-banner__clip::after {
+      transition: none;
+    }
   }
 </style>
