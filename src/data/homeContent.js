@@ -30,6 +30,15 @@ export function buildFoundationHomeSections({
       actions: [{ label: 'Read the Foundation Standards', href: GOVERNANCE_PATH }]
     },
     {
+      id: 'intended-scope',
+      heading: 'Intended public purpose',
+      paragraphs: [
+        'The Foundation’s draft public purpose — mission, intended beneficiaries, activities, and funding — is published for international consultation. It ties open botanical and BIM specification stewardship to environmental and social benefit without claiming incorporated charity status or active grant programmes.',
+        'Interim hosting is provided by an Australian implementation partner; the specification itself is published for global reference under the open licence.'
+      ],
+      actions: [{ label: 'Read draft purpose (governance)', href: `${GOVERNANCE_PATH}#intended-purpose` }]
+    },
+    {
       id: 'truth-telling',
       heading: 'Truth and truth-telling',
       paragraphs: [

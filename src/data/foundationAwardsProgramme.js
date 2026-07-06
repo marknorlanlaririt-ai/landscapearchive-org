@@ -29,7 +29,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     webBody: [
       'The Landscape Archive Foundation Awards recognise work that advances the archival and information architecture of landscape practice — delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods whose claims remain traceable to cited sources and open to independent review.',
       'The programme is vendor-neutral and independent of any commercial product stack. Recognition rests on documentary integrity, metadata stewardship, and reproducible assessment material — not stylistic preference, tenure alone, or affiliation with a particular authoring environment.',
-      'The awards programme is in preparation ahead of Foundation incorporation. Full charter, category rubrics, and assessment process will be published at landscapearchive.org/awards before entries open.'
+      'The awards programme is in preparation under interim draft governance. Full charter, category rubrics, and assessment process will be published at landscapearchive.org/awards before entries open.'
     ]
   },
   {
@@ -112,13 +112,14 @@ export const AWARDS_PROGRAMME_SLIDES = [
   {
     filename: '07-botanical-literacy.jpg',
     kicker: 'Award category',
-    title: 'Botanical literacy',
+    title: 'Botanical & horticultural literacy',
+    titleLong: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Species identification, phenology, establishment ecology, and planting design reasoning documented with accepted nomenclature, cited trait sources, and field records that encode inspectable botanical rationale for contractors and maintainers.'
+      'Species identification, phenology, establishment ecology, horticultural practice, and planting design reasoning documented with accepted nomenclature, cited trait sources, and field records that encode inspectable botanical rationale for contractors and maintainers.'
     ],
     webBody: [
-      'Botanical literacy recognises planting design and specification work grounded in defensible plant knowledge — species and cultivar identification, phenology, establishment ecology, growth form, and maintenance implications documented with accepted nomenclature and cited trait sources, with common names cross-referenced to accepted nomenclature and growth-habit claims supported by documented observation or published references.',
+      'Botanical and horticultural literacy recognises planting design and specification work grounded in defensible plant knowledge and horticultural practice — species and cultivar identification, phenology, establishment ecology, growth form, and maintenance implications documented with accepted nomenclature and cited trait sources, with common names cross-referenced to accepted nomenclature and growth-habit claims supported by documented observation or published references.',
       'Evaluators look for planting schedules and design narratives that explain why particular taxa were selected for particular site contexts; field records or post-occupancy observations where available; and structured metadata that contractors and maintainers can inspect alongside design deliverables.',
       'This category welcomes work that makes botanical reasoning explicit in the project archive — linking planting intent to soil, exposure, hydrology, and maintenance regime, and documenting where substitutions occurred with enough botanical detail for future reviewers to assess ecological and horticultural consequence.'
     ]
@@ -363,7 +364,7 @@ export function buildFoundationAwardsTopicPage({
 
   return {
     title: 'Awards',
-    lead: `A vendor-neutral recognition programme for applied landscape architecture and archival stewardship — work that preserves, documents, and transmits landscape practice through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry. Programme in preparation ahead of Foundation incorporation.`,
+    lead: `A vendor-neutral recognition programme for applied landscape architecture and archival stewardship — work that preserves, documents, and transmits landscape practice through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry. Programme in preparation under interim draft governance.`,
     placeholder: false,
     sections: [
       {
@@ -416,7 +417,7 @@ export function buildFoundationAwardsTopicPage({
         id: 'programme-governance',
         heading: 'Programme governance and assessment process',
         paragraphs: [
-          'The awards programme is in preparation ahead of Foundation incorporation. When active, entries will be assessed by a panel comprising landscape architecture practice, academic research, public-sector delivery, and First Nations advisory representation — with published conflict-of-interest rules and category rubrics released before each cycle.',
+          'The awards programme is in preparation under interim draft governance. When active, entries will be assessed by a panel comprising landscape architecture practice, academic research, public-sector delivery, and First Nations advisory representation — with published conflict-of-interest rules and category rubrics released before each cycle.',
           'Assessment will be blind to entrant commercial affiliation where practical. Criteria, anonymised scoring rationales, and aggregate results are intended to be public so recognition can be inspected and cited in academic or institutional contexts.',
           'Awards confer documented recognition within the programme\'s published scope: independently reviewed exemplars of applied landscape architecture, archival stewardship, and interchange discipline that universities, agencies, and peers may cite alongside the open specification and field registry. They do not confer government accreditation, professional registration, or vendor certification.'
         ],

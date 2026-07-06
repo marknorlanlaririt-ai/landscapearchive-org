@@ -15,6 +15,7 @@ import {
   TLA185_VERSION,
   isOpenStandardGithubPubliclyAvailable
 } from './foundationWing.js'
+import { buildFoundationIntendedPurposeSections } from './purposeContent.js'
 
 /**
  * Foundation mission and Foundation Standards (five pillars).
@@ -34,6 +35,7 @@ export function buildFoundationGovernanceSections({
         'The Foundation maintains the canonical specification as independent public infrastructure — a shared reference that no single vendor controls, so criteria for botanically informed digital representation remain open to scrutiny and revision through governance.'
       ]
     },
+    ...buildFoundationIntendedPurposeSections(),
     {
       id: 'truth-telling',
       heading: 'Truth and truth-telling',
@@ -60,7 +62,7 @@ export function buildFoundationGovernanceSections({
       facts: [
         { label: 'The Landscape Vault Pty Ltd', value: 'Private holding company. Proprietary IP: TLA Brain, 3D assets, databases, and pipelines.' },
         { label: 'The Landscape Archive Pty Ltd', value: 'Commercial operator under Vault licence. Products, sales, and interim Foundation hosting.' },
-        { label: 'The Landscape Archive Foundation', value: `Intended independent steward (incorporation in progress). Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specifications under CC BY-NC-ND 4.0.` }
+        { label: 'The Landscape Archive Foundation', value: `Intended independent steward (not yet incorporated). Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specifications under CC BY-NC-ND 4.0.` }
       ]
     },
     {
@@ -155,7 +157,7 @@ export function buildFoundationGovernanceSections({
       paragraphs: [
         'Public-sector agencies, utilities, and standards bodies increasingly require reference architectures that can be cited in procurement, audited by third parties, and adapted across programmes without lock-in to a single vendor’s data model. Landscape planting metadata sits at the intersection of biodiversity policy, urban greening targets, climate adaptation, and digital twin initiatives — yet it is often represented either informally in CAD layers or opaquely inside proprietary platforms. The fourth pillar positions the Foundation as steward of an openly documented environmental information standard that agencies may reference independently of commercial implementation choices.',
         `In its present form, the ${TLA185_DISPLAY_ID} specification is suitable as a reference layer in procurement documentation, digital twin metadata discussions, and ISO 19650-style information-management conversations. An agency may adopt the schema as a non-commercial reference under the published licence while licensing BIM integration, populated datasets, and automation separately through commercial channels. Foundation Approved provides a machine-checkable baseline for interchange — describing bundle structure and minimum disclosure against published conformance criteria.`,
-        'The charter envisages a Council composition that includes practice, academic, public-body, and First Nations advisory representation, with protocol review on cultural-context rules before adoption. No single vendor is intended to hold a voting majority. Interim Foundation pages describe the intended governance model; formal government partnerships will be published as agreements are concluded. Incorporation, memoranda of understanding with digital twin programmes and environmental agencies, and published advocacy for open planting metadata remain forward work — but the intellectual basis for that engagement is already public.',
+        'The charter envisages a Council composition that includes practice, academic, public-body, and First Nations advisory representation, with protocol review on cultural-context rules before adoption. No single vendor is intended to hold a voting majority. Interim Foundation pages describe the intended governance model; formal government partnerships will be published as agreements are concluded. Independent entity formation, memoranda of understanding with digital twin programmes and environmental agencies, and published advocacy for open planting metadata remain forward work subject to adviser review — but the intellectual basis for that engagement is already public.',
         'For public institutions, the practical proposition is straightforward. Reference the open specification freely in policy and procurement language; implement through whichever licensed partners meet operational requirements; and assess interchange records against published conformance criteria. That model preserves institutional sovereignty while giving landscape metadata a durable, citable home independent of any one product roadmap.'
       ]
     },

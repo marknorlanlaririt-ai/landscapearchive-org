@@ -16,7 +16,7 @@ export const foundationTopicPages = Object.freeze({
   volunteers: {
     slug: 'volunteers',
     title: 'Volunteers',
-    lead: `Practical ways to help steward the open ${TLA185_DISPLAY_ID} specification — documentation, schema review, crosswalks, and community outreach — while the Foundation completes incorporation.`,
+    lead: `Practical ways to help steward the open ${TLA185_DISPLAY_ID} specification — documentation, schema review, crosswalks, and community outreach — while the Foundation operates under interim draft governance.`,
     placeholder: false,
     sections: [
       {
@@ -46,7 +46,7 @@ export const foundationTopicPages = Object.freeze({
           ...(isOpenStandardGithubPubliclyAvailable()
             ? []
             : [OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE]),
-          'Until incorporation, volunteer coordination runs through The Landscape Archive Pty Ltd as interim implementation partner.'
+          'Until a suitable independent entity is established, volunteer coordination runs through The Landscape Archive Pty Ltd as interim implementation partner.'
         ],
         actions: [
           ...(isOpenStandardGithubPubliclyAvailable()
