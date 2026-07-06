@@ -1,4 +1,4 @@
-import { ARCHIVE_ORIGIN, FOUNDATION_DISPLAY_NAME, SCHEMA_PORTAL_URL } from './site.js'
+import { ARCHIVE_ORIGIN, FOUNDATION_DISPLAY_NAME, SCHEMA_PORTAL_URL, SITE_ORIGIN } from './site.js'
 
 // Standard identity ---------------------------------------------------------
 
