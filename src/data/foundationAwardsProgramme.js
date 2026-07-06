@@ -5,6 +5,16 @@ export function getSlideWebParagraphs(slide) {
   return slide.webBody ?? slide.body
 }
 
+/** Website-only section — no carousel JPEG; merged into evaluative-purpose slide for Instagram. */
+export const ARCHIVAL_STEWERSHIP_WEB_SECTION = Object.freeze({
+  heading: 'Archival stewardship',
+  paragraphs: [
+    'Archival stewardship honours practitioners and institutions that treat the project archive as durable scholarly infrastructure rather than a presentation bundle assembled at project close-out. Nominated work demonstrates nomenclature aligned to accepted taxonomic and geospatial authorities, provenance for trait and site claims, and phase-labelled records that contractors, maintainers, and future reviewers can inspect without reconstructing intent from graphics alone.',
+    'Stewardship extends beyond individual projects to contributions that improve communal reference integrity — curated species and site datasets, validator tooling, crosswalk documentation, and institutional policies that keep open metadata accurate across authoring environments.',
+    'Evaluators look for project archives where planting schedules, establishment assumptions, maintenance intent, and sensitivity handling remain legible years after the originating team has moved on — evidence that landscape practice is being transmitted, not merely displayed.'
+  ]
+})
+
 /** @type {AwardsProgrammeSlide[]} */
 export const AWARDS_PROGRAMME_SLIDES = [
   {
@@ -17,8 +27,8 @@ export const AWARDS_PROGRAMME_SLIDES = [
       'A vendor-neutral recognition programme for applied landscape architecture and archival stewardship. Programme in preparation — full charter at landscapearchive.org/awards.'
     ],
     webBody: [
-      'The Landscape Archive Foundation Awards recognise work that strengthens the archival and information architecture of landscape practice — delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods whose claims remain inspectable after handover.',
-      'The programme is vendor-neutral and independent of any commercial product stack. Recognition is conferred on the quality of documentary evidence, metadata stewardship, and reproducible assessment material — not on stylistic preference, tenure alone, or affiliation with a particular authoring environment.',
+      'The Landscape Archive Foundation Awards recognise work that advances the archival and information architecture of landscape practice — delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods whose claims remain traceable to cited sources and open to independent review.',
+      'The programme is vendor-neutral and independent of any commercial product stack. Recognition rests on documentary integrity, metadata stewardship, and reproducible assessment material — not stylistic preference, tenure alone, or affiliation with a particular authoring environment.',
       'The awards programme is in preparation ahead of Foundation incorporation. Full charter, category rubrics, and assessment process will be published at landscapearchive.org/awards before entries open.'
     ]
   },
@@ -32,7 +42,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
       'The programme does not confer government accreditation, professional registration, or vendor certification.'
     ],
     webBody: [
-      'The programme recognises contributions across the full documentary lifecycle of landscape architecture — from site analysis and planting intent through tender documentation, construction administration, asset maintenance, and the communal reference data that practitioners rely on when specifying, establishing, and stewarding living landscapes.',
+      'The programme recognises contributions across the full documentary lifecycle of landscape architecture — from site analysis and planting intent through tender documentation, construction administration, asset maintenance, and the communal reference data practitioners rely on when specifying, establishing, and stewarding living landscapes.',
       'Eligible work includes delivered and maintained projects; stewardship of plant and site reference data; scholarship and publication; craft documentation and spatial communication; technology and interchange tooling; community engagement and heritage documentation; and institutional programmes that embed open metadata discipline in live practice.',
       'The programme does not confer government accreditation, professional registration, or vendor certification. Awards document independently reviewed exemplars within the Foundation\'s published scope — recognition that universities, agencies, and peers may cite alongside the open specification and field registry.'
     ]
@@ -44,33 +54,17 @@ export const AWARDS_PROGRAMME_SLIDES = [
     titleLong: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Entries are assessed for documentary integrity — whether claims remain traceable to cited sources, survive construction and handover, and can be reviewed under the public field registry.',
-      'Assessment prioritises reproducible evidence and archival legibility, not stylistic preference or single-vendor workflow loyalty.'
+      'Entries are assessed for documentary integrity — whether claims remain traceable to cited sources, persist across project phases, and can be reviewed against the public field registry.',
+      'Assessment honours archives treated as scholarly infrastructure — accepted nomenclature, inspectable provenance, and reproducible evidence — not stylistic preference or single-vendor workflow loyalty.'
     ],
     webBody: [
-      'Entries are assessed for documentary integrity — whether stated landscape claims remain traceable to cited sources, survive the transition from design intent through construction and handover, and can be reviewed by a third party without proprietary tooling or informal briefing.',
+      'Entries are assessed for documentary integrity — whether stated landscape claims remain traceable to cited sources, endure from design intent through construction and long-term stewardship, and can be reviewed by a third party without proprietary tooling or informal briefing.',
       'Evaluators prioritise reproducible evidence and archival legibility. A submission demonstrates evaluative purpose when its metadata encodes what was claimed, what supports each claim, and where material changed between project phases — with null or restricted values explained where sensitivity classes apply.',
       'Assessment is deliberately independent of stylistic preference, media profile, and single-vendor workflow loyalty. The question is not whether a project photographed well on opening day, but whether its archive remains honest, complete, and inspectable for the maintainers and reviewers who inherit it.'
     ]
   },
   {
-    filename: '04-archival-stewardship.jpg',
-    kicker: 'Programme',
-    title: 'Archival stewardship',
-    titleLong: true,
-    footerUrl: 'landscapearchive.org/awards',
-    body: [
-      'Honours practitioners and institutions that treat the project archive as durable infrastructure — nomenclature aligned to accepted authorities, provenance for trait and site claims, and records contractors, maintainers, and future reviewers can inspect.',
-      'Stewardship includes contributions that improve communal reference integrity under the open field registry.'
-    ],
-    webBody: [
-      'Archival stewardship honours practitioners and institutions that treat the project archive as durable infrastructure rather than a deliverable folder assembled for handover day. Nominated work demonstrates nomenclature aligned to accepted taxonomic and geospatial authorities, provenance for trait and site claims, and phase-labelled records that contractors, maintainers, and future reviewers can inspect without reconstructing intent from presentation graphics alone.',
-      'Stewardship extends beyond individual projects to contributions that improve communal reference integrity — curated species and site datasets, validator tooling, crosswalk documentation, and institutional policies that keep open metadata accurate across authoring environments.',
-      'Evaluators look for handover packages where planting schedules, establishment assumptions, maintenance intent, and sensitivity handling remain legible years after the originating team has moved on — evidence that landscape practice is being transmitted, not merely displayed.'
-    ]
-  },
-  {
-    filename: '05-methodological-framing.jpg',
+    filename: '04-methodological-framing.jpg',
     kicker: 'Programme',
     title: 'Methodological framing',
     titleLong: true,
@@ -86,22 +80,22 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '06-applied-landscape-architecture.jpg',
+    filename: '05-applied-landscape-architecture.jpg',
     kicker: 'Award category',
     title: 'Applied landscape architecture',
     titleLong: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'The programme\'s primary recognition axis — delivered and maintained landscape architecture where the project archive remains legible after handover, from site analysis and planting intent through tender, construction administration, and asset maintenance.'
+      'The programme\'s primary recognition axis — delivered and maintained landscape architecture where the project archive remains legible across phases, from site analysis and planting intent through tender, construction administration, and asset maintenance.'
     ],
     webBody: [
-      'Applied landscape architecture is the programme\'s primary recognition axis. This category honours delivered and maintained work where the project archive remains legible after handover — not only as drawings and renders, but as structured records that encode site analysis, planting intent, grading and drainage logic, construction substitutions, and maintenance assumptions across project phases.',
+      'Applied landscape architecture is the programme\'s primary recognition axis. This category honours delivered and maintained work where the project archive remains legible across phases — not only as drawings and renders, but as structured records that encode site analysis, planting intent, grading and drainage logic, construction substitutions, and maintenance assumptions.',
       'Evaluators assess whether planting schedules harmonise accepted nomenclature with establishment context; whether tender and construction records document material changes with phase-to-phase transparency; and whether as-maintained documentation gives future stewards enough evidence to understand what was built, why, and under what performance expectations.',
       'Recognition is not limited to flagship public realm projects. Equally eligible is rigorous documentation of housing landscapes, campus open space, infrastructure corridors, and restoration work — wherever applied practice produces an inspectable archive that survives beyond presentation day.'
     ]
   },
   {
-    filename: '07-data-and-reference-stewardship.jpg',
+    filename: '06-data-and-reference-stewardship.jpg',
     kicker: 'Award category',
     title: 'Data & reference stewardship',
     titleLong: true,
@@ -116,21 +110,21 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '08-botanical-literacy.jpg',
+    filename: '07-botanical-literacy.jpg',
     kicker: 'Award category',
     title: 'Botanical literacy',
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Species identification, phenology, establishment ecology, and planting design reasoning documented with accepted nomenclature, cited trait sources, and field records that contractors and maintainers can inspect after handover.'
+      'Species identification, phenology, establishment ecology, and planting design reasoning documented with accepted nomenclature, cited trait sources, and field records that contractors and maintainers can inspect without botanic guesswork.'
     ],
     webBody: [
       'Botanical literacy recognises planting design and specification work grounded in defensible plant knowledge — species and cultivar identification, phenology, establishment ecology, growth form, and maintenance implications documented with accepted nomenclature and cited trait sources rather than generic common names or undocumented habit assumptions.',
-      'Evaluators look for planting schedules and design narratives that explain why particular taxa were selected for particular site contexts; field records or post-occupancy observations where available; and metadata that contractors and maintainers can inspect after handover without botanic guesswork.',
+      'Evaluators look for planting schedules and design narratives that explain why particular taxa were selected for particular site contexts; field records or post-occupancy observations where available; and metadata that contractors and maintainers can inspect without reconstructing horticultural intent from presentation graphics alone.',
       'This category welcomes work that makes botanical reasoning explicit in the project archive — linking planting intent to soil, exposure, hydrology, and maintenance regime, and documenting where substitutions occurred with enough botanical detail for future reviewers to assess ecological and horticultural consequence.'
     ]
   },
   {
-    filename: '09-craftsmanship-and-visualisation.jpg',
+    filename: '08-craftsmanship-and-visualisation.jpg',
     kicker: 'Award category',
     title: 'Craft & visualisation',
     titleLong: true,
@@ -145,7 +139,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '10-research-and-publication.jpg',
+    filename: '09-research-and-publication.jpg',
     kicker: 'Award category',
     title: 'Research & publication',
     titleLong: true,
@@ -160,7 +154,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '11-technology-and-ai.jpg',
+    filename: '10-technology-and-ai.jpg',
     kicker: 'Award category',
     title: 'Technology & AI',
     titleLong: true,
@@ -171,11 +165,11 @@ export const AWARDS_PROGRAMME_SLIDES = [
     webBody: [
       'Technology and AI recognises tools, pipelines, and computational methods that improve metadata fidelity and archival interchange — BIM authoring environments, IFC export paths, procedural vegetation systems, geospatial integration, validation services, and assistive AI that help practitioners encode honest landscape claims rather than automate greenwash.',
       'Evaluators require explicit methodological disclosure: what each tool populates automatically, what requires human verification, how synthetic assets are labelled, and how export preserves registered field identifiers across environments. Submissions should include validator evidence or open fixtures sufficient for independent re-examination.',
-      'Vendor-neutral assessment focuses on artefact quality and conformance outcomes, not market share. A strong entry documents where computational methods reduced error, improved handover legibility, or made previously implicit claims machine-checkable — with limitations stated as clearly as capabilities.'
+      'Vendor-neutral assessment focuses on artefact quality and conformance outcomes, not market share. A strong entry documents where computational methods reduced error, improved archival legibility at delivery, or made previously implicit claims machine-checkable — with limitations stated as clearly as capabilities.'
     ]
   },
   {
-    filename: '12-indigenous-storytelling.jpg',
+    filename: '11-indigenous-storytelling.jpg',
     kicker: 'Award category',
     title: 'Indigenous storytelling',
     titleLong: true,
@@ -190,22 +184,22 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '13-climate-positive-impact.jpg',
+    filename: '12-climate-positive-impact.jpg',
     kicker: 'Award category',
     title: 'Climate positive impact',
     titleLong: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Work that documents climate and site-context claims with cited evidence — carbon and water disclosure, adaptation performance, lifecycle maintenance intent, and metadata that survives handover without greenwash or undisclosed methodology.'
+      'Work that documents climate and site-context claims with cited evidence — carbon and water disclosure, adaptation performance, lifecycle maintenance intent, and metadata that endures without greenwash or undisclosed methodology.'
     ],
     webBody: [
-      'Climate positive impact recognises work that documents climate and site-context claims with cited evidence — carbon and water disclosure, heat and drought adaptation performance, lifecycle maintenance intent, and metadata that survives handover without greenwash or undisclosed methodology.',
+      'Climate positive impact recognises work that documents climate and site-context claims with cited evidence — carbon and water disclosure, heat and drought adaptation performance, lifecycle maintenance intent, and metadata that endures across project phases without greenwash or undisclosed methodology.',
       'Evaluators look for banded climate context rather than vague resilience language; planting and material choices linked to stated performance assumptions; and phase-to-phase records when substitutions affect environmental claims. Where calculators or models are used, method notes and input boundaries must be disclosed.',
       'Recognition requires honesty about limits as well as ambition. A strong submission documents what was measured, what was modelled, what remains uncertain, and how maintainers should interpret performance claims after establishment — keeping climate narrative accountable to inspectable records.'
     ]
   },
   {
-    filename: '14-multimedia-and-moving-picture.jpg',
+    filename: '13-multimedia-and-moving-picture.jpg',
     kicker: 'Award category',
     title: 'Multimedia & moving picture',
     titleLong: true,
@@ -220,7 +214,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '15-student-awards.jpg',
+    filename: '14-student-awards.jpg',
     kicker: 'Award category',
     title: 'Student awards',
     footerUrl: 'landscapearchive.org/awards',
@@ -234,7 +228,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '16-innovation.jpg',
+    filename: '15-innovation.jpg',
     kicker: 'Award category',
     title: 'Innovation',
     footerUrl: 'landscapearchive.org/awards',
@@ -244,11 +238,11 @@ export const AWARDS_PROGRAMME_SLIDES = [
     webBody: [
       'Innovation recognises novel methods, workflows, and institutional programmes that advance honest landscape metadata — reproducible experiments, cross-disciplinary prototypes, delivery innovations, and organisational change disclosed with methodology suitable for peer review under the open field registry.',
       'Evaluators distinguish innovation from novelty. A strong submission documents what problem was addressed, what was tried, what failed, and what evidence supports adoption — including open fixtures, pilot project archives, or published protocols others can replicate without informal access to the origin team.',
-      'Eligible work includes new interchange paths, maintenance feedback loops, participatory documentation models, and institutional programmes that embed metadata discipline in contracts and handover — wherever innovation improves inspectability rather than obscuring it behind proprietary advantage.'
+      'Eligible work includes new interchange paths, maintenance feedback loops, participatory documentation models, and institutional programmes that embed metadata discipline in delivery practice — wherever innovation improves inspectability rather than obscuring it behind proprietary advantage.'
     ]
   },
   {
-    filename: '17-practice-advocacy-and-integration.jpg',
+    filename: '16-practice-advocacy-and-integration.jpg',
     kicker: 'Award category',
     title: 'Practice advocacy & integration',
     titleLong: true,
@@ -258,12 +252,12 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ],
     webBody: [
       'Practice advocacy and integration honours practitioners and institutions that embed open metadata discipline in live practice — contract language, delivery specifications, employer standards, and client briefing templates that require interchange evidence, validator outcomes, and vendor-neutral documentation rather than treating archival quality as optional scope.',
-      'Evaluators look for documented integration across projects: how advocacy translated into delivered archives, how staff were trained, how clients and collaborators were onboarded, and how compliance was verified at handover. Policy alone is insufficient without inspectable implementation.',
+      'Evaluators look for documented integration across projects: how advocacy translated into delivered archives, how staff were trained, how clients and collaborators were onboarded, and how archival quality was evidenced at delivery. Policy alone is insufficient without inspectable implementation.',
       'Recognition includes professional bodies, public agencies, and private practices that raised baseline documentation expectations industry-wide — provided their contribution is evidenced through published guidance, anonymised case material, or open templates others can adopt.'
     ]
   },
   {
-    filename: '18-open-standards-and-interoperability.jpg',
+    filename: '17-open-standards-and-interoperability.jpg',
     kicker: 'Award category',
     title: 'Open standards & interoperability',
     titleLong: true,
@@ -278,7 +272,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '19-community-engagement.jpg',
+    filename: '18-community-engagement.jpg',
     kicker: 'Award category',
     title: 'Community engagement',
     titleLong: true,
@@ -293,7 +287,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '20-heritage-and-cultural-landscape.jpg',
+    filename: '19-heritage-and-cultural-landscape.jpg',
     kicker: 'Award category',
     title: 'Heritage & cultural landscape',
     titleLong: true,
@@ -308,17 +302,17 @@ export const AWARDS_PROGRAMME_SLIDES = [
     ]
   },
   {
-    filename: '21-distinguished-practitioner.jpg',
+    filename: '20-distinguished-practitioner.jpg',
     kicker: 'Award category',
     title: 'Distinguished practitioner',
     titleLong: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Sustained landscape practice over decades — a career portfolio whose archives remain legible after handover, with documented planting intent, site analysis, and maintenance records inspectable across phases.',
+      'Sustained landscape practice over decades — a career portfolio whose archives remain legible across phases, with documented planting intent, site analysis, and maintenance records open to independent review.',
       'Recognition includes mentorship, field stewardship, and contribution to botanical and documentation literacy. Assessment follows evaluative framing on reproducible evidence — not popularity, tenure alone, or media profile.'
     ],
     webBody: [
-      'Distinguished practitioner recognises sustained landscape practice over decades — a career portfolio of delivered projects whose archives remain legible after handover, with documented planting intent, site analysis, construction administration, and maintenance records inspectable across phases rather than reducible to a single flagship submission.',
+      'Distinguished practitioner recognises sustained landscape practice over decades — a career portfolio of delivered projects whose archives remain legible across phases, with documented planting intent, site analysis, construction administration, and maintenance records inspectable as a body of work rather than reducible to a single flagship submission.',
       'Evaluators assess cumulative contribution to archival literacy in the profession: mentorship that trains staff in nomenclature and metadata discipline; institutional programmes that raised documentation standards; field stewardship through post-occupancy review; and reference contributions that strengthened communal datasets practitioners rely on daily.',
       'This is not a lifetime-achievement gala category. Recognition follows the same evaluative framing as all programme awards — reproducible evidence, vendor-neutral excellence, and inspectable records. Popularity, tenure alone, or media profile do not substitute for demonstrated documentary integrity across a body of work nominees can substantiate for independent review.'
     ]
@@ -364,12 +358,12 @@ export function buildFoundationAwardsTopicPage({
   supportContactExternal = false
 }) {
   const introSlide = AWARDS_PROGRAMME_SLIDES.find((slide) => slide.intro)
-  const [scopeSlide, evaluativeSlide, stewardshipSlide, methodologySlide] = getAwardsProgrammeFramingSlides()
+  const [scopeSlide, evaluativeSlide, methodologySlide] = getAwardsProgrammeFramingSlides()
   const categorySlides = getAwardsProgrammeCategorySlides()
 
   return {
     title: 'Awards',
-    lead: `A vendor-neutral recognition programme for applied landscape architecture and archival stewardship — work that preserves, documents, and transmits landscape practice through inspectable project records, documentation integrity, and reproducible evidence under the public ${tla185DisplayId} field registry. Programme in preparation ahead of Foundation incorporation.`,
+    lead: `A vendor-neutral recognition programme for applied landscape architecture and archival stewardship — work that preserves, documents, and transmits landscape practice through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry. Programme in preparation ahead of Foundation incorporation.`,
     placeholder: false,
     sections: [
       {
@@ -384,8 +378,8 @@ export function buildFoundationAwardsTopicPage({
       },
       {
         id: 'archival-stewardship',
-        heading: stewardshipSlide?.title ?? 'Archival stewardship',
-        paragraphs: getSlideWebParagraphs(stewardshipSlide)
+        heading: ARCHIVAL_STEWERSHIP_WEB_SECTION.heading,
+        paragraphs: ARCHIVAL_STEWERSHIP_WEB_SECTION.paragraphs
       },
       {
         id: 'methodological-framing',
@@ -398,14 +392,14 @@ export function buildFoundationAwardsTopicPage({
         paragraphs: [
           'Published rubrics will translate the Foundation Standards into category-specific checkpoints. The following dimensions apply across all categories unless a category rubric explicitly narrows scope.',
           'Documentation integrity requires that stated claims appear in interchange metadata with phase-to-phase consistency. Fields must be populated consistently, with null or restricted values explained where sensitivity classes apply.',
-          'Archival legibility requires that submitted material remain interpretable beyond the originating project team — phase-labelled records, harmonised identifiers, and handover packages that a third party could audit without proprietary tooling or informal briefing.',
+          'Archival legibility requires that submitted material remain interpretable beyond the originating project team — phase-labelled records, harmonised identifiers, and delivery archives that a third party could audit without proprietary tooling or informal briefing.',
           'Interchange standards conformance requires that submitted bundles validate against published schema versions, use registered field identifiers from the public registry, and document any extensions or local profiles through crosswalk notes.',
           'Reproducibility and auditability require that evidence URIs, method notes, or open repositories cited in metadata remain accessible to reviewers for the assessment window, and that material differences between design, construction, and as-maintained records are disclosed with phase-to-phase transparency.',
           'Institutional and cultural accountability requires that entries involving Indigenous knowledge, restricted cultural detail, or community co-design respect published sensitivity classes — keeping restricted material out of open repositories while still documenting that protocol was followed.'
         ],
         facts: [
           { label: 'Documentation integrity', value: 'Claims encoded in machine-readable fields with consistent phase-to-phase traceability' },
-          { label: 'Archival legibility', value: 'Handover records interpretable by third parties without proprietary tooling or oral briefing' },
+          { label: 'Archival legibility', value: 'Delivery records interpretable by third parties without proprietary tooling or oral briefing' },
           { label: 'Interchange conformance', value: 'Schema validation, registered field IDs, documented crosswalks and loss notes' },
           { label: 'Reproducibility', value: 'Open fixtures, validators, or study protocols sufficient for independent re-examination' },
           { label: 'Provenance and lineage', value: 'Attribution, derivation, and synthetic-asset disclosure per Foundation metadata rules' },
