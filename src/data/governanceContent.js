@@ -30,9 +30,9 @@ export function buildFoundationGovernanceSections({
       id: 'standard-stewardship',
       heading: 'Standard stewardship',
       paragraphs: [
-        'The Landscape Archive Foundation serves a role distinct from the commercial product stack.',
-        'The Landscape Vault Pty Ltd holds proprietary intellectual property — TLA Brain automation, three-dimensional assets, populated datasets, and implementation code. The Landscape Archive Pty Ltd operates commercially: subscriptions, Studio+™, Revit integration, and enterprise delivery.',
-        'The Foundation maintains the canonical specification as independent public infrastructure — a shared reference that no single vendor controls, so criteria for botanically informed digital representation remain open to scrutiny and revision through governance.'
+        'The Landscape Archive Foundation is intended to serve a role distinct from the commercial product stack. Its public mandate is stewardship of the open specification — field registry, schemas, and conformance criteria — not subscriptions, proprietary datasets, or delivery tooling.',
+        'Two Australian proprietary limited companies hold commercial roles separate from that mandate. The Landscape Vault Pty Ltd holds proprietary intellectual property: TLA Brain automation, three-dimensional assets, populated datasets, and implementation code. The Landscape Archive Pty Ltd operates commercially — subscriptions, Studio+™, Revit integration, and enterprise delivery — under licence from the Vault.',
+        'The canonical specification is published as independent public infrastructure: a shared reference that no single vendor controls, so criteria for botanically informed digital representation remain open to scrutiny and revision through open governance. Until an independent steward entity is established, interim hosting is provided by The Landscape Archive Pty Ltd as implementation partner; the draft governance terms on this page apply for consultation only.'
       ]
     },
     ...buildFoundationIntendedPurposeSections(),
