@@ -71,6 +71,10 @@ export const FOUNDATION_COMMERCIAL_INTEGRATIONS_URL = `${ARCHIVE_ORIGIN}/shop`
 export const FOUNDATION_SUPPORT_CONTACT_TOPIC = 'foundation-support'
 export const FOUNDATION_SUPPORT_CONTACT_PATH = `${ARCHIVE_ORIGIN}/contact?topic=${FOUNDATION_SUPPORT_CONTACT_TOPIC}`
 
+export const ARCHIVE_CITATIONS_PATH = `${ARCHIVE_ORIGIN}/citations`
+
+export const FOUNDATION_GOVERNANCE_CITATION_URL = `${SITE_ORIGIN.replace(/\/$/, '')}${GOVERNANCE_PATH}`
+
 // Notices -------------------------------------------------------------------
 
 export const FOUNDATION_LICENCE_SUMMARY =

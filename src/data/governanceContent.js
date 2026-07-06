@@ -1,11 +1,16 @@
 import {
   FOUNDATION_COMMERCIAL_CONTACT_PATH,
   FOUNDATION_LICENCE_LABEL,
+  ARCHIVE_CITATIONS_PATH,
+  FOUNDATION_GOVERNANCE_CITATION_URL,
+  OPEN_STANDARD_GITHUB_TAG_URL,
+  REGISTRY_PATH,
   SUPPORT_PATH,
   TLA169_DISPLAY_ID,
   TLA169_FIELD_COUNT,
   TLA185_DISPLAY_ID,
-  TLA185_FIELD_COUNT
+  TLA185_FIELD_COUNT,
+  TLA185_VERSION
 } from './foundationWing.js'
 
 /**
@@ -185,6 +190,21 @@ export function buildFoundationGovernanceSections({
         'Interim copyright held by The Landscape Vault Pty Ltd, pending assignment to the Foundation',
         'Species values, automation, and commercial assets excluded from the public open layer',
         'Path toward autonomous governance through advisory board and non-profit incorporation'
+      ]
+    },
+    {
+      id: 'citation-guidance',
+      heading: 'How to cite TLA-185 and the Foundation',
+      paragraphs: [
+        'When you reference the open standard in academic work, procurement, or public documentation, cite the specification and steward — not individual contributors by default.',
+        `Recommended format: The Landscape Archive Foundation. ${TLA185_DISPLAY_ID} Landscape Metadata Standard, version ${TLA185_VERSION}. ${FOUNDATION_GOVERNANCE_CITATION_URL} (accessed [date]). Licensed under ${FOUNDATION_LICENCE_LABEL}.`,
+        'For the field registry or a specific release tag, add the registry URL or GitHub release identifier. For the commercial Archive product (Library, Studio+™, datasets), cite The Landscape Archive separately at landscapearchive.com.au/citations.',
+        'Individual authorship and interim copyright are documented under Governance → Three-entity structure. You do not need to name individual authors in a standard bibliographic citation unless your style guide requires it for technical reports.'
+      ],
+      actions: [
+        { label: 'Archive citation hub', href: ARCHIVE_CITATIONS_PATH, external: true },
+        { label: 'Field registry', href: REGISTRY_PATH },
+        { label: 'Release tag 185-v1.0.0', href: OPEN_STANDARD_GITHUB_TAG_URL, external: true }
       ]
     },
     {

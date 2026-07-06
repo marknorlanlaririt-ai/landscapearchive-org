@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="TLA">
+  <rect x="6" y="8" width="36" height="2.25" rx="0.5" fill="#8fa3b0"/>
+  <text
+    x="24"
+    y="29.5"
+    text-anchor="middle"
+    font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+    font-size="13.5"
+    font-weight="500"
+    letter-spacing="0.18em"
+    fill="#4a443f"
+  >TLA</text>
+  <rect x="6" y="35" width="22" height="2.25" rx="0.5" fill="#8fa3b0"/>
+</svg>

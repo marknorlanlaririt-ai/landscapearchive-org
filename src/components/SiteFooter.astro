@@ -1,13 +1,16 @@
 ---
 import { ARCHIVE_ORIGIN, SITE_NAV_LINKS } from '../data/site.js'
+import TlaLettermark from './TlaLettermark.astro'
 import {
   buildFoundationCopyrightLine,
+  ARCHIVE_CITATIONS_PATH,
   FEDERATION_SCHEMA_PORTAL_URL,
   FOUNDATION_HOSTING_NOTICE,
   FOUNDATION_LICENCE_LABEL,
   FOUNDATION_LICENCE_SUMMARY,
   FOUNDATION_LICENCE_URL,
-  OPEN_STANDARD_GITHUB_URL
+  OPEN_STANDARD_GITHUB_URL,
+  REGISTRY_PATH
 } from '../data/foundationWing.js'
 
 const year = new Date().getFullYear()
@@ -17,15 +20,7 @@ const copyrightLine = buildFoundationCopyrightLine(year)
 <footer class="site-footer">
   <div class="page site-footer__inner">
     <div class="site-footer__brand">
-      <img
-        class="site-footer__mark"
-        src="/tla-foundation-logo.png"
-        width="34"
-        height="34"
-        alt=""
-        aria-hidden="true"
-        decoding="async"
-      />
+      <TlaLettermark class="site-footer__mark" size={34} title="The Landscape Archive Foundation" />
       <p class="site-footer__name">The Landscape Archive Foundation</p>
       <p class="site-footer__licence">
         {FOUNDATION_LICENCE_SUMMARY} Published under
@@ -46,13 +41,15 @@ const copyrightLine = buildFoundationCopyrightLine(year)
       <h2 class="site-footer__heading">Open standard</h2>
       <a href={OPEN_STANDARD_GITHUB_URL} rel="noopener" target="_blank">GitHub repository</a>
       <a href={FEDERATION_SCHEMA_PORTAL_URL} rel="noopener" target="_blank">Schema portal</a>
-      <a href="/registry">Field registry</a>
+      <a href={REGISTRY_PATH}>Field registry</a>
+      <a href="/governance#citation-guidance">Citation guidance</a>
     </nav>
 
     <nav class="site-footer__col" aria-label="Commercial">
       <h2 class="site-footer__heading">Landscape Archive</h2>
       <a href={ARCHIVE_ORIGIN} rel="noopener" target="_blank">Commercial site</a>
       <a href={`${ARCHIVE_ORIGIN}/shop`} rel="noopener" target="_blank">Products & licensing</a>
+      <a href={ARCHIVE_CITATIONS_PATH} rel="noopener" target="_blank">Citation guidance</a>
       <a href={`${ARCHIVE_ORIGIN}/contact?topic=foundation-support`} rel="noopener" target="_blank">Support the standard</a>
     </nav>
   </div>
@@ -83,10 +80,9 @@ const copyrightLine = buildFoundationCopyrightLine(year)
   }
 
   .site-footer__mark {
-    display: block;
     width: 34px;
     height: 34px;
-    border-radius: 6px;
+    color: #eef2ee;
   }
 
   .site-footer__name {

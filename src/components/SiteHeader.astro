@@ -1,5 +1,6 @@
 ---
 import { SITE_NAV_LINKS, FOUNDATION_DISPLAY_NAME } from '../data/site.js'
+import TlaLettermark from './TlaLettermark.astro'
 
 interface Props {
   activePath?: string
@@ -13,15 +14,7 @@ const current = normalize(activePath)
 <header class="site-header">
   <div class="page site-header__inner">
     <a class="site-header__brand" href="/" aria-label={`${FOUNDATION_DISPLAY_NAME} home`}>
-      <img
-        class="site-header__logo"
-        src="/tla-foundation-logo.png"
-        width="34"
-        height="34"
-        alt=""
-        aria-hidden="true"
-        decoding="async"
-      />
+      <TlaLettermark class="site-header__logo" size={34} />
       <span class="site-header__wordmark">
         <span class="site-header__word">The Landscape Archive</span>
         <span class="site-header__word site-header__word--strong">Foundation</span>
@@ -74,11 +67,8 @@ const current = normalize(activePath)
   }
 
   .site-header__logo {
-    display: block;
     width: 34px;
     height: 34px;
-    border-radius: 6px;
-    border: 1px solid var(--line-soft);
   }
 
   .site-header__wordmark {
