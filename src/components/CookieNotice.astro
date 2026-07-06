@@ -11,61 +11,7 @@ import { ARCHIVE_COOKIE_POLICY_URL } from '../data/memberAccess.js'
   <button type="button" class="cookie-notice__dismiss" data-cookie-dismiss>OK</button>
 </aside>
 
-<script is:inline>
-  (function () {
-    var STORAGE_KEY = 'la-cookie-banner-dismissed'
-    var COOKIE_NAME = 'la-cookie-banner-dismissed'
-    var notice = document.querySelector('[data-cookie-notice]')
-    var dismiss = document.querySelector('[data-cookie-dismiss]')
-
-    if (!notice || !dismiss) {
-      return
-    }
-
-    function resolveCookieDomain() {
-      var host = String(window.location.hostname || '').toLowerCase()
-      if (host === 'landscapearchive.org' || host.slice(-20) === '.landscapearchive.org') {
-        return '.landscapearchive.org'
-      }
-      return null
-    }
-
-    function readDismissed() {
-      try {
-        var cookieHit = document.cookie.split(';').some(function (entry) {
-          return entry.trim().indexOf(COOKIE_NAME + '=true') === 0
-        })
-        if (cookieHit || localStorage.getItem(STORAGE_KEY) === 'true') {
-          return true
-        }
-      } catch (error) {}
-      return false
-    }
-
-    function writeDismissed() {
-      try {
-        localStorage.setItem(STORAGE_KEY, 'true')
-      } catch (error) {}
-
-      var secure = window.location.protocol === 'https:' ? '; Secure' : ''
-      var domain = resolveCookieDomain()
-      var domainAttr = domain ? '; domain=' + domain : ''
-      document.cookie =
-        COOKIE_NAME + '=true; path=/' + domainAttr + '; max-age=31536000; SameSite=Lax' + secure
-    }
-
-    if (readDismissed()) {
-      return
-    }
-
-    notice.hidden = false
-
-    dismiss.addEventListener('click', function () {
-      writeDismissed()
-      notice.hidden = true
-    })
-  })()
-</script>
+<script is:inline src="/scripts/cookie-notice.js" defer></script>
 
 <style>
   .cookie-notice {
@@ -74,17 +20,26 @@ import { ARCHIVE_COOKIE_POLICY_URL } from '../data/memberAccess.js'
     right: 0;
     bottom: 0;
     z-index: 30;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-between;
     gap: 0.9rem;
     width: 100%;
     min-height: 58px;
     padding: 0.74rem 1.06rem;
+    padding-bottom: calc(0.74rem + env(safe-area-inset-bottom, 0px));
     background: #f4f1e9;
     border-top: 1px solid rgba(44, 68, 54, 0.12);
     color: #171b1f;
     box-shadow: 0 -7px 18px rgba(13, 18, 17, 0.08);
+  }
+
+  .cookie-notice.is-open {
+    display: flex;
+  }
+
+  .cookie-notice[hidden] {
+    display: none !important;
   }
 
   .cookie-notice__copy {
@@ -113,5 +68,12 @@ import { ARCHIVE_COOKIE_POLICY_URL } from '../data/memberAccess.js'
     text-decoration: underline;
     text-underline-offset: 0.2em;
     white-space: nowrap;
+    padding: 0.35rem 0.15rem;
+  }
+
+  .cookie-notice__dismiss:hover,
+  .cookie-notice__dismiss:focus-visible {
+    color: var(--accent-strong, #2c4436);
+    outline: none;
   }
 </style>

@@ -19,3 +19,6 @@
 # Registry data can be cached briefly
 /foundation-wing/*
   Cache-Control: public, max-age=3600
+
+/scripts/*
+  Cache-Control: public, max-age=3600

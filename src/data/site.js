@@ -25,6 +25,7 @@ export const SITE_NAV_LINKS = Object.freeze([
   { id: 'volunteers', label: 'Volunteers', href: '/volunteers', requiresLogin: true },
   { id: 'articles', label: 'Field Notes', href: '/articles' },
   { id: 'media', label: 'Media', href: '/media' },
+  { id: 'contact', label: 'Contact', href: '/contact' },
   { id: 'events', label: 'Events', href: '/events', requiresLogin: true }
 ])
 

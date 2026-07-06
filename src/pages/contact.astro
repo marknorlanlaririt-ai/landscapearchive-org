@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DocsSection from '../components/DocsSection.astro'
+import { buildFoundationContactSections, FOUNDATION_CONTACT_EMAIL } from '../data/contactContent.js'
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact routes for The Landscape Archive Foundation — open standard stewardship, commercial licensing handoffs, press, and voluntary support."
+  path="/contact"
+>
+  <div class="page contact">
+    <div class="contact__intro prose">
+      <p class="eyebrow">The Landscape Archive Foundation</p>
+      <h1>Contact</h1>
+      <p>
+        Questions about the open standard, governance, registry, licensing, or press coverage.
+        The Foundation site is public reference infrastructure; operational correspondence is handled
+        through the interim Archive desk until incorporation.
+      </p>
+      <p class="contact__email">
+        Direct email:
+        <a href={`mailto:${FOUNDATION_CONTACT_EMAIL}`}>{FOUNDATION_CONTACT_EMAIL}</a>
+      </p>
+    </div>
+
+    {buildFoundationContactSections().map((section) => <DocsSection {...section} />)}
+  </div>
+</BaseLayout>
+
+<style>
+  .contact__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 0.5rem;
+  }
+
+  .contact__email {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  .contact__email a {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+</style>
