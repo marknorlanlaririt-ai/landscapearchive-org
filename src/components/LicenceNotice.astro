@@ -1,0 +1,50 @@
+---
+import {
+  FOUNDATION_LICENCE_LABEL,
+  FOUNDATION_LICENCE_SUMMARY,
+  FOUNDATION_LICENCE_URL
+} from '../data/foundationWing.js'
+
+interface Props {
+  /** When true, omit top border (e.g. directly under page content). */
+  compact?: boolean
+}
+
+const { compact = false } = Astro.props
+---
+
+<aside class:list={['licence-notice', compact && 'licence-notice--compact']} aria-label="Open specification licence">
+  <p>
+    {FOUNDATION_LICENCE_SUMMARY} Published under
+    <a href={FOUNDATION_LICENCE_URL} rel="license noopener" target="_blank">{FOUNDATION_LICENCE_LABEL}</a>.
+    Populated datasets, trait values, and commercial implementation require separate licences from
+    The Landscape Archive Pty Ltd.
+  </p>
+</aside>
+
+<style>
+  .licence-notice {
+    margin: 2rem 0 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-sm);
+    background: var(--paper-raised);
+  }
+
+  .licence-notice--compact {
+    margin-top: 1.5rem;
+  }
+
+  .licence-notice p {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+
+  .licence-notice a {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+</style>

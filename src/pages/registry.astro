@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import preview from '../data/tla185-fields-preview.json'
+import LicenceNotice from '../components/LicenceNotice.astro'
 import {
   OPEN_STANDARD_GITHUB_TAG_URL,
   FEDERATION_SCHEMA_PORTAL_URL,
@@ -92,6 +93,8 @@ for (const field of fields) {
           ))
       }
     </div>
+
+    <LicenceNotice />
 
     <p class="reg__note">
       Preview generated from the published registry. Field IDs, JSON paths, and module structure are
