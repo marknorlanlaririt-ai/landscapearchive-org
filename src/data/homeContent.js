@@ -32,8 +32,8 @@ export function buildFoundationHomeSections({
       heading: 'Truth and truth-telling',
       paragraphs: [
         'Landscape drawings and models often look definitive while the underlying claims stay implicit — “native planting,” “climate resilient,” “sustainable,” “culturally appropriate.” The Foundation publishes the field dictionary and conformance rules so those claims can be stated precisely, evidenced, and reviewed.',
-        'Truth-telling is not a marketing slogan. It is structural: taxon IDs and growth forms in exchange bundles; banded climate context instead of hand-waved suitability; evidence links on sustainability fields; sensitivity classes that keep restricted cultural detail out of open repositories; lineage metadata on synthetic assets.',
-        'The Foundation defines how honest disclosure should be encoded. It does not replace professional judgement, client sign-off, regulatory audit, or community protocol — but it gives practitioners and institutions a shared language for what was claimed and what supports it.'
+        'Truth-telling is structural in this programme: taxon IDs and growth forms in exchange bundles; banded climate context with documented screening methodology; evidence links on sustainability fields; sensitivity classes that route restricted cultural detail to appropriate repositories; lineage metadata on synthetic assets.',
+        'The Foundation defines how honest disclosure should be encoded — supplying practitioners and institutions a shared vocabulary for what was claimed and what supports it, complementing professional judgement, client sign-off, regulatory audit, and community protocol.'
       ],
       actions: [{ label: 'Read the truth-telling charter', href: `${GOVERNANCE_PATH}#truth-telling` }]
     },
@@ -41,7 +41,7 @@ export function buildFoundationHomeSections({
       id: 'use-the-standard',
       heading: 'The specification in practice',
       paragraphs: [
-        `${TLA185_DISPLAY_ID} articulates ${fieldCount} documented elements across Australian landscape projects — taxonomy, site context, mid-century climate screening, environmental risk, sustainability, cultural sensitivity, and BIM interoperability. The earlier ${TLA169_DISPLAY_ID} profile remains supported for legacy exchange records. The published layer comprises structural definitions only; it does not include species inventories, trait values, or client records.`,
+        `${TLA185_DISPLAY_ID} articulates ${fieldCount} documented elements across Australian landscape projects — taxonomy, site context, mid-century climate screening, environmental risk, sustainability, cultural sensitivity, and BIM interoperability. The earlier ${TLA169_DISPLAY_ID} profile remains supported for legacy exchange records. The published layer comprises structural definitions — field types, modules, and conformance rules — while populated species inventories, trait values, and client records reside in licensed implementation datasets.`,
         'The canonical specification, JSON Schema modules, and worked examples are published on GitHub and the schema portal. GitHub is the authoritative source. The open repository is world-readable.'
       ],
       actions: [
@@ -75,15 +75,15 @@ export function buildFoundationHomeSections({
       id: 'support',
       heading: 'Support the standard',
       paragraphs: [
-        'The Landscape Archive Foundation is not yet incorporated and cannot issue tax-deductible donation receipts today.',
-        `Voluntary contributions for hosting, documentation, and incorporation are received interim by The Landscape Archive Pty Ltd (implementation partner). Support is optional — not required to reference ${TLA185_DISPLAY_ID} or ${TLA169_DISPLAY_ID} under CC BY-NC-ND 4.0.`,
+        'The Landscape Archive Foundation is proceeding toward incorporation. Until registration is complete, voluntary contributions are received interim by The Landscape Archive Pty Ltd (implementation partner) and are not yet eligible for tax-deductible receipts.',
+        `Referencing ${TLA185_DISPLAY_ID} or ${TLA169_DISPLAY_ID} under CC BY-NC-ND 4.0 requires no payment; voluntary support helps fund hosting, documentation, and incorporation.`,
         'Bank transfer (Australia): expand the bank details below. Include the payment reference so we can reconcile your transfer.'
       ],
       facts: [...FOUNDATION_SUPPORT_BANK_FACTS],
       factsCollapsible: true,
       factsToggleLabel: 'Show bank transfer details',
       bullets: [
-        'Payments are not tax-deductible until the Foundation is incorporated and registered as a deductible gift recipient (if applicable).',
+        'Tax-deductible treatment will apply once the Foundation completes incorporation and any applicable deductible gift recipient registration.',
         'We only publish these bank details on our official Landscape Archive websites (landscapearchive.org and landscapearchive.com.au) — never by SMS or from a personal email address.',
         'For invoicing, recurring support, or amounts over $5,000 AUD, contact us first.'
       ],

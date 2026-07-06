@@ -87,4 +87,4 @@ export const FOUNDATION_HOSTING_NOTICE =
   `Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification copyright is held by ${FOUNDATION_IP_HOLDER} (IP holding company). Interim hosting by ${FOUNDATION_INTERIM_HOST} (implementation partner). The copyright is intended for assignment to ${FOUNDATION_ASSIGNEE} on incorporation.`
 
 export const FOUNDATION_DRAFT_BANNER =
-  'Draft governance (interim). The Landscape Archive Foundation is not yet an incorporated entity and is not affiliated with, endorsed by, or representative of any professional institute or government body. The Landscape Archive Pty Ltd provides interim hosting as implementation partner. This page is informational only and is not legal advice.'
+  'Draft governance (interim). The Landscape Archive Foundation is proceeding toward incorporation as an independent steward of the public specification. The Landscape Archive Pty Ltd provides interim hosting as implementation partner. These pages describe intended governance and licence terms; consult qualified advisers for legal interpretation.'

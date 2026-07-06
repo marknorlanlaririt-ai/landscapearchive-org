@@ -20,7 +20,7 @@ export function buildFoundationContactSections() {
       id: 'who-handles-what',
       heading: 'Who handles what',
       paragraphs: [
-        'The Landscape Archive Foundation is not yet incorporated. Until it is, interim correspondence for the open standard is handled through The Landscape Archive Pty Ltd (implementation partner) and The Landscape Vault Pty Ltd (IP holding company).',
+        'The Landscape Archive Foundation is proceeding toward incorporation. Interim correspondence for the open standard is handled through The Landscape Archive Pty Ltd (implementation partner) and The Landscape Vault Pty Ltd (IP holding company).',
         'Use the routes below so your message reaches the right team. We usually reply within one to two business days.'
       ],
       facts: [

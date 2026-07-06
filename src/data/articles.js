@@ -26,17 +26,17 @@ export const FIELD_NOTES = Object.freeze([
     topics: ['Advocacy', 'Vocabulary', 'Governance'],
     sections: [
       {
-        heading: 'The problem is not data. It is words.',
+        heading: 'When records cannot be joined: a vocabulary problem',
         paragraphs: [
           'A landscape project passes through many hands — the practice that designs it, the nursery that supplies it, the council that approves it, the university that studies it, the agency that maintains it. Each keeps records. Almost none of them use the same words for the same things. One file says “native grass mix,” another “indigenous groundcover,” a third a botanical name that was superseded a decade ago. The information exists; it simply cannot be joined, compared, or checked.',
-          'This is not a technology gap. It is a vocabulary gap. Before a profession can share data honestly, it has to agree on what its terms <em>mean</em> — not to flatten difference, but to make difference legible. The Landscape Archive Foundation exists to steward that agreement: an open, citable dictionary of the fields a landscape record ought to carry, and precise definitions for each.'
+          'The gap is vocabulary, not technology. Before a profession can share data honestly, it has to agree on what its terms <em>mean</em> — to make difference legible without flattening it. The Landscape Archive Foundation exists to steward that agreement: an open, citable dictionary of the fields a landscape record ought to carry, and precise definitions for each.'
         ]
       },
       {
         heading: 'A dictionary you can cite, not just read',
         paragraphs: [
           `${TLA185_DISPLAY_ID} is that dictionary. It describes 185 documented elements — taxonomy and identity, site context, climate screening, sustainability disclosure, cultural protocol, and BIM delivery — as structural definitions, not as a dataset. Anyone may read it, reference it, and build on it under an open licence.`,
-          'What makes a dictionary infrastructure rather than a glossary is that each term is <em>citable</em>. Every element now has a permanent identifier and a published definition, so a university can cite it in a curriculum, an agency can reference it in procurement, and a practice can point to it in a specification — and all three are pointing at exactly the same thing, at a fixed version, without depending on any one vendor’s software staying in business.'
+          'What makes a dictionary infrastructure rather than a glossary is that each term is <em>citable</em>. Every element now has a permanent identifier and a published definition, so a university can cite it in a curriculum, an agency can reference it in procurement, and a practice can point to it in a specification — and all three are pointing at exactly the same thing, at a fixed version, independent of any single vendor’s product lifecycle.'
         ],
         actions: [
           { label: 'Browse the Landscape Data Dictionary', href: DICTIONARY_URL, external: true },
@@ -46,7 +46,7 @@ export const FIELD_NOTES = Object.freeze([
       {
         heading: 'Definitions should be argued about',
         paragraphs: [
-          'A living vocabulary is not one that is handed down and obeyed; it is one that is debated. What counts as “native” for a given project? When does a screening estimate become a claim? Which synonym is preferred, and which is merely tolerated? These are professional questions, and they deserve a professional process rather than a silent decision inside a product.',
+          'A living vocabulary is one that is debated. What counts as “native” for a given project? When does a screening estimate become a claim? Which synonym is preferred, and which is merely tolerated? These are professional questions, and they deserve a published governance process — open proposals, request for comment, and versioned release.',
           'So each term carries a way to propose a change. A practitioner who thinks a definition is wrong, incomplete, or out of date can open a proposal against that exact term; the interim working group triages it; substantive changes become a request for comment and, if adopted, a versioned release. The words move forward in the open, with a record of who argued what and why — the same standard of truth-telling the Foundation asks of the projects that use them.'
         ],
         actions: [{ label: 'How governance works', href: GOVERNANCE_PATH }]
@@ -54,7 +54,7 @@ export const FIELD_NOTES = Object.freeze([
       {
         heading: 'Why an independent steward',
         paragraphs: [
-          'A vocabulary owned by a single company is a vocabulary that can be changed, priced, or withdrawn to suit that company. The Foundation layer is deliberately carved out from the commercial stack so the “grammar” of landscape metadata is not captive to any one implementation. Vendors — including The Landscape Archive — compete on how well they implement the standard, not on ownership of the words themselves.',
+          'A vocabulary stewarded by an independent Foundation can be cited, taught, and revised through open governance. The Foundation layer is deliberately carved out from the commercial stack so the “grammar” of landscape metadata remains under open, independent stewardship. Vendors — including The Landscape Archive — compete on how well they implement the standard.',
           'That independence is what lets institutions adopt the dictionary with confidence. It is also what makes advocacy possible: a shared, open reference is something a profession can take to government, to standards bodies, and to the academy and say, together, “this is how we describe our work, and here is where you can check it.”'
         ]
       }

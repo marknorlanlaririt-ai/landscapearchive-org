@@ -20,7 +20,7 @@ export const foundationTopicPages = Object.freeze({
         heading: 'Why volunteer',
         paragraphs: [
           'An open metadata standard only works if practitioners, researchers, and institutions can read, test, and improve it together. Volunteers extend what a small interim working group can maintain on its own.',
-          'Contributions are unpaid and optional. They do not confer membership, governance rights, or commercial entitlements — but they do help the public specification stay accurate, legible, and independent of any single vendor.'
+          'Contributions are unpaid and optional. They advance documentation, schema review, and community outreach for the public specification. Membership, governance participation, and commercial licensing follow separate published processes.'
         ]
       },
       {
@@ -59,7 +59,7 @@ export const foundationTopicPages = Object.freeze({
         heading: 'What we mean by truth-telling',
         paragraphs: [
           'Landscape drawings and models often look definitive while the underlying claims stay implicit — “native planting,” “climate resilient,” “sustainable,” “culturally appropriate.” The Foundation publishes the field dictionary and conformance rules so those claims can be stated precisely, evidenced, and reviewed.',
-          'Truth-telling is not a marketing slogan. It is structural: taxon IDs and growth forms in exchange bundles; banded climate context instead of hand-waved suitability; evidence links on sustainability fields; sensitivity classes that keep restricted cultural detail out of open repositories; lineage metadata on synthetic assets.'
+          'Truth-telling is structural in this programme: taxon IDs and growth forms in exchange bundles; banded climate context with documented screening methodology; evidence links on sustainability fields; sensitivity classes that route restricted cultural detail to appropriate repositories; lineage metadata on synthetic assets.'
         ]
       },
       {
@@ -77,8 +77,8 @@ export const foundationTopicPages = Object.freeze({
         id: 'foundation-role',
         heading: "The Foundation's role",
         paragraphs: [
-          'The Foundation defines how honest disclosure should be encoded. It does not replace professional judgement, client sign-off, regulatory audit, or community protocol — but it gives practitioners and institutions a shared language for what was claimed and what supports it.',
-          'Open specification work is itself a form of truth-telling: criteria, schemas, and conformance checks are published where anyone can read them — distinct from vendor credentials, sales language, or unreleased models.'
+          'The Foundation defines how honest disclosure should be encoded — supplying practitioners and institutions a shared vocabulary for what was claimed and what supports it, complementing professional judgement, client sign-off, regulatory audit, and community protocol.',
+          'Open specification work is itself a form of truth-telling: criteria, schemas, and conformance checks are published for independent review and citation.'
         ],
         actions: [{ label: 'Read the truth-telling charter', href: `${GOVERNANCE_PATH}#truth-telling` }]
       }
@@ -165,7 +165,7 @@ export const foundationTopicPages = Object.freeze({
         paragraphs: [
           'This category addresses the detail documentation traditions of landscape architecture — grading and drainage assemblies, paving and edge conditions, planting pit and structural soil specifications, irrigation and soil-amendment schedules, and custom fabrication records — where craft knowledge must be transmitted to contractors and maintainers with precision and preserved in the project archive.',
           'Craftsmanship, in this evaluative frame, is the disciplined encoding of constructible detail: dimensioned sections, material grades, installation sequences, and tolerance notes that remain bound to landscape metadata rather than isolated in static drawing sets. Entries should show how detail selections connect to planting establishment criteria, permeability targets, or maintenance access requirements declared elsewhere in the bundle.',
-          'Reviewers examine whether construction records preserve design intent under field variation — documented substitutions, remediation notes, and inspection hold-points — and whether handover packages give facility managers operable metadata, not merely archival PDFs detached from the living asset record.'
+          'Reviewers examine whether construction records preserve design intent under field variation — documented substitutions, remediation notes, and inspection hold-points — and whether handover packages give facility managers operable metadata linked to the living asset record.'
         ]
       },
       {
@@ -191,7 +191,7 @@ export const foundationTopicPages = Object.freeze({
         heading: 'Publication and writing',
         paragraphs: [
           'This category recognises articles, books, essays, and critical writing on landscape architecture — peer-reviewed journal work, monographs, edited collections, extended essays, and rigorously edited professional or public-facing writing that advances understanding of landscape form, ecology, policy, history, or practice and enters the published record for citation.',
-          'Eligible work presents clear argument, cites evidence with editorial accountability, and contributes to communal reference — whether through theoretical synthesis, case analysis, policy critique, historiography, or practice reflection. Writing that engages open metadata, taxonomic harmonisation, archival legibility, or interchange ethics is welcome but not required; the category stands on scholarly and critical merit in landscape architecture discourse.',
+          'Eligible work presents clear argument, cites evidence with editorial accountability, and contributes to communal reference — whether through theoretical synthesis, case analysis, policy critique, historiography, or practice reflection. Writing that engages open metadata, taxonomic harmonisation, archival legibility, or interchange ethics is welcome; assessment rests on scholarly and critical merit in landscape architecture discourse.',
           'Reviewers assess fidelity to sources, transparency of method in empirical or interpretive claims, and contribution to long-form disciplinary knowledge. Eligible work presents analytical framing, editorial accountability, and evidence sufficient for citation in landscape architecture discourse. Published material must be accessible to the assessment panel for the review window, with DOI, ISBN, stable URL, or archival deposit as appropriate.'
         ]
       },
