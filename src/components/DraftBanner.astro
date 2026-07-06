@@ -1,11 +1,18 @@
 ---
-import { FOUNDATION_DRAFT_BANNER } from '../data/foundationWing.js'
+import {
+  FOUNDATION_DRAFT_BANNER,
+  FOUNDATION_DRAFT_BANNER_CTA_LABEL,
+  FOUNDATION_GOVERNANCE_UPDATES_URL
+} from '../data/foundationWing.js'
 ---
 
 <aside class="draft-banner" role="note">
   <div class="page draft-banner__inner">
     <span class="draft-banner__tag">Interim</span>
-    <p class="draft-banner__text">{FOUNDATION_DRAFT_BANNER}</p>
+    <p class="draft-banner__text">
+      {FOUNDATION_DRAFT_BANNER}
+      <a class="draft-banner__cta" href={FOUNDATION_GOVERNANCE_UPDATES_URL}>{FOUNDATION_DRAFT_BANNER_CTA_LABEL}</a>.
+    </p>
   </div>
 </aside>
 
@@ -40,5 +47,18 @@ import { FOUNDATION_DRAFT_BANNER } from '../data/foundationWing.js'
     font-size: 0.78rem;
     line-height: 1.5;
     color: var(--ink-soft);
+  }
+
+  .draft-banner__cta {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(74, 68, 53, 0.35);
+    text-underline-offset: 0.16em;
+  }
+
+  .draft-banner__cta:hover {
+    color: var(--ink);
+    text-decoration-color: rgba(47, 42, 32, 0.65);
   }
 </style>

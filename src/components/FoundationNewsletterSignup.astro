@@ -4,7 +4,12 @@ import { ARCHIVE_ORIGIN } from '../data/site.js'
 const apiUrl = `${ARCHIVE_ORIGIN}/api/foundation/newsletter`
 ---
 
-<form class="foundation-newsletter" data-foundation-newsletter data-api-url={apiUrl}>
+<form
+  id="foundation-updates"
+  class="foundation-newsletter"
+  data-foundation-newsletter
+  data-api-url={apiUrl}
+>
   <label class="foundation-newsletter__label" for="foundation-newsletter-email">
     Foundation updates
   </label>

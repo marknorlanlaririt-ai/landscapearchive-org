@@ -98,3 +98,8 @@ export const FOUNDATION_HOSTING_NOTICE =
 /** Keep in sync with la-frontend/src/config/foundationWing.js and federation/portal/site-config.js */
 export const FOUNDATION_DRAFT_BANNER =
   'Draft governance (interim). The Landscape Archive Foundation name and governance model described here reflect intended stewardship of the public specification once a suitable independent entity is established. The Landscape Archive Pty Ltd provides interim hosting as implementation partner. These pages describe draft governance and licence terms for discussion only; consult qualified advisers for legal interpretation.'
+
+/** Footer newsletter anchor — governance/incorporation updates without over-promising. */
+export const FOUNDATION_GOVERNANCE_UPDATES_FRAGMENT = '#foundation-updates'
+export const FOUNDATION_GOVERNANCE_UPDATES_URL = `${SITE_ORIGIN}/${FOUNDATION_GOVERNANCE_UPDATES_FRAGMENT}`
+export const FOUNDATION_DRAFT_BANNER_CTA_LABEL = 'Register interest in governance updates'
