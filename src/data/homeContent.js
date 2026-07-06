@@ -20,6 +20,15 @@ export function buildFoundationHomeSections({
 } = {}) {
   return Object.freeze([
     {
+      id: 'mission-draft',
+      heading: 'Mission (draft)',
+      paragraphs: [
+        `The intended mission is to advance environmental and social benefit through open, citable infrastructure for honest landscape documentation — botanical authenticity, auditable climate disclosure, culturally protocol-aware metadata, and ethical synthetic-nature provenance. The public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification is the primary instrument: a shared vocabulary that makes project claims inspectable rather than implied.`,
+        'That work supports capacity building internationally across landscape architecture, ecology, BIM information management, and allied professions — in teaching, research, procurement, and public-sector digital programmes. This is draft charitable scope for consultation; we do not claim incorporated charity status, active grant programmes, or humanitarian field operations.'
+      ],
+      actions: [{ label: 'Read full draft mission (governance)', href: `${GOVERNANCE_PATH}#draft-mission` }]
+    },
+    {
       id: 'about-us',
       heading: 'About us',
       paragraphs: [
@@ -28,15 +37,6 @@ export function buildFoundationHomeSections({
         'We recognize that a private operator is a replicable asset, but an open specification — endorsed by universities, regulators, and public bodies — becomes a foundational standard. It is this standard that is hard to displace. By keeping the production assets and automation securely within the Vault, we ensure that while the specification is public, the operational superiority remains uniquely ours.'
       ],
       actions: [{ label: 'Read the Foundation Standards', href: GOVERNANCE_PATH }]
-    },
-    {
-      id: 'intended-scope',
-      heading: 'Intended public purpose',
-      paragraphs: [
-        'The Foundation’s draft public purpose — mission, intended beneficiaries, activities, and funding — is published for international consultation. It ties open botanical and BIM specification stewardship to environmental and social benefit without claiming incorporated charity status or active grant programmes.',
-        'Interim hosting is provided by an Australian implementation partner; the specification itself is published for global reference under the open licence.'
-      ],
-      actions: [{ label: 'Read draft purpose (governance)', href: `${GOVERNANCE_PATH}#intended-purpose` }]
     },
     {
       id: 'truth-telling',
