@@ -29,6 +29,12 @@
   --radius: 10px;
   --radius-sm: 6px;
 
+  /* Header brand lockup — shared sizing with schema.landscapearchive.org */
+  --foundation-header-mark-size: clamp(46px, 5.5vw, 56px);
+  --foundation-header-word-size: clamp(0.88rem, 2vw, 1.12rem);
+  --foundation-header-min-height: 5.75rem;
+  --foundation-header-brand-gap: 0.85rem;
+
   color-scheme: light;
 }
 
@@ -41,7 +47,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 6rem;
 }
 
 body {
