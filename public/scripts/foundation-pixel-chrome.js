@@ -3,8 +3,9 @@
  * Tiny adjacent grid cells (4px mobile / 5px desktop) in a narrow blue-purple band
  * around --accent-strong (#343d4a, HSL ~215°) settle to chrome, then three ambient
  * overlay layers run lighter-only patch waves with subtle grow-only scale pulse.
- * Dispatches foundation-pixel-chrome-readable (~4s) then
- * foundation-pixel-chrome-settled (~9.2s) for staggered text reveal.
+ * Dispatches foundation-pixel-chrome-readable (~1.8s) then
+ * foundation-pixel-chrome-settled (~4.1s) for staggered text reveal.
+ * Intro dissolve uses INTRO_TIME_SCALE; ambient pulse keeps AMBIENT_TIME_SCALE.
  */
 (function () {
   var CHROME_TARGETS = '.site-header, .site-footer'
@@ -19,30 +20,36 @@
   var SETTLE_LIGHTNESS_JITTER = 0.025
   var MOBILE_SETTLE_LIGHTNESS_JITTER = 0.018
   var WAVE_LIGHTNESS_JITTER = 0.05
-  var TIME_SCALE = 3.3
+  var INTRO_TIME_SCALE = 1.5
+  var AMBIENT_TIME_SCALE = 3.3
 
-  function scaleMs(ms) {
-    return Math.round(ms * TIME_SCALE)
+  function scaleIntroMs(ms) {
+    return Math.round(ms * INTRO_TIME_SCALE)
   }
 
-  var MAX_DELAY_MS = scaleMs(2000)
-  var TRANSITION_MS = scaleMs(680)
-  var READABLE_MS = scaleMs(1200)
-  var SETTLE_MS = MAX_DELAY_MS + TRANSITION_MS + scaleMs(80)
+  function scaleAmbientMs(ms) {
+    return Math.round(ms * AMBIENT_TIME_SCALE)
+  }
+
+  var MAX_DELAY_MS = scaleIntroMs(2000)
+  var TRANSITION_MS = scaleIntroMs(680)
+  var READABLE_MS = scaleIntroMs(1200)
+  var CONTENT_FADE_MS = scaleIntroMs(480)
+  var SETTLE_MS = MAX_DELAY_MS + TRANSITION_MS + scaleIntroMs(80)
   var MAX_CELLS_PER_LAYER = 1500
   var MAX_PATCH_CELLS = 90
   var PATCH_SLICE_MIN = 0.15
   var PATCH_SLICE_MAX = 0.25
   var PATCHES_PER_BURST = 3
-  var PATCH_STAGGER_MS = scaleMs(180)
-  var WAVE_DURATION_MIN = scaleMs(150)
-  var WAVE_DURATION_MAX = scaleMs(600)
-  var WAVE_DELAY_MAX = scaleMs(220)
-  var BURST_PAUSE_MIN = scaleMs(700)
-  var BURST_PAUSE_MAX = scaleMs(1600)
-  var AMBIENT_LOOP_OFFSET_MS = scaleMs(900)
-  var AMBIENT_BOOT_MS = scaleMs(500)
-  var LAYER_STAGGER_MS = scaleMs(400)
+  var PATCH_STAGGER_MS = scaleAmbientMs(180)
+  var WAVE_DURATION_MIN = scaleAmbientMs(150)
+  var WAVE_DURATION_MAX = scaleAmbientMs(600)
+  var WAVE_DELAY_MAX = scaleAmbientMs(220)
+  var BURST_PAUSE_MIN = scaleAmbientMs(700)
+  var BURST_PAUSE_MAX = scaleAmbientMs(1600)
+  var AMBIENT_LOOP_OFFSET_MS = scaleAmbientMs(900)
+  var AMBIENT_BOOT_MS = scaleAmbientMs(500)
+  var LAYER_STAGGER_MS = scaleAmbientMs(400)
   var SCALE_MIN = 1
   var SCALE_MAX = 1.12
   var LAYER_COUNT = 3
@@ -457,6 +464,10 @@
     document.documentElement.style.setProperty(
       '--pixel-settle-duration',
       TRANSITION_MS + 'ms'
+    )
+    document.documentElement.style.setProperty(
+      '--pixel-content-fade-duration',
+      CONTENT_FADE_MS + 'ms'
     )
 
     var hosts = document.querySelectorAll(CHROME_TARGETS)
