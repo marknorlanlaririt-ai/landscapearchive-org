@@ -1,3 +1,26 @@
+## 2026-07-07 - Founding alliance governance section (international)
+
+**Scope:** governance, founding-alliance, awards-crosslink
+**Status:** done
+
+### Did
+- Added **Founding alliance** section to governance page — international coalition framing (practices, universities, public bodies, Indigenous protocol authorities, nurseries, implementation partners worldwide).
+- Clarified affiliate partner programme (commercial Archive referral) ≠ Foundation founding membership; no separate “Landscape Alliance” trademark.
+- Linked schema portal, awards data-architecture anchor, charter consultation contact intent, and commercial `/partners`.
+- Footer nav link to `#founding-alliance`; awards programme governance cross-link back to governance.
+- Synced `foundationGovernanceContent.js` and awards source in la-frontend.
+
+### Why
+- Option A + international scope: publish founding coalition language under The Landscape Archive Foundation with interim draft tone, without implying active incorporation or duplicating internal standard codes in new copy.
+
+### Files touched
+- `src/data/governanceContent.js`, `src/pages/governance.astro`, `src/components/SiteFooter.astro`, `src/data/foundationAwardsProgramme.js`
+- la-frontend: `src/content/foundationGovernanceContent.js`, `src/content/foundationAwardsProgramme.js`
+
+### Links
+- https://landscapearchive.org/governance#founding-alliance
+- https://landscapearchive.org/awards#data-architecture-alignment
+
 ## 2026-07-07 - Header instant visibility (pixel chrome + animations)
 
 **Scope:** foundation-chrome, portal-animations, global-css

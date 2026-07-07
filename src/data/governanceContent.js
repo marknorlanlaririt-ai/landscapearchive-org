@@ -4,6 +4,7 @@ import {
   ARCHIVE_CITATIONS_PATH,
   FEDERATION_SCHEMA_PORTAL_URL,
   FOUNDATION_GOVERNANCE_CITATION_URL,
+  FOUNDATION_SUPPORT_CONTACT_PATH,
   OPEN_STANDARD_GITHUB_TAG_URL,
   OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE,
   REGISTRY_PATH,
@@ -15,6 +16,7 @@ import {
   TLA185_VERSION,
   isOpenStandardGithubPubliclyAvailable
 } from './foundationWing.js'
+import { ARCHIVE_ORIGIN } from './site.js'
 import { buildFoundationIntendedPurposeSections } from './purposeContent.js'
 
 /**
@@ -112,6 +114,40 @@ export function buildFoundationGovernanceSections({
         'Practitioner certification, commerce, and licensed datasets remain with the Archive'
       ],
       actions: [{ label: 'Commercial licensing', href: FOUNDATION_COMMERCIAL_CONTACT_PATH, external: true }]
+    },
+    {
+      id: 'founding-alliance',
+      heading: 'Founding alliance',
+      paragraphs: [
+        'The Landscape Archive Foundation is intended to convene a founding alliance — an international coalition of independent organisations that help steward the open landscape metadata specification through draft charter consultation. This is not a separate trademark, franchise, or commercial network; it sits under the Foundation name and scope described on this page.',
+        'The Landscape Archive affiliate partner programme is a commercial referral arrangement operated by The Landscape Archive Pty Ltd for subscription sales. Affiliate partnership is unrelated to Foundation founding membership: it confers no vote, Council seat, charter signatory status, or listing as a founding supporter.',
+        'Founding alliance participants are invited across jurisdictions — landscape architecture and allied design practices; university schools and research groups; municipal, regional, and national public bodies; First Nations and Indigenous protocol authorities where cultural-context fields apply; nursery and supply-chain partners whose provenance data supports honest planting records; and software, BIM, GIS, and interchange vendors as implementation partners worldwide. Implementation partners participate in an advisory capacity by default and hold no voting majority.',
+        'Each organisation remains legally independent. Founding participation creates no joint liability, no obligation to adopt commercial Archive products, and no transfer of proprietary project intellectual property. Shared work is confined to the public specification layer — field registry, schemas, conformance criteria, and published governance — as set out under governance scope above.',
+        'This material is draft and for consultation only. A founding charter is under review with advisers and prospective members; nothing here solicits binding membership in an incorporated entity that does not yet exist. Organisations confirming review of the draft charter and nominating a representative may be listed as founding supporters when the standard launches publicly — not upon commercial product adoption or affiliate programme acceptance.'
+      ],
+      bullets: [
+        'Practice members — private landscape, urban design, and allied built-environment firms worldwide',
+        'Academic members — university programmes, research institutes, and open-science collaborators',
+        'Public-body members — agencies, utilities, and environmental authorities referencing the open standard',
+        'Indigenous protocol members — Traditional Owner organisations and custodial authorities with advisory sign-off on cultural-context rules',
+        'Supply-chain partners — nurseries, seed networks, and material suppliers supporting traceable planting provenance',
+        'Implementation partners — BIM, GIS, nursery exchange, and validation tooling vendors (advisory; no default vote)'
+      ],
+      facts: [
+        { label: 'Affiliate partner programme', value: 'Commercial referral programme operated by The Landscape Archive Pty Ltd — not Foundation membership' },
+        { label: 'Founding alliance', value: 'Draft charter consultation under The Landscape Archive Foundation — membership classes subject to published by-laws' },
+        { label: 'Implementation partners', value: 'Software and delivery vendors including The Landscape Archive — advisory by default; no voting majority' }
+      ],
+      actions: [
+        { label: 'Schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
+        { label: 'Awards and data architecture', href: '/awards#data-architecture-alignment' },
+        {
+          label: 'Charter consultation',
+          href: `${FOUNDATION_SUPPORT_CONTACT_PATH}&intent=founding-alliance`,
+          external: true
+        },
+        { label: 'Affiliate partner programme (commercial)', href: `${ARCHIVE_ORIGIN}/partners`, external: true }
+      ]
     },
     {
       id: 'charter-pillars',

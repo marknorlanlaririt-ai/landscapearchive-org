@@ -506,6 +506,7 @@ export function buildFoundationAwardsTopicPage({
         ],
         actions: [
           { label: 'The Foundation Standards', href: governancePath },
+          { label: 'Founding alliance', href: `${governancePath}#founding-alliance` },
           {
             label: 'Register interest — entries and international jury advisory',
             href: `${supportContactPath}&intent=awards`,
