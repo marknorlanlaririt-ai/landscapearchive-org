@@ -426,7 +426,7 @@ html[data-pixel-chrome='1'].pixel-chrome--done .site-footer .page {
 }
 
 .pixel-chrome__cell {
-  background-color: var(--pixel-color, #8a96a3);
+  background-color: var(--pixel-color, #3a4550);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -434,5 +434,19 @@ html[data-pixel-chrome='1'].pixel-chrome--done .site-footer .page {
     background-color: var(--accent-strong);
     transition: background-color 680ms cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: var(--pixel-delay, 0ms);
+  }
+
+  html[data-pixel-chrome='1'].pixel-chrome--ambient .site-header,
+  html[data-pixel-chrome='1'].pixel-chrome--ambient .site-footer {
+    background: transparent !important;
+  }
+
+  html[data-pixel-chrome='1'].pixel-chrome--ambient .pixel-chrome__cell.is-ambient-base {
+    background-color: var(--accent-strong);
+  }
+
+  html[data-pixel-chrome='1'].pixel-chrome--ambient .pixel-chrome__cell.is-ambient-wave {
+    background-color: var(--pixel-wave-color, var(--accent-strong));
+    transition: background-color 380ms ease;
   }
 }
