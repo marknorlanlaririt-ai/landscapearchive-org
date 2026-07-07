@@ -114,6 +114,7 @@ Describe these as **forward positioning**, never as satisfying a current IFRS S2
 | Document | Purpose |
 |----------|---------|
 | [EU CSRD / ESRS E1 crosswalk](./eu-csrd-esrs-tla185-mapping.md) | EU climate disclosure analogue — Copernicus CDS / EEA jurisdiction pack |
+| [US SEC climate crosswalk](./us-sec-climate-tla185-mapping.md) | US SEC Reg S-K Item 1300 analogue — NOAA / USFS / USGS / NEX-GDDP jurisdiction pack |
 | [AASB S2 crosswalk](./aasb-s2-tla185-mapping.md) | Australian analogue — same structural mapping, different regulator |
 | [TLA-185 climate screening RFC](../rfc/TLA-185-climate-screening-rfc.md) | Normative band rules for 185 screening fields |
 | [Schema manifest](../schema/manifest.json) | Module index and implementation references |

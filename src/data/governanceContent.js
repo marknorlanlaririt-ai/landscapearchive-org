@@ -171,11 +171,12 @@ export function buildFoundationGovernanceSections({
         'Year 1 — publish open-standard pack on stable public GitHub; maintain 14-day RFC comment periods',
         'Year 1 — two pilot adoptions (one university studio, one procurement brief referencing capability grants)',
         'Year 1 — standards liaison introductory meetings with buildingSMART and Standards Australia',
-        'Ongoing — jurisdiction crosswalks (UK and EU published; US planned) and buildingSMART property-set alignment'
+        'Ongoing — jurisdiction crosswalks (UK, EU, and US published) and buildingSMART property-set alignment'
       ],
       actions: [
         { label: 'UK IFRS S2 crosswalk', href: '/crosswalk/uk-ifrs-s2' },
         { label: 'EU CSRD / ESRS E1 crosswalk', href: '/crosswalk/eu-csrd-esrs' },
+        { label: 'US SEC climate crosswalk', href: '/crosswalk/us-sec-climate' },
         { label: 'Schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
         {
           label: 'Capability grant manifests',
