@@ -1,6 +1,6 @@
 /**
  * Foundation + schema portal entrance animations.
- * - Header wordmark letters: alternating slide from top/bottom on load
+ * - Header wordmark lines: line 1 slides down, line 2 slides up on load
  * - Header nav: staggered fade + slide on load
  * - Content sections: Intersection Observer fade/slide on scroll
  * Respects prefers-reduced-motion; transform + opacity only.
@@ -127,39 +127,10 @@
     }
   }
 
-  function splitWordmarkLetters() {
+  function initWordmarkLines() {
     var words = document.querySelectorAll('.site-header__wordmark .site-header__word')
-    if (!words.length) {
-      return
-    }
-
-    var letterIndex = 0
-    for (var w = 0; w < words.length; w++) {
-      var word = words[w]
-      if (word.querySelector('.site-header__letter')) {
-        continue
-      }
-
-      var text = word.textContent || ''
-      var label = text.replace(/\s+/g, ' ').trim()
-      if (label) {
-        word.setAttribute('aria-label', label)
-      }
-
-      word.textContent = ''
-      for (var i = 0; i < text.length; i++) {
-        var ch = text.charAt(i)
-        var span = document.createElement('span')
-        span.className = 'site-header__letter'
-        span.setAttribute('aria-hidden', 'true')
-        span.textContent = ch === ' ' ? '\u00a0' : ch
-        span.style.setProperty('--letter-index', String(letterIndex))
-        if (letterIndex % 2 === 1) {
-          span.setAttribute('data-from', 'bottom')
-        }
-        word.appendChild(span)
-        letterIndex++
-      }
+    for (var i = 0; i < words.length; i++) {
+      words[i].style.setProperty('--word-index', String(i))
     }
   }
 
@@ -180,9 +151,9 @@
     document.documentElement.classList.add('js-header-animate-ready')
 
     if (REDUCED.matches) {
-      var reducedLetters = document.querySelectorAll('.site-header__letter')
-      for (var r = 0; r < reducedLetters.length; r++) {
-        markHeaderVisible(reducedLetters[r])
+      var reducedWords = document.querySelectorAll('.site-header__wordmark .site-header__word')
+      for (var r = 0; r < reducedWords.length; r++) {
+        markHeaderVisible(reducedWords[r])
       }
       var reducedNav = document.querySelectorAll('[data-animate-stagger]')
       for (var s = 0; s < reducedNav.length; s++) {
@@ -193,9 +164,9 @@
 
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        var letters = document.querySelectorAll('.site-header__letter')
-        for (var i = 0; i < letters.length; i++) {
-          markHeaderVisible(letters[i])
+        var wordLines = document.querySelectorAll('.site-header__wordmark .site-header__word')
+        for (var i = 0; i < wordLines.length; i++) {
+          markHeaderVisible(wordLines[i])
         }
         var navItems = document.querySelectorAll(
           '.site-header [data-animate-stagger]'
@@ -254,7 +225,7 @@
   }
 
   function init() {
-    splitWordmarkLetters()
+    initWordmarkLines()
     initNavStagger()
     playHeaderAnimations()
     initContentAnimations()
@@ -265,9 +236,11 @@
         for (var j = 0; j < all.length; j++) {
           markVisible(all[j])
         }
-        var letters = document.querySelectorAll('.site-header__letter:not(.is-header-visible)')
-        for (var k = 0; k < letters.length; k++) {
-          markHeaderVisible(letters[k])
+        var words = document.querySelectorAll(
+          '.site-header__wordmark .site-header__word:not(.is-header-visible)'
+        )
+        for (var k = 0; k < words.length; k++) {
+          markHeaderVisible(words[k])
         }
         var navItems = document.querySelectorAll('[data-animate-stagger]:not(.is-header-visible)')
         for (var n = 0; n < navItems.length; n++) {

@@ -14,10 +14,10 @@
   --line: rgba(28, 31, 34, 0.12);
   --line-soft: rgba(28, 31, 34, 0.07);
 
-  /* Restrained botanical accent */
-  --accent: #3f5a4a;
-  --accent-strong: #2c4436;
-  --accent-tint: rgba(63, 90, 74, 0.08);
+  /* Purple-navy — shared header/footer chrome with schema.landscapearchive.org */
+  --accent: #5e5978;
+  --accent-strong: #4a4568;
+  --accent-tint: rgba(74, 69, 104, 0.08);
 
   /* Typography */
   --font-serif: 'Iowan Old Style', 'Palatino Linotype', 'Georgia', 'Times New Roman', serif;
@@ -264,10 +264,10 @@ a:hover {
 
 /* Header load animations ---------------------------------------------------- */
 
-@keyframes foundation-letter-from-top {
+@keyframes foundation-word-from-top {
   from {
     opacity: 0;
-    transform: translate3d(0, -0.6em, 0);
+    transform: translate3d(0, -0.5em, 0);
   }
 
   to {
@@ -276,10 +276,10 @@ a:hover {
   }
 }
 
-@keyframes foundation-letter-from-bottom {
+@keyframes foundation-word-from-bottom {
   from {
     opacity: 0;
-    transform: translate3d(0, 0.6em, 0);
+    transform: translate3d(0, 0.5em, 0);
   }
 
   to {
@@ -289,19 +289,20 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .site-header__letter {
-    display: inline-block;
+  .site-header__wordmark .site-header__word {
     opacity: 0;
     will-change: transform, opacity;
   }
 
-  html.js-header-animate-ready .site-header__letter.is-header-visible {
-    animation: foundation-letter-from-top 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: calc(var(--letter-index, 0) * 32ms + 60ms);
+  html.js-header-animate-ready .site-header__wordmark .site-header__word.is-header-visible {
+    animation: foundation-word-from-top 640ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--word-index, 0) * 120ms + 80ms);
   }
 
-  html.js-header-animate-ready .site-header__letter[data-from='bottom'].is-header-visible {
-    animation-name: foundation-letter-from-bottom;
+  html.js-header-animate-ready
+    .site-header__wordmark
+    .site-header__word--strong.is-header-visible {
+    animation-name: foundation-word-from-bottom;
   }
 
   html.js-header-animate-ready .site-header [data-animate-stagger]:not(.is-header-visible) {
@@ -324,7 +325,7 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-header__letter {
+  .site-header__wordmark .site-header__word {
     opacity: 1;
     transform: none;
     animation: none !important;
