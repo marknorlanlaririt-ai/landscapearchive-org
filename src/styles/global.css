@@ -289,7 +289,7 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .site-header__wordmark .site-header__word {
+  html.js-header-animate-ready .site-header__wordmark .site-header__word:not(.is-header-visible) {
     opacity: 0;
     will-change: transform, opacity;
   }
