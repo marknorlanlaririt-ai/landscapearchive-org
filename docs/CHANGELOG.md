@@ -1,3 +1,22 @@
+## 2026-07-07 - Pixel chrome: remove intro dissolve
+
+**Scope:** foundation-chrome, pixel-dissolve
+**Status:** done
+
+### Did
+- Removed intro loading dissolve: no staggered cell reveal, no `pixel-chrome--active` content hide, no ~1.8s/4.1s settle timers.
+- Mosaics boot in ambient base state; `foundation-pixel-chrome-readable` and settled events fire immediately on load.
+- Kept ambient grow-only patch pulse (`AMBIENT_TIME_SCALE` 3.3) and green/warm gradient field for wave colors.
+
+### Why
+- User wanted the initial pixelated intro animation gone entirely; ambient pulse is fine.
+
+### Files touched
+- `public/scripts/foundation-pixel-chrome.js`
+
+### Links
+- https://landscapearchive.org
+
 ## 2026-07-07 - Pixel chrome: faster intro, clearer foreground
 
 **Scope:** foundation-chrome, pixel-dissolve

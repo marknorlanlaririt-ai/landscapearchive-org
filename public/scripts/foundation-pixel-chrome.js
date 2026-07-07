@@ -1,13 +1,12 @@
 /**
- * Experimental pixel-dissolve header/footer chrome (toggle: html[data-pixel-chrome="1"]).
+ * Pixel mosaic header/footer chrome (toggle: html[data-pixel-chrome="1"]).
  * Tiny adjacent grid cells (4px mobile / 5px desktop) in a narrow blue-purple band
  * around --accent-strong (#343d4a, HSL ~215°) with organic gradient clusters
- * (green pockets ~140–170°, intermittent warm accents ~25–45°) settle to chrome,
- * then three ambient overlay layers run lighter-only patch waves with subtle
- * grow-only scale pulse.
- * Dispatches foundation-pixel-chrome-readable (~1.8s) then
- * foundation-pixel-chrome-settled (~4.1s) for staggered text reveal.
- * Intro dissolve uses INTRO_TIME_SCALE; ambient pulse keeps AMBIENT_TIME_SCALE.
+ * (green pockets ~140–170°, intermittent warm accents ~25–45°).
+ * Three ambient overlay layers run lighter-only patch waves with subtle grow-only
+ * scale pulse. No intro dissolve — chrome and content are visible immediately.
+ * Dispatches foundation-pixel-chrome-readable and foundation-pixel-chrome-settled
+ * on boot for header animation hooks.
  */
 (function () {
   var CHROME_TARGETS = '.site-header, .site-footer'
@@ -33,22 +32,12 @@
   var WARM_SAT_MAX = 0.07
   var WARM_INFLUENCE_MAX = 0.32
   var GRADIENT_WARM_POCKET_MAX = 2
-  var INTRO_TIME_SCALE = 1.5
   var AMBIENT_TIME_SCALE = 3.3
-
-  function scaleIntroMs(ms) {
-    return Math.round(ms * INTRO_TIME_SCALE)
-  }
 
   function scaleAmbientMs(ms) {
     return Math.round(ms * AMBIENT_TIME_SCALE)
   }
 
-  var MAX_DELAY_MS = scaleIntroMs(2000)
-  var TRANSITION_MS = scaleIntroMs(680)
-  var READABLE_MS = scaleIntroMs(1200)
-  var CONTENT_FADE_MS = scaleIntroMs(480)
-  var SETTLE_MS = MAX_DELAY_MS + TRANSITION_MS + scaleIntroMs(80)
   var MAX_CELLS_PER_LAYER = 1500
   var MAX_PATCH_CELLS = 90
   var PATCH_SLICE_MIN = 0.15
@@ -252,10 +241,6 @@
     return hslToHex(sample.hue, sample.sat, l)
   }
 
-  function paletteColor(col, row, clusters) {
-    return chromeColor({ col: col, row: row, clusters: clusters })
-  }
-
   function waveColor(layerIndex, col, row, clusters) {
     var layer = AMBIENT_LAYERS[layerIndex] || AMBIENT_LAYERS[0]
     var lift = WAVE_LIGHTNESS_JITTER + layer.lightnessBoost
@@ -346,7 +331,7 @@
     for (var i = 0; i < grid.placements.length; i++) {
       var placement = grid.placements[i]
       var cell = document.createElement('span')
-      cell.className = 'pixel-chrome__cell'
+      cell.className = 'pixel-chrome__cell is-ambient-base'
       cell.__col = placement.col
       cell.__row = placement.row
       cell.style.gridColumnStart = String(placement.col + 1)
@@ -355,14 +340,6 @@
         cell.style.gridColumnEnd = 'span ' + grid.stride
         cell.style.gridRowEnd = 'span ' + grid.stride
       }
-      cell.style.setProperty(
-        '--pixel-color',
-        paletteColor(placement.col, placement.row, mosaic.__gradientField)
-      )
-      cell.style.setProperty(
-        '--pixel-delay',
-        String((Math.random() * MAX_DELAY_MS) | 0) + 'ms'
-      )
       fragment.appendChild(cell)
     }
     mosaic.appendChild(fragment)
@@ -376,13 +353,6 @@
       mosaics.push(createMosaic(host, layer))
     }
     return mosaics
-  }
-
-  function settleMosaic(mosaic) {
-    var cells = mosaic.querySelectorAll('.pixel-chrome__cell')
-    for (var i = 0; i < cells.length; i++) {
-      cells[i].classList.add('is-settling')
-    }
   }
 
   function settleToBase(mosaic) {
@@ -595,16 +565,6 @@
       return
     }
 
-    document.documentElement.classList.add('pixel-chrome--active')
-    document.documentElement.style.setProperty(
-      '--pixel-settle-duration',
-      TRANSITION_MS + 'ms'
-    )
-    document.documentElement.style.setProperty(
-      '--pixel-content-fade-duration',
-      CONTENT_FADE_MS + 'ms'
-    )
-
     var hosts = document.querySelectorAll(CHROME_TARGETS)
     var mosaics = []
     for (var i = 0; i < hosts.length; i++) {
@@ -614,21 +574,8 @@
       }
     }
 
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        for (var j = 0; j < mosaics.length; j++) {
-          settleMosaic(mosaics[j])
-        }
-      })
-    })
-
-    window.setTimeout(function () {
-      window.dispatchEvent(new CustomEvent('foundation-pixel-chrome-readable'))
-    }, READABLE_MS)
-
-    window.setTimeout(function () {
-      enterAmbient(mosaics)
-    }, SETTLE_MS)
+    window.dispatchEvent(new CustomEvent('foundation-pixel-chrome-readable'))
+    enterAmbient(mosaics)
   }
 
   document.addEventListener('visibilitychange', function () {
