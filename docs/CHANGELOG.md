@@ -1,3 +1,33 @@
+## 2026-07-07 - US SEC climate crosswalk + custom domain attachment
+
+**Scope:** foundation-governance, crosswalk, landscapearchive-org, cloudflare
+**Status:** done
+
+### Did
+- Published `/crosswalk/us-sec-climate` Astro page rendering US SEC climate disclosure concept crosswalk markdown.
+- Added US crosswalk link to international adoption governance actions; synced `public/crosswalk/us-sec-climate-tla185-mapping.md`.
+- Updated UK and EU crosswalk markdown with US related-artefact link.
+- Attached custom domains `landscapearchive.org` and `www.landscapearchive.org` to Cloudflare Pages project `landscapearchive-org` via REST API (wrangler has no `pages domain add` command).
+
+### Why
+- Third non-AU jurisdiction crosswalk for US Reg S-K Item 1300 adopters — same structural mapping as UK/EU with NOAA / USFS / USGS / NEX-GDDP bindings.
+- Custom domains required for production Foundation home at apex `.org`.
+
+### Files touched
+- `src/data/governanceContent.js`
+- `src/pages/crosswalk/us-sec-climate.astro`
+- `public/crosswalk/us-sec-climate-tla185-mapping.md`
+- `public/crosswalk/uk-ifrs-s2-tla185-mapping.md`
+- `public/crosswalk/eu-csrd-esrs-tla185-mapping.md`
+
+### Follow-ups / blockers
+- Custom domains attached but **status pending** (HTTP validation / certificate provisioning in progress at attach time). Verify DNS CNAME records if not auto-created: apex and `www` → `landscapearchive-org.pages.dev` (proxied).
+
+### Links
+- `/governance#international-adoption`
+- `/crosswalk/us-sec-climate`
+- Deploy: `landscapearchive-org.pages.dev`
+
 ## 2026-07-07 - EU CSRD / ESRS E1 crosswalk page
 
 **Scope:** foundation-governance, crosswalk, landscapearchive-org
