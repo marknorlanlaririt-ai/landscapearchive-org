@@ -14,10 +14,17 @@ import { GOVERNANCE_PATH } from './foundationWing.js'
 export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
   {
     date: 'July 2026',
-    title: 'International founding alliance (draft consultation)',
+    title: 'Adopt the open standard in 15 minutes',
     summary:
-      'Draft charter language for an international coalition — practices, universities, public bodies, Indigenous protocol authorities, and implementation partners — published for consultation. Not incorporation, binding membership, or a separate trademark.',
-    href: `${GOVERNANCE_PATH}#founding-alliance`
+      'Practitioner guide: download the open pack, validate an example bundle, paste a procurement sentence. Addresses why outreach alone does not convert — tooling and one mandated deliverable per pilot.',
+    href: '/adopt'
+  },
+  {
+    date: 'July 2026',
+    title: 'Founding charter consultation',
+    summary:
+      'Draft constitution for The Landscape Archive Foundation (proposed CLG) — not incorporated, not legal advice. Review the draft and respond via founding alliance consultation.',
+    href: '/founding-charter'
   },
   {
     date: 'July 2026',

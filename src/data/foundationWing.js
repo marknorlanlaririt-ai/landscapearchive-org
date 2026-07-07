@@ -23,6 +23,7 @@ export const TLA185_REGISTRY_PREVIEW_FIELD_LIMIT = 28
 export const HOME_PATH = '/'
 export const GOVERNANCE_PATH = '/governance'
 export const FOUNDING_CHARTER_PATH = '/founding-charter'
+export const ADOPT_PATH = '/adopt'
 export const REGISTRY_PATH = '/registry'
 export const SUPPORT_SECTION_ID = 'support'
 export const SUPPORT_PATH = `/support`

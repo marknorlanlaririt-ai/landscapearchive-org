@@ -139,6 +139,7 @@ export function buildFoundationGovernanceSections({
         { label: 'Implementation partners', value: 'Software and delivery vendors including The Landscape Archive — advisory by default; no voting majority' }
       ],
       actions: [
+        { label: 'Adopt in 15 minutes', href: '/adopt' },
         { label: 'Schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
         { label: 'Awards and data architecture', href: '/awards#data-architecture-alignment' },
         { label: 'Draft constitution', href: '/founding-charter' },
@@ -175,6 +176,7 @@ export function buildFoundationGovernanceSections({
         'Ongoing — jurisdiction crosswalks (UK, EU, and US published) and buildingSMART property-set alignment'
       ],
       actions: [
+        { label: 'Adopt in 15 minutes', href: '/adopt' },
         { label: 'UK IFRS S2 crosswalk', href: '/crosswalk/uk-ifrs-s2' },
         { label: 'EU CSRD / ESRS E1 crosswalk', href: '/crosswalk/eu-csrd-esrs' },
         { label: 'US SEC climate crosswalk', href: '/crosswalk/us-sec-climate' },

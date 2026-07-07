@@ -3,6 +3,7 @@ import {
   FOUNDATION_SUPPORT_CONTACT_PATH,
   FEDERATION_SCHEMA_PORTAL_URL,
   GOVERNANCE_PATH,
+  ADOPT_PATH,
   OPEN_STANDARD_GITHUB_TAG_URL,
   OPEN_STANDARD_GITHUB_URL,
   OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE,
@@ -66,7 +67,8 @@ export function buildFoundationHomeSections({
               { label: 'View repository', href: OPEN_STANDARD_GITHUB_URL, external: true }
             ]
           : []),
-        { label: 'Open schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true }
+        { label: 'Open schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
+        { label: 'Get started in 15 minutes', href: ADOPT_PATH }
       ]
     },
     {

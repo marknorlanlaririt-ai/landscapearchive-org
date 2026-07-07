@@ -20,6 +20,7 @@ export const SITE_NAV_LINKS = Object.freeze([
   { id: 'overview', label: 'Overview', href: '/' },
   { id: 'governance', label: 'Governance', href: '/governance' },
   { id: 'registry', label: 'Registry', href: '/registry' },
+  { id: 'adopt', label: 'Adopt', href: '/adopt' },
   { id: 'truth-tellers', label: 'Truth-tellers', href: '/truth-tellers' },
   { id: 'awards', label: 'Awards', href: '/awards' },
   { id: 'volunteers', label: 'Volunteers', href: '/volunteers' },

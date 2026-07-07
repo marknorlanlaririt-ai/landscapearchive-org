@@ -3,7 +3,8 @@ import {
   FOUNDATION_INTERIM_HOST,
   FOUNDATION_SUPPORT_CONTACT_PATH,
   TLA169_DISPLAY_ID,
-  TLA185_DISPLAY_ID
+  TLA185_DISPLAY_ID,
+  ADOPT_PATH
 } from './foundationWing.js'
 import { ARCHIVE_ORIGIN } from './site.js'
 
@@ -98,6 +99,7 @@ export function buildFoundingCharterSections() {
           href: FOUNDING_CHARTER_CONSULTATION_URL,
           external: true
         },
+        { label: 'Adopt the standard (15 min)', href: ADOPT_PATH },
         { label: 'Governance', href: '/governance' }
       ]
     }

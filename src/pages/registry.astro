@@ -7,6 +7,7 @@ import {
   OPEN_STANDARD_GITHUB_TAG_URL,
   OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE,
   FEDERATION_SCHEMA_PORTAL_URL,
+  ADOPT_PATH,
   TLA185_DISPLAY_ID,
   TLA185_FIELD_COUNT,
   isOpenStandardGithubPubliclyAvailable
@@ -37,6 +38,11 @@ for (const field of fields) {
     <div class="reg__intro prose">
       <p class="eyebrow">{preview.standardLabel}</p>
       <h1>{TLA185_DISPLAY_ID} field registry</h1>
+      <p class="reg__quickstart" role="note">
+        <strong>New here?</strong>
+        <a href={ADOPT_PATH}>Get started in 15 minutes</a> — download the open pack, validate an example bundle, paste a procurement sentence.
+        No account required. The Foundation is not incorporated yet; this is public reference infrastructure.
+      </p>
       <p>
         The published specification describes <strong>{TLA185_FIELD_COUNT} documented elements</strong>
         across {modules.length} modules — structural definitions only, with no species inventories,
@@ -53,7 +59,8 @@ for (const field of fields) {
         )
       }
       <div class="action-row">
-        <a class="btn btn--primary" href={DICTIONARY_URL} rel="noopener" target="_blank">
+        <a class="btn btn--primary" href={ADOPT_PATH}>Get started in 15 minutes</a>
+        <a class="btn" href={DICTIONARY_URL} rel="noopener" target="_blank">
           Full Data Dictionary <span class="btn__ext" aria-hidden="true">↗</span>
         </a>
         {
@@ -126,6 +133,17 @@ for (const field of fields) {
 <style>
   .reg__intro {
     padding-block: clamp(2.6rem, 6vw, 4rem) 1.5rem;
+  }
+
+  .reg__quickstart {
+    padding: 0.85rem 1rem;
+    margin: 0 0 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent-strong);
+    background: var(--paper-raised);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
   }
 
   .reg__github-notice {

@@ -1,3 +1,31 @@
+## 2026-07-07 - Founding and adoption strategy package
+
+**Scope:** adoption, founding-charter, governance, marketing
+**Status:** done
+
+### Did
+- Added `/adopt` practitioner guide: why specs go unused, 15-minute path (open pack → validator → procurement sentence), adoption ladder, honest interim footer.
+- Added `foundingAlliancePitch.js` — copy-paste email templates (university, public body, practice) and one-page plain-text pitch.
+- Published `/founding-charter` consultation page with draft constitution sections and `?intent=founding-alliance` CTA.
+- Homepage primary CTA → adopt; registry quick-start banner; nav + footer links; governance founding-alliance and international-adoption cross-links.
+- Updated recent public updates strip.
+
+### Why
+- Outreach without adoption: strategy shifts from governance copy to mandated first use case per pilot, tooling visibility, and measurable validator/crosswalk usage.
+
+### Files touched
+- `src/pages/adopt.astro`, `src/data/adoptContent.js`, `src/data/foundingAlliancePitch.js`
+- `src/pages/founding-charter.astro`, `src/data/foundingCharterContent.js`, `public/docs/FOUNDATION_DRAFT_CONSTITUTION.md`
+- `src/pages/index.astro`, `src/pages/registry.astro`, `src/data/governanceContent.js`, `src/data/homeContent.js`
+- `src/data/recentPublicUpdates.js`, `src/data/site.js`, `src/data/foundationWing.js`, `src/components/SiteFooter.astro`
+
+### Links
+- https://landscapearchive.org/adopt
+- https://landscapearchive.org/founding-charter
+- https://landscapearchive.org/governance#founding-alliance
+
+---
+
 ## 2026-07-07 - Section share copy-link fix (all Foundation pages)
 
 **Scope:** section-share, landscapearchive-org, foundation-portal

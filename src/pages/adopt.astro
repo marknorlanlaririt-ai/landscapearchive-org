@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DocsSection from '../components/DocsSection.astro'
+import { buildAdoptSections, ADOPT_PATH } from '../data/adoptContent.js'
+import { formatFoundingAlliancePitchPlainText } from '../data/foundingAlliancePitch.js'
+import { SCHEMA_PORTAL_URL } from '../data/site.js'
+
+const sections = buildAdoptSections()
+const pitchPlainText = formatFoundingAlliancePitchPlainText()
+---
+
+<BaseLayout
+  title="Adopt the open standard"
+  description="Why open landscape metadata specs go unused — and a 15-minute path to adoption: download the open pack, validate an example bundle, paste a procurement sentence. Honest interim Foundation status."
+  path={ADOPT_PATH}
+>
+  <div class="page adopt">
+    <div class="adopt__intro prose">
+      <p class="eyebrow">Practitioner guide · Draft governance</p>
+      <h1>Adopt the open standard</h1>
+      <p class="adopt__banner" role="note">
+        <strong>Not incorporated yet.</strong> This page is about <em>using</em> the public specification
+        today — not joining a revolution. One validator run beats ten intro emails.
+      </p>
+      <p>
+        The open TLA-185 landscape metadata specification is live: schema portal, validator, crosswalks,
+        and worked examples. If outreach did not convert to use, the gap is tooling and a mandated first
+        deliverable — not more governance copy alone.
+      </p>
+      <div class="action-row">
+        <a class="btn btn--primary" href={`${SCHEMA_PORTAL_URL}/validate`} rel="noopener" target="_blank">
+          Validate an example <span class="btn__ext" aria-hidden="true">↗</span>
+        </a>
+        <a class="btn" href={`${SCHEMA_PORTAL_URL}/schema/manifest.json`} rel="noopener" target="_blank">
+          Download open pack <span class="btn__ext" aria-hidden="true">↗</span>
+        </a>
+        <a class="btn" href="/founding-charter">Draft constitution</a>
+      </div>
+    </div>
+
+    <nav class="adopt__toc" aria-label="On this page">
+      {sections.map((section) => <a href={`#${section.id}`}>{section.heading}</a>)}
+    </nav>
+
+    {sections.map((section) => <DocsSection {...section} sharePagePath={ADOPT_PATH} />)}
+
+    <section id="founding-pitch" class="section-block adopt__pitch">
+      <div class="prose">
+        <h2>Founding alliance pitch (copy-paste)</h2>
+        <p>
+          One-page plain-text summary for outreach emails. Separate templates for university, public body,
+          and practice contacts live in the strategy doc on the implementation repository.
+        </p>
+      </div>
+      <pre class="adopt__pitch-text" aria-label="Founding alliance one-page pitch">{pitchPlainText}</pre>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .adopt__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 1rem;
+  }
+
+  .adopt__banner {
+    padding: 0.85rem 1rem;
+    margin: 1rem 0 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent-strong);
+    background: var(--paper-raised);
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .adopt__toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.9rem;
+    padding: 1.1rem 0 0.4rem;
+    margin-bottom: 0.5rem;
+    border-block: 1px solid var(--line-soft);
+  }
+
+  .adopt__toc a {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  .adopt__toc a:hover {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .adopt__pitch-text {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    max-height: 28rem;
+    overflow: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--paper-raised);
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 0.78rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--ink-soft);
+  }
+</style>
