@@ -28,7 +28,7 @@ const sections = buildFoundationGovernanceSections()
       {sections.map((section) => <a href={`#${section.id}`}>{section.heading}</a>)}
     </nav>
 
-    {sections.map((section) => <DocsSection {...section} />)}
+    {sections.map((section) => <DocsSection {...section} sharePagePath="/governance" />)}
   </div>
 </BaseLayout>
 

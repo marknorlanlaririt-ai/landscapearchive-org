@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import SectionShareLinks from '../components/SectionShareLinks.astro'
 import preview from '../data/tla185-fields-preview.json'
 import LicenceNotice from '../components/LicenceNotice.astro'
 import {
@@ -85,7 +86,7 @@ for (const field of fields) {
         modules
           .filter((mod) => (fieldsByModule.get(mod.id) ?? []).length > 0)
           .map((mod) => (
-            <section class="reg__group">
+            <section class="reg__group" id={`module-${mod.id}`}>
               <h2 class="reg__group-head">{mod.label}</h2>
               <div class="reg__cards">
                 {(fieldsByModule.get(mod.id) ?? []).map((field) => (
@@ -103,6 +104,11 @@ for (const field of fields) {
                   </article>
                 ))}
               </div>
+              <SectionShareLinks
+                pagePath="/registry"
+                anchorId={`module-${mod.id}`}
+                title={`${mod.label} — field registry`}
+              />
             </section>
           ))
       }

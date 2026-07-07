@@ -25,7 +25,7 @@ const memberOnly = isMemberOnlyOrgPath(pagePath)
       {page.placeholder && <p class="topic__flag">In preparation — interim working-group material.</p>}
     </div>
 
-    {page.sections.map((section) => <DocsSection {...section} />)}
+    {page.sections.map((section) => <DocsSection {...section} sharePagePath={pagePath} />)}
   </div>
 </BaseLayout>
 

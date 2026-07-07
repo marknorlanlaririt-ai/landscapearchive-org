@@ -1,3 +1,26 @@
+## 2026-07-07 - Professional section share links (public Foundation surfaces)
+
+**Scope:** share-links, landscapearchive-org, federation-portal
+**Status:** done
+
+### Did
+- Added `SectionShareLinks.astro` — restrained copy-link, LinkedIn, email, and Web Share API on mobile; slate `#343d4a` small-caps styling.
+- Integrated after each `DocsSection` block on governance, awards, volunteers, homepage, and Field Notes essays; article-level share on essay footer; registry module groups.
+- Schema portal: auto-injected share rows on `.foundation-section` via `federation/portal/share.js`.
+
+### Why
+- Resume session deliverable: citable deep links for founding alliance, awards, governance pillars, and field notes without bubbly social chrome.
+
+### Files touched
+- `src/components/SectionShareLinks.astro`, `src/components/DocsSection.astro`
+- `src/pages/governance.astro`, `src/pages/[topic].astro`, `src/pages/index.astro`, `src/pages/registry.astro`, `src/pages/articles/[slug].astro`
+- la-frontend: `federation/portal/share.js`, `federation/portal/index.html`, `federation/portal/styles.css`
+
+### Links
+- https://landscapearchive.org/governance#founding-alliance
+- https://landscapearchive.org/articles/a-shared-vocabulary
+- https://schema.landscapearchive.org/
+
 ## 2026-07-07 - Homepage what's new strip + public post copy
 
 **Scope:** marketing, homepage, federation-portal, founding-alliance, built-environment

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import DocsSection from '../components/DocsSection.astro'
 import RecentUpdatesStrip from '../components/RecentUpdatesStrip.astro'
+import SectionShareLinks from '../components/SectionShareLinks.astro'
 import TlaLettermark from '../components/TlaLettermark.astro'
 import { buildFoundationHomeSections } from '../data/homeContent.js'
 import { FOUNDATION_CHARTER_PILLARS, FOUNDATION_PILLARS_LABEL } from '../data/charterPillars.js'
@@ -62,9 +63,9 @@ const sections = buildFoundationHomeSections()
   <RecentUpdatesStrip />
 
   <div class="page">
-    {sections.map((section) => <DocsSection {...section} />)}
+    {sections.map((section) => <DocsSection {...section} sharePagePath="/" />)}
 
-    <section class="section-block" aria-label={FOUNDATION_PILLARS_LABEL}>
+    <section class="section-block" id="foundation-pillars" aria-label={FOUNDATION_PILLARS_LABEL}>
       <div class="prose">
         <p class="eyebrow">{FOUNDATION_PILLARS_LABEL}</p>
         <h2>Five standards, one argument</h2>
@@ -88,6 +89,7 @@ const sections = buildFoundationHomeSections()
       <div class="action-row">
         <a class="btn" href={GOVERNANCE_PATH}>Read all five in full</a>
       </div>
+      <SectionShareLinks pagePath="/" anchorId="foundation-pillars" title="Five standards, one argument" />
     </section>
   </div>
 </BaseLayout>

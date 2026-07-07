@@ -1,6 +1,16 @@
 ---
+import SectionShareLinks from './SectionShareLinks.astro'
+
 // Renders one editorial content section: heading, paragraphs, bullets,
 // a fact list (optionally collapsible via native <details>), and actions.
+function slugifyHeading(text: string): string {
+  return text
+    .replace(/<[^>]*>/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
 interface Action {
   label: string
   href: string
@@ -27,6 +37,8 @@ interface Props {
   factsToggleLabel?: string
   profileTable?: ProfileRow[]
   actions?: Action[]
+  /** When set, renders a share row after this section (public Foundation pages only). */
+  sharePagePath?: string
 }
 const {
   id,
@@ -37,11 +49,15 @@ const {
   factsCollapsible = false,
   factsToggleLabel = 'Show details',
   profileTable = [],
-  actions = []
+  actions = [],
+  sharePagePath
 } = Astro.props
+
+const sectionAnchorId = id ?? (heading ? slugifyHeading(heading) : undefined)
+const shareTitle = heading ?? 'This section'
 ---
 
-<section id={id} class="section-block">
+<section id={sectionAnchorId} class="section-block">
   <div class="prose">
     {heading && <h2>{heading}</h2>}
     {paragraphs.map((text) => <p set:html={text} />)}
@@ -130,6 +146,16 @@ const {
             </a>
           ))}
         </div>
+      )
+    }
+
+    {
+      sharePagePath && (
+        <SectionShareLinks
+          pagePath={sharePagePath}
+          anchorId={sectionAnchorId}
+          title={shareTitle}
+        />
       )
     }
   </div>
