@@ -1,5 +1,12 @@
 /** @typedef {{ filename: string, kicker: string, title: string, intro?: boolean, titleLong?: boolean, footerUrl: string, body: string[], webBody?: string[] }} AwardsProgrammeSlide */
 
+import {
+  BUILT_ENVIRONMENT_EXPORT_PROFILES,
+  BUILT_ENVIRONMENT_EXPORTS_INTRO,
+  BUILT_ENVIRONMENT_EXPORTS_PORTAL_URL,
+  builtEnvironmentSchemaUrl
+} from './builtEnvironmentExports.js'
+
 /** @param {AwardsProgrammeSlide} slide */
 export function getSlideWebParagraphs(slide) {
   return slide.webBody ?? slide.body
@@ -11,15 +18,22 @@ export const DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION = Object.freeze({
   paragraphs: [
     'The awards programme mirrors the Foundation standard\'s data architecture footprint — not only botanical and climatic fields, but the documentary integrity of the entire built precinct. The programme is intended to serve as a peer-evaluative reference for landscape architects, urban planners, architects, and engineers: recognition rests on whether precinct-scale landscape claims remain documentarily honest across disciplines, not on presentation imagery alone.',
     'Assessment is intended to draw on TLA-185 as central metadata. Category rubrics will map at high level to published modules — for example, architectural integration to project, delivery, botanical-asset, site-context, and Revit shared-parameter fields; civic and urban landscape to site-context, environment, sustainability, climate-screening, and site-risk; engineering and infrastructure to delivery, site-context, sustainability, site-risk, and project — with botanical, provenance, and cultural-context modules supporting cross-cutting evaluation regardless of delivery stream.',
-    'Intended evaluative lenses and future schema crosswalks — not claims of shipped product — include IFC property-set mapping (aspirational IfcOpenShell paths), GeoJSON and Shapefile flattening for civic geospatial registries, USD metadata attributes for visualisation pipelines, and spreadsheet crosswalks aligned with the TLA-185 crosswalk narrative. A single-source-of-truth model with exporter classes matches the Foundation specification and TLA Brain stewardship story; category rubrics may reference these paths where nominees demonstrate traceable records, without requiring one-click export from any commercial stack today.',
-    'This framing specifies the scope within which rubrics will assess whether landscape claims survive authoring, export, construction, and asset-management phases. It does not imply that every exporter, automated validator, or crosswalk pipeline is live in production today.'
+    `${BUILT_ENVIRONMENT_EXPORTS_INTRO} Published interchange profiles on the <a href="${BUILT_ENVIRONMENT_EXPORTS_PORTAL_URL}">schema portal</a> supply evaluative lenses for IFC property sets, civic GeoJSON, USD metadata sidecars, and nursery spreadsheet crosswalks — category rubrics may reference these paths where nominees demonstrate traceable records, without requiring one-click export from any commercial stack today.`,
+    'This framing specifies the scope within which rubrics will assess whether landscape claims survive authoring, export, construction, and asset-management phases. IFC STEP and USD file writers remain pipeline stubs; JSON emitters and schema definitions are the published baseline.'
   ],
   facts: [
-    { label: 'Architectural integration (BIM/IFC)', value: 'Project, delivery, botanical-asset, site-context, Revit shared-parameter modules; IFC property-set evaluative lens (aspirational)' },
-    { label: 'Civic & urban landscape (GIS)', value: 'Site-context, environment, sustainability, climate-screening, site-risk modules; GeoJSON / Shapefile flattening lens (aspirational)' },
+    { label: 'Architectural integration (BIM/IFC)', value: 'Project, delivery, botanical-asset, site-context, Revit shared-parameter modules; TLA-185-IFC property-set profile (MVP JSON emitter)' },
+    { label: 'Civic & urban landscape (GIS)', value: 'Site-context, environment, sustainability, climate-screening, site-risk modules; TLA-185-GIS GeoJSON profile (MVP)' },
     { label: 'Engineering & infrastructure', value: 'Delivery, site-context, sustainability, site-risk, project modules; hydrological and soil-matrix traceability to asset registers' },
     { label: 'Cross-cutting modules', value: 'Taxonomy, traits, provenance, and cultural-context fields support all categories regardless of built-environment stream' }
-  ]
+  ],
+  profileTable: BUILT_ENVIRONMENT_EXPORT_PROFILES.map((profile) => ({
+    id: profile.id,
+    targetFormat: profile.targetFormat,
+    purpose: profile.purpose,
+    status: profile.status,
+    schemaUrl: builtEnvironmentSchemaUrl(profile)
+  }))
 })
 
 /** Website-only section — no carousel JPEG; merged into evaluative-purpose slide for Instagram. */
@@ -448,7 +462,11 @@ export function buildFoundationAwardsTopicPage({
         id: 'data-architecture-alignment',
         heading: DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION.heading,
         paragraphs: DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION.paragraphs,
-        facts: DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION.facts
+        facts: DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION.facts,
+        profileTable: DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION.profileTable,
+        actions: [
+          { label: 'Built environment exports (schema portal)', href: BUILT_ENVIRONMENT_EXPORTS_PORTAL_URL, external: true }
+        ]
       },
       {
         id: 'methodological-framing',

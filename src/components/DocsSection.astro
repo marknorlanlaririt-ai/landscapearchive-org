@@ -10,6 +10,13 @@ interface Fact {
   label: string
   value: string
 }
+interface ProfileRow {
+  id: string
+  targetFormat: string
+  purpose: string
+  status: string
+  schemaUrl: string
+}
 interface Props {
   id?: string
   heading?: string
@@ -18,6 +25,7 @@ interface Props {
   facts?: Fact[]
   factsCollapsible?: boolean
   factsToggleLabel?: string
+  profileTable?: ProfileRow[]
   actions?: Action[]
 }
 const {
@@ -28,6 +36,7 @@ const {
   facts = [],
   factsCollapsible = false,
   factsToggleLabel = 'Show details',
+  profileTable = [],
   actions = []
 } = Astro.props
 ---
@@ -44,6 +53,39 @@ const {
             <li set:html={item} />
           ))}
         </ul>
+      )
+    }
+
+    {
+      profileTable.length > 0 && (
+        <div class="profile-table-wrap">
+          <table class="profile-table">
+            <thead>
+              <tr>
+                <th scope="col">Profile</th>
+                <th scope="col">Target format</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {profileTable.map((row) => (
+                <tr>
+                  <th scope="row">
+                    <a href={row.schemaUrl}>{row.id}</a>
+                  </th>
+                  <td>{row.targetFormat}</td>
+                  <td>{row.purpose}</td>
+                  <td>
+                    <span class:list={['profile-table__status', `profile-table__status--${row.status.toLowerCase()}`]}>
+                      {row.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )
     }
 
@@ -122,5 +164,66 @@ const {
   .fact-details .fact-list {
     margin: 0 0 0.8rem;
     border-top: 0;
+  }
+
+  .profile-table-wrap {
+    margin-top: 1.2rem;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--paper-raised);
+  }
+
+  .profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .profile-table th,
+  .profile-table td {
+    padding: 0.65rem 0.85rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .profile-table thead th {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    background: var(--accent-tint);
+  }
+
+  .profile-table tbody tr:last-child th,
+  .profile-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .profile-table tbody th {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .profile-table__status {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+
+  .profile-table__status--mvp {
+    border-color: rgba(52, 61, 74, 0.35);
+    color: var(--accent-strong);
+    background: var(--accent-tint);
+  }
+
+  .profile-table__status--draft {
+    color: var(--ink-muted);
   }
 </style>
