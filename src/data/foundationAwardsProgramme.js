@@ -7,10 +7,18 @@ export function getSlideWebParagraphs(slide) {
 
 /** Website-only section — no carousel JPEG. */
 export const DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION = Object.freeze({
-  heading: 'Data architecture alignment',
+  heading: 'Awards and the data architecture',
   paragraphs: [
-    'The awards programme mirrors the Foundation standard\'s data architecture footprint — not only botanical and climatic fields, but the documentary integrity of the entire built precinct. Assessment is intended to draw on TLA-185 as central metadata, with published exporters and crosswalks — IFC property sets, GeoJSON and GIS flattening paths, USD attributes, and spreadsheet crosswalks — as reference evaluation lenses for projects that maintain traceable records through these interchange paths.',
-    'This framing specifies the scope within which category rubrics will assess whether landscape claims survive authoring, export, construction, and asset-management phases. It does not imply that every exporter or automated validation pipeline is live in production today.'
+    'The awards programme mirrors the Foundation standard\'s data architecture footprint — not only botanical and climatic fields, but the documentary integrity of the entire built precinct. The programme is intended to serve as a peer-evaluative reference for landscape architects, urban planners, architects, and engineers: recognition rests on whether precinct-scale landscape claims remain documentarily honest across disciplines, not on presentation imagery alone.',
+    'Assessment is intended to draw on TLA-185 as central metadata. Category rubrics will map at high level to published modules — for example, architectural integration to project, delivery, botanical-asset, site-context, and Revit shared-parameter fields; civic and urban landscape to site-context, environment, sustainability, climate-screening, and site-risk; engineering and infrastructure to delivery, site-context, sustainability, site-risk, and project — with botanical, provenance, and cultural-context modules supporting cross-cutting evaluation regardless of delivery stream.',
+    'Intended evaluative lenses and future schema crosswalks — not claims of shipped product — include IFC property-set mapping (aspirational IfcOpenShell paths), GeoJSON and Shapefile flattening for civic geospatial registries, USD metadata attributes for visualisation pipelines, and spreadsheet crosswalks aligned with the TLA-185 crosswalk narrative. A single-source-of-truth model with exporter classes matches the Foundation specification and TLA Brain stewardship story; category rubrics may reference these paths where nominees demonstrate traceable records, without requiring one-click export from any commercial stack today.',
+    'This framing specifies the scope within which rubrics will assess whether landscape claims survive authoring, export, construction, and asset-management phases. It does not imply that every exporter, automated validator, or crosswalk pipeline is live in production today.'
+  ],
+  facts: [
+    { label: 'Architectural integration (BIM/IFC)', value: 'Project, delivery, botanical-asset, site-context, Revit shared-parameter modules; IFC property-set evaluative lens (aspirational)' },
+    { label: 'Civic & urban landscape (GIS)', value: 'Site-context, environment, sustainability, climate-screening, site-risk modules; GeoJSON / Shapefile flattening lens (aspirational)' },
+    { label: 'Engineering & infrastructure', value: 'Delivery, site-context, sustainability, site-risk, project modules; hydrological and soil-matrix traceability to asset registers' },
+    { label: 'Cross-cutting modules', value: 'Taxonomy, traits, provenance, and cultural-context fields support all categories regardless of built-environment stream' }
   ]
 })
 
@@ -33,7 +41,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     intro: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Internationally oriented, vendor-neutral recognition for landscape architecture — from research and theory to built and documented practice — alongside urban design, ecological stewardship, and the data integrity of the entire built precinct. Programme in preparation — full charter at landscapearchive.org/awards.'
+      'Internationally oriented, vendor-neutral recognition for landscape architecture — from research and theory to built and documented practice — alongside urban design, ecological stewardship, and the data integrity of the entire built precinct. A peer-evaluative programme for architects, planners, and engineers. Programme in preparation — full charter at landscapearchive.org/awards.'
     ],
     webBody: [
       'The Landscape Archive Foundation Awards recognise exemplary contributions worldwide — work that advances landscape architecture as a discipline and in applied practice, alongside urban design, ecological stewardship, and allied fields. Eligible contributions include scholarship and pedagogy, delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods whose claims remain traceable to cited sources and open to independent review.',
@@ -418,7 +426,7 @@ export function buildFoundationAwardsTopicPage({
 
   return {
     title: 'Awards',
-    lead: `An internationally oriented, vendor-neutral recognition programme for landscape architecture — from research, education, and theory to built and documented practice — alongside urban design, ecological stewardship, and the data integrity of the entire built precinct — work that preserves, documents, and transmits the discipline through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry, including cross-jurisdictional modules where published. Programme in preparation under interim draft governance; no entries or winners yet.`,
+    lead: `An internationally oriented, vendor-neutral recognition programme for landscape architecture — from research, education, and theory to built and documented practice — alongside urban design, ecological stewardship, and the data integrity of the entire built precinct. Intended as a peer-evaluative reference for landscape architects, urban planners, architects, and engineers — work that preserves, documents, and transmits the discipline through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry, including cross-jurisdictional modules where published. Programme in preparation under interim draft governance; no entries or winners yet.`,
     placeholder: false,
     sections: [
       {
@@ -439,7 +447,8 @@ export function buildFoundationAwardsTopicPage({
       {
         id: 'data-architecture-alignment',
         heading: DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION.heading,
-        paragraphs: DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION.paragraphs
+        paragraphs: DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION.paragraphs,
+        facts: DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION.facts
       },
       {
         id: 'methodological-framing',
@@ -478,7 +487,7 @@ export function buildFoundationAwardsTopicPage({
         paragraphs: [
           'The awards programme is in preparation under interim draft governance. When active, entries will be assessed by an international panel comprising landscape architecture and urban design practice, academic research, public-sector delivery, Indigenous advisory representation, and interchange specialists — with published conflict-of-interest rules and category rubrics released before each cycle.',
           'Assessment will be blind to entrant commercial affiliation where practical. Criteria, anonymised scoring rationales, and aggregate results are intended to be public so recognition can be inspected and cited in academic or institutional contexts worldwide.',
-          'Awards confer documented recognition within the programme\'s published scope: independently reviewed exemplars of landscape architecture — in research, theory, and applied practice — archival stewardship, and interchange discipline that universities, agencies, and peers may cite alongside the open specification and field registry. They do not confer government accreditation, professional registration, or vendor certification.'
+          'Awards confer documented recognition within the programme\'s published scope: independently reviewed exemplars of landscape architecture — in research, theory, and applied practice — archival stewardship, and interchange discipline that universities, agencies, architects, planners, engineers, and peers may cite alongside the open specification and field registry. They do not confer government accreditation, professional registration, or vendor certification.'
         ],
         actions: [
           { label: 'The Foundation Standards', href: governancePath },
