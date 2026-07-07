@@ -423,10 +423,11 @@ html[data-pixel-chrome='1'].pixel-chrome--done .site-footer .page {
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  background-color: var(--accent-strong);
 }
 
 .pixel-chrome__cell {
-  background-color: var(--pixel-color, #3a4550);
+  background-color: var(--pixel-color, var(--accent-strong));
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -447,6 +448,7 @@ html[data-pixel-chrome='1'].pixel-chrome--done .site-footer .page {
 
   html[data-pixel-chrome='1'].pixel-chrome--ambient .pixel-chrome__cell.is-ambient-wave {
     background-color: var(--pixel-wave-color, var(--accent-strong));
-    transition: background-color 380ms ease;
+    transition: background-color var(--pixel-wave-duration, 380ms) ease;
+    transition-delay: var(--pixel-wave-delay, 0ms);
   }
 }
