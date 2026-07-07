@@ -1,3 +1,25 @@
+## 2026-07-07 - Section share copy-link fix (all Foundation pages)
+
+**Scope:** section-share, landscapearchive-org, foundation-portal
+**Status:** done
+
+### Did
+- Root cause: Astro never emitted `SectionShareLinks` component `<script>` in production HTML when many instances render per page — Copy link buttons had no listeners.
+- Moved init to `public/scripts/section-share.js`, loaded once from `BaseLayout.astro`; binds all `.section-share` rows with idempotent `data-share-initialized` guard.
+- Hardened la-frontend `federation/portal/share.js` with the same init guard and DOM-ready mount.
+
+### Why
+- User report: share row visible on governance founding alliance (and elsewhere) but copy did nothing. LinkedIn/email worked because they are static hrefs.
+
+### Files touched
+- `public/scripts/section-share.js`, `src/components/SectionShareLinks.astro`, `src/layouts/BaseLayout.astro`
+- `la-frontend/federation/portal/share.js`
+
+### Links
+- https://landscapearchive.org/governance#founding-alliance
+
+---
+
 ## 2026-07-07 - US SEC climate crosswalk + custom domain attachment
 
 **Scope:** foundation-governance, crosswalk, landscapearchive-org, cloudflare

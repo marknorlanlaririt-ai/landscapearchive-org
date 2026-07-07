@@ -77,60 +77,6 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
   <span id={`${instanceId}-status`} class="section-share__status" role="status" aria-live="polite"></span>
 </aside>
 
-<script>
-  function initSectionShare(root: HTMLElement) {
-    const shareUrl = root.dataset.shareUrl
-    const shareTitle = root.dataset.shareTitle
-    if (!shareUrl) return
-
-    const copyBtn = root.querySelector<HTMLButtonElement>('[data-share-copy]')
-    const copyLabel = root.querySelector<HTMLElement>('[data-share-copy-label]')
-    const nativeBtn = root.querySelector<HTMLButtonElement>('[data-share-native]')
-    const status = root.querySelector<HTMLElement>('.section-share__status')
-
-    if (nativeBtn && typeof navigator.share === 'function') {
-      nativeBtn.hidden = false
-      nativeBtn.addEventListener('click', async () => {
-        try {
-          await navigator.share({ title: shareTitle ?? document.title, url: shareUrl })
-        } catch (err) {
-          if ((err as Error).name !== 'AbortError') copyLink()
-        }
-      })
-    }
-
-    async function copyLink() {
-      try {
-        await navigator.clipboard.writeText(shareUrl)
-        showCopied()
-      } catch {
-        const input = document.createElement('input')
-        input.value = shareUrl
-        document.body.appendChild(input)
-        input.select()
-        document.execCommand('copy')
-        input.remove()
-        showCopied()
-      }
-    }
-
-    function showCopied() {
-      if (copyLabel) copyLabel.textContent = 'Copied'
-      if (copyBtn) copyBtn.classList.add('section-share__btn--done')
-      if (status) status.textContent = 'Link copied to clipboard'
-      window.setTimeout(() => {
-        if (copyLabel) copyLabel.textContent = 'Copy link'
-        if (copyBtn) copyBtn.classList.remove('section-share__btn--done')
-        if (status) status.textContent = ''
-      }, 2200)
-    }
-
-    copyBtn?.addEventListener('click', copyLink)
-  }
-
-  document.querySelectorAll<HTMLElement>('.section-share').forEach(initSectionShare)
-</script>
-
 <style>
   .section-share {
     display: flex;
