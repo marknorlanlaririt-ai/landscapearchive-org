@@ -14,10 +14,10 @@
   --line: rgba(28, 31, 34, 0.12);
   --line-soft: rgba(28, 31, 34, 0.07);
 
-  /* Purple-navy — shared header/footer chrome with schema.landscapearchive.org */
-  --accent: #5e5978;
-  --accent-strong: #4a4568;
-  --accent-tint: rgba(74, 69, 104, 0.08);
+  /* Cool slate — shared header/footer chrome with schema.landscapearchive.org */
+  --accent: #4a5563;
+  --accent-strong: #343d4a;
+  --accent-tint: rgba(52, 61, 74, 0.08);
 
   /* Typography */
   --font-serif: 'Iowan Old Style', 'Palatino Linotype', 'Georgia', 'Times New Roman', serif;
@@ -250,7 +250,7 @@ a:hover {
   border: 0;
 }
 
-/* Header/footer lettermark — white TLA on green chrome only (hero/body stay dark) */
+/* Header/footer lettermark — white TLA on slate chrome only (hero/body stay dark) */
 .site-header .tla-lettermark,
 .site-footer .tla-lettermark {
   --tla-lettermark-text: #ffffff;
