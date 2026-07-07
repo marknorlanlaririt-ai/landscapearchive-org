@@ -150,6 +150,46 @@ export function buildFoundationGovernanceSections({
       ]
     },
     {
+      id: 'international-adoption',
+      heading: 'International adoption roadmap',
+      paragraphs: [
+        'The open landscape metadata specification becomes internationally credible in three layers — not by renaming a product or claiming ISO status overnight. Layer 1 is the published open specification: field dictionary, request-for-comment process, validator, and semantic versioning. Layer 2 is de facto adoption: tools export and import it, procurement references it, universities cite it, and jurisdiction packs map local datasets into the same structural slots. Layer 3 is formal standardisation: ratification through bodies such as ISO, buildingSMART, or OGC — typically pursued only after independent governance and repeated real-world use make ratification worthwhile.',
+        'International bodies adopt specifications they trust are not controlled by a single vendor. The three-entity structure on this page exists for that reason: the Foundation stewards the public grammar; the Archive implements it commercially with no Council voting majority. Incorporating the Foundation and seating the founding alliance — practices, universities, public bodies, Indigenous protocol authorities, and nurseries outside Australia — is the non-negotiable prerequisite before pushing hard on “international standard” language in public copy.',
+        'De facto adoption precedes de jure status in almost every landscape and BIM interchange path. The practical sequence is: publish the open pack and reference validator; ship export bindings to IFC, GeoJSON, and USD rather than parallel vocabularies; publish crosswalk notes to disclosure frameworks teams already use; and offer capability grant manifests so integrations declare module scope explicitly — the same pattern as consent-based API permissions. Awards and Field Notes then provide peer-evaluative proof that projects are structured to the open grammar without implying regulatory certification.',
+        'What the Foundation does not claim: that the specification is an ISO standard, that it satisfies ISO 19650 (information management is adjacent, not identical), or that Australian dataset bindings (SILO, CCIA) are universal. International adopters bind the same field IDs to UK Met Office / UKCP18 products, US NOAA layers, or EU Copernicus services through published jurisdiction packs and crosswalk tables — not by forking the dictionary.',
+        'Formal standardisation — Standards Australia liaison, buildingSMART Data Dictionary registration, OGC Community Standard, or ISO/PAS — remains forward work subject to Council approval, national-body sponsorship, and budget. Typical timelines run two to five years once adoption evidence exists. A dedicated standards-liaison Council seat is intended to coordinate those conversations without conflating them with product roadmap decisions.'
+      ],
+      facts: [
+        { label: 'Layer 1 · Open specification', value: 'Published dictionary, RFC process, SKOS, schema portal, semver releases — live today' },
+        { label: 'Layer 2 · De facto adoption', value: 'Export profiles, capability grants, crosswalks, awards lens, pilot projects — early' },
+        { label: 'Layer 3 · Formal standardisation', value: 'ISO / buildingSMART / OGC ratification — not started; requires incorporated Foundation + sponsors' },
+        { label: 'Public language', value: 'Prefer “open landscape metadata standard” in marketing; reserve TLA-185 codes for registry and schema portal' },
+        { label: 'First non-AU crosswalk', value: 'UK IFRS S2 climate disclosure — same structural slots, UK jurisdiction pack bindings' }
+      ],
+      bullets: [
+        'Year 1 — incorporate Foundation; recruit 5–10 founding alliance members outside Australia',
+        'Year 1 — publish open-standard pack on stable public GitHub; maintain 14-day RFC comment periods',
+        'Year 1 — two pilot adoptions (one university studio, one procurement brief referencing capability grants)',
+        'Year 1 — standards liaison introductory meetings with buildingSMART and Standards Australia',
+        'Ongoing — jurisdiction crosswalks (UK and EU published; US planned) and buildingSMART property-set alignment'
+      ],
+      actions: [
+        { label: 'UK IFRS S2 crosswalk', href: '/crosswalk/uk-ifrs-s2' },
+        { label: 'EU CSRD / ESRS E1 crosswalk', href: '/crosswalk/eu-csrd-esrs' },
+        { label: 'Schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
+        {
+          label: 'Capability grant manifests',
+          href: `${ARCHIVE_ORIGIN}/foundation/capability-grant`,
+          external: true
+        },
+        {
+          label: 'Charter consultation',
+          href: `${FOUNDATION_SUPPORT_CONTACT_PATH}&intent=founding-alliance`,
+          external: true
+        }
+      ]
+    },
+    {
       id: 'charter-pillars',
       heading: 'Foundation Standards',
       paragraphs: [

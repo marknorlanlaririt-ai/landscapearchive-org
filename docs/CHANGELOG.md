@@ -1,3 +1,50 @@
+## 2026-07-07 - EU CSRD / ESRS E1 crosswalk page
+
+**Scope:** foundation-governance, crosswalk, landscapearchive-org
+**Status:** done
+
+### Did
+- Published `/crosswalk/eu-csrd-esrs` Astro page rendering EU CSRD / ESRS E1 concept crosswalk markdown.
+- Added EU crosswalk link to international adoption governance actions; synced `public/crosswalk/eu-csrd-esrs-tla185-mapping.md`.
+- Updated UK crosswalk markdown with EU related-artefact link.
+
+### Why
+- Second non-AU jurisdiction crosswalk for CSRD adopters — same structural mapping as UK/AASB with EU dataset bindings.
+
+### Files touched
+- `src/data/governanceContent.js`
+- `src/pages/crosswalk/eu-csrd-esrs.astro`
+- `public/crosswalk/eu-csrd-esrs-tla185-mapping.md`
+- `public/crosswalk/uk-ifrs-s2-tla185-mapping.md`
+
+### Links
+- `/governance#international-adoption`
+- `/crosswalk/eu-csrd-esrs`
+
+## 2026-07-07 - International adoption roadmap + UK IFRS S2 crosswalk page
+
+**Scope:** foundation-governance, crosswalk, landscapearchive-org
+**Status:** done
+
+### Did
+- Added **International adoption roadmap** to `governanceContent.js` with three-layer model, year-1 bullets, and links to UK crosswalk + capability grants.
+- Published `/crosswalk/uk-ifrs-s2` Astro page rendering federation crosswalk markdown; static source at `public/crosswalk/uk-ifrs-s2-tla185-mapping.md`.
+
+### Why
+- Give international adopters a citable governance anchor and first non-Australian disclosure crosswalk without overclaiming ISO status.
+
+### Files touched
+- `src/data/governanceContent.js`, `src/pages/governance.astro`
+- `src/pages/crosswalk/uk-ifrs-s2.astro`
+- `public/crosswalk/uk-ifrs-s2-tla185-mapping.md`
+
+### Follow-ups / blockers
+- Run `npm run deploy` when ready for apex cutover preview.
+
+### Links
+- `/governance#international-adoption`
+- `/crosswalk/uk-ifrs-s2`
+
 ## 2026-07-07 - Professional section share links (public Foundation surfaces)
 
 **Scope:** share-links, landscapearchive-org, federation-portal
