@@ -399,7 +399,7 @@ html[data-pixel-chrome='1'].pixel-chrome--active .site-header__inner {
 
 html[data-pixel-chrome='1'].pixel-chrome--active.js-header-animate-ready .site-header__inner {
   opacity: 1;
-  transition: opacity 480ms ease;
+  transition: opacity 1584ms ease;
 }
 
 html[data-pixel-chrome='1']:not(.pixel-chrome--done) .site-footer .page {
@@ -408,7 +408,7 @@ html[data-pixel-chrome='1']:not(.pixel-chrome--done) .site-footer .page {
 
 html[data-pixel-chrome='1'].pixel-chrome--done .site-footer .page {
   opacity: 1;
-  transition: opacity 480ms ease;
+  transition: opacity 1584ms ease;
 }
 
 .pixel-chrome__mosaic {
@@ -424,16 +424,32 @@ html[data-pixel-chrome='1'].pixel-chrome--done .site-footer .page {
   pointer-events: none;
   z-index: 0;
   background-color: var(--accent-strong);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pixel-chrome__mosaic--layer-1,
+.pixel-chrome__mosaic--layer-2 {
+  background-color: transparent;
 }
 
 .pixel-chrome__cell {
+  display: block;
+  width: 5px;
+  height: 5px;
+  box-sizing: border-box;
   background-color: var(--pixel-color, var(--accent-strong));
+  transform-origin: center center;
+  contain: strict;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   html[data-pixel-chrome='1'] .pixel-chrome__cell.is-settling {
     background-color: var(--accent-strong);
-    transition: background-color 680ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color var(--pixel-settle-duration, 2244ms)
+      cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: var(--pixel-delay, 0ms);
   }
 
@@ -444,11 +460,16 @@ html[data-pixel-chrome='1'].pixel-chrome--done .site-footer .page {
 
   html[data-pixel-chrome='1'].pixel-chrome--ambient .pixel-chrome__cell.is-ambient-base {
     background-color: var(--accent-strong);
+    transform: scale(1);
+    will-change: transform, background-color;
   }
 
   html[data-pixel-chrome='1'].pixel-chrome--ambient .pixel-chrome__cell.is-ambient-wave {
     background-color: var(--pixel-wave-color, var(--accent-strong));
-    transition: background-color var(--pixel-wave-duration, 380ms) ease;
+    transform: scale(var(--pixel-wave-scale, 1));
+    transition:
+      background-color var(--pixel-wave-duration, 1254ms) ease,
+      transform var(--pixel-wave-duration, 1254ms) ease;
     transition-delay: var(--pixel-wave-delay, 0ms);
   }
 }
