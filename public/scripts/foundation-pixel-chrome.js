@@ -1,8 +1,10 @@
 /**
  * Experimental pixel-dissolve header/footer chrome (toggle: html[data-pixel-chrome="1"]).
  * Tiny adjacent grid cells (4px mobile / 5px desktop) in a narrow blue-purple band
- * around --accent-strong (#343d4a, HSL ~215°) settle to chrome, then three ambient
- * overlay layers run lighter-only patch waves with subtle grow-only scale pulse.
+ * around --accent-strong (#343d4a, HSL ~215°) with organic gradient clusters
+ * (green pockets ~140–170°, intermittent warm accents ~25–45°) settle to chrome,
+ * then three ambient overlay layers run lighter-only patch waves with subtle
+ * grow-only scale pulse.
  * Dispatches foundation-pixel-chrome-readable (~1.8s) then
  * foundation-pixel-chrome-settled (~4.1s) for staggered text reveal.
  * Intro dissolve uses INTRO_TIME_SCALE; ambient pulse keeps AMBIENT_TIME_SCALE.
@@ -20,6 +22,17 @@
   var SETTLE_LIGHTNESS_JITTER = 0.025
   var MOBILE_SETTLE_LIGHTNESS_JITTER = 0.018
   var WAVE_LIGHTNESS_JITTER = 0.05
+  var GREEN_HUE_MIN = 140
+  var GREEN_HUE_MAX = 170
+  var GREEN_SAT_BOOST_MAX = 0.05
+  var GREEN_INFLUENCE_MAX = 0.58
+  var GRADIENT_GREEN_CLUSTER_MIN = 2
+  var GRADIENT_GREEN_CLUSTER_MAX = 4
+  var WARM_HUE_MIN = 25
+  var WARM_HUE_MAX = 45
+  var WARM_SAT_MAX = 0.07
+  var WARM_INFLUENCE_MAX = 0.32
+  var GRADIENT_WARM_POCKET_MAX = 2
   var INTRO_TIME_SCALE = 1.5
   var AMBIENT_TIME_SCALE = 3.3
 
@@ -114,28 +127,142 @@
       : SETTLE_LIGHTNESS_JITTER
   }
 
+  function createGradientField(cols, rows) {
+    var clusters = []
+    var greenCount =
+      GRADIENT_GREEN_CLUSTER_MIN +
+      ((Math.random() *
+        (GRADIENT_GREEN_CLUSTER_MAX - GRADIENT_GREEN_CLUSTER_MIN + 1)) |
+        0)
+    for (var g = 0; g < greenCount; g++) {
+      clusters.push({
+        kind: 'green',
+        col: Math.random() * cols,
+        row: Math.random() * rows,
+        radiusX: (0.1 + Math.random() * 0.2) * cols,
+        radiusY: (0.08 + Math.random() * 0.16) * rows,
+        strength: 0.38 + Math.random() * 0.32,
+        hue: GREEN_HUE_MIN + Math.random() * (GREEN_HUE_MAX - GREEN_HUE_MIN),
+        satBoost: 0.015 + Math.random() * GREEN_SAT_BOOST_MAX
+      })
+    }
+    var warmCount = Math.random() < 0.72 ? 1 : 0
+    if (Math.random() < 0.28) {
+      warmCount = GRADIENT_WARM_POCKET_MAX
+    }
+    for (var w = 0; w < warmCount; w++) {
+      clusters.push({
+        kind: 'warm',
+        col: Math.random() * cols,
+        row: Math.random() * rows,
+        radiusX: (0.04 + Math.random() * 0.09) * cols,
+        radiusY: (0.035 + Math.random() * 0.07) * rows,
+        strength: 0.14 + Math.random() * 0.18,
+        hue: WARM_HUE_MIN + Math.random() * (WARM_HUE_MAX - WARM_HUE_MIN),
+        satBoost: 0.008 + Math.random() * 0.022
+      })
+    }
+    return clusters
+  }
+
+  function clusterInfluence(col, row, cluster) {
+    var dx = (col - cluster.col) / Math.max(cluster.radiusX, 1)
+    var dy = (row - cluster.row) / Math.max(cluster.radiusY, 1)
+    var distSq = dx * dx + dy * dy
+    if (distSq >= 1) {
+      return 0
+    }
+    var t = 1 - distSq
+    return t * t * cluster.strength
+  }
+
+  function lerpHue(from, to, weight) {
+    if (weight <= 0) {
+      return from
+    }
+    if (weight >= 1) {
+      return to
+    }
+    var delta = ((to - from + 540) % 360) - 180
+    return (from + delta * weight + 360) % 360
+  }
+
+  function sampleGradient(clusters, col, row) {
+    var hue =
+      CHROME_HUE_MIN + Math.random() * (CHROME_HUE_MAX - CHROME_HUE_MIN)
+    var sat =
+      CHROME_SAT_MIN + Math.random() * (CHROME_SAT_MAX - CHROME_SAT_MIN)
+    var greenInf = 0
+    var greenHue = hue
+    var greenSatBoost = 0
+    var warmInf = 0
+    var warmHue = hue
+    var warmSatBoost = 0
+
+    for (var i = 0; i < clusters.length; i++) {
+      var cluster = clusters[i]
+      var inf = clusterInfluence(col, row, cluster)
+      if (inf <= 0) {
+        continue
+      }
+      if (cluster.kind === 'green' && inf > greenInf) {
+        greenInf = inf
+        greenHue = cluster.hue
+        greenSatBoost = cluster.satBoost * inf
+      } else if (cluster.kind === 'warm' && inf > warmInf) {
+        warmInf = inf
+        warmHue = cluster.hue
+        warmSatBoost = Math.min(WARM_SAT_MAX, cluster.satBoost * inf)
+      }
+    }
+
+    if (greenInf > 0) {
+      hue = lerpHue(hue, greenHue, Math.min(GREEN_INFLUENCE_MAX, greenInf))
+      sat = clamp(
+        sat + greenSatBoost,
+        CHROME_SAT_MIN,
+        CHROME_SAT_MAX + GREEN_SAT_BOOST_MAX
+      )
+    }
+
+    if (warmInf > 0) {
+      hue = lerpHue(hue, warmHue, Math.min(WARM_INFLUENCE_MAX, warmInf))
+      sat = clamp(sat + warmSatBoost, CHROME_SAT_MIN, WARM_SAT_MAX)
+    }
+
+    return { hue: hue, sat: sat }
+  }
+
   function chromeColor(options) {
     var opts = options || {}
-    var hue =
-      CHROME_HUE_MIN +
-      Math.random() * (CHROME_HUE_MAX - CHROME_HUE_MIN)
-    var sat =
-      CHROME_SAT_MIN +
-      Math.random() * (CHROME_SAT_MAX - CHROME_SAT_MIN)
+    var sample =
+      opts.clusters && opts.col != null && opts.row != null
+        ? sampleGradient(opts.clusters, opts.col, opts.row)
+        : {
+            hue:
+              CHROME_HUE_MIN +
+              Math.random() * (CHROME_HUE_MAX - CHROME_HUE_MIN),
+            sat:
+              CHROME_SAT_MIN +
+              Math.random() * (CHROME_SAT_MAX - CHROME_SAT_MIN)
+          }
     var jitter = opts.lightnessJitter || settleLightnessJitter()
     var base = opts.lightnessBase == null ? CHROME_LIGHT : opts.lightnessBase
     var l = clamp(base + Math.random() * jitter, base, base + jitter)
-    return hslToHex(hue, sat, l)
+    return hslToHex(sample.hue, sample.sat, l)
   }
 
-  function paletteColor() {
-    return chromeColor()
+  function paletteColor(col, row, clusters) {
+    return chromeColor({ col: col, row: row, clusters: clusters })
   }
 
-  function waveColor(layerIndex) {
+  function waveColor(layerIndex, col, row, clusters) {
     var layer = AMBIENT_LAYERS[layerIndex] || AMBIENT_LAYERS[0]
     var lift = WAVE_LIGHTNESS_JITTER + layer.lightnessBoost
     return chromeColor({
+      col: col,
+      row: row,
+      clusters: clusters,
       lightnessBase: CHROME_LIGHT + 0.008,
       lightnessJitter: lift + layer.lightnessBoost
     })
@@ -213,6 +340,7 @@
     }
     mosaic.__pixelGrid = grid
     mosaic.__layerIndex = layerIndex
+    mosaic.__gradientField = createGradientField(grid.cols, grid.rows)
 
     var fragment = document.createDocumentFragment()
     for (var i = 0; i < grid.placements.length; i++) {
@@ -227,7 +355,10 @@
         cell.style.gridColumnEnd = 'span ' + grid.stride
         cell.style.gridRowEnd = 'span ' + grid.stride
       }
-      cell.style.setProperty('--pixel-color', paletteColor())
+      cell.style.setProperty(
+        '--pixel-color',
+        paletteColor(placement.col, placement.row, mosaic.__gradientField)
+      )
       cell.style.setProperty(
         '--pixel-delay',
         String((Math.random() * MAX_DELAY_MS) | 0) + 'ms'
@@ -306,7 +437,7 @@
     return picked
   }
 
-  function animatePatchCell(cell, layerIndex) {
+  function animatePatchCell(cell, layerIndex, clusters) {
     if (!cell.isConnected) {
       return
     }
@@ -320,7 +451,10 @@
     var scale = SCALE_MIN + Math.random() * (SCALE_MAX - SCALE_MIN)
 
     cell.classList.add('is-ambient-wave')
-    cell.style.setProperty('--pixel-wave-color', waveColor(layerIndex))
+    cell.style.setProperty(
+      '--pixel-wave-color',
+      waveColor(layerIndex, cell.__col, cell.__row, clusters)
+    )
     cell.style.setProperty('--pixel-wave-duration', duration + 'ms')
     cell.style.setProperty('--pixel-wave-delay', delay + 'ms')
     cell.style.setProperty('--pixel-wave-scale', String(scale))
@@ -351,8 +485,9 @@
     }
 
     var layerIndex = mosaic.__layerIndex || 0
+    var clusters = mosaic.__gradientField || []
     for (var i = 0; i < cells.length; i++) {
-      animatePatchCell(cells[i], layerIndex)
+      animatePatchCell(cells[i], layerIndex, clusters)
     }
   }
 
