@@ -29,5 +29,8 @@ export const SITE_NAV_LINKS = Object.freeze([
   { id: 'events', label: 'Events', href: '/events', requiresLogin: true }
 ])
 
+export const SITE_TAGLINE =
+  'Global data layer and governance standard for living digital twins.'
+
 export const SITE_DESCRIPTION =
-  'The Landscape Archive Foundation stewards the open TLA-185 / TLA-169 specification — public infrastructure for archival stewardship and truth in landscape metadata: applied practice documentation, botanical authenticity, auditable climate disclosure, honest sustainability, and ethical synthetic nature.'
+  'The Landscape Archive Foundation stewards the open TLA-185 / TLA-169 specification — a global data layer and governance standard for living digital twins. Public infrastructure for archival stewardship and truth in landscape metadata: botanical authenticity, auditable climate disclosure, honest sustainability, and ethical synthetic nature.'

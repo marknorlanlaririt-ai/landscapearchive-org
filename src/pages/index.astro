@@ -14,19 +14,21 @@ import {
   FOUNDATION_LICENCE_LABEL,
   FEDERATION_SCHEMA_PORTAL_URL
 } from '../data/foundationWing.js'
+import { SITE_DESCRIPTION, SITE_TAGLINE } from '../data/site.js'
 
 const sections = buildFoundationHomeSections()
 ---
 
 <BaseLayout
   title="The Landscape Archive Foundation"
-  description="The international home of the open TLA-185 landscape metadata standard — truth in botanical, climate, sustainability, and synthetic-nature disclosure."
+  description={SITE_DESCRIPTION}
   path="/"
 >
   <section class="hero">
     <div class="page hero__inner">
       <TlaLettermark class="hero__mark" size={72} title="The Landscape Archive Foundation" />
       <p class="eyebrow">Open standard · International</p>
+      <p class="hero__tagline">{SITE_TAGLINE}</p>
       <h1 class="hero__title">Public infrastructure for truth and archival stewardship in landscape metadata.</h1>
       <p class="hero__lead">
         The Landscape Archive Foundation stewards <strong>{TLA185_DISPLAY_ID}</strong> — an open,
@@ -104,6 +106,17 @@ const sections = buildFoundationHomeSections()
     width: 72px;
     height: 72px;
     margin-bottom: 1.4rem;
+  }
+
+  .hero__tagline {
+    margin: 0 0 0.65rem;
+    max-width: 28rem;
+    font-family: var(--font-sans);
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+    color: var(--accent-strong);
   }
 
   .hero__title {
