@@ -539,13 +539,21 @@
     }
   }
 
-  function enterAmbient(mosaics) {
+  function markChromeReady() {
     document.documentElement.classList.remove('pixel-chrome--active')
     document.documentElement.classList.add('pixel-chrome--done', 'pixel-chrome--ambient')
+    window.dispatchEvent(new CustomEvent('foundation-pixel-chrome-readable'))
     window.dispatchEvent(new CustomEvent('foundation-pixel-chrome-settled'))
+  }
 
-    for (var i = 0; i < mosaics.length; i++) {
-      settleToBase(mosaics[i])
+  function bootAmbientMosaics() {
+    var hosts = document.querySelectorAll(CHROME_TARGETS)
+    var mosaics = []
+    for (var i = 0; i < hosts.length; i++) {
+      var hostMosaics = createHostMosaics(hosts[i])
+      for (var h = 0; h < hostMosaics.length; h++) {
+        mosaics.push(hostMosaics[h])
+      }
     }
 
     activeMosaics = mosaics.slice()
@@ -565,17 +573,11 @@
       return
     }
 
-    var hosts = document.querySelectorAll(CHROME_TARGETS)
-    var mosaics = []
-    for (var i = 0; i < hosts.length; i++) {
-      var hostMosaics = createHostMosaics(hosts[i])
-      for (var h = 0; h < hostMosaics.length; h++) {
-        mosaics.push(hostMosaics[h])
-      }
-    }
+    markChromeReady()
 
-    window.dispatchEvent(new CustomEvent('foundation-pixel-chrome-readable'))
-    enterAmbient(mosaics)
+    window.requestAnimationFrame(function () {
+      bootAmbientMosaics()
+    })
   }
 
   document.addEventListener('visibilitychange', function () {

@@ -1,3 +1,23 @@
+## 2026-07-07 - Header instant visibility (pixel chrome + animations)
+
+**Scope:** foundation-chrome, portal-animations, global-css
+**Status:** done
+
+### Did
+- Synced portal scripts: mosaic build deferred to rAF; `pixel-chrome--done` on boot; header animations no longer wait on pixel-chrome event or double rAF.
+- Nav base stagger 0ms; wordmark lines 0/50ms; transform-only motion with opacity 1 on first paint.
+- Removed legacy pixel-chrome content opacity gates; inline `pixel-chrome--done` in `BaseLayout.astro` head.
+
+### Why
+- Header logo, wordmark, and nav were still hidden for seconds after intro dissolve removal due to sync mosaic work and CSS opacity gates.
+
+### Files touched
+- `public/scripts/foundation-pixel-chrome.js`, `public/scripts/portal-animations.js`
+- `src/styles/global.css`, `src/layouts/BaseLayout.astro`
+
+### Links
+- https://landscapearchive.org/
+
 ## 2026-07-07 - Awards data architecture copy + profile badge polish
 
 **Scope:** awards, built-environment, federation-schema

@@ -9,8 +9,8 @@
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)')
   var STAGGER_MS = 70
   var STAGGER_MAX = 420
-  var HEADER_NAV_BASE_MS = 320
-  var HEADER_NAV_STAGGER_MS = 55
+  var HEADER_NAV_BASE_MS = 0
+  var HEADER_NAV_STAGGER_MS = 40
 
   /** Block-level targets — one fade/slide per section or card. */
   var BLOCK_SELECTOR = [
@@ -150,45 +150,14 @@
   function playHeaderAnimations() {
     document.documentElement.classList.add('js-header-animate-ready')
 
-    if (REDUCED.matches) {
-      var reducedWords = document.querySelectorAll('.site-header__wordmark .site-header__word')
-      for (var r = 0; r < reducedWords.length; r++) {
-        markHeaderVisible(reducedWords[r])
-      }
-      var reducedNav = document.querySelectorAll('[data-animate-stagger]')
-      for (var s = 0; s < reducedNav.length; s++) {
-        markHeaderVisible(reducedNav[s])
-      }
-      return
+    var wordLines = document.querySelectorAll('.site-header__wordmark .site-header__word')
+    for (var i = 0; i < wordLines.length; i++) {
+      markHeaderVisible(wordLines[i])
     }
-
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        var wordLines = document.querySelectorAll('.site-header__wordmark .site-header__word')
-        for (var i = 0; i < wordLines.length; i++) {
-          markHeaderVisible(wordLines[i])
-        }
-        var navItems = document.querySelectorAll(
-          '.site-header [data-animate-stagger]'
-        )
-        for (var j = 0; j < navItems.length; j++) {
-          markHeaderVisible(navItems[j])
-        }
-      })
-    })
-  }
-
-  function scheduleHeaderAnimations() {
-    var root = document.documentElement
-    if (
-      root.matches('[data-pixel-chrome="1"]') &&
-      !REDUCED.matches &&
-      !root.classList.contains('pixel-chrome--done')
-    ) {
-      window.addEventListener('foundation-pixel-chrome-readable', playHeaderAnimations, { once: true })
-      return
+    var navItems = document.querySelectorAll('.site-header [data-animate-stagger]')
+    for (var j = 0; j < navItems.length; j++) {
+      markHeaderVisible(navItems[j])
     }
-    playHeaderAnimations()
   }
 
   function tagDynamicTerms(root) {
@@ -240,7 +209,7 @@
   function init() {
     initWordmarkLines()
     initNavStagger()
-    scheduleHeaderAnimations()
+    playHeaderAnimations()
     initContentAnimations()
 
     REDUCED.addEventListener('change', function () {
@@ -269,3 +238,4 @@
     init()
   }
 })()
+
