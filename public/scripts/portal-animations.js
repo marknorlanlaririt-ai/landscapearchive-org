@@ -178,6 +178,19 @@
     })
   }
 
+  function scheduleHeaderAnimations() {
+    var root = document.documentElement
+    if (
+      root.matches('[data-pixel-chrome="1"]') &&
+      !REDUCED.matches &&
+      !root.classList.contains('pixel-chrome--done')
+    ) {
+      window.addEventListener('foundation-pixel-chrome-readable', playHeaderAnimations, { once: true })
+      return
+    }
+    playHeaderAnimations()
+  }
+
   function tagDynamicTerms(root) {
     if (!root) {
       return
@@ -227,7 +240,7 @@
   function init() {
     initWordmarkLines()
     initNavStagger()
-    playHeaderAnimations()
+    scheduleHeaderAnimations()
     initContentAnimations()
 
     REDUCED.addEventListener('change', function () {

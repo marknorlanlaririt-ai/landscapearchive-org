@@ -66,7 +66,7 @@ const structuredData = websiteJsonLd ? [orgJsonLd, websiteJsonLd] : [orgJsonLd]
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-pixel-chrome="1">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -111,6 +111,7 @@ const structuredData = websiteJsonLd ? [orgJsonLd, websiteJsonLd] : [orgJsonLd]
     <ArchiveSessionBootstrap />
     <CookieNotice />
     <script src="/scripts/foundation-chrome-mobile.js" defer></script>
+    <script src="/scripts/foundation-pixel-chrome.js" defer></script>
     <script src="/scripts/portal-animations.js" defer></script>
 
     <style>
