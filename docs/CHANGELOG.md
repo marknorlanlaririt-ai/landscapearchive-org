@@ -1,3 +1,25 @@
+## 2026-07-07 - Homepage what's new strip + public post copy
+
+**Scope:** marketing, homepage, federation-portal, founding-alliance, built-environment
+**Status:** done
+
+### Did
+- Added homepage **What's new** strip (`RecentUpdatesStrip.astro`, `recentPublicUpdates.js`) — founding alliance draft, export profiles, awards data architecture; interim/consultation tone.
+- Schema portal: **Recently published** callout + reframed founding section as international founding alliance (draft consultation).
+- Draft social copy kit at `docs/marketing/FOUNDATION_PUBLIC_UPDATE_POSTS.md` (LinkedIn, newsletter, Instagram hook; flags stale LAUNCH_ANNOUNCEMENT kit).
+
+### Why
+- User asked whether and how to market recent Foundation milestones without overclaiming incorporation or exposing internal admin tooling; surface cautious summaries on org + schema portal only.
+
+### Files touched
+- `src/data/recentPublicUpdates.js`, `src/components/RecentUpdatesStrip.astro`, `src/pages/index.astro`
+- `docs/marketing/FOUNDATION_PUBLIC_UPDATE_POSTS.md`
+- la-frontend: `federation/portal/index.html`, `federation/portal/styles.css`
+
+### Links
+- https://landscapearchive.org/
+- https://schema.landscapearchive.org/
+
 ## 2026-07-07 - Founding alliance governance section (international)
 
 **Scope:** governance, founding-alliance, awards-crosslink

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import DocsSection from '../components/DocsSection.astro'
+import RecentUpdatesStrip from '../components/RecentUpdatesStrip.astro'
 import TlaLettermark from '../components/TlaLettermark.astro'
 import { buildFoundationHomeSections } from '../data/homeContent.js'
 import { FOUNDATION_CHARTER_PILLARS, FOUNDATION_PILLARS_LABEL } from '../data/charterPillars.js'
@@ -57,6 +58,8 @@ const sections = buildFoundationHomeSections()
       </dl>
     </div>
   </section>
+
+  <RecentUpdatesStrip />
 
   <div class="page">
     {sections.map((section) => <DocsSection {...section} />)}
