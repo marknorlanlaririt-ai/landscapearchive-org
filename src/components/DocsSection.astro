@@ -11,7 +11,7 @@ interface Fact {
   value: string
 }
 interface ProfileRow {
-  id: string
+  label: string
   targetFormat: string
   purpose: string
   status: string
@@ -62,7 +62,7 @@ const {
           <table class="profile-table">
             <thead>
               <tr>
-                <th scope="col">Profile</th>
+                <th scope="col">Interchange profile</th>
                 <th scope="col">Target format</th>
                 <th scope="col">Purpose</th>
                 <th scope="col">Status</th>
@@ -72,7 +72,7 @@ const {
               {profileTable.map((row) => (
                 <tr>
                   <th scope="row">
-                    <a href={row.schemaUrl}>{row.id}</a>
+                    <a href={row.schemaUrl}>{row.label}</a>
                   </th>
                   <td>{row.targetFormat}</td>
                   <td>{row.purpose}</td>
@@ -206,24 +206,36 @@ const {
     white-space: nowrap;
   }
 
+  .profile-table td:last-child {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
   .profile-table__status {
     display: inline-block;
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 0.15rem 0.45rem;
-    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    font-variant: all-small-caps;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    padding: 0.28rem 0.55rem;
+    border-radius: 2px;
     border: 1px solid var(--line);
-    color: var(--ink-soft);
+    background: var(--paper);
+    color: var(--ink-muted);
   }
 
   .profile-table__status--mvp {
-    border-color: rgba(52, 61, 74, 0.35);
+    border-color: rgba(52, 61, 74, 0.4);
     color: var(--accent-strong);
-    background: var(--accent-tint);
+    background: rgba(52, 61, 74, 0.06);
   }
 
   .profile-table__status--draft {
+    border-style: dashed;
+    border-color: var(--line);
     color: var(--ink-muted);
+    background: transparent;
   }
 </style>

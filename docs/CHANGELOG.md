@@ -1,3 +1,22 @@
+## 2026-07-07 - Awards data architecture copy + profile badge polish
+
+**Scope:** awards, built-environment, federation-schema
+**Status:** done
+
+### Did
+- Rewrote awards data-architecture section and export profile table labels without TLA-xxx identifiers; confident tone for published interchange profiles.
+- Refined `DocsSection.astro` profile-table status badges (small-caps, subtle border, muted fill).
+- Updated governance open-infrastructure pillar export-profile sentence; synced from la-frontend awards source.
+
+### Why
+- User-facing copy should describe IFC property sets, GeoJSON civic registries, USD sidecars, and spreadsheet crosswalks in professional language — not internal profile codes.
+
+### Files touched
+- `src/data/builtEnvironmentExports.js`, `src/data/foundationAwardsProgramme.js`, `src/data/governanceContent.js`, `src/components/DocsSection.astro`
+
+### Links
+- https://landscapearchive.org/awards#data-architecture-alignment
+
 ## 2026-07-07 - Pixel chrome: remove intro dissolve
 
 **Scope:** foundation-chrome, pixel-dissolve
