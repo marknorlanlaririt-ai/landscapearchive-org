@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DocsSection from '../components/DocsSection.astro'
+import {
+  buildFoundingCharterSections,
+  FOUNDING_CHARTER_DOC_PATH
+} from '../data/foundingCharterContent.js'
+import { readFileSync } from 'node:fs'
+
+const sections = buildFoundingCharterSections()
+const constitutionPath = new URL('../../public/docs/FOUNDATION_DRAFT_CONSTITUTION.md', import.meta.url)
+const constitutionMarkdown = readFileSync(constitutionPath, 'utf8')
+---
+
+<BaseLayout
+  title="Founding charter consultation"
+  description="Draft constitution consultation for The Landscape Archive Foundation — company limited by guarantee (proposed). Not incorporated; not legal advice. Review the draft charter and respond via founding alliance consultation."
+  path="/founding-charter"
+>
+  <div class="page charter">
+    <div class="charter__intro prose">
+      <p class="eyebrow">Draft · Not incorporated</p>
+      <h1>Founding charter consultation</h1>
+      <p class="charter__banner" role="note">
+        <strong>DRAFT FOR LAWYER REVIEW — NOT INCORPORATED.</strong>
+        This AI-assisted draft is not legal advice and is not filing-ready. Publishing
+        consultation is lawful; do not claim ASIC or ACNC status until registration completes.
+      </p>
+      <p>
+        The Landscape Archive Foundation is intended to steward the open TLA-185 / TLA-169
+        landscape metadata standard as an independent not-for-profit. This page publishes the
+        draft constitution for founding alliance review before lawyer adaptation and ASIC
+        registration.
+      </p>
+      <p>
+        <a class="btn btn--primary" href={FOUNDING_CHARTER_DOC_PATH}>Download draft constitution (Markdown)</a>
+      </p>
+    </div>
+
+    <nav class="charter__toc" aria-label="On this page">
+      {sections.map((section) => <a href={`#${section.id}`}>{section.heading}</a>)}
+      <a href="#full-draft">Full draft text</a>
+    </nav>
+
+    {sections.map((section) => <DocsSection {...section} sharePagePath="/founding-charter" />)}
+
+    <section id="full-draft" class="section-block charter__full-draft">
+      <div class="prose">
+        <h2>Full draft text</h2>
+        <p>
+          The complete consultation draft is reproduced below for in-browser review. The
+          canonical file is also available as
+          <a href={FOUNDING_CHARTER_DOC_PATH}>Markdown download</a>.
+        </p>
+      </div>
+      <pre class="charter__markdown" aria-label="Draft constitution full text">{constitutionMarkdown}</pre>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .charter__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 1rem;
+  }
+
+  .charter__banner {
+    padding: 0.85rem 1rem;
+    margin: 1rem 0 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent-strong);
+    background: var(--paper-raised);
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .charter__toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.9rem;
+    padding: 1.1rem 0 0.4rem;
+    margin-bottom: 0.5rem;
+    border-block: 1px solid var(--line-soft);
+  }
+
+  .charter__toc a {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  .charter__toc a:hover {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .charter__full-draft {
+    margin-top: 0.5rem;
+  }
+
+  .charter__markdown {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    max-height: 42rem;
+    overflow: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--paper-raised);
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 0.78rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--ink-soft);
+  }
+</style>

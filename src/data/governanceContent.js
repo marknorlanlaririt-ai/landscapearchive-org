@@ -141,6 +141,7 @@ export function buildFoundationGovernanceSections({
       actions: [
         { label: 'Schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
         { label: 'Awards and data architecture', href: '/awards#data-architecture-alignment' },
+        { label: 'Draft constitution', href: '/founding-charter' },
         {
           label: 'Charter consultation',
           href: `${FOUNDATION_SUPPORT_CONTACT_PATH}&intent=founding-alliance`,
@@ -183,6 +184,7 @@ export function buildFoundationGovernanceSections({
           href: `${ARCHIVE_ORIGIN}/foundation/capability-grant`,
           external: true
         },
+        { label: 'Draft constitution', href: '/founding-charter' },
         {
           label: 'Charter consultation',
           href: `${FOUNDATION_SUPPORT_CONTACT_PATH}&intent=founding-alliance`,
