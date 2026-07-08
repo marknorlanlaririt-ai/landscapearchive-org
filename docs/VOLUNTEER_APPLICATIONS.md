@@ -13,7 +13,8 @@
 |-------|-----------|
 | **Programme charter** | Public `/volunteers` page (Astro, `landscapearchive-org`) — no sign-in to read |
 | **Application form** | `#apply` section on the same page — **requires Archive account** |
-| **Auth handoff** | `/foundation/org-access` on `.com.au` mints 12h HMAC token → `landscapearchive.org/volunteers?la_org_access=…` |
+| **Auth handoff** | On-site `/sign-in` form → `POST /api/foundation/org-sign-in` → HMAC token → return to requested `.org` page |
+| **Legacy handoff** | `/foundation/org-access` on `.com.au` still works for social OAuth and deep links |
 | **Session on .org** | Token stored in `sessionStorage` (`la-foundation-org-access`); not a shared cookie |
 | **Submission** | Cross-origin POST to la-frontend Pages Function with token + structured fields |
 | **Ops triage** | Admin copilot `get_application_record` with `applicationType: foundation-volunteer` |
@@ -28,11 +29,12 @@ Legacy path (`landscapearchive.com.au/contact?topic=foundation-support&intent=vo
 
 **What works (in production):**
 
-1. User clicks **Sign in to apply** → Archive org-access gate (`/foundation/org-access?target=https://landscapearchive.org/volunteers`).
-2. WordPress login on `.com.au` (first-party cookies).
-3. `GET /api/foundation/org-access-mint` validates WP session, returns signed token.
-4. Redirect to `.org/volunteers?la_org_access=…`; client stores token (12h).
-5. Form POST includes `orgAccessToken`; API verifies HMAC + email match.
+1. User clicks **Sign in to apply** → `/sign-in?return=/volunteers#apply` on `.org`.
+2. Email/password POST to `/api/foundation/org-sign-in` (Archive edge proxies WordPress login).
+3. On success, redirect to `.org/volunteers?la_org_access=…`; client stores token (12h).
+4. Form POST includes `orgAccessToken`; API verifies HMAC + email match.
+
+**Legacy path (social OAuth):** `/foundation/org-access?target=https://landscapearchive.org/volunteers` still works.
 
 **What does not work:**
 

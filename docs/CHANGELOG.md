@@ -1,3 +1,55 @@
+## 2026-07-08 - Foundation on-site sign-in form
+
+**Scope:** foundation-auth, sign-in, volunteers, landscapearchive-org
+**Status:** done
+
+### Did
+- Replaced `/sign-in` redirect-only panel with email/password form (sans-serif UI) posting to `POST /api/foundation/org-sign-in` on Landscape Archive; supports two-factor step and social OAuth fallback link.
+- Volunteer `#apply` gate now links to `/sign-in?return=/volunteers#apply` instead of Archive org-access redirect.
+- Documented handoff contract in `docs/ORG_SIGN_IN_HANDOFF.md`; updated `docs/VOLUNTEER_APPLICATIONS.md`.
+
+### Why
+- Member programme access should sign in on the Foundation site while using the same Landscape Archive identity — without exposing implementation detail or storing credentials on `.org`.
+
+### Files touched
+- `src/pages/sign-in.astro`
+- `src/data/memberAccess.js`
+- `src/components/VolunteerApplicationForm.astro`
+- `docs/ORG_SIGN_IN_HANDOFF.md`
+- `docs/VOLUNTEER_APPLICATIONS.md`
+
+### Follow-ups / blockers
+- Deploy **la-frontend** Pages first (org-sign-in API), then `npm run deploy` here.
+
+### Links
+- https://landscapearchive.org/sign-in
+- `docs/ORG_SIGN_IN_HANDOFF.md`
+
+---
+
+## 2026-07-08 - Volunteer apply copy production deploy
+
+**Scope:** volunteers, deploy, landscapearchive-org
+**Status:** done
+
+### Did
+- Ran `npm run deploy` — production `/volunteers#apply` was still serving pre-187e365 WordPress/cookie exposition until this deploy (commit was on `main` but Pages had not been updated).
+
+### Why
+- Copy fix was merged locally but `.org` uses manual `npm run deploy`, not git-connected auto-publish.
+
+### Files touched
+- (deploy only — no source edits)
+
+### Follow-ups / blockers
+- None
+
+### Links
+- https://landscapearchive.org/volunteers#apply
+- Preview: https://fd411463.landscapearchive-org.pages.dev/volunteers
+
+---
+
 ## 2026-07-08 - Volunteer apply sign-in copy trim
 
 **Scope:** volunteers, foundation-auth, copy

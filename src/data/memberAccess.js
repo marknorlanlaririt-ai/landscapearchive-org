@@ -20,6 +20,7 @@ export const SESSION_HANDOFF_ORG_PATHS = Object.freeze([
 
 export const ARCHIVE_SESSION_VERIFY_URL = `${ARCHIVE_ORIGIN}/api/foundation/session-verify`
 export const ARCHIVE_ORG_ACCESS_VERIFY_URL = `${ARCHIVE_ORIGIN}/api/foundation/org-access-verify`
+export const ARCHIVE_ORG_SIGN_IN_URL = `${ARCHIVE_ORIGIN}/api/foundation/org-sign-in`
 export const ARCHIVE_FOUNDATION_SIGN_OUT_URL = `${ARCHIVE_ORIGIN}/api/foundation/sign-out`
 
 /** Canonical cookie policy (shared with landscapearchive.com.au SPA). */
@@ -51,6 +52,57 @@ export function isSessionHandoffOrgPath(path = '') {
 export function isAccessHandoffOrgPath(path = '') {
   const normalized = normalizeOrgPath(path)
   return isMemberOnlyOrgPath(normalized) || isSessionHandoffOrgPath(normalized)
+}
+
+/** Build on-site sign-in URL with optional return path on landscapearchive.org. */
+export function buildOrgSignInUrl(returnPath = ORG_SIGN_IN_PATH) {
+  const raw = String(returnPath || '').trim()
+  const pathOnly = normalizeOrgPath(raw) || ORG_SIGN_IN_PATH
+  let hash = ''
+
+  try {
+    const url = new URL(raw, `${SITE_ORIGIN}/`)
+    hash = url.hash || ''
+  } catch {
+    const hashIndex = raw.indexOf('#')
+
+    if (hashIndex >= 0) {
+      hash = raw.slice(hashIndex)
+    }
+  }
+
+  const returnValue = `${pathOnly}${hash}`
+  const signInUrl = new URL(ORG_SIGN_IN_PATH, `${SITE_ORIGIN}/`)
+
+  if (returnValue !== ORG_SIGN_IN_PATH) {
+    signInUrl.searchParams.set('return', returnValue)
+  }
+
+  return signInUrl.pathname + signInUrl.search
+}
+
+/** Resolve return destination from sign-in query params. */
+export function resolveOrgSignInReturnPath(searchParams = new URLSearchParams()) {
+  const rawReturn = String(searchParams.get('return') || searchParams.get('redirect') || '').trim()
+
+  if (!rawReturn) {
+    return ORG_SIGN_IN_PATH
+  }
+
+  try {
+    const url = new URL(rawReturn, `${SITE_ORIGIN}/`)
+    const origin = url.origin.replace(/\/$/, '').toLowerCase()
+    const siteOrigin = SITE_ORIGIN.replace(/\/$/, '').toLowerCase()
+
+    if (origin !== siteOrigin) {
+      return ORG_SIGN_IN_PATH
+    }
+
+    return `${url.pathname.replace(/\/+$/, '') || '/'}${url.hash || ''}`
+  } catch {
+    const normalized = normalizeOrgPath(rawReturn)
+    return normalized || ORG_SIGN_IN_PATH
+  }
 }
 
 /** Build Archive sign-in handoff URL for a Foundation org destination. */

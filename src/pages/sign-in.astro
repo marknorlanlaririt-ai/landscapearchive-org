@@ -2,11 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { ARCHIVE_ORIGIN } from '../data/site.js'
 import {
+  ARCHIVE_ORG_SIGN_IN_URL,
   buildArchiveOrgAccessGateUrl,
-  ORG_SIGN_IN_PATH
+  buildOrgSignInUrl,
+  ORG_SIGN_IN_PATH,
+  resolveOrgSignInReturnPath
 } from '../data/memberAccess.js'
 
-const handoffUrl = buildArchiveOrgAccessGateUrl(ORG_SIGN_IN_PATH)
+const returnPath = resolveOrgSignInReturnPath(Astro.url.searchParams)
+const socialHandoffUrl = buildArchiveOrgAccessGateUrl(returnPath)
+const forgotPasswordUrl = `${ARCHIVE_ORIGIN}/forgot-password`
+const signUpUrl = `${ARCHIVE_ORIGIN}/sign-up`
 ---
 
 <BaseLayout
@@ -21,36 +27,292 @@ const handoffUrl = buildArchiveOrgAccessGateUrl(ORG_SIGN_IN_PATH)
       <p class="eyebrow">The Landscape Archive Foundation</p>
       <h1>Sign in</h1>
       <p class="sign-in__lead">
-        Foundation member programme pages (Events) use your existing Landscape Archive account for accountable
-        access. The open TLA-185 / TLA-169 specification, registry, governance, awards, and volunteer
-        programme remain public — no sign-in required.
+        Member programme pages use your existing Landscape Archive account. The open specification,
+        registry, governance, awards, and volunteer programme remain public — no sign-in required.
       </p>
     </div>
 
     <section class="sign-in__panel" aria-labelledby="sign-in-panel-title">
-      <h2 id="sign-in-panel-title">Continue with your Archive account</h2>
-      <p>
-        Sign-in is handled on the commercial Archive site (<code>landscapearchive.com.au</code>) where your
-        account already lives. After you authenticate, we return you here with a short-lived session for
-        member pages on <code>landscapearchive.org</code>.
-      </p>
-      <ul class="sign-in__list">
-        <li><strong>Public read</strong> — schema modules, dictionary, governance, awards charter, registry preview.</li>
-        <li><strong>Signed in</strong> — Events working sessions; future governance update subscriptions and proposal workflows.</li>
-        <li><strong>Schema portal</strong> — specification documentation stays public; the same sign-in appears for continuity.</li>
-      </ul>
-      <div class="sign-in__actions">
-        <a class="sign-in__primary" href={handoffUrl}>Sign in with Landscape Archive</a>
+      <h2 id="sign-in-panel-title">Landscape Archive account</h2>
+
+      <form class="sign-in__form" data-org-sign-in-form novalidate>
+        <label class="sign-in__field">
+          <span>Email</span>
+          <input
+            type="email"
+            name="login"
+            autocomplete="username"
+            inputmode="email"
+            required
+            data-org-sign-in-email
+          />
+        </label>
+
+        <label class="sign-in__field">
+          <span>Password</span>
+          <input
+            type="password"
+            name="password"
+            autocomplete="current-password"
+            required
+            data-org-sign-in-password
+          />
+        </label>
+
+        <div class="sign-in__row">
+          <label class="sign-in__remember">
+            <input type="checkbox" name="remember" value="yes" checked data-org-sign-in-remember />
+            <span>Remember me</span>
+          </label>
+          <a class="sign-in__helper" href={forgotPasswordUrl} rel="noopener">Forgot password</a>
+        </div>
+
+        <p class="sign-in__message sign-in__message--error" data-org-sign-in-error hidden role="alert"></p>
+        <p class="sign-in__message sign-in__message--success" data-org-sign-in-status hidden aria-live="polite"></p>
+
+        <button class="sign-in__primary" type="submit" data-org-sign-in-submit>Sign in</button>
+      </form>
+
+      <form class="sign-in__form sign-in__form--two-factor" data-org-two-factor-form hidden novalidate>
+        <p class="sign-in__two-factor-lead" data-org-two-factor-lead>
+          Enter the 6-digit code from your authenticator app.
+        </p>
+
+        <label class="sign-in__field">
+          <span>Authenticator code</span>
+          <input
+            type="text"
+            name="code"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            pattern="[0-9]{6}"
+            maxlength="6"
+            required
+            data-org-two-factor-code
+          />
+        </label>
+
+        <p class="sign-in__message sign-in__message--error" data-org-two-factor-error hidden role="alert"></p>
+
+        <div class="sign-in__actions">
+          <button class="sign-in__primary" type="submit" data-org-two-factor-submit>Verify code</button>
+          <button class="sign-in__secondary" type="button" data-org-two-factor-cancel>Back</button>
+        </div>
+      </form>
+
+      <div class="sign-in__social" data-org-sign-in-social>
+        <p class="sign-in__social-title">Or continue with</p>
+        <div class="sign-in__social-links">
+          <a class="sign-in__social-link" href={socialHandoffUrl} rel="noopener">Google, Microsoft, Apple, or LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="sign-in__footer-links">
         <a class="sign-in__secondary" href="/governance">Continue without signing in</a>
       </div>
+
       <p class="sign-in__foot">
         Need an account?
-        <a href={`${ARCHIVE_ORIGIN}/sign-up`} rel="noopener">Create one on landscapearchive.com.au</a>
+        <a href={signUpUrl} rel="noopener">Create one on Landscape Archive</a>
       </p>
       <p class="sign-in__status" data-sign-in-status hidden aria-live="polite"></p>
     </section>
   </div>
 </BaseLayout>
+
+<script
+  is:inline
+  define:vars={{
+    ARCHIVE_ORG_SIGN_IN_URL,
+    returnPath,
+    signInPagePath: ORG_SIGN_IN_PATH
+  }}
+>
+  (function () {
+    var signInForm = document.querySelector('[data-org-sign-in-form]')
+    var twoFactorForm = document.querySelector('[data-org-two-factor-form]')
+    var socialBlock = document.querySelector('[data-org-sign-in-social]')
+    var emailInput = document.querySelector('[data-org-sign-in-email]')
+    var passwordInput = document.querySelector('[data-org-sign-in-password]')
+    var rememberInput = document.querySelector('[data-org-sign-in-remember]')
+    var signInSubmit = document.querySelector('[data-org-sign-in-submit]')
+    var signInError = document.querySelector('[data-org-sign-in-error]')
+    var signInStatus = document.querySelector('[data-org-sign-in-status]')
+    var twoFactorLead = document.querySelector('[data-org-two-factor-lead]')
+    var twoFactorCode = document.querySelector('[data-org-two-factor-code]')
+    var twoFactorSubmit = document.querySelector('[data-org-two-factor-submit]')
+    var twoFactorCancel = document.querySelector('[data-org-two-factor-cancel]')
+    var twoFactorError = document.querySelector('[data-org-two-factor-error]')
+
+    if (!signInForm || !twoFactorForm) {
+      return
+    }
+
+    var challengeToken = ''
+    var rememberMe = true
+
+    function showError(el, message) {
+      if (!el) {
+        return
+      }
+
+      if (!message) {
+        el.hidden = true
+        el.textContent = ''
+        return
+      }
+
+      el.hidden = false
+      el.textContent = message
+    }
+
+    function setSubmitting(button, submitting, idleLabel, busyLabel) {
+      if (!button) {
+        return
+      }
+
+      button.disabled = submitting
+      button.textContent = submitting ? busyLabel : idleLabel
+    }
+
+    function showPasswordStep() {
+      signInForm.hidden = false
+      twoFactorForm.hidden = true
+      if (socialBlock) {
+        socialBlock.hidden = false
+      }
+      challengeToken = ''
+      showError(twoFactorError, '')
+    }
+
+    function showTwoFactorStep(message) {
+      signInForm.hidden = true
+      twoFactorForm.hidden = false
+      if (socialBlock) {
+        socialBlock.hidden = true
+      }
+      showError(signInError, '')
+      showError(signInStatus, '')
+      if (twoFactorLead && message) {
+        twoFactorLead.textContent = message
+      }
+      if (twoFactorCode) {
+        twoFactorCode.value = ''
+        twoFactorCode.focus()
+      }
+    }
+
+    function buildPayload(extra) {
+      var payload = {
+        login: emailInput ? emailInput.value.trim() : '',
+        password: passwordInput ? passwordInput.value : '',
+        remember: rememberMe,
+        path: returnPath || signInPagePath,
+        return: returnPath || signInPagePath
+      }
+
+      if (extra && typeof extra === 'object') {
+        for (var key in extra) {
+          if (Object.prototype.hasOwnProperty.call(extra, key)) {
+            payload[key] = extra[key]
+          }
+        }
+      }
+
+      return payload
+    }
+
+    function postSignIn(payload) {
+      return fetch(ARCHIVE_ORG_SIGN_IN_URL, {
+        method: 'POST',
+        credentials: 'include',
+        cache: 'no-store',
+        headers: {
+          accept: 'application/json',
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      }).then(function (response) {
+        return response.json().catch(function () {
+          return {}
+        }).then(function (body) {
+          return { response: response, body: body }
+        })
+      })
+    }
+
+    function completeSignIn(body) {
+      if (body && body.redirectUrl) {
+        window.location.replace(body.redirectUrl)
+        return
+      }
+
+      showError(signInStatus, body && body.message ? body.message : 'Signed in successfully.')
+    }
+
+    signInForm.addEventListener('submit', function (event) {
+      event.preventDefault()
+      showError(signInError, '')
+      showError(signInStatus, '')
+      rememberMe = !rememberInput || rememberInput.checked
+      setSubmitting(signInSubmit, true, 'Sign in', 'Signing in…')
+
+      postSignIn(buildPayload()).then(function (result) {
+        var body = result.body || {}
+
+        if (body.requiresTwoFactor && body.challengeToken) {
+          challengeToken = String(body.challengeToken)
+          showTwoFactorStep(body.message || 'Enter the 6-digit code from your authenticator app.')
+          return
+        }
+
+        if (!result.response.ok || !body.ok) {
+          showError(signInError, body.error || body.message || 'Sign in failed. Check your email and password.')
+          return
+        }
+
+        completeSignIn(body)
+      }).catch(function () {
+        showError(signInError, 'Could not reach the sign-in service. Try again shortly.')
+      }).finally(function () {
+        setSubmitting(signInSubmit, false, 'Sign in', 'Signing in…')
+      })
+    })
+
+    twoFactorForm.addEventListener('submit', function (event) {
+      event.preventDefault()
+      showError(twoFactorError, '')
+      setSubmitting(twoFactorSubmit, true, 'Verify code', 'Verifying…')
+
+      postSignIn(buildPayload({
+        challengeToken: challengeToken,
+        code: twoFactorCode ? twoFactorCode.value.trim() : ''
+      })).then(function (result) {
+        var body = result.body || {}
+
+        if (!result.response.ok || !body.ok) {
+          showError(twoFactorError, body.error || body.message || 'That code was not recognised. Try again.')
+          return
+        }
+
+        completeSignIn(body)
+      }).catch(function () {
+        showError(twoFactorError, 'Could not verify the code. Try again shortly.')
+      }).finally(function () {
+        setSubmitting(twoFactorSubmit, false, 'Verify code', 'Verifying…')
+      })
+    })
+
+    if (twoFactorCancel) {
+      twoFactorCancel.addEventListener('click', function () {
+        showPasswordStep()
+        if (passwordInput) {
+          passwordInput.focus()
+        }
+      })
+    }
+  })()
+</script>
 
 <style>
   .sign-in__intro {
@@ -77,13 +339,80 @@ const handoffUrl = buildArchiveOrgAccessGateUrl(ORG_SIGN_IN_PATH)
     margin-bottom: 0.75rem;
   }
 
-  .sign-in__list {
-    margin: 0 0 1.25rem;
-    padding-left: 1.2rem;
+  .sign-in__form {
+    display: grid;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .sign-in__form[hidden] {
+    display: none;
+  }
+
+  .sign-in__field {
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.92rem;
     color: var(--ink-soft);
   }
 
-  .sign-in__actions {
+  .sign-in__field input {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .sign-in__field input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .sign-in__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+  }
+
+  .sign-in__remember {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .sign-in__helper {
+    font-size: 0.92rem;
+    color: var(--accent-strong);
+  }
+
+  .sign-in__message {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .sign-in__message--error {
+    color: #8b2f2f;
+  }
+
+  .sign-in__message--success {
+    color: var(--accent-strong);
+  }
+
+  .sign-in__message[hidden],
+  .sign-in__status[hidden] {
+    display: none;
+  }
+
+  .sign-in__actions,
+  .sign-in__footer-links {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem 1rem;
@@ -99,8 +428,10 @@ const handoffUrl = buildArchiveOrgAccessGateUrl(ORG_SIGN_IN_PATH)
     padding: 0.45rem 1rem;
     border-radius: 2px;
     text-decoration: none;
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
   }
 
   .sign-in__primary {
@@ -109,9 +440,40 @@ const handoffUrl = buildArchiveOrgAccessGateUrl(ORG_SIGN_IN_PATH)
     border: 1px solid var(--accent-strong);
   }
 
+  .sign-in__primary:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
   .sign-in__secondary {
     color: var(--accent-strong);
     border: 1px solid var(--line);
+    background: transparent;
+  }
+
+  .sign-in__social {
+    margin: 1.25rem 0 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .sign-in__social-title {
+    margin: 0 0 0.65rem;
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .sign-in__social-link {
+    font-size: 0.92rem;
+    color: var(--accent-strong);
+  }
+
+  .sign-in__two-factor-lead {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
   }
 
   .sign-in__foot {
@@ -124,9 +486,5 @@ const handoffUrl = buildArchiveOrgAccessGateUrl(ORG_SIGN_IN_PATH)
     margin: 1rem 0 0;
     font-size: 0.92rem;
     color: var(--accent-strong);
-  }
-
-  .sign-in__status[hidden] {
-    display: none;
   }
 </style>

@@ -1,7 +1,7 @@
 ---
 import {
   ARCHIVE_VOLUNTEER_APPLICATION_URL,
-  buildArchiveOrgAccessGateUrl
+  buildOrgSignInUrl
 } from '../data/memberAccess.js'
 import { ARCHIVE_ORIGIN } from '../data/site.js'
 
@@ -14,7 +14,7 @@ const skillOptions = Object.freeze([
   { id: 'outreach', label: 'Community outreach' }
 ])
 
-const signInUrl = buildArchiveOrgAccessGateUrl('/volunteers')
+const signInUrl = buildOrgSignInUrl('/volunteers#apply')
 ---
 
 <section id="apply" class="volunteer-apply" aria-labelledby="volunteer-apply-title">
