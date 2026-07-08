@@ -1,3 +1,24 @@
+## 2026-07-08 - Field Note legal hardening (institutions essay)
+
+**Scope:** field-notes, legal-comms, articles
+**Status:** done
+
+### Did
+- Legal-hardened `institutions-standards-and-the-infrastructure-gap` in `articles.js` — neutral institutional framing, conditional adoption language, opinion markers, softened market-economics copy, article-level `legalNote`.
+- Updated `articles/[slug].astro` to render optional `legalNote` disclaimer footer on Field Notes.
+
+### Why
+- Editorial/legal-comms hygiene: avoid implied peak-body endorsement, negative third-party claims, and anti-competitive market language while preserving the essay’s structural argument.
+
+### Files touched
+- `src/data/articles.js`
+- `src/pages/articles/[slug].astro`
+
+### Links
+- https://landscapearchive.org/articles/institutions-standards-and-the-infrastructure-gap
+
+---
+
 ## 2026-07-08 - Founding alliance tone (no overclaim)
 
 **Scope:** governance, founding-alliance, copy

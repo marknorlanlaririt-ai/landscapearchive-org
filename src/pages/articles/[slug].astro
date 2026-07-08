@@ -61,6 +61,11 @@ const articleJsonLd = {
     <SectionShareLinks pagePath={articlePath} title={article.title} />
 
     <footer class="essay__foot">
+      {
+        article.legalNote && (
+          <p class="essay__legal-note">{article.legalNote}</p>
+        )
+      }
       <p>
         Published by The Landscape Archive Foundation under
         <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">
@@ -123,6 +128,16 @@ const articleJsonLd = {
     border-top: 1px solid var(--line-soft);
     font-size: 0.85rem;
     color: var(--ink-muted);
+  }
+
+  .essay__legal-note {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-sm);
+    background: var(--paper-raised);
   }
 
   .essay__foot a {
