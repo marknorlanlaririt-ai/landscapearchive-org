@@ -1,3 +1,34 @@
+## 2026-07-08 - Volunteer applications (auth + structured form)
+
+**Scope:** volunteers, foundation-auth, intake
+**Status:** done (deploy la-frontend API first, then org site)
+
+### Did
+- Added `#apply` structured volunteer application form on `/volunteers` with Archive sign-in gate (org-access handoff token).
+- Wired `POST /api/foundation/volunteer-application` on la-frontend (R2 `foundation-volunteer-applications/`, Foundation mail, copilot triage).
+- Extended org-access handoff paths to include `/volunteers`; primary CTA now `#apply` instead of Archive contact prefill.
+- Documented cross-domain auth constraints in `docs/VOLUNTEER_APPLICATIONS.md`.
+
+### Why
+- Volunteer onboarding needs accountable applications tied to existing WordPress users; `.org` vs `.com.au` cookie isolation requires HMAC handoff, not shared sessions.
+
+### Files touched
+- `src/components/VolunteerApplicationForm.astro`
+- `src/pages/[topic].astro`
+- `src/data/topicPages.js`
+- `src/data/memberAccess.js`
+- `docs/VOLUNTEER_APPLICATIONS.md`
+- la-frontend: `functions/api/foundation/volunteer-application.js`, `functions/_lib/foundationOrgAccess.js`, `functions/_lib/adminCopilotApplications.js`
+
+### Follow-ups / blockers
+- Confirm `FOUNDATION_ORG_ACCESS_SECRET` set in production Pages env before go-live.
+- Deploy la-frontend before landscapearchive-org.
+
+### Links
+- https://landscapearchive.org/volunteers#apply
+
+---
+
 ## 2026-07-08 - Homepage recent updates (institutions Field Note)
 
 **Scope:** marketing, field-notes, homepage
@@ -84,7 +115,32 @@
 
 ---
 
-## 2026-07-07 - Section share copy-link fix (all Foundation pages)
+## 2026-07-08 - Instagram-friendly section share
+
+**Scope:** section-share, instagram, landscapearchive-org
+**Status:** done
+
+### Did
+- Extended `SectionShareLinks` with **IG story** (1080×1920), **IG post** (1080×1080) card downloads and **Copy caption** (title + short URL + hashtags).
+- Added client-side canvas renderer `public/scripts/section-share-instagram.js`; wired from `section-share.js`.
+
+### Why
+- Instagram has no reliable web URL scheme for Stories/Posts. Downloadable branded cards plus clipboard caption is the practical manual-upload flow.
+
+### Files touched
+- `src/components/SectionShareLinks.astro`
+- `public/scripts/section-share.js`
+- `public/scripts/section-share-instagram.js`
+- `src/layouts/BaseLayout.astro`
+
+### Follow-ups / blockers
+- Library / marketing app share buttons still use Web Share API only; extend separately if needed.
+
+### Links
+- Verify: https://landscapearchive.org/governance
+
+---
+
 
 **Scope:** section-share, landscapearchive-org, foundation-portal
 **Status:** done

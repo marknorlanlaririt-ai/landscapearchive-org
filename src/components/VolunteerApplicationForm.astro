@@ -1,0 +1,415 @@
+---
+import {
+  ARCHIVE_VOLUNTEER_APPLICATION_URL,
+  buildArchiveOrgAccessGateUrl
+} from '../data/memberAccess.js'
+import { ARCHIVE_ORIGIN } from '../data/site.js'
+
+const skillOptions = Object.freeze([
+  { id: 'documentation', label: 'Schema and documentation review' },
+  { id: 'schema-review', label: 'Schema and conformance review' },
+  { id: 'crosswalks', label: 'Crosswalk and mapping work' },
+  { id: 'truth-telling', label: 'Truth-telling field trials' },
+  { id: 'translation', label: 'Translation and accessibility' },
+  { id: 'outreach', label: 'Community outreach' }
+])
+
+const signInUrl = buildArchiveOrgAccessGateUrl('/volunteers')
+---
+
+<section id="apply" class="volunteer-apply" aria-labelledby="volunteer-apply-title">
+  <div class="volunteer-apply__inner prose">
+    <p class="eyebrow">Application</p>
+    <h2 id="volunteer-apply-title">Apply to volunteer</h2>
+    <p class="volunteer-apply__lead">
+      Structured applications use your existing Landscape Archive account so we can match skills to published
+      working-group needs. The programme charter above stays public; only the application form requires sign-in.
+    </p>
+
+    <div class="volunteer-apply__gate" data-volunteer-gate>
+      <p>
+        Sign in with your Landscape Archive account on <code>landscapearchive.com.au</code>, then return here to
+        submit your application. We do not share WordPress session cookies across <code>.org</code> and
+        <code>.com.au</code> — a short-lived handoff token keeps your session on this site for twelve hours.
+      </p>
+      <div class="volunteer-apply__actions">
+        <a class="volunteer-apply__primary" href={signInUrl}>Sign in to apply</a>
+        <a class="volunteer-apply__secondary" href={`${ARCHIVE_ORIGIN}/sign-up`} rel="noopener">Create account</a>
+      </div>
+    </div>
+
+    <form
+      class="volunteer-apply__form"
+      data-volunteer-form
+      data-api-url={ARCHIVE_VOLUNTEER_APPLICATION_URL}
+      hidden
+    >
+      <label class="volunteer-apply__field">
+        <span>Name</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+
+      <label class="volunteer-apply__field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" inputmode="email" required readonly />
+        <small class="volunteer-apply__hint">Must match your signed-in Landscape Archive account.</small>
+      </label>
+
+      <fieldset class="volunteer-apply__fieldset">
+        <legend>Contribution areas</legend>
+        <div class="volunteer-apply__checks">
+          {skillOptions.map((option) => (
+            <label class="volunteer-apply__check">
+              <input type="checkbox" name="skills" value={option.id} />
+              <span>{option.label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <label class="volunteer-apply__field">
+        <span>Timezone / weekly availability</span>
+        <input type="text" name="timezone" autocomplete="off" required placeholder="e.g. AEST · 2–4 hrs/week evenings" />
+      </label>
+
+      <label class="volunteer-apply__field">
+        <span>Institution or practice <em>(optional)</em></span>
+        <input type="text" name="institution" autocomplete="organization" />
+      </label>
+
+      <label class="volunteer-apply__field">
+        <span>Portfolio or relevant work <em>(optional)</em></span>
+        <input type="url" name="portfolio" inputmode="url" placeholder="https://…" />
+      </label>
+
+      <label class="volunteer-apply__field volunteer-apply__field--message">
+        <span>Additional context <em>(optional)</em></span>
+        <textarea name="message" rows="5" maxlength="1600"></textarea>
+      </label>
+
+      <label class="volunteer-apply__consent">
+        <input type="checkbox" name="privacyAccepted" value="yes" required />
+        <span>
+          I agree that The Landscape Archive Foundation (via its interim implementation partner) may store and
+          review my application details to coordinate volunteer onboarding. See the
+          <a href={`${ARCHIVE_ORIGIN}/legal?tab=privacy-policy`} rel="noopener">Privacy Policy</a>
+          on landscapearchive.com.au for retention and contact rights.
+        </span>
+      </label>
+
+      <input class="volunteer-apply__honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="volunteer-apply__actions">
+        <button class="volunteer-apply__primary" type="submit">Submit application</button>
+      </div>
+
+      <p class="volunteer-apply__status" data-volunteer-status hidden aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var ORG_ACCESS_STORAGE_KEY = 'la-foundation-org-access'
+    var gateEl = document.querySelector('[data-volunteer-gate]')
+    var formEl = document.querySelector('[data-volunteer-form]')
+    var statusEl = document.querySelector('[data-volunteer-status]')
+
+    if (!gateEl || !formEl) {
+      return
+    }
+
+    function readStoredOrgAccess() {
+      try {
+        var raw = sessionStorage.getItem(ORG_ACCESS_STORAGE_KEY)
+        if (!raw) {
+          return null
+        }
+        var data = JSON.parse(raw)
+        if (!data || !data.token || !data.expiresAt || Number(data.expiresAt) <= Date.now()) {
+          return null
+        }
+        return data
+      } catch (error) {
+        return null
+      }
+    }
+
+    function readSignedInEmail() {
+      var stored = readStoredOrgAccess()
+      if (stored && stored.email) {
+        return String(stored.email).trim()
+      }
+
+      var emailEl = document.querySelector('[data-session-email]')
+      if (!emailEl) {
+        return ''
+      }
+
+      var text = String(emailEl.textContent || '').trim()
+      var match = text.match(/Signed in as\s+(.+)/i)
+      return match ? match[1].trim() : ''
+    }
+
+    function setVolunteerApplyState(loggedIn) {
+      gateEl.hidden = loggedIn
+      formEl.hidden = !loggedIn
+
+      if (loggedIn) {
+        var emailInput = formEl.querySelector('input[name="email"]')
+        if (emailInput instanceof HTMLInputElement) {
+          emailInput.value = readSignedInEmail()
+        }
+      }
+    }
+
+    function syncVolunteerApplyState() {
+      var loggedIn = document.documentElement.dataset.archiveLoggedIn === 'true' && Boolean(readStoredOrgAccess()?.token)
+      setVolunteerApplyState(loggedIn)
+    }
+
+    syncVolunteerApplyState()
+    window.setInterval(syncVolunteerApplyState, 1500)
+
+    formEl.addEventListener('submit', async function (event) {
+      event.preventDefault()
+
+      var apiUrl = formEl.getAttribute('data-api-url') || ''
+      var stored = readStoredOrgAccess()
+      if (!apiUrl || !stored || !stored.token) {
+        if (statusEl instanceof HTMLElement) {
+          statusEl.hidden = false
+          statusEl.textContent = 'Sign in again before submitting your application.'
+          statusEl.dataset.state = 'error'
+        }
+        return
+      }
+
+      var formData = new FormData(formEl)
+      var skills = formData.getAll('skills').map(function (value) {
+        return String(value || '').trim()
+      }).filter(Boolean)
+
+      var submitButton = formEl.querySelector('button[type="submit"]')
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true
+      }
+
+      if (statusEl instanceof HTMLElement) {
+        statusEl.hidden = false
+        statusEl.textContent = 'Submitting…'
+        statusEl.dataset.state = 'pending'
+      }
+
+      try {
+        var response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({
+            name: String(formData.get('name') || '').trim(),
+            email: String(formData.get('email') || '').trim(),
+            skills: skills,
+            timezone: String(formData.get('timezone') || '').trim(),
+            institution: String(formData.get('institution') || '').trim(),
+            portfolio: String(formData.get('portfolio') || '').trim(),
+            message: String(formData.get('message') || '').trim(),
+            website: String(formData.get('website') || '').trim(),
+            privacyAccepted: formData.get('privacyAccepted') === 'yes',
+            pagePath: window.location.pathname,
+            orgAccessToken: stored.token
+          })
+        })
+
+        var payload = await response.json().catch(function () { return {} })
+        var reference = payload.applicationId ? ' Reference: ' + payload.applicationId + '.' : ''
+        var message = payload.message || payload.error || (response.ok ? 'Application received.' : 'Unable to submit right now.')
+
+        if (statusEl instanceof HTMLElement) {
+          statusEl.textContent = message + reference
+          statusEl.dataset.state = response.ok ? 'success' : 'error'
+        }
+
+        if (response.ok) {
+          formEl.reset()
+          var emailInput = formEl.querySelector('input[name="email"]')
+          if (emailInput instanceof HTMLInputElement) {
+            emailInput.value = readSignedInEmail()
+          }
+        }
+      } catch (error) {
+        if (statusEl instanceof HTMLElement) {
+          statusEl.textContent = 'Network error — please try again shortly.'
+          statusEl.dataset.state = 'error'
+        }
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false
+        }
+      }
+    })
+  })()
+</script>
+
+<style>
+  .volunteer-apply {
+    margin-block: 2rem 4rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .volunteer-apply__inner {
+    max-width: 42rem;
+  }
+
+  .volunteer-apply__lead {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+
+  .volunteer-apply__gate,
+  .volunteer-apply__form {
+    margin-top: 1.25rem;
+    padding: clamp(1.1rem, 3vw, 1.5rem);
+    background: var(--paper-raised);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+  }
+
+  .volunteer-apply__gate[hidden],
+  .volunteer-apply__form[hidden] {
+    display: none;
+  }
+
+  .volunteer-apply__field,
+  .volunteer-apply__fieldset {
+    display: grid;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .volunteer-apply__field span,
+  .volunteer-apply__fieldset legend {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .volunteer-apply__field em {
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .volunteer-apply__field input,
+  .volunteer-apply__field textarea {
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .volunteer-apply__field textarea {
+    min-height: 7rem;
+    resize: vertical;
+  }
+
+  .volunteer-apply__hint {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  .volunteer-apply__checks {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .volunteer-apply__check {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.55rem;
+    align-items: start;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .volunteer-apply__consent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.65rem;
+    align-items: start;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .volunteer-apply__consent a {
+    color: var(--accent-strong);
+  }
+
+  .volunteer-apply__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .volunteer-apply__primary,
+  .volunteer-apply__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: var(--font-serif);
+    font-size: 0.92rem;
+    border: 1px solid var(--accent-strong);
+    cursor: pointer;
+  }
+
+  .volunteer-apply__primary {
+    background: var(--accent-strong);
+    color: #f4f6f3;
+  }
+
+  .volunteer-apply__secondary {
+    background: transparent;
+    color: var(--accent-strong);
+  }
+
+  .volunteer-apply__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .volunteer-apply__status {
+    margin: 1rem 0 0;
+    font-size: 0.92rem;
+    color: var(--accent-strong);
+  }
+
+  .volunteer-apply__status[data-state='success'] {
+    color: #3d5a48;
+  }
+
+  .volunteer-apply__status[data-state='error'] {
+    color: #8b3a3a;
+  }
+
+  .volunteer-apply__status[hidden] {
+    display: none;
+  }
+</style>

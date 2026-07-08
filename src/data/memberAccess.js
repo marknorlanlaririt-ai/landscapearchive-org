@@ -14,7 +14,8 @@ export const MEMBER_ONLY_ORG_PATHS = Object.freeze([
 
 /** Session bootstrap paths — cross-site handoff without gating public pages. */
 export const SESSION_HANDOFF_ORG_PATHS = Object.freeze([
-  ORG_SIGN_IN_PATH
+  ORG_SIGN_IN_PATH,
+  '/volunteers'
 ])
 
 export const ARCHIVE_SESSION_VERIFY_URL = `${ARCHIVE_ORIGIN}/api/foundation/session-verify`
@@ -67,5 +68,10 @@ export function resolveOrgAccessHandoffPath(activePath = '/') {
   if (isMemberOnlyOrgPath(normalized)) {
     return normalized
   }
+  if (isSessionHandoffOrgPath(normalized) && normalized !== ORG_SIGN_IN_PATH) {
+    return normalized
+  }
   return ORG_SIGN_IN_PATH
 }
+
+export const ARCHIVE_VOLUNTEER_APPLICATION_URL = `${ARCHIVE_ORIGIN}/api/foundation/volunteer-application`

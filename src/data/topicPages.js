@@ -49,7 +49,7 @@ export const foundationTopicPages = Object.freeze({
           'Until a suitable independent entity is established, volunteer coordination runs through The Landscape Archive Pty Ltd as interim implementation partner.'
         ],
         actions: [
-          { label: 'Apply here', href: `${FOUNDATION_SUPPORT_CONTACT_PATH}&intent=volunteer`, external: true },
+          { label: 'Apply here', href: '#apply' },
           ...(isOpenStandardGithubPubliclyAvailable()
             ? [{ label: 'Open specification repository', href: OPEN_STANDARD_GITHUB_URL, external: true }]
             : [{ label: 'Open schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true }])
