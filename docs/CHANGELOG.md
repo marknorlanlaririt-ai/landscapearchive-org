@@ -1,3 +1,25 @@
+## 2026-07-08 - Volunteer apply sign-in copy trim
+
+**Scope:** volunteers, foundation-auth, copy
+**Status:** done
+
+### Did
+- Shortened volunteer `#apply` sign-in gate and intro lead in `VolunteerApplicationForm.astro` — removed cross-domain cookie/token exposition.
+
+### Why
+- Applicants do not need implementation detail about WordPress sessions or handoff tokens; concise account sign-in copy is enough.
+
+### Files touched
+- `src/components/VolunteerApplicationForm.astro`
+
+### Follow-ups / blockers
+- None
+
+### Links
+- https://landscapearchive.org/volunteers#apply
+
+---
+
 ## 2026-07-08 - Instagram story export fix + multi-slide pack
 
 **Scope:** section-share, instagram, landscapearchive-org

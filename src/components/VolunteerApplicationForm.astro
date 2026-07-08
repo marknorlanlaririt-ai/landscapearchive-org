@@ -22,15 +22,13 @@ const signInUrl = buildArchiveOrgAccessGateUrl('/volunteers')
     <p class="eyebrow">Application</p>
     <h2 id="volunteer-apply-title">Apply to volunteer</h2>
     <p class="volunteer-apply__lead">
-      Structured applications use your existing Landscape Archive account so we can match skills to published
-      working-group needs. The programme charter above stays public; only the application form requires sign-in.
+      Share your skills and availability. A Landscape Archive account is required to submit an application.
     </p>
 
     <div class="volunteer-apply__gate" data-volunteer-gate>
-      <p>
-        Sign in with your Landscape Archive account on <code>landscapearchive.com.au</code>, then return here to
-        submit your application. We do not share WordPress session cookies across <code>.org</code> and
-        <code>.com.au</code> — a short-lived handoff token keeps your session on this site for twelve hours.
+      <h3 class="volunteer-apply__gate-title">Sign in to apply</h3>
+      <p class="volunteer-apply__gate-lead">
+        Use your Landscape Archive account to submit a volunteer application.
       </p>
       <div class="volunteer-apply__actions">
         <a class="volunteer-apply__primary" href={signInUrl}>Sign in to apply</a>
@@ -265,6 +263,16 @@ const signInUrl = buildArchiveOrgAccessGateUrl('/volunteers')
   .volunteer-apply__lead {
     color: var(--ink-soft);
     font-size: 1.02rem;
+  }
+
+  .volunteer-apply__gate-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+  }
+
+  .volunteer-apply__gate-lead {
+    margin: 0 0 1rem;
+    color: var(--ink-soft);
   }
 
   .volunteer-apply__gate,
