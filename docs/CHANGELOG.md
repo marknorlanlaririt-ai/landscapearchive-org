@@ -1,3 +1,23 @@
+## 2026-07-09 - Foundation interim hosting disclaimer on sign-in
+
+**Scope:** foundation-governance, sign-in, landscapearchive-org
+**Status:** done
+
+### Did
+- Added interim three-entity hosting notice to `/sign-in` footer (Vault IP holder, Archive interim host, Foundation not yet incorporated).
+- Footer and governance pages already carried `FOUNDATION_HOSTING_NOTICE`; sign-in now matches.
+
+### Why
+- Gap audit required honest interim disclaimer on all Foundation auth surfaces without implying incorporated status.
+
+### Files touched
+- `src/pages/sign-in.astro`
+
+### Follow-ups / blockers
+- None — deploy via `npm run deploy`.
+
+---
+
 ## 2026-07-08 - Foundation on-site sign-in form
 
 **Scope:** foundation-auth, sign-in, volunteers, landscapearchive-org

@@ -8,6 +8,7 @@ import {
   ORG_SIGN_IN_PATH,
   resolveOrgSignInReturnPath
 } from '../data/memberAccess.js'
+import { FOUNDATION_HOSTING_NOTICE } from '../data/foundationWing.js'
 
 const returnPath = resolveOrgSignInReturnPath(Astro.url.searchParams)
 const socialHandoffUrl = buildArchiveOrgAccessGateUrl(returnPath)
@@ -115,6 +116,7 @@ const signUpUrl = `${ARCHIVE_ORIGIN}/sign-up`
         Need an account?
         <a href={signUpUrl} rel="noopener">Create one on Landscape Archive</a>
       </p>
+      <p class="sign-in__interim">{FOUNDATION_HOSTING_NOTICE}</p>
       <p class="sign-in__status" data-sign-in-status hidden aria-live="polite"></p>
     </section>
   </div>
@@ -480,6 +482,13 @@ const signUpUrl = `${ARCHIVE_ORIGIN}/sign-up`
     margin: 0;
     font-size: 0.92rem;
     color: var(--ink-soft);
+  }
+
+  .sign-in__interim {
+    margin: 1rem 0 0;
+    font-size: 0.74rem;
+    line-height: 1.5;
+    color: var(--ink-muted);
   }
 
   .sign-in__status {
