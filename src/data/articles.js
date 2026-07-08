@@ -16,6 +16,62 @@ const DICTIONARY_URL = `${SCHEMA_PORTAL_URL}/dictionary`
 
 export const FIELD_NOTES = Object.freeze([
   {
+    slug: 'institutions-standards-and-the-infrastructure-gap',
+    status: 'published',
+    title: 'Institutions, standards, and the infrastructure gap',
+    dek: 'Peak bodies and professional institutes are built to endorse standards — not to operate botanical pipelines, trait engines, or BIM-ready asset libraries. That division of labour is structural, not a failure of will; automation is what makes a different relationship possible.',
+    author: 'Mark Norlan Laririt',
+    date: '2026-07-08',
+    readingTime: '8 min',
+    topics: ['Governance', 'Industry standards', 'Open infrastructure'],
+    sections: [
+      {
+        heading: 'The institutional bottleneck',
+        paragraphs: [
+          'Landscape architecture in Australia — like most built-environment disciplines — relies on institutions that speak for the profession in public. The Australian Institute of Landscape Architects and comparable peak bodies are rightly expected to champion quality, education, advocacy, and the standards that let practitioners work with councils, clients, and allied consultants on shared terms. That mandate is <em>governance and endorsement</em>, not software engineering.',
+          'The tension is familiar across professions: the body that should bless a data framework is seldom the body that can build and maintain one. Committees, position papers, and continuing-education programmes scale well; versioned field registries, automated trait ingestion, conformance validators, and high-fidelity three-dimensional planting assets do not emerge from working groups alone. They require sustained technical pipelines — data engineering, botanical QA, interchange testing, release discipline — that sit awkwardly inside volunteer governance structures and peak-body budgets.',
+          'This is not an indictment of institutes. AILA and its peers were never chartered to run a nursery-exchange API or a species trait engine. The bottleneck appears when the profession needs <em>both</em> credible institutional voice <em>and</em> operational digital infrastructure at the same time — and assumes one organisation must supply both. Often, nothing moves: standards language stalls for lack of implementable artefacts, while proprietary libraries fill the vacuum product by product, fragmenting what the profession hoped to hold in common.',
+          'The Landscape Archive began, in part, from that gap: a conviction that the open grammar of landscape metadata and the automated machinery to populate it could be built without waiting for an institute to become a technology company — while still leaving room for institutions to recognise, cite, and eventually adopt a framework they did not themselves compile.'
+        ],
+        actions: [{ label: 'Governance and the three-entity split', href: GOVERNANCE_PATH }]
+      },
+      {
+        heading: 'Why high-fidelity botanical data was historically expensive',
+        paragraphs: [
+          'Before automation could shoulder repetitive work, “high fidelity” in landscape data meant manual labour at every step. A botanically defensible species record — growth form, mature dimensions, climate context, maintenance implications, and a three-dimensional representation usable in BIM or visualisation — was assembled by specialists: horticultural researchers, modellers, librarians, and vendor cataloguers billing hours per taxon. Scale was linear. A thousand species meant a thousand commissioning cycles.',
+          'Commercial libraries priced that labour accordingly. Paywalled asset catalogues, enterprise planting databases, and per-seat BIM content subscriptions made sense when each record was handcrafted. Practices either paid, pirated, or made do with generic placeholders — massing trees without stable taxon identifiers, shrub mixes without trait provenance, climate claims without documented screening. The cost was not only financial; it was <em>access</em>. Small studios, regional councils, and university studios were priced out of the same botanical rigour that large firms treated as overhead.',
+          'Institutes could publish principles — prefer native planting, document sustainability claims, prepare for digital handover — but could rarely supply the underlying objects. Universities could teach taxonomy and ecology; they could not, as a matter of course, maintain a live national inventory synced to revised nomenclature and climate layers. The legacy model assumed that high-fidelity data was a premium product, not public infrastructure.',
+          `${TLA185_DISPLAY_ID} separates the structural question from the asset question on purpose. The Foundation stewards field definitions, conformance rules, and citation — the grammar of what an honest record should carry. Populated inventories, trait automation, and modelled geometry remain implementation work, historically expensive precisely because they sat behind manual gates. Understanding that history clarifies what automation changes — and what it does not pretend to replace: professional judgement, site survey, cultural protocol, and client sign-off.`
+        ],
+        actions: [
+          { label: 'Browse the field dictionary', href: DICTIONARY_URL, external: true },
+          { label: 'See the field registry', href: REGISTRY_PATH }
+        ]
+      },
+      {
+        heading: 'How automation flips the model',
+        paragraphs: [
+          'Automation does not eliminate botanical expertise; it changes where that expertise is applied. When trait ingestion, nomenclature cross-checks, geometry generation, and dictionary alignment can run through documented pipelines — Python and interchange tooling rather than ad hoc spreadsheets — the marginal cost of adding a species falls sharply. A library that would once have required a catalogue team to grow linearly can compound: each new source dataset, each revised climate layer, each conformance rule propagates through the same machinery.',
+          'That shift is what makes an accessible library plausible for everyday landscape architects — not only for enterprises with dedicated BIM managers. A practice in Hobart, a council streetscape team in Western Sydney, and a studio in Brisbane can work from the same citable field grammar and, where licensed, from implementation datasets that export dictionary-aligned bundles. The economics invert: infrastructure becomes something you can <em>subscribe to and implement</em>, while definitions remain something you can <em>cite in public</em> without renting vocabulary from a closed template.',
+          'The strategic relationship with institutions changes at the same time — not by collapsing Foundation and peak body into one entity, but by clarifying roles. A body such as AILA can choose to reference an open specification in education guidance, awards criteria, or policy submissions without having built the pipeline behind it. It can acknowledge implementation partners that validate conformance while insisting that the public dictionary stays vendor-neutral. It can participate in draft founding alliance consultation — if it wishes — as one independent organisation among others, with no obligation to adopt commercial products and no implication that endorsement has already occurred.',
+          `Nothing in this essay claims that any peak body has adopted ${TLA185_DISPLAY_ID}, Landscape Archive products, or a formal data standard. The potential is conditional: if automated infrastructure lowers the cost of honest records, institutes can focus on what they do best — setting professional expectations, brokering public debate, and pointing practitioners toward citable infrastructure — while implementation remains contestable in the market. That is healthier than either silence or the impossible ask that a volunteer council maintain a live national asset registry in spare hours.`,
+          'Interim Foundation stewardship means the grammar is public and revisable; incorporation and founding alliance seating remain forward work described on the governance pages. The honest pitch to the profession is narrower: the bottleneck was real, the old economics were real, and automation offers a third path — open definitions plus implementable libraries — that institutions and practitioners can evaluate on evidence rather than on brand promises.'
+        ],
+        bullets: [
+          'Peak bodies endorse and debate; they need not operate data pipelines to cite open field definitions',
+          'High-fidelity assets were premium because labour scaled linearly — automation attacks marginal cost, not professional duty of care',
+          'Practices gain access to library and export tooling through implementation licences; the dictionary remains publicly citable',
+          'Institutional recognition, if it comes, can follow published conformance — it is not claimed here as accomplished fact'
+        ],
+        actions: [
+          { label: 'Adopt the open standard', href: '/adopt' },
+          { label: 'Founding alliance (draft consultation)', href: `${GOVERNANCE_PATH}#founding-alliance` },
+          { label: 'Support the standard', href: '/support' }
+        ]
+      }
+    ]
+  },
+  {
     slug: 'a-shared-vocabulary',
     status: 'published',
     title: 'A shared vocabulary for a fragmented profession',
