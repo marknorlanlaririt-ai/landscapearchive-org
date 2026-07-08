@@ -25,7 +25,7 @@ export function buildFoundationHomeSections({
       heading: 'Mission',
       paragraphs: [
         `The open specification serves as a global data layer and governance standard for living digital twins. The intended mission is to advance environmental and social benefit through open, citable infrastructure for honest landscape documentation — and, with it, a durable future for landscape architecture as a digitally documented discipline: honest records, open standards, and inspectable claims rather than implied credentials. Botanical authenticity, auditable climate disclosure, culturally protocol-aware metadata, and ethical synthetic-nature provenance are encoded in the public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification, a shared vocabulary that makes project archives independently reviewable.`,
-        'That work supports capacity building internationally among landscape architects, ecologists, BIM information managers, and allied professions — including practitioners whose documentation, ecological, custodial, and information-management work is often unseen and unheard in public recognition, yet whose project records must remain legible at handover — in teaching, research, procurement, and public-sector digital programmes. This is draft charitable scope for consultation; we do not claim incorporated charity status, active grant programmes, or humanitarian field operations.'
+        'That work supports capacity building internationally among landscape architects, ecologists, BIM information managers, and allied professions — including practitioners whose documentation, ecological, custodial, and information-management work is often unseen and unheard in public recognition, yet whose project records must remain legible at handover — in teaching, research, procurement, and public-sector digital programmes. This is draft charitable scope for consultation; the Foundation does not claim incorporated charity status, active grant programmes, or humanitarian field operations.'
       ],
       actions: [{ label: 'Read full draft mission (governance)', href: `${GOVERNANCE_PATH}#draft-mission` }]
     },
@@ -34,8 +34,8 @@ export function buildFoundationHomeSections({
       heading: 'About us',
       paragraphs: [
         "A successful landscape project demands more than aesthetic appeal. It requires a verifiable declaration of truth — and a project archive that remains legible after handover: the species used, the site's specific context, the evidence for every claim, the status of restricted cultural artifacts, and a clear chain of custody for synthetic assets. An open specification provides this shared vocabulary, making truth transparent, auditable, and retrievable.",
-        `At the heart of our ecosystem lies the Landscape Vault, which safeguards the proprietary code and intellectual property. The Landscape Archive drives commercial operations, while the Foundation ensures the integrity of the whole system through an open specification. We call this ${TLA185_DISPLAY_ID} — the public infrastructure for truth in landscape metadata, covering botanical authenticity, auditable climate data, honest sustainability, and ethical synthetic nature.`,
-        'We recognize that a private operator is a replicable asset, but an open specification — endorsed by universities, regulators, and public bodies — becomes a foundational standard. It is this standard that is hard to displace. By keeping the production assets and automation securely within the Vault, we ensure that while the specification is public, the operational superiority remains uniquely ours.'
+        `The three-entity structure separates public specification stewardship from commercial implementation and proprietary intellectual property. The Landscape Vault holds specification copyright and proprietary assets; The Landscape Archive Pty Ltd operates commercial products and provides interim Foundation hosting; the Foundation (once incorporated) stewards the open specification layer. ${TLA185_DISPLAY_ID} is the public interchange grammar for truth in landscape metadata — botanical authenticity, auditable climate data, honest sustainability, and ethical synthetic nature.`,
+        'An open specification endorsed by universities, regulators, and public bodies can outlast any single vendor implementation. Populated species inventories, trait values, automation pipelines, and client records remain licensed separately through the Archive and Vault; the public field dictionary and conformance rules stay citable under CC BY-NC-ND 4.0.'
       ],
       actions: [{ label: 'Read the Foundation Standards', href: GOVERNANCE_PATH }]
     },
@@ -98,14 +98,14 @@ export function buildFoundationHomeSections({
       paragraphs: [
         'The Landscape Archive Foundation is not yet an incorporated entity. Voluntary contributions are received interim by The Landscape Archive Pty Ltd (implementation partner) and are not yet eligible for tax-deductible receipts.',
         `Referencing ${TLA185_DISPLAY_ID} or ${TLA169_DISPLAY_ID} under CC BY-NC-ND 4.0 requires no payment; voluntary support helps fund hosting, documentation, and governance preparation.`,
-        'Bank transfer (Australia): expand the bank details below. Include the payment reference so we can reconcile your transfer.'
+        'Bank transfer (Australia): expand the bank details below. Include the payment reference so transfers can be reconciled.'
       ],
       facts: [...FOUNDATION_SUPPORT_BANK_FACTS],
       factsCollapsible: true,
       factsToggleLabel: 'Show bank transfer details',
       bullets: [
         'Tax-deductible treatment may apply if and when an independent Foundation entity is established and any applicable deductible gift recipient registration is obtained.',
-        'We only publish these bank details on our official Landscape Archive websites (landscapearchive.org and landscapearchive.com.au) — never by SMS or from a personal email address.',
+        'Bank transfer details are published only on official Landscape Archive websites (landscapearchive.org and landscapearchive.com.au) — never by SMS or from a personal email address.',
         'For invoicing, recurring support, or amounts over $5,000 AUD, contact us first.'
       ],
       actions: [{ label: 'Questions about support', href: FOUNDATION_SUPPORT_CONTACT_PATH, external: true }]

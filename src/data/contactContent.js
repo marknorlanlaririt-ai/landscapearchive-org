@@ -21,7 +21,7 @@ export function buildFoundationContactSections() {
       heading: 'Who handles what',
       paragraphs: [
         'The Landscape Archive Foundation is not yet an incorporated entity. Interim correspondence for the open standard is handled through The Landscape Archive Pty Ltd (implementation partner) and The Landscape Vault Pty Ltd (IP holding company).',
-        'Use the routes below so your message reaches the right team. We usually reply within one to two business days.'
+        'Use the routes below so correspondence reaches the appropriate desk. Responses are usually provided within one to two business days.'
       ],
       facts: [
         { label: 'Open standard & governance', value: 'Specification stewardship, registry questions, citation, and governance updates.' },
@@ -33,7 +33,7 @@ export function buildFoundationContactSections() {
       id: 'contact-routes',
       heading: 'Contact routes',
       paragraphs: [
-        'The secure contact form lives on the commercial Archive site (shared operations desk). Choose the topic that best matches your enquiry — we route Foundation-standard messages internally.'
+        'The secure contact form lives on the commercial Archive site (shared operations desk). Choose the topic that best matches the enquiry — Foundation-standard messages are routed to the published contact desk.'
       ],
       actions: [
         { label: 'General Foundation enquiry', href: `${ARCHIVE_ORIGIN}/contact?topic=foundation-support`, external: true },

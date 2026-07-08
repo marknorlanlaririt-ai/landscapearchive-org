@@ -25,7 +25,7 @@ export function buildAdoptSections() {
       heading: 'Why open specifications remain unused',
       paragraphs: [
         'Open metadata specifications often stall when teams lack a mandated first use case, accessible validation tooling, and procurement-ready citation language. Governance documentation alone rarely changes day-to-day export workflows when BIM, GIS, and spreadsheet tools already define their own field vocabularies.',
-        'Practical adoption requires <strong>one concrete deliverable per pilot</strong>: validate an example bundle, cite the registry in a studio brief or procurement clause, and export at least one conformance profile — supported by reference tooling that can be exercised in approximately fifteen minutes without product registration.'
+        'Practical adoption requires <strong>one concrete deliverable per pilot</strong>: validate an example bundle, cite the registry in a studio brief or procurement clause, and export at least one conformance profile — supported by public reference tooling that requires no product registration.'
       ],
       bullets: [
         'Tooling gap — no clear download, validator, or worked example in the first session',
@@ -50,8 +50,8 @@ export function buildAdoptSections() {
           value: `Open the reference validator, paste or upload the NSW coastal schoolyard example, and confirm Foundation Approved baseline fields pass — ${VALIDATE_URL}`
         },
         {
-          label: '3 · Paste into one deliverable',
-          value: 'Add the procurement sentence below to a studio brief, RFQ, or methods section — one mandated use case beats ten intro emails.'
+          label: '3 · Cite in one deliverable',
+          value: 'Add the procurement reference language below to a studio brief, RFQ, or methods section — one mandated deliverable per pilot.'
         }
       ],
       actions: [
@@ -63,7 +63,7 @@ export function buildAdoptSections() {
     },
     {
       id: 'procurement-sentence',
-      heading: 'Procurement sentence (copy-paste)',
+      heading: 'Procurement reference language',
       paragraphs: [
         'Use verbatim or adapt for your jurisdiction. It references the open specification only — not ISO status, not a single vendor, not incorporated Foundation membership.'
       ],

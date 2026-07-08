@@ -7,17 +7,17 @@ const ADOPT_URL = 'https://landscapearchive.org/adopt'
 const CONSULTATION_URL = `${ARCHIVE_ORIGIN}/contact?topic=foundation-support&intent=founding-alliance`
 
 /**
- * One-page founding alliance pitch — designed for copy-paste into outreach emails.
- * Honest interim language; no ISO or incorporation claims.
+ * Founding alliance outreach summary — plain-language context for charter consultation.
+ * Third-person institutional voice; no ISO or incorporation claims.
  */
-export const FOUNDING_ALLIANCE_PITCH = Object.freeze({
+export const FOUNDING_ALLIANCE_OUTREACH_SUMMARY = Object.freeze({
   subject: `Draft charter consultation — open ${TLA185_DISPLAY_ID} landscape metadata standard`,
 
-  problem: `Landscape projects still ship with implicit claims — "native planting," "climate resilient," "sustainable" — while BIM and GIS tools export incompatible vocabularies. Teams rarely adopt open metadata standards because there is no mandated first use case, no fifteen-minute validator path, and no procurement sentence they can paste. Governance PDFs do not fix Monday-morning workflows.`,
+  problem: `Landscape projects often ship with implicit claims — "native planting," "climate resilient," "sustainable" — while BIM and GIS tools export incompatible vocabularies. Open metadata specifications stall when teams lack a mandated first use case, accessible validation tooling, and procurement-ready citation language. Governance documentation alone rarely changes day-to-day export workflows.`,
 
-  offer: `We publish ${TLA185_DISPLAY_ID} as open reference infrastructure: field registry, JSON Schema modules, browser validator, worked examples, and jurisdiction crosswalks (UK, EU, US, Australia) at ${SCHEMA_PORTAL_URL}. Year one is free to reference — validate an example bundle, cite the registry in one brief or RFQ, run a single pilot export. Capability grant manifests let vendors declare integration scope without implying Council membership.`,
+  offer: `The Foundation publishes ${TLA185_DISPLAY_ID} as open reference infrastructure: field registry, JSON Schema modules, browser validator, worked examples, and jurisdiction crosswalks (UK, EU, US, Australia) at ${SCHEMA_PORTAL_URL}. Year-one reference materials are free to use — validate an example bundle, cite the registry in one brief or RFQ, run a single pilot export. Capability grant manifests let vendors declare integration scope without implying Council membership.`,
 
-  ask: `Review the draft constitution (consultation only — we are not incorporated yet) and nominate one organisational representative if you want to be listed as a founding supporter when the standard launches publicly. Optional: commit to one pilot — validate the example bundle and add the procurement sentence to an upcoming studio brief or tender. Charter consultation: ${CONSULTATION_URL}`,
+  ask: `Organisations interested in the founding alliance model may review the draft constitution (consultation only — the Foundation is not yet incorporated) and nominate one organisational representative if they wish to be listed as a founding supporter when the standard launches publicly. Optional: commit to one pilot — validate the example bundle and add the procurement sentence to an upcoming studio brief or tender. Charter consultation: ${CONSULTATION_URL}`,
 
   whatWeDoNotAsk: [
     'Binding membership in an entity that does not yet exist',
@@ -44,80 +44,88 @@ export const FOUNDING_ALLIANCE_PITCH = Object.freeze({
   ])
 })
 
-/** Plain-text email body for university outreach. */
-export const FOUNDING_PITCH_EMAIL_UNIVERSITY = `Subject: ${FOUNDING_ALLIANCE_PITCH.subject}
+/** @deprecated Use FOUNDING_ALLIANCE_OUTREACH_SUMMARY */
+export const FOUNDING_ALLIANCE_PITCH = FOUNDING_ALLIANCE_OUTREACH_SUMMARY
+
+/** Plain-text outreach summary for university audiences. */
+export const FOUNDING_OUTREACH_EMAIL_UNIVERSITY = `Subject: ${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.subject}
 
 Dear [Programme lead / Studio coordinator],
 
-${FOUNDING_ALLIANCE_PITCH.problem}
+${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.problem}
 
-${FOUNDING_ALLIANCE_PITCH.offer}
+${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.offer}
 
-A concrete ask for your studio: add this sentence to one upcoming brief and run the public validator on our NSW coastal schoolyard example (${SCHEMA_PORTAL_URL}/validate). Adoption guide: ${ADOPT_URL}
+For studio pilots: add the procurement sentence to one upcoming brief and run the public validator on the NSW coastal schoolyard example (${SCHEMA_PORTAL_URL}/validate). Adoption quickstart: ${ADOPT_URL}
 
-${FOUNDING_ALLIANCE_PITCH.ask}
+${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.ask}
 
-We do not ask for: ${FOUNDING_ALLIANCE_PITCH.whatWeDoNotAsk.slice(0, 3).join('; ')}.
+The consultation does not request: ${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.whatWeDoNotAsk.slice(0, 3).join('; ')}.
 
 Draft constitution: ${CHARTER_URL}
 `
 
-/** Plain-text email body for public body / procurement outreach. */
-export const FOUNDING_PITCH_EMAIL_PUBLIC_BODY = `Subject: Open landscape metadata reference for procurement — draft consultation
+/** Plain-text outreach summary for public body / procurement audiences. */
+export const FOUNDING_OUTREACH_EMAIL_PUBLIC_BODY = `Subject: Open landscape metadata reference for procurement — draft consultation
 
 Dear [Procurement / digital twin lead],
 
-${FOUNDING_ALLIANCE_PITCH.problem}
+${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.problem}
 
-${FOUNDING_ALLIANCE_PITCH.offer}
+${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.offer}
 
-Procurement sentence you can paste into an RFQ or information-management schedule:
+Procurement reference language for an RFQ or information-management schedule:
 
 "${ADOPT_PROCUREMENT_SENTENCE}"
 
-Crosswalks map these field slots to disclosure frameworks your teams may already use (UK IFRS S2, EU CSRD, US SEC climate, AASB S2). Start here: ${ADOPT_URL}
+Crosswalks map these field slots to disclosure frameworks teams may already use (UK IFRS S2, EU CSRD, US SEC climate, AASB S2). Adoption quickstart: ${ADOPT_URL}
 
-${FOUNDING_ALLIANCE_PITCH.ask}
+${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.ask}
 
 Conflict rules: Archive is implementation partner only (no Council vote); Vault holds IP until Foundation incorporation; affiliate referrals are unrelated to founding consultation.
 
 Charter consultation: ${CONSULTATION_URL}
 `
 
-/** Plain-text email body for private practice outreach. */
-export const FOUNDING_PITCH_EMAIL_PRACTICE = `Subject: One pilot, not another standards deck — ${TLA185_DISPLAY_ID}
+/** Plain-text outreach summary for private practice audiences. */
+export const FOUNDING_OUTREACH_EMAIL_PRACTICE = `Subject: One pilot, not another standards deck — ${TLA185_DISPLAY_ID}
 
 Dear [Principal / BIM lead],
 
-${FOUNDING_ALLIANCE_PITCH.problem}
+${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.problem}
 
-${FOUNDING_ALLIANCE_PITCH.offer}
+${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.offer}
 
-Practical ask: validate one bundle this week (${SCHEMA_PORTAL_URL}/validate) and cite the registry in one deliverable — handover memo, climate appendix, or client-facing methods section. Fifteen-minute guide: ${ADOPT_URL}
+Pilot step: validate one bundle (${SCHEMA_PORTAL_URL}/validate) and cite the registry in one deliverable — handover memo, climate appendix, or client-facing methods section. Adoption quickstart: ${ADOPT_URL}
 
-If the pilot surfaces mapping gaps, we want those as public RFC feedback — not a sales conversation.
+Mapping gaps surfaced in pilots are intended as public RFC feedback — not a commercial sales conversation.
 
-Founding alliance is draft consultation only (not incorporated). Review the charter if you want your practice listed as a founding supporter: ${CHARTER_URL}
+Founding alliance language is draft consultation only (not incorporated). Review the charter to register interest as a founding supporter: ${CHARTER_URL}
 
-${FOUNDING_ALLIANCE_PITCH.ask}
+${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.ask}
 `
 
-/** Full one-pager as plain text (all sections). */
-export function formatFoundingAlliancePitchPlainText() {
-  const { problem, offer, ask, whatWeDoNotAsk, conflictRules, links } = FOUNDING_ALLIANCE_PITCH
+/** @deprecated Use FOUNDING_OUTREACH_EMAIL_* exports */
+export const FOUNDING_PITCH_EMAIL_UNIVERSITY = FOUNDING_OUTREACH_EMAIL_UNIVERSITY
+export const FOUNDING_PITCH_EMAIL_PUBLIC_BODY = FOUNDING_OUTREACH_EMAIL_PUBLIC_BODY
+export const FOUNDING_PITCH_EMAIL_PRACTICE = FOUNDING_OUTREACH_EMAIL_PRACTICE
+
+/** Full outreach summary as plain text (all sections). */
+export function formatFoundingAllianceOutreachSummaryPlainText() {
+  const { problem, offer, ask, whatWeDoNotAsk, conflictRules, links } = FOUNDING_ALLIANCE_OUTREACH_SUMMARY
   return [
-    'FOUNDING ALLIANCE — ONE-PAGE PITCH (DRAFT / NOT INCORPORATED)',
+    'FOUNDING ALLIANCE — OUTREACH SUMMARY (DRAFT / NOT INCORPORATED)',
     '',
-    'PROBLEM',
+    'CONTEXT',
     problem,
     '',
     'OFFER',
     offer,
     '',
-    'ASK',
+    'CONSULTATION ASK',
     ask,
     '',
-    'WHAT WE DO NOT ASK',
+    'WHAT THE CONSULTATION DOES NOT REQUEST',
     ...whatWeDoNotAsk.map((item) => `• ${item}`),
     '',
     'CONFLICT RULES',
@@ -126,7 +134,12 @@ export function formatFoundingAlliancePitchPlainText() {
     'LINKS',
     ...links.map((l) => `• ${l.label}: ${l.href}`),
     '',
-    'PROCUREMENT SENTENCE',
+    'PROCUREMENT REFERENCE LANGUAGE',
     ADOPT_PROCUREMENT_SENTENCE
   ].join('\n')
+}
+
+/** @deprecated Use formatFoundingAllianceOutreachSummaryPlainText */
+export function formatFoundingAlliancePitchPlainText() {
+  return formatFoundingAllianceOutreachSummaryPlainText()
 }

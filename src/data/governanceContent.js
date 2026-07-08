@@ -123,7 +123,8 @@ export function buildFoundationGovernanceSections({
         'The Landscape Archive affiliate partner programme is a commercial referral arrangement operated by The Landscape Archive Pty Ltd for subscription sales. Affiliate partnership is unrelated to Foundation founding membership: it confers no vote, Council seat, charter signatory status, or listing as a founding supporter.',
         'Organisations that might participate, if a founding alliance proceeds after incorporation, could include — across jurisdictions — landscape architecture and allied design practices; university schools and research groups; municipal, regional, and national public bodies; First Nations and Indigenous protocol authorities where cultural-context fields apply; nursery and supply-chain partners whose provenance data supports honest planting records; and software, BIM, GIS, and interchange vendors as implementation partners worldwide. Implementation partners would participate in an advisory capacity by default and would hold no voting majority.',
         'Each organisation would remain legally independent. Participation would create no joint liability, no obligation to adopt commercial Archive products, and no transfer of proprietary project intellectual property. Shared work would be confined to the public specification layer — field registry, schemas, conformance criteria, and published governance — as set out under governance scope above.',
-        'This material is draft and for consultation only. A founding charter is published for review; nothing here solicits binding membership in an incorporated entity that does not yet exist. Organisations interested in the model may read the draft charter and register interest through the consultation link below. Any listing as a founding supporter would follow a public launch of the standard — not commercial product adoption or affiliate programme acceptance.'
+        'This material is draft and for consultation only. A founding charter is published for review; nothing here solicits binding membership in an incorporated entity that does not yet exist. Organisations interested in the model may read the draft charter and register interest through the consultation link below. Any listing as a founding supporter would follow a public launch of the standard — not commercial product adoption or affiliate programme acceptance.',
+        'For organisations evaluating charter consultation, a plain-language outreach summary — context, published reference infrastructure, consultation ask, and conflict rules — is published on the adoption guide.'
       ],
       bullets: [
         'Practice members — private landscape, urban design, and allied built-environment firms worldwide',
@@ -140,6 +141,7 @@ export function buildFoundationGovernanceSections({
       ],
       actions: [
         { label: 'Adoption quickstart', href: '/adopt' },
+        { label: 'Outreach summary', href: '/adopt#founding-alliance-outreach' },
         { label: 'Schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
         { label: 'Awards and data architecture', href: '/awards#data-architecture-alignment' },
         { label: 'Draft constitution', href: '/founding-charter' },

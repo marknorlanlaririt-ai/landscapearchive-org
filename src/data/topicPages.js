@@ -65,7 +65,7 @@ export const foundationTopicPages = Object.freeze({
     sections: [
       {
         id: 'what-we-mean',
-        heading: 'What we mean by truth-telling',
+        heading: 'What truth-telling means',
         paragraphs: [
           'Landscape drawings and models often look definitive while the underlying claims stay implicit — “native planting,” “climate resilient,” “sustainable,” “culturally appropriate.” The Foundation publishes the field dictionary and conformance rules so those claims can be stated precisely, evidenced, and reviewed.',
           'Truth-telling is structural in this programme: taxon IDs and growth forms in exchange bundles; banded climate context with documented screening methodology; evidence links on sustainability fields; sensitivity classes that route restricted cultural detail to appropriate repositories; lineage metadata on synthetic assets.'

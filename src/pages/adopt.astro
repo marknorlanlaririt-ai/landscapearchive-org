@@ -2,11 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import DocsSection from '../components/DocsSection.astro'
 import { buildAdoptSections, ADOPT_PATH } from '../data/adoptContent.js'
-import { formatFoundingAlliancePitchPlainText } from '../data/foundingAlliancePitch.js'
+import { formatFoundingAllianceOutreachSummaryPlainText } from '../data/foundingAlliancePitch.js'
 import { SCHEMA_PORTAL_URL } from '../data/site.js'
 
 const sections = buildAdoptSections()
-const pitchPlainText = formatFoundingAlliancePitchPlainText()
+const outreachSummaryPlainText = formatFoundingAllianceOutreachSummaryPlainText()
 ---
 
 <BaseLayout
@@ -46,15 +46,16 @@ const pitchPlainText = formatFoundingAlliancePitchPlainText()
 
     {sections.map((section) => <DocsSection {...section} sharePagePath={ADOPT_PATH} />)}
 
-    <section id="founding-pitch" class="section-block adopt__pitch">
+    <section id="founding-alliance-outreach" class="section-block adopt__pitch">
       <div class="prose">
-        <h2>Founding alliance pitch (copy-paste)</h2>
+        <h2>Founding alliance — outreach summary</h2>
         <p>
-          One-page plain-text summary for outreach emails. Separate templates for university, public body,
-          and practice contacts live in the strategy doc on the implementation repository.
+          Plain-language context for charter consultation — problem framing, published reference
+          infrastructure, consultation ask, and conflict rules. Draft only; no alliance exists today and
+          the Foundation is not yet incorporated.
         </p>
       </div>
-      <pre class="adopt__pitch-text" aria-label="Founding alliance one-page pitch">{pitchPlainText}</pre>
+      <pre class="adopt__pitch-text" aria-label="Founding alliance outreach summary">{outreachSummaryPlainText}</pre>
     </section>
   </div>
 </BaseLayout>

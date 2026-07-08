@@ -1,3 +1,27 @@
+## 2026-07-09 - Founding alliance outreach summary audit
+
+**Scope:** founding-alliance, adoption, governance, homepage, contact, audit
+**Status:** done
+
+### Did
+- Reframed founding alliance material as **outreach summary** (third-person institutional voice); removed copy-paste / fifteen-minute / internal-repo framing.
+- Synced adoption guide with schema portal quickstart language (`Reference adoption path`, `Cite in one deliverable`, `Procurement reference language`).
+- Rewrote homepage About us strategic soliloquy; softened contact and truth-tellers operator phrasing.
+- Added governance cross-link to `/adopt#founding-alliance-outreach`.
+
+### Why
+- Full public-site audit flagged operator copy and stale adoption language on high-visibility Foundation pages.
+
+### Files touched
+- `src/data/foundingAlliancePitch.js`, `src/data/adoptContent.js`, `src/pages/adopt.astro`
+- `src/data/governanceContent.js`, `src/data/homeContent.js`, `src/data/contactContent.js`, `src/data/topicPages.js`
+
+### Follow-ups / blockers
+- Field Notes essays retain editorial first-person voice by design.
+- `/media` and `/events` remain placeholder stubs until working-group material is ready.
+
+---
+
 ## 2026-07-09 - Foundation adoption copy — institutional tone
 
 **Scope:** adoption, homepage, registry, governance, schema-portal
