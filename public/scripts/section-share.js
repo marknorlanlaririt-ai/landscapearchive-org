@@ -4,6 +4,32 @@
  * scripts when SectionShareLinks is rendered many times per page.
  */
 (function () {
+  var MOBILE_SHEET_MQ = window.matchMedia('(max-width: 720px)')
+  var DISMISS_GUARD_MS = 450
+  var activeShareMenu = null
+  var globalDismissBound = false
+
+  function isMobileSheet() {
+    return MOBILE_SHEET_MQ.matches
+  }
+
+  function bindGlobalDismiss() {
+    if (globalDismissBound) return
+    globalDismissBound = true
+
+    document.addEventListener(
+      'pointerdown',
+      function (event) {
+        if (!activeShareMenu) return
+        if (Date.now() < activeShareMenu.suppressDismissUntil) return
+        var target = event.target
+        if (activeShareMenu.menu.contains(target) || activeShareMenu.panel.contains(target)) return
+        activeShareMenu.closeMenu()
+      },
+      true
+    )
+  }
+
   function getShareBackdrop() {
     var backdrop = document.querySelector('.section-share__backdrop')
     if (!backdrop) {
@@ -25,15 +51,31 @@
     var panelAnchor = { parent: menu, next: panel.nextSibling }
     var backdrop = null
     var backdropHandler = null
+    var backdropShowFrame = 0
+    var suppressDismissUntil = 0
 
     function isOpen() {
       return trigger.getAttribute('aria-expanded') === 'true'
     }
 
-    function positionPanel() {
-      if (!isOpen()) return
+    function armDismissGuard() {
+      suppressDismissUntil = Date.now() + DISMISS_GUARD_MS
+      if (activeShareMenu && activeShareMenu.closeMenu === closeMenu) {
+        activeShareMenu.suppressDismissUntil = suppressDismissUntil
+      }
+    }
 
-      panel.classList.remove('section-share__panel--drop-up', 'section-share__panel--drop-down')
+    function cancelBackdropReveal() {
+      if (backdropShowFrame) {
+        window.cancelAnimationFrame(backdropShowFrame)
+        backdropShowFrame = 0
+      }
+    }
+
+    function positionPanel() {
+      if (!isOpen() || isMobileSheet()) return
+
+      panel.classList.remove('section-share__panel--drop-up', 'section-share__panel--drop-down', 'section-share__panel--sheet')
       panel.style.top = ''
       panel.style.left = ''
       panel.style.maxHeight = ''
@@ -66,21 +108,52 @@
       panel.style.left = left + 'px'
     }
 
+    function revealBackdrop() {
+      if (!isOpen()) return
+
+      backdrop = getShareBackdrop()
+      if (backdropHandler) backdrop.removeEventListener('pointerdown', backdropHandler)
+      backdropHandler = function (event) {
+        if (Date.now() < suppressDismissUntil) {
+          event.preventDefault()
+          event.stopPropagation()
+          return
+        }
+        closeMenu()
+      }
+      backdrop.addEventListener('pointerdown', backdropHandler)
+      backdrop.hidden = false
+    }
+
+    function scheduleBackdropReveal() {
+      cancelBackdropReveal()
+      backdropShowFrame = window.requestAnimationFrame(function () {
+        backdropShowFrame = window.requestAnimationFrame(revealBackdrop)
+      })
+    }
+
+    function hideBackdrop() {
+      cancelBackdropReveal()
+      if (backdrop) {
+        backdrop.hidden = true
+        if (backdropHandler) backdrop.removeEventListener('pointerdown', backdropHandler)
+        backdropHandler = null
+      }
+    }
+
     function mountFloating() {
       if (panel.parentNode !== document.body) {
         document.body.appendChild(panel)
       }
       panel.classList.add('section-share__panel--floating')
-
-      backdrop = getShareBackdrop()
-      backdrop.hidden = false
-      if (backdropHandler) backdrop.removeEventListener('click', backdropHandler)
-      backdropHandler = closeMenu
-      backdrop.addEventListener('click', backdropHandler)
+      if (isMobileSheet()) panel.classList.add('section-share__panel--sheet')
+      scheduleBackdropReveal()
     }
 
     function unmountFloating() {
-      panel.classList.remove('section-share__panel--floating')
+      cancelBackdropReveal()
+      hideBackdrop()
+      panel.classList.remove('section-share__panel--floating', 'section-share__panel--sheet')
       panel.style.top = ''
       panel.style.left = ''
       panel.style.maxHeight = ''
@@ -88,19 +161,37 @@
       if (panelAnchor.parent && panel.parentNode === document.body) {
         panelAnchor.parent.insertBefore(panel, panelAnchor.next)
       }
-      if (backdrop) {
-        backdrop.hidden = true
-        if (backdropHandler) backdrop.removeEventListener('click', backdropHandler)
-        backdropHandler = null
-      }
     }
 
     function openMenu() {
+      if (activeShareMenu && activeShareMenu.closeMenu !== closeMenu) {
+        activeShareMenu.closeMenu()
+      }
+
+      bindGlobalDismiss()
+      armDismissGuard()
       mountFloating()
       panel.hidden = false
-      positionPanel()
+
+      if (isMobileSheet()) {
+        panel.classList.remove('section-share__panel--drop-up', 'section-share__panel--drop-down')
+        panel.style.top = ''
+        panel.style.left = ''
+        panel.style.maxHeight = ''
+        panel.style.overflowY = ''
+      } else {
+        panel.classList.remove('section-share__panel--sheet')
+        positionPanel()
+      }
+
       trigger.setAttribute('aria-expanded', 'true')
       menu.classList.add('section-share__menu--open')
+      activeShareMenu = {
+        menu: menu,
+        panel: panel,
+        closeMenu: closeMenu,
+        suppressDismissUntil: suppressDismissUntil
+      }
     }
 
     function closeMenu() {
@@ -108,6 +199,9 @@
       trigger.setAttribute('aria-expanded', 'false')
       menu.classList.remove('section-share__menu--open')
       unmountFloating()
+      if (activeShareMenu && activeShareMenu.closeMenu === closeMenu) {
+        activeShareMenu = null
+      }
     }
 
     function toggleMenu() {
@@ -119,13 +213,7 @@
       event.preventDefault()
       event.stopPropagation()
       toggleMenu()
-    })
-
-    document.addEventListener('click', function (event) {
-      if (!isOpen()) return
-      var target = event.target
-      if (menu.contains(target) || panel.contains(target) || (backdrop && backdrop.contains(target))) return
-      closeMenu()
+      if (isOpen()) armDismissGuard()
     })
 
     document.addEventListener('keydown', function (event) {
@@ -137,13 +225,24 @@
     })
 
     window.addEventListener('resize', function () {
-      if (isOpen()) positionPanel()
+      if (!isOpen()) return
+      if (isMobileSheet()) {
+        panel.classList.add('section-share__panel--sheet')
+        panel.classList.remove('section-share__panel--drop-up', 'section-share__panel--drop-down')
+        panel.style.top = ''
+        panel.style.left = ''
+        panel.style.maxHeight = ''
+        panel.style.overflowY = ''
+      } else {
+        panel.classList.remove('section-share__panel--sheet')
+        positionPanel()
+      }
     })
 
     window.addEventListener(
       'scroll',
       function () {
-        if (isOpen()) positionPanel()
+        if (isOpen() && !isMobileSheet()) positionPanel()
       },
       true
     )

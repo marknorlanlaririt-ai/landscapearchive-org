@@ -1,3 +1,30 @@
+## 2026-07-08 - Share dropdown mobile open/close fix
+
+**Scope:** section-share, landscapearchive-org, federation-portal
+**Status:** done
+
+### Did
+- Fixed mobile Share menu opening then immediately closing: defer backdrop reveal by two animation frames and guard dismiss for 450ms after open.
+- Replaced per-menu `document.click` outside handlers with one capture-phase `pointerdown` listener; backdrop uses guarded `pointerdown` instead of `click`.
+- Mobile (≤720px): bottom-sheet panel anchored to viewport bottom with safe-area padding instead of floating dropdown positioning.
+
+### Why
+- Prior portal fix showed the full-screen backdrop synchronously inside the trigger `click` handler; iOS/Android retarget the same tap to the backdrop, which closed the menu instantly. Floating dropdown positioning was also unreliable on narrow viewports.
+
+### Files touched
+- `public/scripts/section-share.js`
+- `src/components/SectionShareLinks.astro`
+- la-frontend: `federation/portal/share.js`, `federation/portal/styles.css`
+
+### Follow-ups / blockers
+- Verify on physical iPhone/Android after deploy
+
+### Links
+- https://landscapearchive.org/governance
+- https://schema.landscapearchive.org
+
+---
+
 ## 2026-07-08 - Share dropdown z-index + mobile fix
 
 **Scope:** section-share, landscapearchive-org, federation-portal
