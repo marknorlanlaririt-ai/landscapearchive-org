@@ -1,6 +1,6 @@
 ---
 /**
- * Restrained section/article share row — copy link, optional LinkedIn and email.
+ * Restrained section/article share row — copy link, LinkedIn, email, Instagram cards.
  * Matches slate accent and small-caps badge styling from export profile tables.
  */
 interface Props {
@@ -33,52 +33,64 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
   data-share-title={title}
   aria-label={`Share: ${title}`}
 >
-  <span class="section-share__label">Share</span>
-  <div class="section-share__actions">
+  <div class="section-share__menu" data-share-menu>
     <button
       type="button"
-      class="section-share__btn section-share__btn--copy"
-      data-share-copy
-      aria-describedby={`${instanceId}-status`}
+      class="section-share__trigger"
+      data-share-menu-trigger
+      aria-haspopup="menu"
+      aria-expanded="false"
+      aria-controls={`${instanceId}-menu`}
+      id={`${instanceId}-trigger`}
     >
-      <span class="section-share__btn-label" data-share-copy-label>Copy link</span>
+      <span class="section-share__trigger-label">Share</span>
+      <svg class="section-share__trigger-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M2 3.5 5 6.5 8 3.5"></path>
+      </svg>
     </button>
-    <button
-      type="button"
-      class="section-share__btn section-share__btn--native"
-      data-share-native
+    <div
+      class="section-share__panel section-share__panel--drop-down"
+      id={`${instanceId}-menu`}
+      role="menu"
+      aria-labelledby={`${instanceId}-trigger`}
       hidden
     >
-      Share
-    </button>
-    <a
-      class="section-share__icon"
-      href={linkedInUrl}
-      rel="noopener noreferrer"
-      target="_blank"
-      aria-label="Share on LinkedIn"
-    >
-      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path
-          fill="currentColor"
-          d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.127 0 2.062 2.062 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-        ></path>
-      </svg>
-    </a>
-    <a class="section-share__icon" href={emailHref} aria-label="Share by email">
-      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path
-          fill="currentColor"
-          d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-        ></path>
-      </svg>
-    </a>
+      <button type="button" class="section-share__item" role="menuitem" data-share-copy>
+        <span data-share-copy-label>Copy link</span>
+      </button>
+      <a
+        class="section-share__item section-share__item--link section-share__item--linkedin"
+        role="menuitem"
+        href={linkedInUrl}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        LinkedIn
+      </a>
+      <a class="section-share__item section-share__item--link" role="menuitem" href={emailHref}>
+        Email
+      </a>
+      <button type="button" class="section-share__item section-share__item--native" role="menuitem" data-share-native hidden>
+        Share
+      </button>
+      <hr class="section-share__panel-divider" role="separator" />
+      <button type="button" class="section-share__item" role="menuitem" data-share-ig="story">
+        Instagram Story
+      </button>
+      <button type="button" class="section-share__item" role="menuitem" data-share-ig="post">
+        Instagram Post
+      </button>
+      <button type="button" class="section-share__item" role="menuitem" data-share-caption>
+        <span data-share-caption-label>Copy caption</span>
+      </button>
+    </div>
   </div>
   <span id={`${instanceId}-status`} class="section-share__status" role="status" aria-live="polite"></span>
 </aside>
 
 <style>
   .section-share {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -88,25 +100,15 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
     border-top: 1px solid var(--line-soft);
   }
 
-  .section-share__label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    font-variant: all-small-caps;
-    letter-spacing: 0.08em;
-    line-height: 1;
-    color: var(--ink-muted);
+  .section-share__menu {
+    position: relative;
+    display: inline-flex;
   }
 
-  .section-share__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.45rem 0.65rem;
-  }
-
-  .section-share__btn {
+  .section-share__trigger {
     display: inline-flex;
     align-items: center;
+    gap: 0.35rem;
     padding: 0.28rem 0.55rem;
     border: 1px solid rgba(52, 61, 74, 0.35);
     border-radius: 2px;
@@ -122,45 +124,99 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
     transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
   }
 
-  .section-share__btn:hover {
+  .section-share__trigger:hover,
+  .section-share__menu--open .section-share__trigger {
     background: rgba(52, 61, 74, 0.09);
     border-color: rgba(52, 61, 74, 0.55);
   }
 
-  .section-share__btn--done {
-    border-color: var(--accent-strong);
-    color: var(--accent-strong);
-    background: rgba(52, 61, 74, 0.08);
+  .section-share__trigger-chevron {
+    flex-shrink: 0;
+    transition: transform 140ms ease;
   }
 
-  .section-share__btn--native:not([hidden]) ~ .section-share__icon[aria-label='Share on LinkedIn'] {
+  .section-share__menu--open .section-share__trigger-chevron {
+    transform: rotate(180deg);
+  }
+
+  .section-share__panel {
+    position: absolute;
+    left: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    min-width: 11.5rem;
+    padding: 0.35rem 0;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--paper-raised, #ffffff);
+    box-shadow: 0 6px 20px rgba(28, 31, 34, 0.12);
+  }
+
+  .section-share__panel--drop-down {
+    top: calc(100% + 0.35rem);
+    bottom: auto;
+  }
+
+  .section-share__panel--drop-up {
+    bottom: calc(100% + 0.35rem);
+    top: auto;
+  }
+
+  .section-share__panel-divider {
+    margin: 0.35rem 0;
+    border: 0;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .section-share__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.45rem 0.75rem;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease;
+  }
+
+  .section-share__item:hover,
+  .section-share__item:focus-visible {
+    background: rgba(52, 61, 74, 0.06);
+    color: var(--accent-strong);
+    outline: none;
+  }
+
+  .section-share__item--done {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+
+  .section-share__item:disabled {
+    opacity: 0.55;
+    cursor: wait;
+  }
+
+  .section-share__item--native:not([hidden]) ~ .section-share__item--linkedin {
+    display: none;
+  }
+
+  .section-share__panel:has(.section-share__item--native:not([hidden])) .section-share__item--linkedin {
     display: none;
   }
 
   @media (min-width: 721px) {
-    .section-share__btn--native {
+    .section-share__item--native {
       display: none !important;
     }
-  }
-
-  .section-share__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.65rem;
-    height: 1.65rem;
-    border: 1px solid var(--line);
-    border-radius: 2px;
-    color: var(--ink-muted);
-    background: transparent;
-    text-decoration: none;
-    transition: color 140ms ease, border-color 140ms ease, background 140ms ease;
-  }
-
-  .section-share__icon:hover {
-    color: var(--accent-strong);
-    border-color: rgba(52, 61, 74, 0.4);
-    background: rgba(52, 61, 74, 0.04);
   }
 
   .section-share__status {
