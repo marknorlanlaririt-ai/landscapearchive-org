@@ -1,3 +1,31 @@
+## 2026-07-08 - Share mobile overlay z-index fix
+
+**Scope:** section-share, landscapearchive-org, federation-portal
+**Status:** done
+
+### Did
+- Wrapped portaled backdrop + panel in `.section-share__overlay-root` on `document.body` with `isolation: isolate` and `position: fixed; inset: 0`.
+- Mobile (≤720px): overlay `z-index: 2147483646`; desktop overlay stays `1100`; inner backdrop/panel use `1`/`2`.
+- Added `body.section-share-open { overflow: hidden }` on mobile sheet open to prevent scroll bleed.
+
+### Why
+- Prior fix (1100/1099 on separate body children) still painted behind following `.section-block` headings on narrow viewports — likely competing stacking contexts from `[data-animate-in]` transforms and sticky chrome. Single isolated overlay root with max practical z-index guarantees the sheet covers all page content.
+
+### Files touched
+- `public/scripts/section-share.js`
+- `src/components/SectionShareLinks.astro`
+- `src/styles/global.css`
+- la-frontend: `federation/portal/share.js`, `federation/portal/styles.css`
+
+### Follow-ups / blockers
+- Verify on physical iPhone/Android at https://landscapearchive.org/governance (390px)
+
+### Links
+- https://landscapearchive.org/governance
+- https://schema.landscapearchive.org
+
+---
+
 ## 2026-07-08 - Share dropdown mobile open/close fix
 
 **Scope:** section-share, landscapearchive-org, federation-portal

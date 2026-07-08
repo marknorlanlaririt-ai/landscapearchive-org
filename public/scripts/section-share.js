@@ -19,8 +19,36 @@
       activeShareMenu.trigger.contains(target) ||
       activeShareMenu.menu.contains(target) ||
       activeShareMenu.panel.contains(target) ||
-      (activeShareMenu.backdrop && activeShareMenu.backdrop.contains(target))
+      (activeShareMenu.backdrop && activeShareMenu.backdrop.contains(target)) ||
+      (activeShareMenu.overlayRoot && activeShareMenu.overlayRoot.contains(target))
     )
+  }
+
+  function getShareOverlayRoot() {
+    var root = document.querySelector('.section-share__overlay-root')
+    if (!root) {
+      root = document.createElement('div')
+      root.className = 'section-share__overlay-root'
+      root.hidden = true
+      document.body.appendChild(root)
+    }
+    return root
+  }
+
+  function migrateLegacyShareOverlayNodes(overlayRoot) {
+    var legacyBackdrop = document.body.querySelector(':scope > .section-share__backdrop')
+    if (legacyBackdrop) {
+      overlayRoot.insertBefore(legacyBackdrop, overlayRoot.firstChild)
+      legacyBackdrop.hidden = true
+    }
+    var legacyPanel = document.body.querySelector(':scope > .section-share__panel--floating')
+    if (legacyPanel && legacyPanel.parentNode === document.body) {
+      overlayRoot.appendChild(legacyPanel)
+    }
+  }
+
+  function setShareOverlayOpen(open) {
+    document.body.classList.toggle('section-share-open', open && isMobileSheet())
   }
 
   function bindGlobalDismiss() {
@@ -50,14 +78,16 @@
   }
 
   function getShareBackdrop() {
-    var backdrop = document.querySelector('.section-share__backdrop')
+    var overlayRoot = getShareOverlayRoot()
+    migrateLegacyShareOverlayNodes(overlayRoot)
+    var backdrop = overlayRoot.querySelector('.section-share__backdrop')
     if (!backdrop) {
       backdrop = document.createElement('button')
       backdrop.type = 'button'
       backdrop.className = 'section-share__backdrop'
       backdrop.setAttribute('aria-label', 'Close share menu')
       backdrop.hidden = true
-      document.body.appendChild(backdrop)
+      overlayRoot.insertBefore(backdrop, overlayRoot.firstChild)
     }
     return backdrop
   }
@@ -179,11 +209,16 @@
     }
 
     function mountFloating() {
-      if (panel.parentNode !== document.body) {
-        document.body.appendChild(panel)
+      var overlayRoot = getShareOverlayRoot()
+      migrateLegacyShareOverlayNodes(overlayRoot)
+      overlayRoot.hidden = false
+      getShareBackdrop()
+      if (panel.parentNode !== overlayRoot) {
+        overlayRoot.appendChild(panel)
       }
       panel.classList.add('section-share__panel--floating')
       if (isMobileSheet()) panel.classList.add('section-share__panel--sheet')
+      setShareOverlayOpen(true)
       scheduleBackdropReveal()
     }
 
@@ -195,9 +230,11 @@
       panel.style.left = ''
       panel.style.maxHeight = ''
       panel.style.overflowY = ''
-      if (panelAnchor.parent && panel.parentNode === document.body) {
+      if (panelAnchor.parent && panel.parentNode !== panelAnchor.parent) {
         panelAnchor.parent.insertBefore(panel, panelAnchor.next)
       }
+      getShareOverlayRoot().hidden = true
+      setShareOverlayOpen(false)
     }
 
     function openMenu() {
@@ -228,6 +265,7 @@
         panel: panel,
         trigger: trigger,
         backdrop: backdrop,
+        overlayRoot: getShareOverlayRoot(),
         closeMenu: closeMenu,
         suppressDismissUntil: suppressDismissUntil
       }
@@ -272,8 +310,10 @@
         panel.style.left = ''
         panel.style.maxHeight = ''
         panel.style.overflowY = ''
+        setShareOverlayOpen(true)
       } else {
         panel.classList.remove('section-share__panel--sheet')
+        setShareOverlayOpen(false)
         positionPanel()
       }
     })

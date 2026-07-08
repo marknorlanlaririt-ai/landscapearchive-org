@@ -141,6 +141,45 @@ a:hover {
   border-top: 0;
 }
 
+/* Section share overlay (portaled to body via section-share.js) ------------ */
+
+.section-share__overlay-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  isolation: isolate;
+  contain: layout style;
+  pointer-events: none;
+  transform: none;
+  filter: none;
+}
+
+.section-share__overlay-root:not([hidden]) {
+  pointer-events: auto;
+}
+
+.section-share__overlay-root[hidden] {
+  display: none !important;
+}
+
+.section-share__overlay-root .section-share__backdrop {
+  z-index: 1;
+}
+
+.section-share__overlay-root .section-share__panel--floating {
+  z-index: 2;
+}
+
+@media (max-width: 720px) {
+  .section-share__overlay-root {
+    z-index: 2147483646;
+  }
+}
+
+body.section-share-open {
+  overflow: hidden;
+}
+
 /* Buttons / actions ------------------------------------------------------- */
 
 .action-row {
