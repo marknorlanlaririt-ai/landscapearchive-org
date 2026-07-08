@@ -4,41 +4,101 @@
  * scripts when SectionShareLinks is rendered many times per page.
  */
 (function () {
+  function getShareBackdrop() {
+    var backdrop = document.querySelector('.section-share__backdrop')
+    if (!backdrop) {
+      backdrop = document.createElement('button')
+      backdrop.type = 'button'
+      backdrop.className = 'section-share__backdrop'
+      backdrop.setAttribute('aria-label', 'Close share menu')
+      backdrop.hidden = true
+      document.body.appendChild(backdrop)
+    }
+    return backdrop
+  }
+
   function initShareMenu(root, menu) {
     var trigger = menu.querySelector('[data-share-menu-trigger]')
     var panel = menu.querySelector('.section-share__panel')
     if (!trigger || !panel) return
+
+    var panelAnchor = { parent: menu, next: panel.nextSibling }
+    var backdrop = null
+    var backdropHandler = null
 
     function isOpen() {
       return trigger.getAttribute('aria-expanded') === 'true'
     }
 
     function positionPanel() {
-      panel.classList.remove('section-share__panel--drop-up', 'section-share__panel--drop-down')
-      var wasHidden = panel.hidden
-      panel.hidden = false
-      panel.style.visibility = 'hidden'
-      panel.style.pointerEvents = 'none'
+      if (!isOpen()) return
 
+      panel.classList.remove('section-share__panel--drop-up', 'section-share__panel--drop-down')
+      panel.style.top = ''
+      panel.style.left = ''
+      panel.style.maxHeight = ''
+      panel.style.overflowY = ''
+
+      var panelWidth = panel.offsetWidth
       var panelHeight = panel.offsetHeight
       var triggerRect = trigger.getBoundingClientRect()
-      var spaceBelow = window.innerHeight - triggerRect.bottom
-      var spaceAbove = triggerRect.top
+      var gap = 6
+      var spaceBelow = window.innerHeight - triggerRect.bottom - gap
+      var spaceAbove = triggerRect.top - gap
+      var dropUp = panelHeight > spaceBelow && spaceAbove >= spaceBelow
 
-      panel.style.visibility = ''
-      panel.style.pointerEvents = ''
-      if (wasHidden) panel.hidden = true
+      var left = triggerRect.left
+      left = Math.max(8, Math.min(left, window.innerWidth - panelWidth - 8))
 
-      if (panelHeight > spaceBelow && spaceAbove > spaceBelow) {
+      if (dropUp) {
         panel.classList.add('section-share__panel--drop-up')
+        panel.style.top = Math.max(8, triggerRect.top - panelHeight - gap) + 'px'
       } else {
         panel.classList.add('section-share__panel--drop-down')
+        var top = triggerRect.bottom + gap
+        if (top + panelHeight > window.innerHeight - 8) {
+          panel.style.maxHeight = Math.max(120, window.innerHeight - top - 8) + 'px'
+          panel.style.overflowY = 'auto'
+        }
+        panel.style.top = top + 'px'
+      }
+
+      panel.style.left = left + 'px'
+    }
+
+    function mountFloating() {
+      if (panel.parentNode !== document.body) {
+        document.body.appendChild(panel)
+      }
+      panel.classList.add('section-share__panel--floating')
+
+      backdrop = getShareBackdrop()
+      backdrop.hidden = false
+      if (backdropHandler) backdrop.removeEventListener('click', backdropHandler)
+      backdropHandler = closeMenu
+      backdrop.addEventListener('click', backdropHandler)
+    }
+
+    function unmountFloating() {
+      panel.classList.remove('section-share__panel--floating')
+      panel.style.top = ''
+      panel.style.left = ''
+      panel.style.maxHeight = ''
+      panel.style.overflowY = ''
+      if (panelAnchor.parent && panel.parentNode === document.body) {
+        panelAnchor.parent.insertBefore(panel, panelAnchor.next)
+      }
+      if (backdrop) {
+        backdrop.hidden = true
+        if (backdropHandler) backdrop.removeEventListener('click', backdropHandler)
+        backdropHandler = null
       }
     }
 
     function openMenu() {
-      positionPanel()
+      mountFloating()
       panel.hidden = false
+      positionPanel()
       trigger.setAttribute('aria-expanded', 'true')
       menu.classList.add('section-share__menu--open')
     }
@@ -47,6 +107,7 @@
       panel.hidden = true
       trigger.setAttribute('aria-expanded', 'false')
       menu.classList.remove('section-share__menu--open')
+      unmountFloating()
     }
 
     function toggleMenu() {
@@ -55,13 +116,16 @@
     }
 
     trigger.addEventListener('click', function (event) {
+      event.preventDefault()
       event.stopPropagation()
       toggleMenu()
     })
 
     document.addEventListener('click', function (event) {
       if (!isOpen()) return
-      if (!menu.contains(event.target)) closeMenu()
+      var target = event.target
+      if (menu.contains(target) || panel.contains(target) || (backdrop && backdrop.contains(target))) return
+      closeMenu()
     })
 
     document.addEventListener('keydown', function (event) {
@@ -75,6 +139,14 @@
     window.addEventListener('resize', function () {
       if (isOpen()) positionPanel()
     })
+
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (isOpen()) positionPanel()
+      },
+      true
+    )
 
     panel.querySelectorAll('[role="menuitem"]').forEach(function (item) {
       item.addEventListener('click', function () {

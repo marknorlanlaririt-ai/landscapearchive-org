@@ -1,3 +1,57 @@
+## 2026-07-08 - Share dropdown z-index + mobile fix
+
+**Scope:** section-share, landscapearchive-org, federation-portal
+**Status:** done
+
+### Did
+- Portaled open Share panel to `document.body` with `position: fixed` and `z-index: 1100` so menus render above following section headings.
+- Added dim backdrop (`z-index: 1099`) for click-outside dismiss; reposition on scroll/resize.
+- Mobile: 44px min touch targets on trigger and menu items; `touch-action: manipulation` on tap surfaces.
+
+### Why
+- Share rows sit at the bottom of each section; absolutely positioned panels (`z-index: 30` within parent stacking context) painted behind the next section’s DOM (e.g. “Encode claims” heading). Mobile taps hit obscured or clipped panels.
+
+### Files touched
+- `src/components/SectionShareLinks.astro`
+- `public/scripts/section-share.js`
+- la-frontend: `federation/portal/share.js`, `federation/portal/styles.css`
+
+### Follow-ups / blockers
+- None
+
+### Links
+- https://landscapearchive.org/governance
+- https://schema.landscapearchive.org
+
+---
+
+## 2026-07-08 - Share dropdown auto-open + article duplicate
+
+**Scope:** section-share, landscapearchive-org
+**Status:** done
+
+### Did
+- Fixed Share menus rendering open on page load: scoped `.section-share__panel { display: flex }` overrode `[hidden]`; added explicit `[hidden] { display: none !important }`.
+- Hardened `section-share.js` to restore `hidden` after drop-up/drop-down measurement and call `closeMenu()` on init.
+- Removed redundant page-level `SectionShareLinks` on article pages (last section already had a share row → overlapping duplicate near footer).
+
+### Why
+- Instagram dropdown commit (5761134) introduced panel CSS without a `[hidden]` guard; all 22 governance menus appeared expanded on load. Article template double-injected share beside the final section.
+
+### Files touched
+- `src/components/SectionShareLinks.astro`
+- `public/scripts/section-share.js`
+- `src/pages/articles/[slug].astro`
+- la-frontend: `federation/portal/share.js`, `federation/portal/styles.css`
+
+### Follow-ups / blockers
+- None
+
+### Links
+- Commit `b6c3920` (landscapearchive-org), `37a5802` (la-frontend)
+
+---
+
 ## 2026-07-08 - Volunteer applications (auth + structured form)
 
 **Scope:** volunteers, foundation-auth, intake
