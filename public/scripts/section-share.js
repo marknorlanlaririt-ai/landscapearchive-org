@@ -475,6 +475,24 @@
           })
       })
     })
+
+    var packBtn = root.querySelector('[data-share-ig-pack]')
+    if (packBtn && ig && ig.downloadStoryPack) {
+      packBtn.addEventListener('click', function () {
+        var sectionContent = ig.extractSectionContent ? ig.extractSectionContent(root) : {}
+        packBtn.disabled = true
+        ig.downloadStoryPack(shareUrl, shareTitle || document.title, sectionContent)
+          .then(function () {
+            showStatus('Story pack downloaded — upload slides in order')
+          })
+          .catch(function () {
+            showStatus('Could not create story pack — try again')
+          })
+          .finally(function () {
+            packBtn.disabled = false
+          })
+      })
+    }
   }
 
   function initAllSectionShare() {

@@ -1,3 +1,29 @@
+## 2026-07-08 - Instagram story export fix + multi-slide pack
+
+**Scope:** section-share, instagram, landscapearchive-org
+**Status:** done
+
+### Did
+- Fixed story/post canvas layout: measured title/body fit, Instagram safe-zone footer, wrapped URLs, explicit 1080×1920 export canvas (no DPR/CSS bleed).
+- Removed export-only hint line that sat below the footer stack and appeared cropped in Story uploads.
+- Added **Instagram Story pack (multi)** — ZIP of 2–5 slides (`tla-story-01.png` …) built from section title, bullets/excerpt, and CTA.
+
+### Why
+- Long governance headings hit hard line caps and footer content sat in Instagram’s bottom crop zone, making downloads look truncated. Multi-slide ZIP matches manual Story carousel workflow better than a single tall composite.
+
+### Files touched
+- `public/scripts/section-share-instagram.js`
+- `public/scripts/section-share.js`
+- `src/components/SectionShareLinks.astro`
+
+### Follow-ups / blockers
+- Verify ZIP unpack + upload order on iPhone Photos → Instagram Stories
+
+### Links
+- https://landscapearchive.org/governance
+
+---
+
 ## 2026-07-08 - Share mobile overlay z-index fix
 
 **Scope:** section-share, landscapearchive-org, federation-portal
