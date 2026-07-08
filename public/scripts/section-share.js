@@ -15,6 +15,7 @@
 
     function positionPanel() {
       panel.classList.remove('section-share__panel--drop-up', 'section-share__panel--drop-down')
+      var wasHidden = panel.hidden
       panel.hidden = false
       panel.style.visibility = 'hidden'
       panel.style.pointerEvents = 'none'
@@ -26,6 +27,7 @@
 
       panel.style.visibility = ''
       panel.style.pointerEvents = ''
+      if (wasHidden) panel.hidden = true
 
       if (panelHeight > spaceBelow && spaceAbove > spaceBelow) {
         panel.classList.add('section-share__panel--drop-up')
@@ -106,6 +108,7 @@
     })
 
     root._closeShareMenu = closeMenu
+    closeMenu()
   }
 
   function initSectionShare(root) {

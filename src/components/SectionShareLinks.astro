@@ -139,6 +139,10 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
     transform: rotate(180deg);
   }
 
+  .section-share__panel[hidden] {
+    display: none !important;
+  }
+
   .section-share__panel {
     position: absolute;
     left: 0;

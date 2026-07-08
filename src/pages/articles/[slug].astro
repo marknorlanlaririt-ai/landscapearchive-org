@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import DocsSection from '../../components/DocsSection.astro'
-import SectionShareLinks from '../../components/SectionShareLinks.astro'
 import { PUBLISHED_FIELD_NOTES, formatArticleDate } from '../../data/articles.js'
 
 export function getStaticPaths() {
@@ -57,8 +56,6 @@ const articleJsonLd = {
     </div>
 
     {article.sections.map((section) => <DocsSection {...section} sharePagePath={articlePath} />)}
-
-    <SectionShareLinks pagePath={articlePath} title={article.title} />
 
     <footer class="essay__foot">
       {
