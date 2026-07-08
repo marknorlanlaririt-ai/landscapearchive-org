@@ -1,4 +1,22 @@
-## 2026-07-07 - Founding and adoption strategy package
+## 2026-07-08 - Founding alliance tone (no overclaim)
+
+**Scope:** governance, founding-alliance, copy
+**Status:** done
+
+### Did
+- Rewrote **Founding alliance** section in `governanceContent.js` — intent/possibility language; explicit "no alliance exists today"; removed "under review with advisers and prospective members"; softened participant/CTA framing; updated facts row.
+
+### Why
+- Public copy implied an alliance was being actively convened or in preparation. Align with `FOUNDATION_PUBLIC_NAMING_AND_LEGAL_SAFETY.md`: draft/interim tone, no incorporated entity, affiliate ≠ founding.
+
+### Files touched
+- `src/data/governanceContent.js`
+
+### Links
+- https://landscapearchive.org/governance#founding-alliance
+
+---
+
 
 **Scope:** adoption, founding-charter, governance, marketing
 **Status:** done
