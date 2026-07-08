@@ -99,7 +99,7 @@ export function buildFoundingCharterSections() {
           href: FOUNDING_CHARTER_CONSULTATION_URL,
           external: true
         },
-        { label: 'Adopt the standard (15 min)', href: ADOPT_PATH },
+        { label: 'Adoption quickstart', href: ADOPT_PATH },
         { label: 'Governance', href: '/governance' }
       ]
     }

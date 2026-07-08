@@ -1,3 +1,27 @@
+## 2026-07-09 - Foundation adoption copy — institutional tone
+
+**Scope:** adoption, homepage, registry, governance, schema-portal
+**Status:** done
+
+### Did
+- Rewrote "get started in 15 minutes" CTAs and adoption guide copy to third-person, institutional Foundation voice.
+- Replaced conversational banner ("not joining a revolution") with interim-stewardship notice and clear three-step reference adoption path.
+- Synced schema portal quickstart section in `la-frontend/federation/portal/index.html`.
+
+### Why
+- Public adoption surfaces sounded like internal notes or first-person soliloquy; Foundation copy should read as established reference infrastructure with explicit steps.
+
+### Files touched
+- `src/data/adoptContent.js`, `src/pages/adopt.astro`, `src/pages/index.astro`, `src/pages/registry.astro`
+- `src/data/homeContent.js`, `src/data/governanceContent.js`, `src/data/foundingCharterContent.js`
+- `src/data/recentPublicUpdates.js`, `src/data/foundingAlliancePitch.js`, `src/data/topicPages.js`
+- `../la-frontend/federation/portal/index.html`
+
+### Follow-ups / blockers
+- None — deploy via `npm run deploy`.
+
+---
+
 ## 2026-07-09 - Foundation interim hosting disclaimer on sign-in
 
 **Scope:** foundation-governance, sign-in, landscapearchive-org

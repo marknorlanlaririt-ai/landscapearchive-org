@@ -21,9 +21,9 @@ export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
   },
   {
     date: 'July 2026',
-    title: 'Adopt the open standard in 15 minutes',
+    title: 'Open standard adoption guide',
     summary:
-      'Practitioner guide: download the open pack, validate an example bundle, paste a procurement sentence. Addresses why outreach alone does not convert — tooling and one mandated deliverable per pilot.',
+      'Reference adoption path: download the open pack, validate an example bundle, and add the procurement sentence to one deliverable. Documents why tooling and a mandated pilot deliverable precede governance outreach.',
     href: '/adopt'
   },
   {

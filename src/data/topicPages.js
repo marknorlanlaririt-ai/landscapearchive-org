@@ -42,7 +42,7 @@ export const foundationTopicPages = Object.freeze({
         id: 'how-to-start',
         heading: 'How to start',
         paragraphs: [
-          'The schema portal and field dictionary are the best entry points for technical contributions. For structured volunteer onboarding, working-group placement, or institutional partnership, contact the interim team first so we can match your skills to published needs.',
+          'The schema portal and field dictionary are the published entry points for technical contributions. For structured volunteer onboarding, working-group placement, or institutional partnership, use the contact route below so contributions can be matched to published needs.',
           ...(isOpenStandardGithubPubliclyAvailable()
             ? []
             : [OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE]),

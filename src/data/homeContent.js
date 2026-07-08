@@ -68,7 +68,7 @@ export function buildFoundationHomeSections({
             ]
           : []),
         { label: 'Open schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
-        { label: 'Get started in 15 minutes', href: ADOPT_PATH }
+        { label: 'Adoption quickstart', href: ADOPT_PATH }
       ]
     },
     {

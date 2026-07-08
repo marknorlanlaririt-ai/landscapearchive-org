@@ -22,23 +22,23 @@ export function buildAdoptSections() {
   return Object.freeze([
     {
       id: 'why-people-dont',
-      heading: 'Why open specs sit unused',
+      heading: 'Why open specifications remain unused',
       paragraphs: [
-        'Outreach alone rarely moves adoption. Teams default to whatever their BIM, GIS, or spreadsheet tool already exports. Abstract governance pages do not change Monday-morning workflows. Without a mandated first use case, a validator run, and a sentence they can paste into a brief, the specification stays “interesting” and unused.',
-        'The fix is not more charter language. It is <strong>one concrete deliverable per pilot</strong> — validate an example bundle, cite the registry in a studio brief or procurement clause, export one profile — plus tooling that works in fifteen minutes without signing up for a product.'
+        'Open metadata specifications often stall when teams lack a mandated first use case, accessible validation tooling, and procurement-ready citation language. Governance documentation alone rarely changes day-to-day export workflows when BIM, GIS, and spreadsheet tools already define their own field vocabularies.',
+        'Practical adoption requires <strong>one concrete deliverable per pilot</strong>: validate an example bundle, cite the registry in a studio brief or procurement clause, and export at least one conformance profile — supported by reference tooling that can be exercised in approximately fifteen minutes without product registration.'
       ],
       bullets: [
-        'Tooling gap — no obvious download, validator, or worked example in the first click',
+        'Tooling gap — no clear download, validator, or worked example in the first session',
         'No mandate — nothing in the brief, rubric, or handover checklist requires structured metadata',
         'Vendor default — teams ship native Revit/IFC fields instead of a shared interchange grammar',
-        'Abstract URLs — federation jargon and governance copy without a “do this now” path'
+        'Abstract documentation — governance copy without a published adoption sequence'
       ]
     },
     {
       id: 'three-steps',
-      heading: 'Get started in 15 minutes',
+      heading: 'Reference adoption path',
       paragraphs: [
-        'Three steps. No account required. No claim that the Foundation is incorporated — this is public reference infrastructure you can use today.'
+        'Follow three steps to reference the open specification. No account is required. The Foundation operates under interim stewardship and is not yet incorporated; the specification, validator, and example bundles are public reference infrastructure available for immediate use.'
       ],
       facts: [
         {
@@ -100,9 +100,9 @@ export function buildAdoptSections() {
     },
     {
       id: 'year-one-offer',
-      heading: 'What we offer in year one',
+      heading: 'Year-one reference support',
       paragraphs: [
-        'Free, low-friction support focused on <strong>use</strong>, not sales calls. Commercial Archive products are optional implementation layers.'
+        'The Foundation publishes free, low-friction reference materials focused on specification <strong>use</strong> rather than commercial licensing. Commercial Archive products remain optional implementation layers.'
       ],
       bullets: [
         'Public schema portal, dictionary, validator, and example bundles — no login',

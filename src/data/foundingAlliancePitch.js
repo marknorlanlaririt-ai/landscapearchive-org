@@ -37,7 +37,7 @@ export const FOUNDING_ALLIANCE_PITCH = Object.freeze({
   ],
 
   links: Object.freeze([
-    { label: 'Get started in 15 minutes', href: ADOPT_URL },
+    { label: 'Adoption quickstart', href: ADOPT_URL },
     { label: 'Draft constitution', href: CHARTER_URL },
     { label: 'Schema portal', href: SCHEMA_PORTAL_URL },
     { label: 'Charter consultation', href: CONSULTATION_URL }
