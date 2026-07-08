@@ -14,6 +14,13 @@ import { GOVERNANCE_PATH } from './foundationWing.js'
 export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
   {
     date: 'July 2026',
+    title: 'Institutions, standards, and the infrastructure gap',
+    summary:
+      'Field Note on why peak bodies excel at governance while sustained botanical and BIM pipelines sit elsewhere — and how open definitions plus automation may change access without implying institutional endorsement.',
+    href: '/articles/institutions-standards-and-the-infrastructure-gap'
+  },
+  {
+    date: 'July 2026',
     title: 'Adopt the open standard in 15 minutes',
     summary:
       'Practitioner guide: download the open pack, validate an example bundle, paste a procurement sentence. Addresses why outreach alone does not convert — tooling and one mandated deliverable per pilot.',

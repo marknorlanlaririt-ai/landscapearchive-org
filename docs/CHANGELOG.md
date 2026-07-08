@@ -1,3 +1,22 @@
+## 2026-07-08 - Homepage recent updates (institutions Field Note)
+
+**Scope:** marketing, field-notes, homepage
+**Status:** done
+
+### Did
+- Added **Institutions, standards, and the infrastructure gap** to `recentPublicUpdates.js` (newest-first on homepage What's new strip).
+
+### Why
+- Published Field Note should surface in the interim public milestones list alongside adoption and governance updates.
+
+### Files touched
+- `src/data/recentPublicUpdates.js`
+
+### Links
+- https://landscapearchive.org/articles/institutions-standards-and-the-infrastructure-gap
+
+---
+
 ## 2026-07-08 - Field Note legal hardening (institutions essay)
 
 **Scope:** field-notes, legal-comms, articles
