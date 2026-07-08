@@ -249,7 +249,7 @@ export const FIELD_NOTES = Object.freeze([
       {
         heading: 'Synonyms as design material',
         paragraphs: [
-          'Landscape language is gloriously ambiguous. “Grass” might mean a lawn cultivar, a native tussock matrix, or a post-industrial meadow strategy. “Tree” might mean a street specimen, a remnant woodland anchor, or a placeholder massing object awaiting survey. Ambiguity is sometimes intentional in early design; it is <em>destructive</em> in handover archives and comparative research.',
+          'Landscape language is gloriously ambiguous. “Grass” might mean a lawn cultivar, a native tussock matrix, or a post-industrial meadow strategy. “Tree” might mean a street specimen, a remnant woodland anchor, or a placeholder massing object awaiting survey. Ambiguity is sometimes intentional in early design; it undermines handover archives and comparative research.',
           'Pedagogy can treat synonyms as material rather than error. Assign students to map studio vocabulary onto published dictionary terms — not to erase nuance, but to locate it. Which preferred label applies? Which synonym is tolerated? Where does the definition explicitly allow regional modules? When two offices use different words for the same planting role, can they still produce an interchange bundle that joins? These exercises connect design criticism to information architecture in ways that travel across national curricula without pretending every biome shares the same species list.'
         ],
         bullets: [
