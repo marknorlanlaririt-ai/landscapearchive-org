@@ -13,21 +13,40 @@
     return MOBILE_SHEET_MQ.matches
   }
 
+  function isInsideActiveShareMenu(target) {
+    if (!activeShareMenu || !target) return false
+    return (
+      activeShareMenu.trigger.contains(target) ||
+      activeShareMenu.menu.contains(target) ||
+      activeShareMenu.panel.contains(target) ||
+      (activeShareMenu.backdrop && activeShareMenu.backdrop.contains(target))
+    )
+  }
+
   function bindGlobalDismiss() {
     if (globalDismissBound) return
     globalDismissBound = true
 
+    // Mobile: pointerdown capture + guard — opening tap must not retarget to backdrop.
     document.addEventListener(
       'pointerdown',
       function (event) {
+        if (!isMobileSheet()) return
         if (!activeShareMenu) return
         if (Date.now() < activeShareMenu.suppressDismissUntil) return
-        var target = event.target
-        if (activeShareMenu.menu.contains(target) || activeShareMenu.panel.contains(target)) return
+        if (isInsideActiveShareMenu(event.target)) return
         activeShareMenu.closeMenu()
       },
       true
     )
+
+    // Desktop: click dismiss after the full pointer sequence (pre-mobile-fix behavior).
+    document.addEventListener('click', function (event) {
+      if (isMobileSheet()) return
+      if (!activeShareMenu) return
+      if (isInsideActiveShareMenu(event.target)) return
+      activeShareMenu.closeMenu()
+    })
   }
 
   function getShareBackdrop() {
@@ -59,6 +78,7 @@
     }
 
     function armDismissGuard() {
+      if (!isMobileSheet()) return
       suppressDismissUntil = Date.now() + DISMISS_GUARD_MS
       if (activeShareMenu && activeShareMenu.closeMenu === closeMenu) {
         activeShareMenu.suppressDismissUntil = suppressDismissUntil
@@ -108,21 +128,36 @@
       panel.style.left = left + 'px'
     }
 
+    function detachBackdropHandler() {
+      if (!backdrop || !backdropHandler) return
+      backdrop.removeEventListener('pointerdown', backdropHandler)
+      backdrop.removeEventListener('click', backdropHandler)
+      backdropHandler = null
+    }
+
     function revealBackdrop() {
       if (!isOpen()) return
 
       backdrop = getShareBackdrop()
-      if (backdropHandler) backdrop.removeEventListener('pointerdown', backdropHandler)
-      backdropHandler = function (event) {
-        if (Date.now() < suppressDismissUntil) {
-          event.preventDefault()
-          event.stopPropagation()
-          return
+      detachBackdropHandler()
+      if (isMobileSheet()) {
+        backdropHandler = function (event) {
+          if (Date.now() < suppressDismissUntil) {
+            event.preventDefault()
+            event.stopPropagation()
+            return
+          }
+          closeMenu()
         }
-        closeMenu()
+        backdrop.addEventListener('pointerdown', backdropHandler)
+      } else {
+        backdropHandler = closeMenu
+        backdrop.addEventListener('click', backdropHandler)
       }
-      backdrop.addEventListener('pointerdown', backdropHandler)
       backdrop.hidden = false
+      if (activeShareMenu && activeShareMenu.closeMenu === closeMenu) {
+        activeShareMenu.backdrop = backdrop
+      }
     }
 
     function scheduleBackdropReveal() {
@@ -136,8 +171,10 @@
       cancelBackdropReveal()
       if (backdrop) {
         backdrop.hidden = true
-        if (backdropHandler) backdrop.removeEventListener('pointerdown', backdropHandler)
-        backdropHandler = null
+        detachBackdropHandler()
+      }
+      if (activeShareMenu && activeShareMenu.closeMenu === closeMenu) {
+        activeShareMenu.backdrop = null
       }
     }
 
@@ -189,6 +226,8 @@
       activeShareMenu = {
         menu: menu,
         panel: panel,
+        trigger: trigger,
+        backdrop: backdrop,
         closeMenu: closeMenu,
         suppressDismissUntil: suppressDismissUntil
       }
@@ -213,7 +252,7 @@
       event.preventDefault()
       event.stopPropagation()
       toggleMenu()
-      if (isOpen()) armDismissGuard()
+      if (isOpen() && isMobileSheet()) armDismissGuard()
     })
 
     document.addEventListener('keydown', function (event) {
