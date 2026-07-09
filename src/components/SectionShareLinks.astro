@@ -1,7 +1,7 @@
 ---
 /**
- * Restrained section/article share row — copy link, LinkedIn, email, Instagram cards.
- * Matches slate accent and small-caps badge styling from export profile tables.
+ * Standard section/article share — Web Share when available, else copy / open / social.
+ * Instagram story packs live in Admin Ad Studio only (not public Share).
  */
 interface Props {
   /** Full share URL override. */
@@ -22,6 +22,7 @@ const pathWithHash = anchorId ? `${normalizedPath}#${anchorId}` : normalizedPath
 const shareUrl = url ?? new URL(pathWithHash, origin).toString()
 
 const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`
+const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`
 const emailHref = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`${title}\n\n${shareUrl}`)}`
 
 const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toLowerCase().slice(0, 40)}`
@@ -55,9 +56,22 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
       aria-labelledby={`${instanceId}-trigger`}
       hidden
     >
+      <button type="button" class="section-share__item section-share__item--native" role="menuitem" data-share-native hidden>
+        Share…
+      </button>
       <button type="button" class="section-share__item" role="menuitem" data-share-copy>
         <span data-share-copy-label>Copy link</span>
       </button>
+      <a
+        class="section-share__item section-share__item--link"
+        role="menuitem"
+        href={shareUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-share-open
+      >
+        Open link
+      </a>
       <a
         class="section-share__item section-share__item--link section-share__item--linkedin"
         role="menuitem"
@@ -67,25 +81,18 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
       >
         LinkedIn
       </a>
+      <a
+        class="section-share__item section-share__item--link"
+        role="menuitem"
+        href={xUrl}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Share on X
+      </a>
       <a class="section-share__item section-share__item--link" role="menuitem" href={emailHref}>
         Email
       </a>
-      <button type="button" class="section-share__item section-share__item--native" role="menuitem" data-share-native hidden>
-        Share
-      </button>
-      <hr class="section-share__panel-divider" role="separator" />
-      <button type="button" class="section-share__item" role="menuitem" data-share-ig="story">
-        <span data-share-ig-label>Instagram Story</span>
-      </button>
-      <button type="button" class="section-share__item" role="menuitem" data-share-ig-pack>
-        <span data-share-ig-pack-label>Instagram Story pack (multi)</span>
-      </button>
-      <button type="button" class="section-share__item" role="menuitem" data-share-ig="post">
-        <span data-share-ig-label>Instagram Post</span>
-      </button>
-      <button type="button" class="section-share__item" role="menuitem" data-share-caption>
-        <span data-share-caption-label>Copy caption</span>
-      </button>
     </div>
   </div>
   <span id={`${instanceId}-status`} class="section-share__status" role="status" aria-live="polite"></span>
@@ -197,12 +204,6 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
     top: auto;
   }
 
-  .section-share__panel-divider {
-    margin: 0.35rem 0;
-    border: 0;
-    border-top: 1px solid var(--line-soft);
-  }
-
   .section-share__item {
     display: flex;
     align-items: center;
@@ -263,25 +264,6 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
   .section-share__item--done {
     color: var(--accent-strong);
     font-weight: 600;
-  }
-
-  .section-share__item:disabled {
-    opacity: 0.55;
-    cursor: wait;
-  }
-
-  .section-share__item--native:not([hidden]) ~ .section-share__item--linkedin {
-    display: none;
-  }
-
-  .section-share__panel:has(.section-share__item--native:not([hidden])) .section-share__item--linkedin {
-    display: none;
-  }
-
-  @media (min-width: 721px) {
-    .section-share__item--native {
-      display: none !important;
-    }
   }
 
   .section-share__status {

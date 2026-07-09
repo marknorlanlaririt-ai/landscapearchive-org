@@ -1,10 +1,39 @@
+﻿## 2026-07-09 - Standard Share + Field Notes JSON feed
+
+**Scope:** section-share, field-notes, marketing-feed, deploy
+**Status:** done
+
+### Did
+- Replaced public Share menu Instagram Story / Story pack / Post with standard share: Web Share when available, Copy link, Open link, LinkedIn, X, Email.
+- Removed Instagram pack script from BaseLayout; cache-bust `section-share.js?v=20260709c`.
+- Added public `/field-notes.json` from published Field Notes for Admin Ad Studio.
+
+### Why
+- User feedback: Instagram multi-pack Share was still failing / confusing. Primary Share should be instant native/social. Story creatives move to admin marketing tied to .org content.
+
+### Files touched
+- `src/components/SectionShareLinks.astro`
+- `public/scripts/section-share.js`
+- `src/layouts/BaseLayout.astro`
+- `src/pages/field-notes.json.js`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Hard-refresh landscapearchive.org after deploy (Ctrl+Shift+R) so old share JS is not sticky.
+- Admin Ad Studio consumes feed via la-frontend proxy.
+
+### Links
+- Feed: https://landscapearchive.org/field-notes.json
+- Share smoke: any article section Share button
+
+---
 ## 2026-07-09 - Foundation browser tab title pattern
 
 **Scope:** seo, document-title, branding
 **Status:** done
 
 ### Did
-- BaseLayout titles now use `The Landscape Archive | Foundation` (home) and `{page} · The Landscape Archive | Foundation` (inner pages), matching the commercial host pattern.
+- BaseLayout titles now use `The Landscape Archive | Foundation` (home) and `{page} Â· The Landscape Archive | Foundation` (inner pages), matching the commercial host pattern.
 
 ### Why
 - Align Foundation tab titles with App / Admin / Developers host suffixes.
@@ -29,8 +58,8 @@
 
 ### Did
 - Confirmed **production was stale**: `landscapearchive.org/scripts/section-share-instagram.js` still served the old white-canvas theme (no mint/charcoal); preview `2dac5ad0` had the redesign. Redeployed org Pages so apex gets the new template.
-- Clarified download path: **Instagram Story pack (multi)** → ZIP of PNGs (`tla-foundation-story-pack-*.zip`), not a PDF.
-- Share speed: open menu paints instantly + warms fonts/mark in background; stop awaiting `document.fonts.ready`; parallel slide renders; progress label (“Slide n/m…”) + visible status; script `?v=20260709b` cache-bust.
+- Clarified download path: **Instagram Story pack (multi)** â†’ ZIP of PNGs (`tla-foundation-story-pack-*.zip`), not a PDF.
+- Share speed: open menu paints instantly + warms fonts/mark in background; stop awaiting `document.fonts.ready`; parallel slide renders; progress label (â€œSlide n/mâ€¦â€) + visible status; script `?v=20260709b` cache-bust.
 
 ### Why
 - Prior redesign landed on a preview URL / CF cache HIT on apex (`max-age=14400`), so hard-refresh still showed old frames. Pack generation also blocked on sequential canvas + full font-ready.
@@ -60,19 +89,19 @@
 
 ### Did
 - Redesigned Foundation Instagram story pack canvas: charcoal header/footer bars, cream field, mint accent rules (aligned with Ad Studio foundation-light + Hub mint).
-- Replaced dense bullet slides with **descriptor + highlighted quote** slides; title → quotes → CTA structure (up to 6 frames).
-- Footer shows host only (`landscapearchive.org`) — no runaway article paths; cream disc behind mark for charcoal contrast.
-- Kept honesty bullet as its own quote slide (“not claimed here as accomplished fact”).
+- Replaced dense bullet slides with **descriptor + highlighted quote** slides; title â†’ quotes â†’ CTA structure (up to 6 frames).
+- Footer shows host only (`landscapearchive.org`) â€” no runaway article paths; cream disc behind mark for charcoal contrast.
+- Kept honesty bullet as its own quote slide (â€œnot claimed here as accomplished factâ€).
 
 ### Why
-- Draft pack screenshots were plain white, top-heavy, with truncated long URLs and dense bullets — not presentation-ready for IG Stories.
+- Draft pack screenshots were plain white, top-heavy, with truncated long URLs and dense bullets â€” not presentation-ready for IG Stories.
 
 ### Files touched
 - `public/scripts/section-share-instagram.js`
 - `docs/CHANGELOG.md`
 
 ### Follow-ups / blockers
-- Re-export from article share row after deploy: Field Note → section “How automation flips the model” → Instagram Story pack (multi).
+- Re-export from article share row after deploy: Field Note â†’ section â€œHow automation flips the modelâ€ â†’ Instagram Story pack (multi).
 
 ### Links
 - Article: https://landscapearchive.org/articles/institutions-standards-and-the-infrastructure-gap
@@ -106,7 +135,7 @@
 
 ---
 
-## 2026-07-09 - Foundation adoption copy — institutional tone
+## 2026-07-09 - Foundation adoption copy â€” institutional tone
 
 **Scope:** adoption, homepage, registry, governance, schema-portal
 **Status:** done
@@ -126,7 +155,7 @@
 - `../la-frontend/federation/portal/index.html`
 
 ### Follow-ups / blockers
-- None — deploy via `npm run deploy`.
+- None â€” deploy via `npm run deploy`.
 
 ---
 
@@ -146,7 +175,7 @@
 - `src/pages/sign-in.astro`
 
 ### Follow-ups / blockers
-- None — deploy via `npm run deploy`.
+- None â€” deploy via `npm run deploy`.
 
 ---
 
@@ -161,7 +190,7 @@
 - Documented handoff contract in `docs/ORG_SIGN_IN_HANDOFF.md`; updated `docs/VOLUNTEER_APPLICATIONS.md`.
 
 ### Why
-- Member programme access should sign in on the Foundation site while using the same Landscape Archive identity — without exposing implementation detail or storing credentials on `.org`.
+- Member programme access should sign in on the Foundation site while using the same Landscape Archive identity â€” without exposing implementation detail or storing credentials on `.org`.
 
 ### Files touched
 - `src/pages/sign-in.astro`
@@ -185,13 +214,13 @@
 **Status:** done
 
 ### Did
-- Ran `npm run deploy` — production `/volunteers#apply` was still serving pre-187e365 WordPress/cookie exposition until this deploy (commit was on `main` but Pages had not been updated).
+- Ran `npm run deploy` â€” production `/volunteers#apply` was still serving pre-187e365 WordPress/cookie exposition until this deploy (commit was on `main` but Pages had not been updated).
 
 ### Why
 - Copy fix was merged locally but `.org` uses manual `npm run deploy`, not git-connected auto-publish.
 
 ### Files touched
-- (deploy only — no source edits)
+- (deploy only â€” no source edits)
 
 ### Follow-ups / blockers
 - None
@@ -208,7 +237,7 @@
 **Status:** done
 
 ### Did
-- Shortened volunteer `#apply` sign-in gate and intro lead in `VolunteerApplicationForm.astro` — removed cross-domain cookie/token exposition.
+- Shortened volunteer `#apply` sign-in gate and intro lead in `VolunteerApplicationForm.astro` â€” removed cross-domain cookie/token exposition.
 
 ### Why
 - Applicants do not need implementation detail about WordPress sessions or handoff tokens; concise account sign-in copy is enough.
@@ -230,12 +259,12 @@
 **Status:** done
 
 ### Did
-- Fixed story/post canvas layout: measured title/body fit, Instagram safe-zone footer, wrapped URLs, explicit 1080×1920 export canvas (no DPR/CSS bleed).
+- Fixed story/post canvas layout: measured title/body fit, Instagram safe-zone footer, wrapped URLs, explicit 1080Ã—1920 export canvas (no DPR/CSS bleed).
 - Removed export-only hint line that sat below the footer stack and appeared cropped in Story uploads.
-- Added **Instagram Story pack (multi)** — ZIP of 2–5 slides (`tla-story-01.png` …) built from section title, bullets/excerpt, and CTA.
+- Added **Instagram Story pack (multi)** â€” ZIP of 2â€“5 slides (`tla-story-01.png` â€¦) built from section title, bullets/excerpt, and CTA.
 
 ### Why
-- Long governance headings hit hard line caps and footer content sat in Instagram’s bottom crop zone, making downloads look truncated. Multi-slide ZIP matches manual Story carousel workflow better than a single tall composite.
+- Long governance headings hit hard line caps and footer content sat in Instagramâ€™s bottom crop zone, making downloads look truncated. Multi-slide ZIP matches manual Story carousel workflow better than a single tall composite.
 
 ### Files touched
 - `public/scripts/section-share-instagram.js`
@@ -243,7 +272,7 @@
 - `src/components/SectionShareLinks.astro`
 
 ### Follow-ups / blockers
-- Verify ZIP unpack + upload order on iPhone Photos → Instagram Stories
+- Verify ZIP unpack + upload order on iPhone Photos â†’ Instagram Stories
 
 ### Links
 - https://landscapearchive.org/governance
@@ -257,11 +286,11 @@
 
 ### Did
 - Wrapped portaled backdrop + panel in `.section-share__overlay-root` on `document.body` with `isolation: isolate` and `position: fixed; inset: 0`.
-- Mobile (≤720px): overlay `z-index: 2147483646`; desktop overlay stays `1100`; inner backdrop/panel use `1`/`2`.
+- Mobile (â‰¤720px): overlay `z-index: 2147483646`; desktop overlay stays `1100`; inner backdrop/panel use `1`/`2`.
 - Added `body.section-share-open { overflow: hidden }` on mobile sheet open to prevent scroll bleed.
 
 ### Why
-- Prior fix (1100/1099 on separate body children) still painted behind following `.section-block` headings on narrow viewports — likely competing stacking contexts from `[data-animate-in]` transforms and sticky chrome. Single isolated overlay root with max practical z-index guarantees the sheet covers all page content.
+- Prior fix (1100/1099 on separate body children) still painted behind following `.section-block` headings on narrow viewports â€” likely competing stacking contexts from `[data-animate-in]` transforms and sticky chrome. Single isolated overlay root with max practical z-index guarantees the sheet covers all page content.
 
 ### Files touched
 - `public/scripts/section-share.js`
@@ -286,7 +315,7 @@
 ### Did
 - Fixed mobile Share menu opening then immediately closing: defer backdrop reveal by two animation frames and guard dismiss for 450ms after open.
 - Replaced per-menu `document.click` outside handlers with one capture-phase `pointerdown` listener; backdrop uses guarded `pointerdown` instead of `click`.
-- Mobile (≤720px): bottom-sheet panel anchored to viewport bottom with safe-area padding instead of floating dropdown positioning.
+- Mobile (â‰¤720px): bottom-sheet panel anchored to viewport bottom with safe-area padding instead of floating dropdown positioning.
 
 ### Why
 - Prior portal fix showed the full-screen backdrop synchronously inside the trigger `click` handler; iOS/Android retarget the same tap to the backdrop, which closed the menu instantly. Floating dropdown positioning was also unreliable on narrow viewports.
@@ -316,7 +345,7 @@
 - Mobile: 44px min touch targets on trigger and menu items; `touch-action: manipulation` on tap surfaces.
 
 ### Why
-- Share rows sit at the bottom of each section; absolutely positioned panels (`z-index: 30` within parent stacking context) painted behind the next section’s DOM (e.g. “Encode claims” heading). Mobile taps hit obscured or clipped panels.
+- Share rows sit at the bottom of each section; absolutely positioned panels (`z-index: 30` within parent stacking context) painted behind the next sectionâ€™s DOM (e.g. â€œEncode claimsâ€ heading). Mobile taps hit obscured or clipped panels.
 
 ### Files touched
 - `src/components/SectionShareLinks.astro`
@@ -340,7 +369,7 @@
 ### Did
 - Fixed Share menus rendering open on page load: scoped `.section-share__panel { display: flex }` overrode `[hidden]`; added explicit `[hidden] { display: none !important }`.
 - Hardened `section-share.js` to restore `hidden` after drop-up/drop-down measurement and call `closeMenu()` on init.
-- Removed redundant page-level `SectionShareLinks` on article pages (last section already had a share row → overlapping duplicate near footer).
+- Removed redundant page-level `SectionShareLinks` on article pages (last section already had a share row â†’ overlapping duplicate near footer).
 
 ### Why
 - Instagram dropdown commit (5761134) introduced panel CSS without a `[hidden]` guard; all 22 governance menus appeared expanded on load. Article template double-injected share beside the final section.
@@ -415,11 +444,11 @@
 **Status:** done
 
 ### Did
-- Legal-hardened `institutions-standards-and-the-infrastructure-gap` in `articles.js` — neutral institutional framing, conditional adoption language, opinion markers, softened market-economics copy, article-level `legalNote`.
+- Legal-hardened `institutions-standards-and-the-infrastructure-gap` in `articles.js` â€” neutral institutional framing, conditional adoption language, opinion markers, softened market-economics copy, article-level `legalNote`.
 - Updated `articles/[slug].astro` to render optional `legalNote` disclaimer footer on Field Notes.
 
 ### Why
-- Editorial/legal-comms hygiene: avoid implied peak-body endorsement, negative third-party claims, and anti-competitive market language while preserving the essay’s structural argument.
+- Editorial/legal-comms hygiene: avoid implied peak-body endorsement, negative third-party claims, and anti-competitive market language while preserving the essayâ€™s structural argument.
 
 ### Files touched
 - `src/data/articles.js`
@@ -436,10 +465,10 @@
 **Status:** done
 
 ### Did
-- Rewrote **Founding alliance** section in `governanceContent.js` — intent/possibility language; explicit "no alliance exists today"; removed "under review with advisers and prospective members"; softened participant/CTA framing; updated facts row.
+- Rewrote **Founding alliance** section in `governanceContent.js` â€” intent/possibility language; explicit "no alliance exists today"; removed "under review with advisers and prospective members"; softened participant/CTA framing; updated facts row.
 
 ### Why
-- Public copy implied an alliance was being actively convened or in preparation. Align with `FOUNDATION_PUBLIC_NAMING_AND_LEGAL_SAFETY.md`: draft/interim tone, no incorporated entity, affiliate ≠ founding.
+- Public copy implied an alliance was being actively convened or in preparation. Align with `FOUNDATION_PUBLIC_NAMING_AND_LEGAL_SAFETY.md`: draft/interim tone, no incorporated entity, affiliate â‰  founding.
 
 ### Files touched
 - `src/data/governanceContent.js`
@@ -454,10 +483,10 @@
 **Status:** done
 
 ### Did
-- Added `/adopt` practitioner guide: why specs go unused, 15-minute path (open pack → validator → procurement sentence), adoption ladder, honest interim footer.
-- Added `foundingAlliancePitch.js` — copy-paste email templates (university, public body, practice) and one-page plain-text pitch.
+- Added `/adopt` practitioner guide: why specs go unused, 15-minute path (open pack â†’ validator â†’ procurement sentence), adoption ladder, honest interim footer.
+- Added `foundingAlliancePitch.js` â€” copy-paste email templates (university, public body, practice) and one-page plain-text pitch.
 - Published `/founding-charter` consultation page with draft constitution sections and `?intent=founding-alliance` CTA.
-- Homepage primary CTA → adopt; registry quick-start banner; nav + footer links; governance founding-alliance and international-adoption cross-links.
+- Homepage primary CTA â†’ adopt; registry quick-start banner; nav + footer links; governance founding-alliance and international-adoption cross-links.
 - Updated recent public updates strip.
 
 ### Why
@@ -482,7 +511,7 @@
 **Status:** done
 
 ### Did
-- Extended `SectionShareLinks` with **IG story** (1080×1920), **IG post** (1080×1080) card downloads and **Copy caption** (title + short URL + hashtags).
+- Extended `SectionShareLinks` with **IG story** (1080Ã—1920), **IG post** (1080Ã—1080) card downloads and **Copy caption** (title + short URL + hashtags).
 - Added client-side canvas renderer `public/scripts/section-share-instagram.js`; wired from `section-share.js`.
 
 ### Why
@@ -507,7 +536,7 @@
 **Status:** done
 
 ### Did
-- Root cause: Astro never emitted `SectionShareLinks` component `<script>` in production HTML when many instances render per page — Copy link buttons had no listeners.
+- Root cause: Astro never emitted `SectionShareLinks` component `<script>` in production HTML when many instances render per page â€” Copy link buttons had no listeners.
 - Moved init to `public/scripts/section-share.js`, loaded once from `BaseLayout.astro`; binds all `.section-share` rows with idempotent `data-share-initialized` guard.
 - Hardened la-frontend `federation/portal/share.js` with the same init guard and DOM-ready mount.
 
@@ -535,7 +564,7 @@
 - Attached custom domains `landscapearchive.org` and `www.landscapearchive.org` to Cloudflare Pages project `landscapearchive-org` via REST API (wrangler has no `pages domain add` command).
 
 ### Why
-- Third non-AU jurisdiction crosswalk for US Reg S-K Item 1300 adopters — same structural mapping as UK/EU with NOAA / USFS / USGS / NEX-GDDP bindings.
+- Third non-AU jurisdiction crosswalk for US Reg S-K Item 1300 adopters â€” same structural mapping as UK/EU with NOAA / USFS / USGS / NEX-GDDP bindings.
 - Custom domains required for production Foundation home at apex `.org`.
 
 ### Files touched
@@ -546,7 +575,7 @@
 - `public/crosswalk/eu-csrd-esrs-tla185-mapping.md`
 
 ### Follow-ups / blockers
-- Custom domains attached but **status pending** (HTTP validation / certificate provisioning in progress at attach time). Verify DNS CNAME records if not auto-created: apex and `www` → `landscapearchive-org.pages.dev` (proxied).
+- Custom domains attached but **status pending** (HTTP validation / certificate provisioning in progress at attach time). Verify DNS CNAME records if not auto-created: apex and `www` â†’ `landscapearchive-org.pages.dev` (proxied).
 
 ### Links
 - `/governance#international-adoption`
@@ -564,7 +593,7 @@
 - Updated UK crosswalk markdown with EU related-artefact link.
 
 ### Why
-- Second non-AU jurisdiction crosswalk for CSRD adopters — same structural mapping as UK/AASB with EU dataset bindings.
+- Second non-AU jurisdiction crosswalk for CSRD adopters â€” same structural mapping as UK/AASB with EU dataset bindings.
 
 ### Files touched
 - `src/data/governanceContent.js`
@@ -606,7 +635,7 @@
 **Status:** done
 
 ### Did
-- Added `SectionShareLinks.astro` — restrained copy-link, LinkedIn, email, and Web Share API on mobile; slate `#343d4a` small-caps styling.
+- Added `SectionShareLinks.astro` â€” restrained copy-link, LinkedIn, email, and Web Share API on mobile; slate `#343d4a` small-caps styling.
 - Integrated after each `DocsSection` block on governance, awards, volunteers, homepage, and Field Notes essays; article-level share on essay footer; registry module groups.
 - Schema portal: auto-injected share rows on `.foundation-section` via `federation/portal/share.js`.
 
@@ -629,7 +658,7 @@
 **Status:** done
 
 ### Did
-- Added homepage **What's new** strip (`RecentUpdatesStrip.astro`, `recentPublicUpdates.js`) — founding alliance draft, export profiles, awards data architecture; interim/consultation tone.
+- Added homepage **What's new** strip (`RecentUpdatesStrip.astro`, `recentPublicUpdates.js`) â€” founding alliance draft, export profiles, awards data architecture; interim/consultation tone.
 - Schema portal: **Recently published** callout + reframed founding section as international founding alliance (draft consultation).
 - Draft social copy kit at `docs/marketing/FOUNDATION_PUBLIC_UPDATE_POSTS.md` (LinkedIn, newsletter, Instagram hook; flags stale LAUNCH_ANNOUNCEMENT kit).
 
@@ -651,8 +680,8 @@
 **Status:** done
 
 ### Did
-- Added **Founding alliance** section to governance page — international coalition framing (practices, universities, public bodies, Indigenous protocol authorities, nurseries, implementation partners worldwide).
-- Clarified affiliate partner programme (commercial Archive referral) ≠ Foundation founding membership; no separate “Landscape Alliance” trademark.
+- Added **Founding alliance** section to governance page â€” international coalition framing (practices, universities, public bodies, Indigenous protocol authorities, nurseries, implementation partners worldwide).
+- Clarified affiliate partner programme (commercial Archive referral) â‰  Foundation founding membership; no separate â€œLandscape Allianceâ€ trademark.
 - Linked schema portal, awards data-architecture anchor, charter consultation contact intent, and commercial `/partners`.
 - Footer nav link to `#founding-alliance`; awards programme governance cross-link back to governance.
 - Synced `foundationGovernanceContent.js` and awards source in la-frontend.
@@ -699,7 +728,7 @@
 - Updated governance open-infrastructure pillar export-profile sentence; synced from la-frontend awards source.
 
 ### Why
-- User-facing copy should describe IFC property sets, GeoJSON civic registries, USD sidecars, and spreadsheet crosswalks in professional language — not internal profile codes.
+- User-facing copy should describe IFC property sets, GeoJSON civic registries, USD sidecars, and spreadsheet crosswalks in professional language â€” not internal profile codes.
 
 ### Files touched
 - `src/data/builtEnvironmentExports.js`, `src/data/foundationAwardsProgramme.js`, `src/data/governanceContent.js`, `src/components/DocsSection.astro`
@@ -746,3 +775,4 @@
 
 ### Links
 - https://landscapearchive.org
+
