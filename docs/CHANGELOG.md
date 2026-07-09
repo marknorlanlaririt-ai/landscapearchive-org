@@ -24,6 +24,8 @@
 ### Links
 - Article: https://landscapearchive.org/articles/institutions-standards-and-the-infrastructure-gap
 - Verify JS: https://landscapearchive.org/scripts/section-share-instagram.js?v=20260709b (should contain `#bee2cf` / `mint:`)
+- Deploy: https://fe2719dd.landscapearchive-org.pages.dev (`npm run deploy`, commit `27bd880`)
+- Parity: `la-frontend` commit `39eee8f`
 
 ---
 
