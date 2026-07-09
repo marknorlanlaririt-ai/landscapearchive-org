@@ -1,3 +1,26 @@
+## 2026-07-09 - Foundation browser tab title pattern
+
+**Scope:** seo, document-title, branding
+**Status:** done
+
+### Did
+- BaseLayout titles now use `The Landscape Archive | Foundation` (home) and `{page} · The Landscape Archive | Foundation` (inner pages), matching the commercial host pattern.
+
+### Why
+- Align Foundation tab titles with App / Admin / Developers host suffixes.
+
+### Files touched
+- `src/layouts/BaseLayout.astro`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Smoke: open landscapearchive.org and one article; check browser tab.
+
+### Links
+- Site: https://landscapearchive.org/
+
+---
+
 ## 2026-07-09 - Redeploy story pack + faster Share
 
 **Scope:** instagram, story-pack, section-share, deploy, cache-bust

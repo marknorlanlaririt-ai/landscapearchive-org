@@ -31,8 +31,13 @@ const {
 } = Astro.props
 
 const canonical = new URL(path === '/' ? '/' : path.replace(/\/+$/, ''), SITE_ORIGIN).toString()
-const fullTitle =
-  title === FOUNDATION_DISPLAY_NAME ? title : `${title} · The Landscape Archive Foundation`
+const brandHost = 'The Landscape Archive | Foundation'
+const isHomeTitle =
+  !title
+  || title === FOUNDATION_DISPLAY_NAME
+  || title === brandHost
+  || title === 'The Landscape Archive'
+const fullTitle = isHomeTitle ? brandHost : `${title} · ${brandHost}`
 const ogImageUrl = new URL(ogImage, SITE_ORIGIN).toString()
 const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow'
 
