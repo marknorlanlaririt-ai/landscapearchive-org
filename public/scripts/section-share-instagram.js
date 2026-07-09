@@ -50,6 +50,8 @@
   }
 
   var markCache = null
+  var fontsPromise = null
+  var warmPromise = null
 
   function slugify(text) {
     return String(text || 'share')
@@ -369,16 +371,29 @@
   }
 
   function ensureFonts() {
-    if (!document.fonts || !document.fonts.load) return Promise.resolve()
-    return Promise.all([
-      document.fonts.load('600 56px ' + THEME.fontSans.split(',')[0].replace(/'/g, '')),
-      document.fonts.load('400 34px ' + THEME.fontSans.split(',')[0].replace(/'/g, '')),
+    if (fontsPromise) return fontsPromise
+    if (!document.fonts || !document.fonts.load) {
+      fontsPromise = Promise.resolve()
+      return fontsPromise
+    }
+    var sans = THEME.fontSans.split(',')[0].replace(/'/g, '')
+    // Load only the faces we paint with — do not await document.fonts.ready
+    // (that waits for every page font and stalls the Share menu / pack).
+    fontsPromise = Promise.all([
+      document.fonts.load('600 56px ' + sans),
+      document.fonts.load('400 34px ' + sans),
       document.fonts.load('600 72px Georgia')
-    ])
-      .catch(function () {})
-      .then(function () {
-        return document.fonts.ready
-      })
+    ]).catch(function () {})
+    return fontsPromise
+  }
+
+  /** Prefetch fonts + mark so the first Share / pack click is not cold. */
+  function warmAssets() {
+    if (warmPromise) return warmPromise
+    warmPromise = Promise.all([ensureFonts(), loadMark()]).then(function (parts) {
+      return parts[1]
+    })
+    return warmPromise
   }
 
   function canvasToBlob(canvas) {
@@ -633,32 +648,38 @@
   }
 
   function downloadCard(formatKey, shareUrl, title) {
-    return ensureFonts()
-      .then(loadMark)
-      .then(function (mark) {
-        return renderCardBlob(formatKey, title, shareUrl, mark)
-      })
-      .then(function (blob) {
-        triggerDownload(blob, 'tla-foundation-' + formatKey + '-' + slugify(title) + '.png')
-      })
+    return warmAssets().then(function (mark) {
+      return renderCardBlob(formatKey, title, shareUrl, mark)
+    }).then(function (blob) {
+      triggerDownload(blob, 'tla-foundation-' + formatKey + '-' + slugify(title) + '.png')
+    })
   }
 
-  function downloadStoryPack(shareUrl, title, sectionContent) {
+  /**
+   * ZIP of PNG story slides (not a PDF). options.onProgress(done, total) optional.
+   */
+  function downloadStoryPack(shareUrl, title, sectionContent, options) {
+    options = options || {}
+    var onProgress = typeof options.onProgress === 'function' ? options.onProgress : null
     var slides = buildStoryPackPlan(title, sectionContent)
-    return ensureFonts()
-      .then(loadMark)
+    var total = slides.length
+    var done = 0
+
+    return warmAssets()
       .then(function (mark) {
-        return slides.reduce(function (chain, slide, index) {
-          return chain.then(function (entries) {
+        // Parallel slide renders — sequential canvas work was the main pack lag.
+        return Promise.all(
+          slides.map(function (slide, index) {
             return renderStorySlideBlob(slide, shareUrl, mark).then(function (blob) {
-              entries.push({
+              done += 1
+              if (onProgress) onProgress(done, total)
+              return {
                 name: 'tla-story-' + String(index + 1).padStart(2, '0') + '.png',
                 blob: blob
-              })
-              return entries
+              }
             })
           })
-        }, Promise.resolve([]))
+        )
       })
       .then(createZipBlob)
       .then(function (zipBlob) {
@@ -698,6 +719,7 @@
     extractSectionContent: extractSectionContent,
     buildCaption: buildCaption,
     copyCaption: copyCaption,
-    buildStoryPackPlan: buildStoryPackPlan
+    buildStoryPackPlan: buildStoryPackPlan,
+    warmAssets: warmAssets
   }
 })(typeof window !== 'undefined' ? window : globalThis)

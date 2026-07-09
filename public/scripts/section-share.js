@@ -238,6 +238,10 @@
     }
 
     function openMenu() {
+      // Paint open state first so the click feels instant; mount/position after.
+      trigger.setAttribute('aria-expanded', 'true')
+      menu.classList.add('section-share__menu--open')
+
       if (activeShareMenu && activeShareMenu.closeMenu !== closeMenu) {
         activeShareMenu.closeMenu()
       }
@@ -258,8 +262,6 @@
         positionPanel()
       }
 
-      trigger.setAttribute('aria-expanded', 'true')
-      menu.classList.add('section-share__menu--open')
       activeShareMenu = {
         menu: menu,
         panel: panel,
@@ -268,6 +270,14 @@
         overlayRoot: getShareOverlayRoot(),
         closeMenu: closeMenu,
         suppressDismissUntil: suppressDismissUntil
+      }
+
+      // Warm IG assets in the background while the menu is open (non-blocking).
+      var igWarm = window.TlaSectionShareInstagram
+      if (igWarm && igWarm.warmAssets) {
+        try {
+          igWarm.warmAssets()
+        } catch (err) {}
       }
     }
 
@@ -431,11 +441,12 @@
     var captionLabel = root.querySelector('[data-share-caption-label]')
     var ig = window.TlaSectionShareInstagram
 
-    function showStatus(message) {
+    function showStatus(message, holdMs) {
       if (status) status.textContent = message
+      if (holdMs === 0) return
       window.setTimeout(function () {
-        if (status) status.textContent = ''
-      }, 2600)
+        if (status && status.textContent === message) status.textContent = ''
+      }, holdMs == null ? 2600 : holdMs)
     }
 
     function showCaptionCopied() {
@@ -462,17 +473,27 @@
       if (!ig || !ig.downloadCard) return
       btn.addEventListener('click', function () {
         var format = btn.getAttribute('data-share-ig')
+        var label = btn.querySelector('[data-share-ig-label]') || btn
+        var original = label.textContent
         btn.disabled = true
-        ig.downloadCard(format, shareUrl, shareTitle || document.title)
-          .then(function () {
-            showStatus(format === 'story' ? 'Story card downloaded' : 'Post card downloaded')
-          })
-          .catch(function () {
-            showStatus('Could not create image — try again')
-          })
-          .finally(function () {
-            btn.disabled = false
-          })
+        if (label !== btn) label.textContent = 'Preparing…'
+        else btn.textContent = 'Preparing…'
+        showStatus('Preparing image…', 0)
+        // Yield a frame so disabled/label paint before canvas work.
+        window.requestAnimationFrame(function () {
+          ig.downloadCard(format, shareUrl, shareTitle || document.title)
+            .then(function () {
+              showStatus(format === 'story' ? 'Story card downloaded' : 'Post card downloaded')
+            })
+            .catch(function () {
+              showStatus('Could not create image — try again')
+            })
+            .finally(function () {
+              btn.disabled = false
+              if (label !== btn) label.textContent = original
+              else btn.textContent = original
+            })
+        })
       })
     })
 
@@ -480,17 +501,29 @@
     if (packBtn && ig && ig.downloadStoryPack) {
       packBtn.addEventListener('click', function () {
         var sectionContent = ig.extractSectionContent ? ig.extractSectionContent(root) : {}
+        var packLabel = packBtn.querySelector('[data-share-ig-pack-label]') || packBtn
+        var originalPack = packLabel.textContent
         packBtn.disabled = true
-        ig.downloadStoryPack(shareUrl, shareTitle || document.title, sectionContent)
-          .then(function () {
-            showStatus('Story pack downloaded — upload slides in order')
+        packLabel.textContent = 'Building pack…'
+        showStatus('Building story pack (ZIP of PNGs)…', 0)
+        window.requestAnimationFrame(function () {
+          ig.downloadStoryPack(shareUrl, shareTitle || document.title, sectionContent, {
+            onProgress: function (done, total) {
+              packLabel.textContent = 'Slide ' + done + '/' + total + '…'
+              showStatus('Rendering slide ' + done + ' of ' + total + '…', 0)
+            }
           })
-          .catch(function () {
-            showStatus('Could not create story pack — try again')
-          })
-          .finally(function () {
-            packBtn.disabled = false
-          })
+            .then(function () {
+              showStatus('Story pack ZIP downloaded — upload PNG slides in order')
+            })
+            .catch(function () {
+              showStatus('Could not create story pack — try again')
+            })
+            .finally(function () {
+              packBtn.disabled = false
+              packLabel.textContent = originalPack
+            })
+        })
       })
     }
   }

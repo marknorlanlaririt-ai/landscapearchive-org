@@ -1,3 +1,32 @@
+## 2026-07-09 - Redeploy story pack + faster Share
+
+**Scope:** instagram, story-pack, section-share, deploy, cache-bust
+**Status:** done
+
+### Did
+- Confirmed **production was stale**: `landscapearchive.org/scripts/section-share-instagram.js` still served the old white-canvas theme (no mint/charcoal); preview `2dac5ad0` had the redesign. Redeployed org Pages so apex gets the new template.
+- Clarified download path: **Instagram Story pack (multi)** → ZIP of PNGs (`tla-foundation-story-pack-*.zip`), not a PDF.
+- Share speed: open menu paints instantly + warms fonts/mark in background; stop awaiting `document.fonts.ready`; parallel slide renders; progress label (“Slide n/m…”) + visible status; script `?v=20260709b` cache-bust.
+
+### Why
+- Prior redesign landed on a preview URL / CF cache HIT on apex (`max-age=14400`), so hard-refresh still showed old frames. Pack generation also blocked on sequential canvas + full font-ready.
+
+### Files touched
+- `public/scripts/section-share-instagram.js`
+- `public/scripts/section-share.js`
+- `src/components/SectionShareLinks.astro`
+- `src/layouts/BaseLayout.astro`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Hard-refresh article after deploy; verify cream field + charcoal bars + mint quote (not plain white).
+
+### Links
+- Article: https://landscapearchive.org/articles/institutions-standards-and-the-infrastructure-gap
+- Verify JS: https://landscapearchive.org/scripts/section-share-instagram.js?v=20260709b (should contain `#bee2cf` / `mint:`)
+
+---
+
 ## 2026-07-09 - Instagram story pack presentation redesign
 
 **Scope:** instagram, story-pack, foundation-share, branding

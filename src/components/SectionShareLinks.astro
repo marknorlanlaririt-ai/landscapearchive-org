@@ -75,13 +75,13 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
       </button>
       <hr class="section-share__panel-divider" role="separator" />
       <button type="button" class="section-share__item" role="menuitem" data-share-ig="story">
-        Instagram Story
+        <span data-share-ig-label>Instagram Story</span>
       </button>
       <button type="button" class="section-share__item" role="menuitem" data-share-ig-pack>
-        Instagram Story pack (multi)
+        <span data-share-ig-pack-label>Instagram Story pack (multi)</span>
       </button>
       <button type="button" class="section-share__item" role="menuitem" data-share-ig="post">
-        Instagram Post
+        <span data-share-ig-label>Instagram Post</span>
       </button>
       <button type="button" class="section-share__item" role="menuitem" data-share-caption>
         <span data-share-caption-label>Copy caption</span>
@@ -285,14 +285,13 @@ const instanceId = `share-${(anchorId ?? title).replace(/[^a-z0-9]+/gi, '-').toL
   }
 
   .section-share__status {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    flex: 1 1 10rem;
+    min-width: 0;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--accent-strong);
+    line-height: 1.35;
   }
 </style>
