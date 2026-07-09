@@ -24,7 +24,8 @@
 
 ### Links
 - Feed: https://landscapearchive.org/field-notes.json
-- Share smoke: any article section Share button
+- Deploy: https://67907f19.landscapearchive-org.pages.dev (`npm run deploy`, commit `0f628b9`)
+- Share smoke: any article section Share button — hard-refresh Ctrl+Shift+R
 
 ---
 ## 2026-07-09 - Foundation browser tab title pattern
@@ -775,4 +776,5 @@
 
 ### Links
 - https://landscapearchive.org
+
 
