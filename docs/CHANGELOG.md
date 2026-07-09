@@ -21,7 +21,9 @@
 
 ### Links
 - Article: https://landscapearchive.org/articles/institutions-standards-and-the-infrastructure-gap
-- Parity: `la-frontend/federation/portal/share-instagram.js`
+- Deploy: https://2dac5ad0.landscapearchive-org.pages.dev (`npm run deploy`)
+- Commit: `e1dcd7c`
+- Parity: `la-frontend/federation/portal/share-instagram.js` (`320bb3e`)
 
 ---
 
