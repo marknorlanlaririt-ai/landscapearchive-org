@@ -1,3 +1,30 @@
+## 2026-07-09 - Instagram story pack presentation redesign
+
+**Scope:** instagram, story-pack, foundation-share, branding
+**Status:** done
+
+### Did
+- Redesigned Foundation Instagram story pack canvas: charcoal header/footer bars, cream field, mint accent rules (aligned with Ad Studio foundation-light + Hub mint).
+- Replaced dense bullet slides with **descriptor + highlighted quote** slides; title → quotes → CTA structure (up to 6 frames).
+- Footer shows host only (`landscapearchive.org`) — no runaway article paths; cream disc behind mark for charcoal contrast.
+- Kept honesty bullet as its own quote slide (“not claimed here as accomplished fact”).
+
+### Why
+- Draft pack screenshots were plain white, top-heavy, with truncated long URLs and dense bullets — not presentation-ready for IG Stories.
+
+### Files touched
+- `public/scripts/section-share-instagram.js`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Re-export from article share row after deploy: Field Note → section “How automation flips the model” → Instagram Story pack (multi).
+
+### Links
+- Article: https://landscapearchive.org/articles/institutions-standards-and-the-infrastructure-gap
+- Parity: `la-frontend/federation/portal/share-instagram.js`
+
+---
+
 ## 2026-07-09 - Founding alliance outreach summary audit
 
 **Scope:** founding-alliance, adoption, governance, homepage, contact, audit

@@ -2,29 +2,52 @@
  * Branded Instagram share cards for Foundation section share rows.
  * Instagram has no web URL scheme for Stories/Posts — users download a PNG
  * and upload manually. Also builds copy-ready captions with hashtags.
+ *
+ * Story packs: title → descriptor + highlighted quote slides → CTA.
+ * Colours align with Ad Studio foundation-light (cream) + charcoal bars + mint accent.
  */
 (function (global) {
   var THEME = {
-    canvas: '#ffffff',
-    ink: '#1c1f22',
-    inkSoft: '#4a4f55',
-    inkMuted: '#6b7178',
+    canvas: '#f5f4ef',
+    ink: '#121212',
+    inkSoft: 'rgba(18, 18, 18, 0.72)',
+    inkMuted: 'rgba(18, 18, 18, 0.48)',
     accent: '#3f5a4a',
     accentStrong: '#2c4436',
-    line: 'rgba(28, 31, 34, 0.12)',
+    mint: '#bee2cf',
+    mintSoft: 'rgba(190, 226, 207, 0.35)',
+    bar: '#121212',
+    barInk: '#f5f4ef',
+    barMuted: 'rgba(245, 245, 242, 0.62)',
+    line: 'rgba(18, 18, 18, 0.12)',
     fontSerif: "'Iowan Old Style', 'Palatino Linotype', Georgia, 'Times New Roman', serif",
     fontSans: "'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
     kicker: 'The Landscape Archive Foundation',
     markPath: '/tla-foundation-mark.svg',
+    siteHost: 'landscapearchive.org',
     hashtags: '#LandscapeArchitecture #OpenStandards #BIM #DigitalTwins #Metadata'
   }
 
   var FORMATS = {
-    story: { width: 1080, height: 1920, padTop: 132, padX: 92, padBottom: 240 },
-    post: { width: 1080, height: 1080, padTop: 88, padX: 92, padBottom: 160 }
+    story: {
+      width: 1080,
+      height: 1920,
+      padX: 88,
+      headerH: 148,
+      footerH: 168,
+      contentTop: 188,
+      contentBottom: 1760
+    },
+    post: {
+      width: 1080,
+      height: 1080,
+      padX: 72,
+      headerH: 108,
+      footerH: 120,
+      contentTop: 140,
+      contentBottom: 940
+    }
   }
-
-  var STORY_SAFE_BOTTOM = 280
 
   var markCache = null
 
@@ -38,6 +61,16 @@
 
   function shortUrl(shareUrl) {
     return String(shareUrl || '').replace(/^https?:\/\//, '')
+  }
+
+  /** Footer / on-canvas host only — never a runaway path. */
+  function displayHost(shareUrl) {
+    try {
+      var host = new URL(String(shareUrl || ''), 'https://landscapearchive.org').hostname
+      return (host || THEME.siteHost).replace(/^www\./, '') || THEME.siteHost
+    } catch (err) {
+      return THEME.siteHost
+    }
   }
 
   function buildCaption(title, shareUrl) {
@@ -68,7 +101,7 @@
     return y + lines.length * lineHeight
   }
 
-  function fitLines(ctx, text, maxWidth, maxLines, fontSpec, lineHeight) {
+  function fitLines(ctx, text, maxWidth, maxLines, fontSpec) {
     ctx.font = fontSpec
     var lines = wrapLines(ctx, text, maxWidth)
     if (lines.length <= maxLines) return lines
@@ -82,8 +115,8 @@
   }
 
   function fitTitle(ctx, title, innerW, maxHeight, formatKey) {
-    var maxSize = formatKey === 'story' ? 72 : 58
-    var minSize = formatKey === 'story' ? 48 : 42
+    var maxSize = formatKey === 'story' ? 68 : 52
+    var minSize = formatKey === 'story' ? 44 : 36
     for (var size = maxSize; size >= minSize; size -= 4) {
       var lineHeight = Math.round(size * 1.14)
       ctx.font = '600 ' + size + 'px ' + THEME.fontSerif
@@ -96,7 +129,7 @@
     var minLineHeight = Math.round(minSize * 1.14)
     var maxLines = Math.max(1, Math.floor(maxHeight / minLineHeight))
     return {
-      lines: fitLines(ctx, title, innerW, maxLines, ctx.font, minLineHeight),
+      lines: fitLines(ctx, title, innerW, maxLines, ctx.font),
       size: minSize,
       lineHeight: minLineHeight
     }
@@ -113,153 +146,211 @@
     return { canvas: canvas, ctx: ctx }
   }
 
-  function drawHeaderRule(ctx, format) {
-    ctx.strokeStyle = THEME.line
-    ctx.lineWidth = 2
-    ctx.beginPath()
-    ctx.moveTo(format.padX, format.padTop - 28)
-    ctx.lineTo(format.width - format.padX, format.padTop - 28)
-    ctx.stroke()
-  }
-
-  function drawKicker(ctx, format, y) {
-    ctx.fillStyle = THEME.accentStrong
-    ctx.font = '600 28px ' + THEME.fontSans
-    ctx.textBaseline = 'top'
-    ctx.fillText(THEME.kicker.toUpperCase(), format.padX, y)
-    return y + 52
-  }
-
-  function drawFooter(ctx, format, shareUrl, mark, footerTop) {
+  function drawChrome(ctx, format, shareUrl, mark) {
     var w = format.width
-    var innerW = w - format.padX * 2
-    var footerY = Math.min(footerTop, format.height - format.padBottom)
+    var h = format.height
 
-    ctx.strokeStyle = THEME.line
-    ctx.beginPath()
-    ctx.moveTo(format.padX, footerY)
-    ctx.lineTo(w - format.padX, footerY)
-    ctx.stroke()
+    ctx.fillStyle = THEME.canvas
+    ctx.fillRect(0, 0, w, h)
 
-    var contentY = footerY + 28
+    // Header bar (charcoal)
+    ctx.fillStyle = THEME.bar
+    ctx.fillRect(0, 0, w, format.headerH)
+
+    ctx.fillStyle = THEME.mint
+    ctx.fillRect(0, format.headerH - 4, w, 4)
+
+    ctx.fillStyle = THEME.barInk
+    ctx.font = '600 26px ' + THEME.fontSans
+    ctx.textBaseline = 'middle'
+    ctx.fillText(THEME.kicker.toUpperCase(), format.padX, format.headerH / 2)
+
+    // Footer bar (charcoal) — short host only
+    var footerTop = h - format.footerH
+    ctx.fillStyle = THEME.bar
+    ctx.fillRect(0, footerTop, w, format.footerH)
+
+    ctx.fillStyle = THEME.mint
+    ctx.fillRect(0, footerTop, w, 4)
+
+    var markSize = 44
+    var footerMid = footerTop + format.footerH / 2
+    var textX = format.padX
     if (mark) {
-      ctx.drawImage(mark, format.padX, contentY, 48, 48)
+      // Cream disc so the dark Foundation mark stays legible on charcoal
+      ctx.fillStyle = THEME.canvas
+      ctx.beginPath()
+      ctx.arc(format.padX + markSize / 2, footerMid, markSize / 2 + 4, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.drawImage(mark, format.padX, footerMid - markSize / 2, markSize, markSize)
+      textX = format.padX + markSize + 24
     }
 
-    ctx.fillStyle = THEME.accentStrong
-    ctx.font = '600 30px ' + THEME.fontSans
-    var urlLines = fitLines(
-      ctx,
-      shortUrl(shareUrl),
-      innerW - (mark ? 64 : 0),
-      format.height >= 1600 ? 2 : 1,
-      ctx.font,
-      38
-    )
-    drawLines(ctx, urlLines, format.padX + (mark ? 64 : 0), contentY + 6, 38)
+    ctx.fillStyle = THEME.barInk
+    ctx.font = '600 28px ' + THEME.fontSans
+    ctx.textBaseline = 'middle'
+    ctx.fillText(displayHost(shareUrl), textX, footerMid)
+  }
 
-    return footerY
+  function contentBox(format) {
+    return {
+      x: format.padX,
+      y: format.contentTop,
+      w: format.width - format.padX * 2,
+      bottom: format.contentBottom
+    }
+  }
+
+  function drawQuoteBlock(ctx, x, y, maxW, quote, maxLines) {
+    var pad = 36
+    var barW = 8
+    var fontSpec = '500 36px ' + THEME.fontSans
+    var lineHeight = 50
+    ctx.font = fontSpec
+    var lines = fitLines(ctx, quote, maxW - pad * 2 - barW - 16, maxLines, fontSpec)
+    var blockH = pad * 2 + lines.length * lineHeight
+
+    ctx.fillStyle = THEME.mintSoft
+    ctx.fillRect(x, y, maxW, blockH)
+
+    ctx.fillStyle = THEME.mint
+    ctx.fillRect(x, y, barW, blockH)
+
+    ctx.fillStyle = THEME.ink
+    ctx.font = fontSpec
+    ctx.textBaseline = 'top'
+    drawLines(ctx, lines, x + pad + barW, y + pad, lineHeight)
+    return y + blockH
   }
 
   function drawCard(ctx, formatKey, title, shareUrl, mark, options) {
     options = options || {}
     var format = FORMATS[formatKey] || FORMATS.post
-    var w = format.width
-    var h = format.height
-    var innerW = w - format.padX * 2
-    var bodyText = options.bodyText || 'Read the full section at ' + shortUrl(shareUrl)
-    var footerReserve = formatKey === 'story' ? STORY_SAFE_BOTTOM : 132
-    var footerTop = h - footerReserve
+    var box = contentBox(format)
+    var bodyText =
+      options.bodyText ||
+      'A Foundation Field Note on institutions, standards, and open infrastructure.'
 
-    ctx.fillStyle = THEME.canvas
-    ctx.fillRect(0, 0, w, h)
+    drawChrome(ctx, format, shareUrl, mark)
 
-    drawHeaderRule(ctx, format)
-
-    var y = drawKicker(ctx, format, format.padTop)
-
-    var titleBudget = footerTop - y - 120
-    var titleFit = fitTitle(ctx, title, innerW, Math.max(120, titleBudget), formatKey)
+    var y = box.y
+    var titleFit = fitTitle(ctx, title, box.w, formatKey === 'story' ? 320 : 200, formatKey)
     ctx.fillStyle = THEME.ink
     ctx.font = '600 ' + titleFit.size + 'px ' + THEME.fontSerif
-    y = drawLines(ctx, titleFit.lines, format.padX, y, titleFit.lineHeight)
-    y += 36
-
-    ctx.fillStyle = THEME.inkSoft
-    ctx.font = '400 34px ' + THEME.fontSans
-    var bodyLines = wrapLines(ctx, bodyText, innerW)
-    var bodyMaxLines = formatKey === 'story' ? 8 : 4
-    var bodyBudget = Math.max(0, footerTop - y - 24)
-    var bodyLineHeight = 46
-    var allowedBodyLines = Math.min(bodyMaxLines, Math.floor(bodyBudget / bodyLineHeight))
-    if (allowedBodyLines > 0) {
-      y = drawLines(
-        ctx,
-        fitLines(ctx, bodyText, innerW, allowedBodyLines, ctx.font, bodyLineHeight),
-        format.padX,
-        y,
-        bodyLineHeight
-      )
-    }
-
-    drawFooter(ctx, format, shareUrl, mark, footerTop)
-  }
-
-  function drawBulletSlide(ctx, format, heading, bullets, shareUrl, mark) {
-    var innerW = format.width - format.padX * 2
-    var footerTop = format.height - STORY_SAFE_BOTTOM
-
-    ctx.fillStyle = THEME.canvas
-    ctx.fillRect(0, 0, format.width, format.height)
-    drawHeaderRule(ctx, format)
-
-    var y = drawKicker(ctx, format, format.padTop)
-
-    ctx.fillStyle = THEME.ink
-    ctx.font = '600 52px ' + THEME.fontSerif
-    y = drawLines(ctx, fitLines(ctx, heading, innerW, 2, ctx.font, 60), format.padX, y, 60)
+    ctx.textBaseline = 'top'
+    y = drawLines(ctx, titleFit.lines, box.x, y, titleFit.lineHeight)
     y += 40
 
     ctx.fillStyle = THEME.inkSoft
-    ctx.font = '400 36px ' + THEME.fontSans
-    for (var i = 0; i < bullets.length; i += 1) {
-      var bulletLines = fitLines(ctx, bullets[i], innerW - 56, 3, ctx.font, 48)
-      ctx.fillStyle = THEME.accentStrong
-      ctx.fillText('•', format.padX, y + 4)
-      ctx.fillStyle = THEME.inkSoft
-      y = drawLines(ctx, bulletLines, format.padX + 36, y, 48) + 20
-      if (y > footerTop - 80) break
+    ctx.font = '400 34px ' + THEME.fontSans
+    var bodyMax = formatKey === 'story' ? 6 : 4
+    var bodyBudget = Math.max(0, box.bottom - y - 24)
+    var allowed = Math.min(bodyMax, Math.floor(bodyBudget / 46))
+    if (allowed > 0) {
+      drawLines(
+        ctx,
+        fitLines(ctx, bodyText, box.w, allowed, ctx.font),
+        box.x,
+        y,
+        46
+      )
     }
+  }
 
-    drawFooter(ctx, format, shareUrl, mark, footerTop)
+  function drawQuoteSlide(ctx, format, title, descriptor, quote, shareUrl, mark) {
+    var box = contentBox(format)
+    drawChrome(ctx, format, shareUrl, mark)
+
+    var y = box.y
+
+    ctx.fillStyle = THEME.accentStrong
+    ctx.font = '600 24px ' + THEME.fontSans
+    ctx.textBaseline = 'top'
+    y = drawLines(
+      ctx,
+      fitLines(ctx, String(title || '').toUpperCase(), box.w, 2, ctx.font),
+      box.x,
+      y,
+      32
+    )
+    y += 28
+
+    ctx.fillStyle = THEME.inkSoft
+    ctx.font = '400 32px ' + THEME.fontSans
+    y = drawLines(
+      ctx,
+      fitLines(ctx, descriptor || 'From this Field Note', box.w, 3, ctx.font),
+      box.x,
+      y,
+      44
+    )
+    y += 36
+
+    var quoteBudget = box.bottom - y - 16
+    var maxQuoteLines = Math.max(3, Math.min(8, Math.floor((quoteBudget - 72) / 50)))
+    drawQuoteBlock(ctx, box.x, y, box.w, quote, maxQuoteLines)
   }
 
   function drawCtaSlide(ctx, format, title, shareUrl, mark) {
-    var innerW = format.width - format.padX * 2
-    var footerTop = format.height - STORY_SAFE_BOTTOM
+    var box = contentBox(format)
+    drawChrome(ctx, format, shareUrl, mark)
 
-    ctx.fillStyle = THEME.canvas
-    ctx.fillRect(0, 0, format.width, format.height)
-    drawHeaderRule(ctx, format)
-
-    var y = drawKicker(ctx, format, format.padTop + 120)
+    var y = box.y + (format.height >= 1600 ? 80 : 24)
 
     ctx.fillStyle = THEME.ink
-    ctx.font = '600 64px ' + THEME.fontSerif
-    y = drawLines(ctx, fitLines(ctx, title, innerW, 3, ctx.font, 74), format.padX, y, 74)
+    ctx.font = '600 56px ' + THEME.fontSerif
+    ctx.textBaseline = 'top'
+    y = drawLines(ctx, fitLines(ctx, title, box.w, 3, ctx.font), box.x, y, 66)
     y += 48
 
     ctx.fillStyle = THEME.inkSoft
-    ctx.font = '400 38px ' + THEME.fontSans
+    ctx.font = '400 36px ' + THEME.fontSans
     y = drawLines(
       ctx,
-      fitLines(ctx, 'Read the full section on landscapearchive.org', innerW, 3, ctx.font, 52),
-      format.padX,
+      fitLines(ctx, 'Read the full section on ' + THEME.siteHost, box.w, 3, ctx.font),
+      box.x,
       y,
-      52
+      48
     )
+    y += 40
 
-    drawFooter(ctx, format, shareUrl, mark, footerTop)
+    // Soft mint CTA band (typography only — not a fake button)
+    var bandH = 72
+    ctx.fillStyle = THEME.mintSoft
+    ctx.fillRect(box.x, y, box.w, bandH)
+    ctx.fillStyle = THEME.accentStrong
+    ctx.font = '600 30px ' + THEME.fontSans
+    ctx.textBaseline = 'middle'
+    ctx.fillText(THEME.siteHost, box.x + 36, y + bandH / 2)
+  }
+
+  /**
+   * Split a bullet into descriptor + quote without inventing claims.
+   * Prefer em-dash / semicolon clause splits; else a neutral frame.
+   */
+  function splitDescriptorQuote(bullet) {
+    var text = String(bullet || '').replace(/\s+/g, ' ').trim()
+    if (!text) {
+      return { descriptor: 'From this Field Note', quote: '' }
+    }
+
+    var dash = text.indexOf(' — ')
+    if (dash > 12 && dash < text.length - 16) {
+      return {
+        descriptor: text.slice(0, dash).trim(),
+        quote: text.slice(dash + 3).trim()
+      }
+    }
+
+    var semi = text.indexOf('; ')
+    if (semi > 12 && semi < text.length - 16) {
+      return {
+        descriptor: text.slice(0, semi).trim(),
+        quote: text.slice(semi + 2).trim()
+      }
+    }
+
+    return { descriptor: 'From this Field Note', quote: text }
   }
 
   function loadMark() {
@@ -283,9 +374,11 @@
       document.fonts.load('600 56px ' + THEME.fontSans.split(',')[0].replace(/'/g, '')),
       document.fonts.load('400 34px ' + THEME.fontSans.split(',')[0].replace(/'/g, '')),
       document.fonts.load('600 72px Georgia')
-    ]).catch(function () {}).then(function () {
-      return document.fonts.ready
-    })
+    ])
+      .catch(function () {})
+      .then(function () {
+        return document.fonts.ready
+      })
   }
 
   function canvasToBlob(canvas) {
@@ -322,32 +415,56 @@
     return canvasToBlob(surface.canvas)
   }
 
-  function chunkBullets(bullets, size) {
-    var groups = []
-    for (var i = 0; i < bullets.length; i += size) {
-      groups.push(bullets.slice(i, i + size))
+  function introDescriptor(sectionContent) {
+    sectionContent = sectionContent || {}
+    var excerpts = sectionContent.excerpts || []
+    if (excerpts.length) {
+      var first = String(excerpts[0]).replace(/\s+/g, ' ').trim()
+      if (first.length > 160) first = first.slice(0, 157).replace(/\s+\S*$/, '') + '…'
+      return first
     }
-    return groups
+    return 'A Foundation Field Note on institutions, standards, and open infrastructure.'
   }
 
   function buildStoryPackPlan(title, sectionContent) {
     sectionContent = sectionContent || {}
     var bullets = sectionContent.bullets || []
     var excerpts = sectionContent.excerpts || []
-    var slides = [{ type: 'intro', title: title }]
+    var slides = [
+      {
+        type: 'intro',
+        title: title,
+        bodyText: introDescriptor(sectionContent)
+      }
+    ]
 
     if (bullets.length) {
-      chunkBullets(bullets, 3).forEach(function (group) {
-        slides.push({ type: 'bullets', heading: title, bullets: group })
+      // Keep honesty / legal bullets in the pack (up to 4 quote slides)
+      bullets.slice(0, 4).forEach(function (bullet) {
+        var parts = splitDescriptorQuote(bullet)
+        slides.push({
+          type: 'quote',
+          title: title,
+          descriptor: parts.descriptor,
+          quote: parts.quote
+        })
       })
     } else if (excerpts.length) {
-      excerpts.slice(0, 2).forEach(function (excerpt) {
-        slides.push({ type: 'intro', title: title, bodyText: excerpt })
+      excerpts.slice(0, 3).forEach(function (excerpt) {
+        var text = String(excerpt).replace(/\s+/g, ' ').trim()
+        var parts = splitDescriptorQuote(text)
+        slides.push({
+          type: 'quote',
+          title: title,
+          descriptor: parts.descriptor === 'From this Field Note' ? 'Key passage' : parts.descriptor,
+          quote: parts.quote || text
+        })
       })
     }
 
     slides.push({ type: 'cta', title: title })
-    return slides.slice(0, 5)
+    // intro + up to 4 quotes + cta
+    return slides.slice(0, 6)
   }
 
   function crc32(bytes) {
@@ -477,8 +594,16 @@
   function renderStorySlideBlob(slide, shareUrl, mark) {
     var format = FORMATS.story
     var surface = createCanvas(format.width, format.height)
-    if (slide.type === 'bullets') {
-      drawBulletSlide(surface.ctx, format, slide.heading, slide.bullets, shareUrl, mark)
+    if (slide.type === 'quote') {
+      drawQuoteSlide(
+        surface.ctx,
+        format,
+        slide.title,
+        slide.descriptor,
+        slide.quote,
+        shareUrl,
+        mark
+      )
     } else if (slide.type === 'cta') {
       drawCtaSlide(surface.ctx, format, slide.title, shareUrl, mark)
     } else {
@@ -572,6 +697,7 @@
     downloadStoryPack: downloadStoryPack,
     extractSectionContent: extractSectionContent,
     buildCaption: buildCaption,
-    copyCaption: copyCaption
+    copyCaption: copyCaption,
+    buildStoryPackPlan: buildStoryPackPlan
   }
 })(typeof window !== 'undefined' ? window : globalThis)
