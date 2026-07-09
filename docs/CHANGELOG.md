@@ -18,6 +18,7 @@
 
 ### Links
 - Site: https://landscapearchive.org/
+- Deploy: https://a9c67c77.landscapearchive-org.pages.dev (`npm run deploy`, commit `38bec9e`)
 
 ---
 
