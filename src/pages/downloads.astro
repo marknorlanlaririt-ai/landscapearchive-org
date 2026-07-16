@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import {
+  DOWNLOADS_PATH,
+  EVIDENCE_CHECKER_PATH,
+  FOUNDATION_DOWNLOAD_LINKS,
+  FOUNDATION_SELF_SERVE_TOOLS_PAUSED,
+  FOUNDATION_TOOLS_DISCLAIMER,
+  FOUNDATION_TOOLS_PAUSED_NOTICE
+} from '../data/foundationDownloads.js'
+import { TLA185_DISPLAY_ID } from '../data/foundationWing.js'
+import { ARCHIVE_ORIGIN } from '../data/site.js'
+import { LICENCE_PATH } from '../data/licenceScopeContent.js'
+
+const referenceLinks = FOUNDATION_DOWNLOAD_LINKS.filter(
+  (link) => link.kind !== 'tool' && link.id !== 'evidence-checker' && link.id !== 'validator'
+)
+const pausedToolLinks = FOUNDATION_DOWNLOAD_LINKS.filter((link) => link.kind === 'tool' || link.paused)
+---
+
+<BaseLayout
+  title="Foundation downloads"
+  description={`Draft open artefacts for ${TLA185_DISPLAY_ID}: schema pack, field registry preview, crosswalks, and draft charter. Self-serve interactive tools are paused. Not Landscape Archive Hub.`}
+  path={DOWNLOADS_PATH}
+>
+  <div class="page downloads">
+    <div class="downloads__intro prose">
+      <p class="eyebrow">Open standard · Public artefacts</p>
+      <h1>Foundation downloads</h1>
+      {
+        FOUNDATION_SELF_SERVE_TOOLS_PAUSED ? (
+          <p class="downloads__banner" role="status">
+            <strong>Draft reference available. Self-serve tools paused.</strong>
+            {FOUNDATION_TOOLS_PAUSED_NOTICE}
+          </p>
+        ) : (
+          <p class="downloads__banner" role="note">
+            <strong>{FOUNDATION_TOOLS_DISCLAIMER}.</strong>
+            These materials support the open {TLA185_DISPLAY_ID} specification and Archive Audit Pack
+            (<code>.tlaa</code>) evidence review. They do not include the commercial Landscape Archive
+            Hub, Revit connector, Landscape Archive Package (<code>.tla</code>), or encrypted
+            <code>.lapkg</code> delivery.
+          </p>
+        )
+      }
+      <p>
+        Use the draft dictionary and field registry for citation. Commercial Library fill, Hub,
+        Studio+™, and Data API are licensed separately — see
+        <a href={LICENCE_PATH}>Licence &amp; scope</a>.
+      </p>
+      <div class="action-row">
+        <a class="btn btn--primary" href="/registry">Field registry</a>
+        <a class="btn" href={LICENCE_PATH}>Licence &amp; scope</a>
+        <a class="btn" href={`${ARCHIVE_ORIGIN}/`} rel="noopener" target="_blank">
+          Commercial Archive site <span class="btn__ext" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <section class="section-block downloads__list" aria-labelledby="downloads-list-heading">
+      <div class="prose">
+        <h2 id="downloads-list-heading">Draft reference artefacts</h2>
+      </div>
+      <ul class="downloads__items">
+        {
+          referenceLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                rel={link.external ? 'noopener' : undefined}
+                target={link.external ? '_blank' : undefined}
+              >
+                {link.label}
+                {link.external && <span class="btn__ext" aria-hidden="true"> ↗</span>}
+              </a>
+              {link.note && <span class="downloads__note">{link.note}</span>}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    {
+      FOUNDATION_SELF_SERVE_TOOLS_PAUSED && (
+        <section class="section-block downloads__list" aria-labelledby="paused-tools-heading">
+          <div class="prose">
+            <h2 id="paused-tools-heading">Self-serve tools (paused)</h2>
+            <p>These surfaces remain linked for transparency but are not available for pilots yet.</p>
+          </div>
+          <ul class="downloads__items">
+            {
+              pausedToolLinks.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                  <span class="downloads__note">{link.note || 'Paused — not available yet'}</span>
+                </li>
+              ))
+            }
+            <li>
+              <a href={EVIDENCE_CHECKER_PATH}>Evidence Checker status</a>
+              <span class="downloads__note">Paused — not available yet</span>
+            </li>
+          </ul>
+        </section>
+      )
+    }
+
+    <section class="section-block prose" aria-labelledby="naming-heading">
+      <h2 id="naming-heading">Naming</h2>
+      <ul class="bullet-list">
+        <li><strong>TLA-185</strong> — open Foundation compliance grammar (JSON)</li>
+        <li><strong>Archive Audit Pack (<code>.tlaa</code>)</strong> — evidence-only package for auditors</li>
+        <li>
+          <strong>Landscape Archive Package (<code>.tla</code>)</strong> — commercial geometry package;
+          not offered here — licensed separately on the commercial site
+        </li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .downloads__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 1rem;
+  }
+
+  .downloads__banner {
+    padding: 0.85rem 1rem;
+    margin: 1rem 0 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent-strong);
+    background: var(--paper-raised);
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .downloads__items {
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+    max-width: 40rem;
+  }
+
+  .downloads__items li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .downloads__note {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+</style>

@@ -1,4 +1,5 @@
 Contact: mailto:security@landscapearchive.com.au
+Contact: https://landscapearchive.com.au/contact?topic=security-report
 Expires: 2027-07-06T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://landscapearchive.org/.well-known/security.txt

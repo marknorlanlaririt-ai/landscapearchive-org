@@ -1,9 +1,11 @@
 # Foundation volunteer applications
 
-**Status:** MVP shipped 2026-07-08  
+**Status:** MVP shipped 2026-07-08; curated technical-reviewer / registry-contributor tracks 2026-07-13  
 **Public page:** https://landscapearchive.org/volunteers#apply  
+**Curated intake:** https://landscapearchive.org/volunteers#technical-reviewers  
 **API:** `POST https://landscapearchive.com.au/api/foundation/volunteer-application`  
-**Storage:** R2 `foundation-volunteer-applications/` (same bucket as other intake forms)
+**Storage:** R2 `foundation-volunteer-applications/` (same bucket as other intake forms)  
+**Ops email:** `FOUNDATION_ADMIN_EMAIL` (admin notification + applicant confirmation when mail configured)
 
 ---
 
@@ -12,64 +14,39 @@
 | Layer | Behaviour |
 |-------|-----------|
 | **Programme charter** | Public `/volunteers` page (Astro, `landscapearchive-org`) — no sign-in to read |
-| **Application form** | `#apply` section on the same page — **requires Archive account** |
+| **Curated tracks** | Technical reviewer / Registry contributor — stress-test dictionary corners; not open free-for-all |
+| **Application form** | `#apply` section — **requires Archive account**; includes intake `track` + skills |
 | **Auth handoff** | On-site `/sign-in` form → `POST /api/foundation/org-sign-in` → HMAC token → return to requested `.org` page |
 | **Legacy handoff** | `/foundation/org-access` on `.com.au` still works for social OAuth and deep links |
 | **Session on .org** | Token stored in `sessionStorage` (`la-foundation-org-access`); not a shared cookie |
 | **Submission** | Cross-origin POST to la-frontend Pages Function with token + structured fields |
-| **Ops triage** | Admin copilot `get_application_record` with `applicationType: foundation-volunteer` |
+| **Ops triage** | Admin email + R2; copilot `get_application_record` with `applicationType: foundation-volunteer` |
 
 Legacy path (`landscapearchive.com.au/contact?topic=foundation-support&intent=volunteer`) still works for unstructured enquiries but is no longer the primary CTA.
 
----
-
-## Auth architecture (cross-domain reality)
-
-`.org` and `.com.au` are **different registrable domains**. Browsers block third-party WordPress auth cookies on `fetch()` from `landscapearchive.org` → `landscapearchive.com.au`.
-
-**What works (in production):**
-
-1. User clicks **Sign in to apply** → `/sign-in?return=/volunteers#apply` on `.org`.
-2. Email/password POST to `/api/foundation/org-sign-in` (Archive edge proxies WordPress login).
-3. On success, redirect to `.org/volunteers?la_org_access=…`; client stores token (12h).
-4. Form POST includes `orgAccessToken`; API verifies HMAC + email match.
-
-**Legacy path (social OAuth):** `/foundation/org-access?target=https://landscapearchive.org/volunteers` still works.
-
-**What does not work:**
-
-- Shared WordPress cookie across `.org` / `.com.au` apexes
-- JWT on a common parent domain (no shared parent)
-- Cloudflare Access as primary member auth (would duplicate WP user store unless wired to IdP)
-
-**Alternatives considered**
-
-| Option | Verdict |
-|--------|---------|
-| OAuth redirect to app host | **Chosen pattern** — already implemented as org-access handoff |
-| Magic link / email-only apply | Possible fallback for non-members; skipped for MVP (adds verification flow) |
-| Cloudflare Access | Ops overhead; separate identity from Library accounts |
-| Foundation-only lightweight auth | Duplicates WP; rejected |
-| Hand off entirely to app route | Works but splits UX off `.org`; kept as sign-in only |
+**GitHub:** public repository may remain temporarily unavailable; email / pack review is an accepted contribution path.
 
 ---
 
 ## Application fields
 
-Required: name, account email, ≥1 skill area, timezone/availability, privacy consent.  
+Required: name, account email, intake `track`, ≥1 skill area, timezone/availability, privacy consent.  
 Optional: institution, portfolio URL, free-text context.
 
-Skill ids: `documentation`, `schema-review`, `crosswalks`, `truth-telling`, `translation`, `outreach`.
+**Tracks:** `general`, `technical-reviewer`, `registry-contributor`.
+
+**Skill ids:** `technical-reviewer`, `registry-contributor`, `documentation`, `schema-review`, `crosswalks`, `truth-telling`, `translation`, `outreach`.
 
 ---
 
-## Privacy / PII
+## Where submissions land
 
-- Applications contain name, email, skills, availability, optional employer/portfolio — treat as **personal data** under AU Privacy Act.
-- Stored in private R2 (`SPECIES_DATA_BUCKET`); not bundled in public JS.
-- Applicant must accept privacy checkbox linking to Archive Privacy Policy (interim implementation partner hosts legal docs).
-- Confirmation + admin notification email via Foundation mail helpers (`FOUNDATION_*` env vars).
-- Retention: follow contact-enquiry retention policy until Foundation entity + DPA are finalised.
+| Destination | Detail |
+|-------------|--------|
+| **R2** | `foundation-volunteer-applications/{YYYY-MM-DD}/{id}-{emailHash}.json` on `SPECIES_DATA_BUCKET` |
+| **Admin email** | `FOUNDATION_ADMIN_EMAIL` via Foundation mail helpers |
+| **Applicant email** | Confirmation when Resend / Foundation mail is configured |
+| **Admin copilot** | `get_application_record` · `applicationType: foundation-volunteer` |
 
 ---
 
@@ -83,12 +60,3 @@ Skill ids: `documentation`, `schema-review`, `crosswalks`, `truth-telling`, `tra
 | `RESEND_API_KEY` | la-frontend | Fallback sender |
 
 Deploy order: **la-frontend first** (API + handoff path), then **landscapearchive-org** (form UI).
-
----
-
-## Follow-ups (operator decisions)
-
-- [ ] Admin UI list view for `foundation-volunteer-applications/` (today: copilot + R2)
-- [ ] Allow apply without Archive account via email verification (guest volunteers)
-- [ ] Sync `foundationTopicPages.js` mirror on `.com.au` if `/foundation/volunteers` redirect should land on `#apply`
-- [ ] Formal retention schedule once Foundation incorporates

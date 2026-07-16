@@ -14,7 +14,95 @@ import { SCHEMA_PORTAL_URL } from './site.js'
 
 const DICTIONARY_URL = `${SCHEMA_PORTAL_URL}/dictionary`
 
+/** Apex Archive page for studios (landscapearchive.com.au). */
+export const APEX_FOR_STUDIOS_URL = 'https://landscapearchive.com.au/for-studios'
+
+/**
+ * Shared closing section appended to every published Field Note.
+ * Prefer this single pattern over per-article duplicates.
+ * Keep copy understated — factual pointers, not a sales close.
+ */
+export const FIELD_NOTES_NEXT_STEPS = Object.freeze({
+  id: 'next-steps',
+  heading: 'Next Steps',
+  paragraphs: [
+    'Open Foundation materials for one studio deliverable are on the adoption guide. A short Archive page for practices is also available.'
+  ],
+  actions: [
+    { label: 'Studio Pilot Kit', href: '/adopt#studio-pilot' },
+    {
+      label: 'Archive — for studios',
+      href: APEX_FOR_STUDIOS_URL,
+      external: true
+    },
+    {
+      label: 'Contact',
+      href: 'https://landscapearchive.com.au/contact',
+      external: true
+    }
+  ]
+})
 export const FIELD_NOTES = Object.freeze([
+  {
+    slug: 'four-things-land-art-technology-data',
+    status: 'published',
+    title: 'Four things: land, art, technology, data',
+    dek: 'A short note on the Foundation’s cultural frame — why land, art, technology, and data hold together.',
+    author: 'Mark Norlan Laririt',
+    date: '2026-07-11',
+    readingTime: '5 min',
+    topics: ['Governance', 'Culture', 'Foundation'],
+    sections: [
+      {
+        heading: 'Four cultural pillars',
+        paragraphs: [
+          'We keep returning to four words: land, art, technology, data. They are easy to print on a slide and easy to empty out. This note keeps them full — as a cultural frame for accountable public knowledge, not as branding wallpaper.',
+          'The Landscape Archive Foundation sits where those four meet. Product ships tools. The Foundation holds the charter those tools are supposed to serve. If that split sounds abstract, the four things are how we keep it concrete.'
+        ],
+        actions: [{ label: 'Four cultural pillars on governance', href: `${GOVERNANCE_PATH}#cultural-pillars` }]
+      },
+      {
+        heading: 'Land',
+        paragraphs: [
+          'Land is the living world and the practices that care for it — place, ecology, maintenance, the long after of a planting schedule. Generic greenery for a mood board is not land in this sense. Land asks whether the record still points at something that grows, fails, recovers, and belongs somewhere.',
+          'When we say the Foundation cares about land, we mean the work stays answerable to sites and systems, not only to images of them.'
+        ]
+      },
+      {
+        heading: 'Art',
+        paragraphs: [
+          'Art is how landscape is seen and represented — drawing, model, photograph, render, exhibition, the quiet craft of making a place legible to someone who was not there.',
+          'Representation changes what people believe a place is. That power is why art belongs in the charter: a way of knowing that can be careful or careless, not merely decoration around the data.'
+        ]
+      },
+      {
+        heading: 'Technology',
+        paragraphs: [
+          'Technology is the set of tools that make evidence usable — validators, interchange, BIM handoffs, and browsers that can open a bundle for review. Shipping a connector is valuable work; the Foundation remains the charter those tools serve.',
+          'We want tools that lower the cost of being precise. The public trust layer should remain a stable, citable charter alongside commercial product releases.'
+        ]
+      },
+      {
+        heading: 'Data',
+        paragraphs: [
+          'Data is the traceable record: methods, identifiers, openness for the commons, enough structure that someone else can check the claim.',
+          'Open definitions matter here alongside proprietary inventories. The grammar should be citable; the filled shelves can still be licensed. That split is deliberate.'
+        ]
+      },
+      {
+        heading: 'Holding them together',
+        paragraphs: [
+          'None of the four is enough alone. Land without art forgets how belief is made. Art without land becomes scenery. Technology without data is incomplete. Data without the other three loses the site.',
+          'The five Foundation Standards — botanical truth, climate disclosure, open infrastructure, public-sector interface, synthetic-nature ethics — say what the open metadata steward publishes. The four things say <em>why</em> that steward exists culturally. They are complementary, not competing.',
+          'The Foundation is preparing for incorporation; this frame is published for critique and adoption. If the four words start to sound like branding alone, return to the cultural pillars on the governance page.'
+        ],
+        actions: [
+          { label: 'Cultural pillars', href: `${GOVERNANCE_PATH}#cultural-pillars` },
+          { label: 'Foundation Standards', href: `${GOVERNANCE_PATH}#charter-pillars` }
+        ]
+      }
+    ]
+  },
   {
     slug: 'institutions-standards-and-the-infrastructure-gap',
     status: 'published',
@@ -32,8 +120,8 @@ export const FIELD_NOTES = Object.freeze([
         paragraphs: [
           'Landscape architecture in Australia — like most built-environment disciplines — relies on institutions that speak for the profession in public. Peak professional bodies and national institutes are rightly expected to champion quality, education, advocacy, and the standards that let practitioners work with councils, clients, and allied consultants on shared terms. In our view, that mandate is typically <em>governance and endorsement</em> rather than sustained software engineering.',
           'One reading of the tension — familiar across professions — is structural rather than personal: the organisation best placed to endorse a data framework is not always the same organisation resourced to build and maintain one at product scale. Committees, position papers, and continuing-education programmes align well with governance mandates; versioned field registries, automated trait ingestion, conformance validators, and high-fidelity three-dimensional planting assets generally require sustained technical pipelines — data engineering, botanical QA, interchange testing, release discipline — that are often organised outside volunteer governance structures and peak-body operating models.',
-          'We do not read this as an indictment of institutes. Institutional landscape architecture bodies were not chartered to operate nursery-exchange APIs or species trait engines. The gap we observe appears when the profession needs <em>both</em> credible institutional voice <em>and</em> operational digital infrastructure at the same time — and when stakeholders assume one organisation must supply both. Standards language can advance more slowly when implementable artefacts lag; commercially licensed libraries may then supply records project by project, which can fragment shared vocabulary unless an open interchange layer is also available.',
-          'The Landscape Archive began, in part, from that observation: our conviction that the open grammar of landscape metadata and the automated machinery to populate it could be pursued as implementation work — while still leaving room, where appropriate and if invited, for institutions to recognise, cite, or eventually adopt a framework they did not themselves compile.'
+          'Institutional landscape architecture bodies were generally not chartered to operate nursery-exchange APIs or species trait engines. The gap we observe appears when the profession needs <em>both</em> credible institutional voice <em>and</em> operational digital infrastructure at the same time — and when stakeholders assume one organisation must supply both. Standards language can advance more slowly when implementable artefacts lag; commercially licensed libraries may then supply records project by project, which can fragment shared vocabulary unless an open interchange layer is also available.',
+          'The Landscape Archive began, in part, from that observation: that the open grammar of landscape metadata and the automated machinery to populate it could be pursued as implementation work — while still leaving room, where appropriate and if invited, for institutions to recognise, cite, or eventually adopt a framework they did not themselves compile.'
         ],
         actions: [{ label: 'Governance and the three-entity split', href: GOVERNANCE_PATH }]
       },
@@ -42,8 +130,8 @@ export const FIELD_NOTES = Object.freeze([
         paragraphs: [
           'Before automation could shoulder repetitive work, “high fidelity” in landscape data meant manual labour at every step. A botanically defensible species record — growth form, mature dimensions, climate context, maintenance implications, and a three-dimensional representation usable in BIM or visualisation — was assembled by specialists: horticultural researchers, modellers, librarians, and vendor cataloguers billing hours per taxon. Scale was linear. A thousand species meant a thousand commissioning cycles.',
           'Commercial libraries priced that labour accordingly. Subscription-based asset catalogues, enterprise planting databases, and per-seat BIM content licences reflected the economics of handcrafted records. Practices with larger budgets could license those catalogues; others often worked from generic placeholders — massing trees without stable taxon identifiers, shrub mixes without trait provenance, climate claims without documented screening. The cost was not only financial; it was also <em>access</em>. Small studios, regional councils, and university studios could face higher unit costs for the same botanical rigour that larger firms absorbed as project overhead.',
-          'Institutes could publish principles — prefer native planting, document sustainability claims, prepare for digital handover — while implementation datasets remained the work of vendors, researchers, and project teams. Universities could teach taxonomy and ecology; maintaining a live national inventory synced to revised nomenclature and climate layers is a different scale of operation. The legacy model, as we read it, treated high-fidelity data as a premium product rather than public infrastructure.',
-          `${TLA185_DISPLAY_ID} separates the structural question from the asset question on purpose. The Foundation stewards field definitions, conformance rules, and citation — the grammar of what an honest record should carry. Populated inventories, trait automation, and modelled geometry remain implementation work, historically costly in part because production relied on manual gates. Understanding that history clarifies what automation may change — and what it does not pretend to replace: professional judgement, site survey, cultural protocol, and client sign-off.`
+          'Institutes could publish principles — prefer native planting, document sustainability claims, prepare for digital handover — while implementation datasets remained the work of vendors, researchers, and project teams. Universities could teach taxonomy and ecology; maintaining a live national inventory synced to revised nomenclature and climate layers is a different scale of operation. High-fidelity data has historically been delivered as a premium product; public interchange grammar offers a complementary infrastructure layer.',
+          `${TLA185_DISPLAY_ID} separates the structural question from the asset question on purpose. The Foundation stewards field definitions, conformance rules, and citation — the grammar of what a clear record should carry. Populated inventories, trait automation, and modelled geometry remain implementation work, historically costly in part because production relied on manual gates. Understanding that history clarifies what automation may change — and what it leaves with professionals: judgement, site survey, cultural protocol, and client sign-off.`
         ],
         actions: [
           { label: 'Browse the field dictionary', href: DICTIONARY_URL, external: true },
@@ -55,15 +143,15 @@ export const FIELD_NOTES = Object.freeze([
         paragraphs: [
           'Automation does not eliminate botanical expertise; it changes where that expertise is applied. When trait ingestion, nomenclature cross-checks, geometry generation, and dictionary alignment can run through documented pipelines — Python and interchange tooling rather than ad hoc spreadsheets — the marginal cost of adding a species may fall sharply. A library that would once have required a catalogue team to grow linearly can compound: each new source dataset, each revised climate layer, each conformance rule propagates through the same machinery.',
           'That shift is what makes an accessible library plausible for everyday landscape architects — not only for enterprises with dedicated BIM managers. A practice in Hobart, a council streetscape team in Western Sydney, and a studio in Brisbane could work from the same citable field grammar and, where appropriately licensed, from implementation datasets that export dictionary-aligned bundles. In our view, the economics can invert: infrastructure becomes something teams may <em>license and implement</em>, while definitions remain something they can <em>cite in public</em> without binding project metadata to a single vendor’s proprietary field list.',
-          'The strategic relationship with institutions may change at the same time — not by collapsing Foundation and peak body into one entity, but by clarifying roles. A peak professional body may choose to reference an open specification in education guidance, awards criteria, or policy submissions without having built the pipeline behind it. It could acknowledge implementation partners that validate conformance while insisting that the public dictionary stays vendor-neutral. It may participate in draft founding alliance consultation — if invited and if it wishes — as one independent organisation among others, with no obligation to adopt commercial products and no implication that endorsement has already occurred.',
-          `Nothing in this essay claims that any peak body has adopted ${TLA185_DISPLAY_ID}, Landscape Archive products, or a formal data standard. The potential is conditional: if automated infrastructure lowers the cost of honest records, institutes could focus on what they do best — setting professional expectations, brokering public debate, and pointing practitioners toward citable infrastructure — while implementation remains contestable in the market. We see that as healthier than either silence or assuming that volunteer governance structures should also operate live national asset registries as a side duty.`,
-          'Interim Foundation stewardship means the grammar is public and revisable; incorporation and founding alliance seating remain forward work described on the governance pages. Our narrower pitch to the profession: the structural gap we describe is real, the historical economics of handcrafted records were real, and automation offers a third path — open definitions plus implementable libraries — that institutions and practitioners can evaluate on evidence rather than on brand promises.'
+          'Roles can stay clear without collapsing Foundation and peak body into one entity. A professional body may choose to reference an open specification in education guidance, awards criteria, or policy submissions without having built the pipeline behind it. It could acknowledge implementation partners that validate conformance while insisting that the public dictionary stays vendor-neutral. It may participate in draft founding alliance consultation — if invited and if it wishes — as one independent organisation among others.',
+          `No peak body adoption of ${TLA185_DISPLAY_ID} or Landscape Archive products is asserted here. If automated infrastructure lowers the cost of clear records, institutes can continue to set professional expectations and point practitioners toward citable infrastructure — with implementation remaining contestable in the market.`,
+          'Foundation stewardship keeps the grammar public and revisable. Incorporation and founding-alliance seating are forward work described on the governance pages. The structural gap is real, the historical economics of handcrafted records were real, and automation offers a path — open definitions plus implementable libraries — that institutions and practitioners can evaluate on evidence.'
         ],
         bullets: [
-          'Peak bodies endorse and debate; they need not operate data pipelines to cite open field definitions where appropriate',
-          'High-fidelity assets carried premium economics because labour scaled linearly — automation may reduce marginal cost, not professional duty of care',
+          'Peak bodies can endorse and debate; they need not operate data pipelines to cite open field definitions',
+          'High-fidelity assets carried premium economics because labour scaled linearly — automation may reduce marginal cost while professional duty of care remains',
           'Practices may gain access to library and export tooling through implementation licences; the dictionary remains publicly citable',
-          'Institutional recognition, if it comes, could follow published conformance — it is not claimed here as accomplished fact'
+          'Institutional recognition, if it comes, would follow published conformance over time'
         ],
         actions: [
           { label: 'Adopt the open standard', href: '/adopt' },
@@ -76,7 +164,7 @@ export const FIELD_NOTES = Object.freeze([
   {
     slug: 'a-shared-vocabulary',
     status: 'published',
-    title: 'A shared vocabulary for a fragmented profession',
+    title: 'A shared vocabulary for the profession',
     dek: 'Landscape architecture is spread across studios, universities, councils, and agencies that each name the same things differently. An open data dictionary is the quiet infrastructure that lets them speak — and disagree — precisely.',
     author: 'Mark Norlan Laririt',
     date: '2026-07-05',
@@ -156,8 +244,8 @@ export const FIELD_NOTES = Object.freeze([
       {
         heading: 'Cultural protocol and restricted metadata',
         paragraphs: [
-          'Landscape work intersects with Indigenous and local knowledge systems worldwide. Not every field belongs in a public repository — yet projects still need internal traceability. Honest records distinguish what may be cited openly from what requires <em>restricted handling</em>, and they avoid laundering restricted detail into generic open labels.',
-          'Practices should treat cultural metadata as co-authored where protocol requires it: who approved a representation, which sensitivity class applies, and where the authoritative record lives. The Foundation publishes structural slots for these disclosures; it does not substitute for Traditional Owner organisations, cultural advisors, or local consent processes. Interim draft governance means these guidelines are published for consultation — teams should align with both the open specification and the legal and cultural requirements of each jurisdiction.'
+          'Landscape work intersects with Indigenous and local knowledge systems worldwide. Not every field belongs in a public repository — yet projects still need internal traceability. Clear records distinguish what may be cited openly from what requires <em>restricted handling</em>, and keep restricted detail out of generic open labels.',
+          'Practices should treat cultural metadata as co-authored where protocol requires it: who approved a representation, which sensitivity class applies, and where the authoritative record lives. The Foundation publishes structural slots for these disclosures; it does not substitute for Traditional Owner organisations, cultural advisors, or local consent processes. These guidelines are published for consultation — teams should align with both the open specification and the legal and cultural requirements of each jurisdiction.'
         ],
         actions: [{ label: 'Truth-telling charter', href: `${GOVERNANCE_PATH}#truth-telling` }]
       },
@@ -165,9 +253,9 @@ export const FIELD_NOTES = Object.freeze([
         heading: 'A minimum bundle before you call a record “complete”',
         paragraphs: [
           'Before declaring a project archive complete for handover, ask whether an independent reviewer — another practice, a university studio, a client asset team, a regulator — could answer basic questions from the bundle alone. Which species or communities were specified, with what identifiers? What climate and site context informed selection? Which sustainability claims were made, with what evidence? Which assets are synthetic, and what is their revision history? Which fields are intentionally withheld, and under what protocol?',
-          'Perfection is not the bar; <em>retrievable honesty</em> is. A bundle that marks uncertainty clearly is more valuable than one that implies certainty through polished graphics. As the Foundation’s awards programme prepares to recognise archival diligence alongside design excellence, these questions will surface repeatedly — not as policing, but as shared professional expectation. Publish what you can cite; restrict what you must; document the difference.'
+          'Perfection is not the bar; <em>retrievable honesty</em> is. A bundle that marks uncertainty clearly is more valuable than one that implies certainty through polished graphics. Draft Foundation awards discussion explores recognising archival diligence alongside design excellence — the same questions already belong as shared professional expectation. Publish what you can cite; restrict what you must; document the difference.'
         ],
-        actions: [{ label: 'Awards programme (in preparation)', href: '/awards' }]
+        actions: [{ label: 'Awards', href: '/awards' }]
       },
       {
         heading: 'Working with vendors without surrendering the archive',
@@ -201,7 +289,7 @@ export const FIELD_NOTES = Object.freeze([
         paragraphs: [
           'A closed field list is a recurring economic <em>rent</em> on professional memory. Teams cannot cite definitions in procurement, teach them consistently across universities, or challenge them through an open process — because the definitions are tied to a product lifecycle, not a public record. That model fragments international collaboration: a Scandinavian municipal brief, a Gulf state digital-twin mandate, and an Australian green-infrastructure programme may all demand “native planting” evidence, yet each inherits incompatible private schemas.',
           'Multinational practices feel this fragmentation in every internal knowledge-management initiative. Without a public interchange grammar, “lessons learned” stay trapped in local templates. Open definitions do not harmonise every national regulation — but they give teams a stable layer to map against, the same way IFC and buildingSMART profiles function for built form while local codes still differ.',
-          `${TLA185_DISPLAY_ID} inverts part of that equation. The Foundation stewards structural definitions under an open licence — citable, versioned, independently governed — while vendors compete on implementation quality: datasets, automation, validation tooling, training, and support. The profession keeps the words; the market keeps the <em>services</em> built around them. That split is deliberate. It is also unfinished: interim draft governance means the dictionary is public and revisable, but the independent entity and long-term funding model are still in preparation.`
+          `${TLA185_DISPLAY_ID} inverts part of that equation. The Foundation stewards structural definitions under an open licence — citable, versioned, independently governed — while vendors compete on implementation quality: datasets, automation, validation tooling, training, and support. The profession keeps the words; the market keeps the <em>services</em> built around them. That split is deliberate. The dictionary is public and revisable; the independent entity and long-term funding model remain in preparation.`
         ],
         actions: [
           { label: 'Governance and licence', href: GOVERNANCE_PATH },
@@ -214,7 +302,7 @@ export const FIELD_NOTES = Object.freeze([
           'For practices, open vocabulary lowers the cost of honesty. When disclosure fields are published, teams can align project metadata with client reporting, regulatory templates, and post-occupancy review without rebuilding semantics for every job. Cross-border studios gain a shared interchange layer they can map to local taxonomies rather than maintaining parallel glossaries per office.',
           'For universities, a citable dictionary is curriculum infrastructure — something students can inspect, critique, and extend in studio work tied to real conformance rules. For public bodies, it is procurement language that does not expire when a vendor contract ends. For regulators and climate-disclosure frameworks, it is a path toward comparable project claims without forcing every jurisdiction to invent a bespoke planting schema from scratch.',
           'None of this eliminates commercial software or proprietary datasets. High-fidelity species inventories, trait engines, and automation remain licensed implementation assets — as they should. The economic shift is narrower and more important: the <em>definitions</em> of what a landscape record ought to say should not be a trade secret.',
-          'Professional indemnity, climate litigation, and nature-related finance are pushing landscape claims into discoverable records anyway. Teams that already export dictionary-aligned metadata will face lower friction when clients, insurers, or reviewers ask for evidence. Teams that rely on opaque product labels will pay consultants to reverse-engineer meaning at handover — if it can be recovered at all.'
+          'Professional indemnity, climate litigation, and nature-related finance are pushing landscape claims into discoverable records anyway. Teams that already export dictionary-aligned metadata will face lower friction when clients, insurers, or reviewers ask for evidence. Teams that rely on vendor-specific labels alone may need extra work at handover to recover meaning across platforms.'
         ]
       },
       {
@@ -222,7 +310,7 @@ export const FIELD_NOTES = Object.freeze([
         paragraphs: [
           'The global AEC platform market is consolidating faster than most professional associations can publish guidance. That consolidation is not inherently hostile — until metadata grammars become exclusive moats and project archives become unreadable outside a single ecosystem. An independent Foundation layer is a hedge against that outcome: a place where terms are argued about in public, where version history matters, and where no single vendor decides unilaterally what “sustainable planting” means this quarter.',
           'Stewardship is not free. Hosting, governance preparation, dictionary maintenance, and crosswalk work require sustained support — which is why the Foundation publishes transparent interim arrangements and invites institutional participation while a suitable independent entity is established. The alternative cost is higher: a profession that cannot compare projects across time, place, or platform because it never owned its words in the first place.',
-          'Open infrastructure also shifts competitive advantage toward implementation quality rather than definitional capture. Vendors that validate conformance, publish crosswalks, and train practitioners on honest disclosure can differentiate on service — while the profession retains a stable reference it can cite in contracts, journals, and policy submissions worldwide. That is the future this programme is written for: not a world without commercial tools, but a world where the grammar of landscape metadata is too important to lock inside any one of them.'
+          'Open infrastructure also shifts competitive advantage toward implementation quality rather than definitional capture. Vendors that validate conformance, publish crosswalks, and train practitioners on careful disclosure can differentiate on service — while the profession retains a stable reference it can cite in contracts, journals, and policy submissions worldwide. The future this programme is written for keeps commercial tools competitive while treating the grammar of landscape metadata as shared professional infrastructure.'
         ],
         actions: [{ label: 'Support the standard', href: '/support' }]
       }
@@ -249,8 +337,8 @@ export const FIELD_NOTES = Object.freeze([
       {
         heading: 'Synonyms as design material',
         paragraphs: [
-          'Landscape language is gloriously ambiguous. “Grass” might mean a lawn cultivar, a native tussock matrix, or a post-industrial meadow strategy. “Tree” might mean a street specimen, a remnant woodland anchor, or a placeholder massing object awaiting survey. Ambiguity is sometimes intentional in early design; it undermines handover archives and comparative research.',
-          'Pedagogy can treat synonyms as material rather than error. Assign students to map studio vocabulary onto published dictionary terms — not to erase nuance, but to locate it. Which preferred label applies? Which synonym is tolerated? Where does the definition explicitly allow regional modules? When two offices use different words for the same planting role, can they still produce an interchange bundle that joins? These exercises connect design criticism to information architecture in ways that travel across national curricula without pretending every biome shares the same species list.'
+          'Landscape language is often ambiguous. “Grass” might mean a lawn cultivar, a native tussock matrix, or a post-industrial meadow strategy. “Tree” might mean a street specimen, a remnant woodland anchor, or a placeholder massing object awaiting survey. Ambiguity is sometimes intentional in early design; it undermines handover archives and comparative research unless terms are later aligned.',
+          'Pedagogy can treat synonyms as material rather than error. Assign students to map studio vocabulary onto published dictionary terms — not to erase nuance, but to locate it. Which preferred label applies? Which synonym is tolerated? Where does the definition explicitly allow regional modules? When two offices use different words for the same planting role, can they still produce an interchange bundle that joins? These exercises connect design criticism to information architecture in ways that travel across national curricula without requiring every biome to share the same species list.'
         ],
         bullets: [
           'Studio briefs that require dictionary-backed taxon and role fields alongside visual proposals',
@@ -262,7 +350,7 @@ export const FIELD_NOTES = Object.freeze([
       {
         heading: 'Data as art, art as evidence',
         paragraphs: [
-          'There is a tired dichotomy between “technical” BIM work and “creative” landscape representation. In practice, the most compelling student and professional work often lives on the border: procedural canopies that reveal growth habit, annotated atlases that tie texture to taxon, mixed media boards that cite survey dates and synthetic lineage in the same composition. When metadata is treated as part of the artefact, the artefact becomes <em>evidence</em> — not merely illustration.',
+          'Technical BIM work and creative landscape representation often meet productively at the border: procedural canopies that reveal growth habit, annotated atlases that tie texture to taxon, mixed media boards that cite survey dates and synthetic lineage in the same composition. When metadata is treated as part of the artefact, the artefact becomes <em>evidence</em> as well as illustration.',
           'Museums, biennials, and public agencies increasingly ask for digital provenance alongside visual deliverables. A planting concept shown in render may be indistinguishable from a specified community unless the bundle states otherwise. Teaching students to document that distinction early — synthetic versus surveyed, indicative versus committed — prepares them for international practice where climate disclosure, green claims, and digital asset custody are moving from optional narrative to reviewable record.',
           'Exhibition and competition juries can reward this literacy explicitly: ask not only what a proposal looks like, but what it claims and how those claims would be encoded for an asset register. The answer can remain sketch-level in early studios — but the habit of linking representation to disclosure is what separates persuasive imagery from professional record.'
         ],
@@ -271,7 +359,7 @@ export const FIELD_NOTES = Object.freeze([
       {
         heading: 'An open reference for global studios',
         paragraphs: [
-          `${TLA185_DISPLAY_ID} began with Australian field modules because that is where the first conformance exercises ran; it is published for global reference under open licence and interim Foundation stewardship. Universities in other regions need not adopt Australian species lists to adopt the pedagogical point: public definitions, versioned governance, and conformance rules that students can read, test, and challenge.`,
+          `${TLA185_DISPLAY_ID} began with Australian field modules because that is where the first conformance exercises ran; it is published for global reference under open licence and Foundation stewardship. Universities in other regions need not adopt Australian species lists to adopt the pedagogical point: public definitions, versioned governance, and conformance rules that students can read, test, and challenge.`,
           'The Foundation does not prescribe studio aesthetics or replace site visits with dashboards. It offers a shared grammar so that when a graduate joins a practice in Rotterdam, Riyadh, or Auckland, they recognize the same structural questions: What identifies the planting? What context screened it? What supports the sustainability claim? What must stay restricted? Reading the landscape as data is, finally, a <em>humanistic skill</em> — the ability to make meaning precise enough to survive translation across software, jurisdictions, and time.',
           'Faculty need not become database administrators to teach this. The schema portal and field dictionary are reading assignments in their own right: public artefacts students can query, compare across versions, and critique in seminar the same way they critique precedent projects. That openness is the pedagogical point. A closed template teaches compliance; a citable standard teaches professional agency — including the agency to propose that a definition is wrong and should change through published governance.'
         ],
@@ -288,8 +376,36 @@ export function getArticle(slug) {
   return FIELD_NOTES.find((a) => a.slug === slug && a.status === 'published') || null
 }
 
+function stripHtml(value) {
+  return String(value || '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/**
+ * Public teaser for guests / crawlers — dek already on the card; body preview from first section.
+ * Full essay HTML is not SSR'd; signed-in clients load sections after session unlock.
+ */
+export function getArticlePreviewExcerpt(article, maxLength = 340) {
+  const fromSection = stripHtml(article?.sections?.[0]?.paragraphs?.[0] || '')
+  const fallback = stripHtml(article?.dek || '')
+  const text = fromSection || fallback
+  if (!text) return ''
+  if (text.length <= maxLength) return text
+  return `${text.slice(0, maxLength).replace(/\s+\S*$/, '')}…`
+}
+
 export function formatArticleDate(iso) {
   if (!iso) return ''
   const d = new Date(`${iso}T00:00:00Z`)
   return d.toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+}
+
+/** Casual short form for strips and cards — e.g. "11 Jul 2026". */
+export function formatShortDate(iso) {
+  if (!iso) return ''
+  const d = new Date(`${iso}T00:00:00Z`)
+  if (Number.isNaN(d.getTime())) return String(iso)
+  return d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })
 }

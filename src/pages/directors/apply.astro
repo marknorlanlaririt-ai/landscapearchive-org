@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import DirectorApplicationForm from '../../components/DirectorApplicationForm.astro'
+import { DIRECTOR_APPLY_PATH } from '../../data/memberAccess.js'
+---
+
+<BaseLayout
+  title="Founding board / director expression of interest"
+  description="Expression of interest for a founding board / director cohort of The Landscape Archive Foundation. Incorporation remains in preparation."
+  path={DIRECTOR_APPLY_PATH}
+  noindex={true}
+>
+  <div class="page director-page">
+    <div class="director-page__intro prose">
+      <p class="eyebrow">The Landscape Archive Foundation</p>
+      <h1>Founding board / director expression of interest</h1>
+      <p class="director-page__lead">
+        This page collects expressions of interest from people who may wish to help steward open
+        landscape metadata standards — including those connected with London, Washington DC,
+        Singapore, or elsewhere. Named cities are regions of interest, not existing boards or offices.
+      </p>
+      <p class="director-page__note">
+        Submissions are expressions of interest only. Selection and appointment follow incorporation
+        and due diligence. Interim hosting is provided by The Landscape Archive Pty Ltd as
+        implementation partner while entity formation continues with counsel.
+      </p>
+    </div>
+
+    <DirectorApplicationForm />
+  </div>
+</BaseLayout>
+
+<style>
+  .director-page__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 0.5rem;
+    max-width: 42rem;
+  }
+
+  .director-page__lead {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+
+  .director-page__note {
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    border-left: 2px solid var(--line);
+    padding-left: 0.9rem;
+  }
+</style>

@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import {
+  DOWNLOADS_PATH,
+  EVIDENCE_CHECKER_PATH,
+  FOUNDATION_SELF_SERVE_TOOLS_PAUSED,
+  FOUNDATION_TOOLS_DISCLAIMER,
+  FOUNDATION_TOOLS_PAUSED_NOTICE
+} from '../data/foundationDownloads.js'
+import { TLA185_DISPLAY_ID } from '../data/foundationWing.js'
+import { ARCHIVE_ORIGIN } from '../data/site.js'
+import { LICENCE_PATH } from '../data/licenceScopeContent.js'
+---
+
+<BaseLayout
+  title="Foundation Evidence Checker"
+  description={
+    FOUNDATION_SELF_SERVE_TOOLS_PAUSED
+      ? `Evidence Checker is paused. Draft ${TLA185_DISPLAY_ID} dictionary and registry reference remain available.`
+      : `Inspect open ${TLA185_DISPLAY_ID} JSON or Archive Audit Pack (.tlaa) in the browser. Refuses commercial Landscape Archive Package (.tla) and encrypted .lapkg. Foundation tools — not Landscape Archive Hub.`
+  }
+  path={EVIDENCE_CHECKER_PATH}
+>
+  <div class="page ec">
+    <div class="ec__intro prose">
+      <p class="eyebrow">Foundation tools · Open package inspector</p>
+      <h1>Foundation Evidence Checker</h1>
+      {
+        FOUNDATION_SELF_SERVE_TOOLS_PAUSED ? (
+          <>
+            <p class="ec__banner" role="status">
+              <strong>Paused — not available yet.</strong>
+              {FOUNDATION_TOOLS_PAUSED_NOTICE}
+            </p>
+            <p>
+              This inspector will return when licence and stewardship notices are
+              settled. Until then, use the draft field dictionary and registry for
+              calm reference citation.
+            </p>
+            <div class="action-row">
+              <a class="btn btn--primary" href="/registry">Field registry</a>
+              <a class="btn" href={DOWNLOADS_PATH}>Foundation downloads</a>
+              <a class="btn" href={LICENCE_PATH}>Licence &amp; scope</a>
+              <a class="btn" href={`${ARCHIVE_ORIGIN}/`} rel="noopener" target="_blank">
+                Commercial site <span class="btn__ext" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </>
+        ) : (
+          <>
+            <p class="ec__banner" role="note">
+              <strong>{FOUNDATION_TOOLS_DISCLAIMER}.</strong>
+              This page inspects open {TLA185_DISPLAY_ID} JSON and Archive Audit Packs (
+              <code>.tlaa</code>) entirely in your browser. It does not decrypt{' '}
+              <code>.lapkg</code>, does not open commercial Landscape Archive Packages (
+              <code>.tla</code>), and is not the Landscape Archive Hub.
+            </p>
+            <p>
+              Upload a file to list contents, show a manifest summary, and run basic
+              structure checks.
+            </p>
+          </>
+        )
+      }
+    </div>
+
+    {
+      !FOUNDATION_SELF_SERVE_TOOLS_PAUSED && (
+        <section
+          id="evidence-checker"
+          class="ec__panel"
+          aria-labelledby="ec-upload-heading"
+          data-ec-root
+        >
+          <h2 id="ec-upload-heading" class="visually-hidden">
+            Upload a package
+          </h2>
+
+          <div class="ec__drop" data-ec-drop>
+            <label class="ec__file-label">
+              <span class="ec__file-title">Choose a file</span>
+              <span class="ec__file-hint">
+                Accepts <code>.json</code> / <code>.tla185.bundle.json</code> (open TLA-185) and
+                <code>.tlaa</code> (Archive Audit Pack). Refuses <code>.tla</code> and{' '}
+                <code>.lapkg</code>.
+              </span>
+              <input
+                data-ec-file
+                type="file"
+                accept=".json,.jsonld,.tlaa,.zip,application/json,application/zip"
+                aria-describedby="ec-upload-hint"
+              />
+            </label>
+            <p id="ec-upload-hint" class="ec__drop-hint">
+              Or drop a file onto this area.
+            </p>
+          </div>
+
+          <p class="ec__status" data-ec-status hidden></p>
+
+          <div class="ec__actions action-row">
+            <button type="button" class="btn" data-ec-clear>
+              Clear
+            </button>
+            <a class="btn" href={DOWNLOADS_PATH}>
+              Foundation downloads
+            </a>
+            <a class="btn" href={`${ARCHIVE_ORIGIN}/`} rel="noopener" target="_blank">
+              Commercial site <span class="btn__ext" aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="ec__results" data-ec-results aria-live="polite"></div>
+        </section>
+      )
+    }
+
+    <section class="section-block prose" aria-labelledby="ec-naming-heading">
+      <h2 id="ec-naming-heading">Scope</h2>
+      <ul class="bullet-list">
+        <li>
+          <strong>Open TLA-185</strong> — public specification grammar (JSON), not commercial Library
+          fill
+        </li>
+        <li>
+          <strong>Archive Audit Pack (<code>.tlaa</code>)</strong> — evidence-only package; no commercial
+          geometry
+        </li>
+        <li>
+          <strong>Landscape Archive Package (<code>.tla</code>) / Hub</strong> — commercial products;
+          licensed separately; not Creative Commons
+        </li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+{!FOUNDATION_SELF_SERVE_TOOLS_PAUSED && (
+  <script is:inline src="/scripts/evidence-checker.js"></script>
+)}
+
+<style>
+  .ec__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 1rem;
+  }
+
+  .ec__banner {
+    padding: 0.85rem 1rem;
+    margin: 1rem 0 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent-strong);
+    background: var(--paper-raised);
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .ec__panel {
+    max-width: 44rem;
+    margin-bottom: 2rem;
+  }
+
+  .ec__drop {
+    border: 1px dashed var(--line);
+    background: var(--paper-raised);
+    padding: 1.4rem 1.2rem;
+  }
+
+  .ec__file-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    cursor: pointer;
+  }
+
+  .ec__file-title {
+    font-weight: 600;
+  }
+
+  .ec__file-hint,
+  .ec__drop-hint {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+
+  .ec__actions {
+    margin-top: 1rem;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

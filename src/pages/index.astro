@@ -4,6 +4,7 @@ import DocsSection from '../components/DocsSection.astro'
 import RecentUpdatesStrip from '../components/RecentUpdatesStrip.astro'
 import SectionShareLinks from '../components/SectionShareLinks.astro'
 import TlaLettermark from '../components/TlaLettermark.astro'
+import DirectorEasterEgg from '../components/DirectorEasterEgg.astro'
 import { buildFoundationHomeSections } from '../data/homeContent.js'
 import { FOUNDATION_CHARTER_PILLARS, FOUNDATION_PILLARS_LABEL } from '../data/charterPillars.js'
 import {
@@ -12,8 +13,6 @@ import {
   ADOPT_PATH,
   TLA185_DISPLAY_ID,
   TLA185_FIELD_COUNT,
-  TLA169_DISPLAY_ID,
-  TLA169_FIELD_COUNT,
   FOUNDATION_LICENCE_LABEL,
   FEDERATION_SCHEMA_PORTAL_URL
 } from '../data/foundationWing.js'
@@ -30,35 +29,23 @@ const sections = buildFoundationHomeSections()
   <section class="hero">
     <div class="page hero__inner">
       <TlaLettermark class="hero__mark" size={72} title="The Landscape Archive Foundation" />
-      <p class="eyebrow">Open standard · International</p>
       <p class="hero__tagline">{SITE_TAGLINE}</p>
-      <h1 class="hero__title">Public infrastructure for truth and archival stewardship in landscape metadata.</h1>
+      <h1 class="hero__title">Steward of the open landscape metadata specification.</h1>
       <p class="hero__lead">
-        The Landscape Archive Foundation stewards <strong>{TLA185_DISPLAY_ID}</strong> — an open,
-        citable specification for how landscape projects declare, document, and preserve their
-        botanical, climate, sustainability, cultural, and synthetic-nature claims. Published for
-        anyone to read, reference, and build on.
+        The Landscape Archive Foundation publishes <strong>{TLA185_DISPLAY_ID}</strong>
+        ({TLA185_FIELD_COUNT} documented elements) under {FOUNDATION_LICENCE_LABEL}: field
+        registry, schemas, and conformance criteria for botanical, climate, sustainability,
+        cultural, and synthetic-nature claims in project records.
       </p>
       <div class="action-row">
-        <a class="btn btn--primary" href={ADOPT_PATH}>Adoption quickstart</a>
-        <a class="btn" href={GOVERNANCE_PATH}>Read the Foundation Standards</a>
-        <a class="btn" href={REGISTRY_PATH}>Browse the field registry</a>
-        <a class="btn" href={FEDERATION_SCHEMA_PORTAL_URL} rel="noopener">Schema portal</a>
+        <a class="btn btn--primary" href={GOVERNANCE_PATH}>Governance</a>
+        <a class="btn" href={REGISTRY_PATH}>Field registry</a>
+        <a class="btn" href="/licence">Licence &amp; scope</a>
+        <a class="btn" href={`${FEDERATION_SCHEMA_PORTAL_URL}/dictionary`} rel="noopener">
+          Field dictionary
+        </a>
+        <a class="btn" href={ADOPT_PATH}>Adoption</a>
       </div>
-      <dl class="hero__stats">
-        <div>
-          <dt>{TLA185_FIELD_COUNT}</dt>
-          <dd>documented elements ({TLA185_DISPLAY_ID})</dd>
-        </div>
-        <div>
-          <dt>{TLA169_FIELD_COUNT}</dt>
-          <dd>legacy baseline ({TLA169_DISPLAY_ID})</dd>
-        </div>
-        <div>
-          <dt>{FOUNDATION_LICENCE_LABEL}</dt>
-          <dd>open reference licence</dd>
-        </div>
-      </dl>
     </div>
   </section>
 
@@ -69,12 +56,10 @@ const sections = buildFoundationHomeSections()
 
     <section class="section-block" id="foundation-pillars" aria-label={FOUNDATION_PILLARS_LABEL}>
       <div class="prose">
-        <p class="eyebrow">{FOUNDATION_PILLARS_LABEL}</p>
-        <h2>Five standards, one argument</h2>
+        <h2>{FOUNDATION_PILLARS_LABEL}</h2>
         <p>
-          Truth in landscape documentation is an infrastructural problem — solvable only through
-          shared definitions, open governance, and a clear boundary between public reference work
-          and commercial implementation.
+          Five domains of public reference work. Shared definitions and open governance mark the
+          boundary between the public specification and commercial implementation.
         </p>
       </div>
       <ol class="pillars">
@@ -89,24 +74,24 @@ const sections = buildFoundationHomeSections()
         }
       </ol>
       <div class="action-row">
-        <a class="btn" href={GOVERNANCE_PATH}>Read all five in full</a>
+        <a class="btn" href={GOVERNANCE_PATH}>Full standards text</a>
       </div>
-      <SectionShareLinks pagePath="/" anchorId="foundation-pillars" title="Five standards, one argument" />
+      <SectionShareLinks pagePath="/" anchorId="foundation-pillars" title={FOUNDATION_PILLARS_LABEL} />
     </section>
   </div>
+
+  <DirectorEasterEgg />
 </BaseLayout>
 
 <style>
   .hero {
     border-bottom: 1px solid var(--line-soft);
-    background:
-      radial-gradient(120% 90% at 85% -10%, var(--accent-tint), transparent 60%),
-      var(--paper);
+    background: var(--paper);
   }
 
   .hero__inner {
     padding-block: clamp(3rem, 8vw, 6rem) clamp(2.4rem, 5vw, 4rem);
-    max-width: 52rem;
+    max-width: 48rem;
   }
 
   .hero__mark {
@@ -127,42 +112,15 @@ const sections = buildFoundationHomeSections()
   }
 
   .hero__title {
-    font-size: clamp(2.3rem, 5.5vw, 3.7rem);
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
     max-width: 18ch;
   }
 
   .hero__lead {
-    font-size: clamp(1.05rem, 2vw, 1.3rem);
-    line-height: 1.6;
+    font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+    line-height: 1.55;
     color: var(--ink-soft);
-    max-width: 40rem;
-  }
-
-  .hero__stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.4rem;
-    margin: 2.6rem 0 0;
-    padding-top: 1.8rem;
-    border-top: 1px solid var(--line-soft);
-  }
-
-  .hero__stats div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero__stats dt {
-    font-family: var(--font-serif);
-    font-size: 1.8rem;
-    color: var(--ink);
-  }
-
-  .hero__stats dd {
-    margin: 0.15rem 0 0;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    color: var(--ink-muted);
+    max-width: 38rem;
   }
 
   .pillars {

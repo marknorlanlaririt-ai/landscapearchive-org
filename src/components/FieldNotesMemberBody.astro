@@ -1,0 +1,250 @@
+---
+/**
+ * Client-only full Field Notes body.
+ * SSR stays teaser-only; this island loads article sections after Foundation session unlock
+ * so anonymous HTML / naive crawlers do not receive the full essay markup.
+ */
+import { ARCHIVE_ORIGIN } from '../data/site.js'
+
+interface Props {
+  slug: string
+  articlePath: string
+}
+
+const { slug, articlePath } = Astro.props
+const dictionaryUrl = 'https://schema.landscapearchive.org/dictionary'
+---
+
+<div class="field-notes-member" data-field-notes-member data-slug={slug} data-share-path={articlePath}>
+  <aside class="field-notes-gate" data-field-notes-gate aria-labelledby="field-notes-gate-title">
+    <p class="field-notes-gate__eyebrow">Members</p>
+    <h2 id="field-notes-gate-title" class="field-notes-gate__title">Sign in to read the full Field Note</h2>
+    <p class="field-notes-gate__lead">
+      Guests see this preview. Signed-in Landscape Archive accounts unlock the full essay and quiet Next Steps.
+      The open field dictionary stays public as draft reference. Self-serve validators and Evidence Checker are paused.
+    </p>
+    <div class="field-notes-gate__actions">
+      <a class="field-notes-gate__primary" data-field-notes-sign-in href="#">Sign in to continue</a>
+      <a class="field-notes-gate__secondary" href={`${ARCHIVE_ORIGIN}/sign-up`} rel="noopener">Create account</a>
+      <a class="field-notes-gate__tertiary" href={dictionaryUrl} rel="noopener">Open field dictionary</a>
+    </div>
+  </aside>
+
+  <div class="field-notes-body" data-field-notes-body hidden aria-live="polite"></div>
+  <p class="field-notes-loading" data-field-notes-loading hidden>Loading full essay…</p>
+</div>
+
+<script>
+  import { buildOrgSignInUrl } from '../data/memberAccess.js'
+
+  type Action = { label?: string; href?: string; external?: boolean }
+  type Section = {
+    id?: string
+    heading?: string
+    paragraphs?: string[]
+    bullets?: string[]
+    actions?: Action[]
+  }
+
+  function slugifyHeading(text: string): string {
+    return String(text || '')
+      .replace(/<[^>]*>/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+  }
+
+  function escapeAttr(value: string): string {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+  }
+
+  function renderSection(section: Section, sharePagePath: string): string {
+    const heading = section.heading || ''
+    const anchor = section.id || (heading ? slugifyHeading(heading) : '')
+    const paragraphs = (section.paragraphs || [])
+      .map((text) => `<p>${text}</p>`)
+      .join('')
+    const bullets = (section.bullets || []).length
+      ? `<ul class="bullet-list">${(section.bullets || []).map((item) => `<li>${item}</li>`).join('')}</ul>`
+      : ''
+    const actions = (section.actions || []).length
+      ? `<div class="actions">${(section.actions || [])
+          .map((action) => {
+            const href = escapeAttr(action.href || '#')
+            const rel = action.external ? ' rel="noopener"' : ''
+            const target = action.external ? ' target="_blank"' : ''
+            return `<a class="action" href="${href}"${rel}${target}>${action.label || 'Open'}</a>`
+          })
+          .join('')}</div>`
+      : ''
+    const share =
+      sharePagePath && heading
+        ? `<div class="section-share" data-section-share data-share-path="${escapeAttr(sharePagePath)}" data-share-title="${escapeAttr(heading)}"></div>`
+        : ''
+
+    return `<section id="${escapeAttr(anchor)}" class="section-block"><div class="prose">${
+      heading ? `<h2>${heading}</h2>` : ''
+    }${paragraphs}${bullets}${actions}</div>${share}</section>`
+  }
+
+  function syncFieldNotesGate() {
+    document.querySelectorAll('[data-field-notes-member]').forEach((root) => {
+      if (!(root instanceof HTMLElement)) return
+
+      const gate = root.querySelector('[data-field-notes-gate]')
+      const body = root.querySelector('[data-field-notes-body]')
+      const loading = root.querySelector('[data-field-notes-loading]')
+      const signIn = root.querySelector('[data-field-notes-sign-in]')
+      const slug = root.dataset.slug || ''
+      const sharePath = root.dataset.sharePath || `/articles/${slug}`
+      const loggedIn = document.documentElement.dataset.archiveLoggedIn === 'true'
+
+      if (signIn instanceof HTMLAnchorElement && !signIn.dataset.bound) {
+        signIn.href = buildOrgSignInUrl(sharePath)
+        signIn.dataset.bound = '1'
+      }
+
+      if (!loggedIn) {
+        if (gate instanceof HTMLElement) gate.hidden = false
+        if (body instanceof HTMLElement) {
+          body.hidden = true
+          body.innerHTML = ''
+          delete body.dataset.loaded
+        }
+        if (loading instanceof HTMLElement) loading.hidden = true
+        return
+      }
+
+      if (gate instanceof HTMLElement) gate.hidden = true
+      if (!(body instanceof HTMLElement) || body.dataset.loaded === '1') return
+
+      if (loading instanceof HTMLElement) loading.hidden = false
+
+      import('../data/articles.js')
+        .then((mod) => {
+          const article = mod.getArticle(slug)
+          if (!article) {
+            if (loading instanceof HTMLElement) {
+              loading.hidden = false
+              loading.textContent = 'Could not load this Field Note. Refresh and try again.'
+            }
+            return
+          }
+
+          const sections = [...(article.sections || []), mod.FIELD_NOTES_NEXT_STEPS]
+          body.innerHTML = sections.map((section: Section) => renderSection(section, sharePath)).join('')
+          body.hidden = false
+          body.dataset.loaded = '1'
+          if (loading instanceof HTMLElement) loading.hidden = true
+
+          // Re-bind share widgets if the public share script already ran.
+          document.dispatchEvent(new CustomEvent('la:field-notes-body-ready'))
+        })
+        .catch(() => {
+          if (loading instanceof HTMLElement) {
+            loading.hidden = false
+            loading.textContent = 'Could not load this Field Note. Refresh and try again.'
+          }
+        })
+    })
+  }
+
+  syncFieldNotesGate()
+  window.setInterval(syncFieldNotesGate, 1200)
+</script>
+
+<style>
+  .field-notes-gate {
+    margin: 1.6rem 0 2rem;
+    padding: 1.35rem 1.4rem 1.45rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+  }
+
+  .field-notes-gate__eyebrow {
+    margin: 0 0 0.45rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .field-notes-gate__title {
+    margin: 0 0 0.55rem;
+    font-size: clamp(1.15rem, 2.6vw, 1.4rem);
+    line-height: 1.3;
+  }
+
+  .field-notes-gate__lead {
+    margin: 0 0 1.1rem;
+    color: var(--ink-soft);
+    max-width: 38rem;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .field-notes-gate__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 0.85rem;
+    align-items: center;
+  }
+
+  .field-notes-gate__primary,
+  .field-notes-gate__secondary,
+  .field-notes-gate__tertiary {
+    font-size: 0.88rem;
+    text-decoration: none;
+  }
+
+  .field-notes-gate__primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 0.95rem;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .field-notes-gate__primary:hover {
+    opacity: 0.92;
+  }
+
+  .field-notes-gate__secondary,
+  .field-notes-gate__tertiary {
+    color: var(--accent-strong);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .field-notes-loading {
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  .field-notes-body :global(.section-block) {
+    margin-block: 1.6rem;
+  }
+
+  .field-notes-body :global(.actions) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+    margin-top: 0.9rem;
+  }
+
+  .field-notes-body :global(.action) {
+    color: var(--accent-strong);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .field-notes-body :global(.bullet-list) {
+    margin: 0.7rem 0 0;
+    padding-left: 1.2rem;
+  }
+</style>

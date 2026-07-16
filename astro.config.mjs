@@ -19,8 +19,10 @@ export default defineConfig({
       // schema portal are external and excluded from our sitemap.
       filter: (page) =>
         !page.includes('/access/')
+        && !page.includes('/vault')
         && !page.endsWith('/sign-in')
         && !page.endsWith('/events')
+        && !page.endsWith('/media')
     })
   ]
 })

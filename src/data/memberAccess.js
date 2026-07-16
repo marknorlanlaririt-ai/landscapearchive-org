@@ -15,8 +15,18 @@ export const MEMBER_ONLY_ORG_PATHS = Object.freeze([
 /** Session bootstrap paths — cross-site handoff without gating public pages. */
 export const SESSION_HANDOFF_ORG_PATHS = Object.freeze([
   ORG_SIGN_IN_PATH,
-  '/volunteers'
+  '/volunteers',
+  '/directors/apply'
 ])
+
+/**
+ * Field Notes — index + essay paths are session handoffs (preview public, full body after sign-in).
+ * Not member-only: guests keep the teaser; signed-in members unlock the essay.
+ */
+export function isFieldNotesOrgPath(path = '') {
+  const normalized = normalizeOrgPath(path)
+  return normalized === '/articles' || normalized.startsWith('/articles/')
+}
 
 export const ARCHIVE_SESSION_VERIFY_URL = `${ARCHIVE_ORIGIN}/api/foundation/session-verify`
 export const ARCHIVE_ORG_ACCESS_VERIFY_URL = `${ARCHIVE_ORIGIN}/api/foundation/org-access-verify`
@@ -46,7 +56,8 @@ export function isMemberOnlyOrgPath(path = '') {
 }
 
 export function isSessionHandoffOrgPath(path = '') {
-  return SESSION_HANDOFF_ORG_PATHS.includes(normalizeOrgPath(path))
+  const normalized = normalizeOrgPath(path)
+  return SESSION_HANDOFF_ORG_PATHS.includes(normalized) || isFieldNotesOrgPath(normalized)
 }
 
 export function isAccessHandoffOrgPath(path = '') {
@@ -127,3 +138,8 @@ export function resolveOrgAccessHandoffPath(activePath = '/') {
 }
 
 export const ARCHIVE_VOLUNTEER_APPLICATION_URL = `${ARCHIVE_ORIGIN}/api/foundation/volunteer-application`
+export const ARCHIVE_DIRECTOR_APPLICATION_URL = `${ARCHIVE_ORIGIN}/api/foundation/director-application`
+export const ARCHIVE_TERM_PROPOSAL_URL = `${ARCHIVE_ORIGIN}/api/foundation/term-proposal`
+
+/** Public director application path (easter egg destination). */
+export const DIRECTOR_APPLY_PATH = '/directors/apply'

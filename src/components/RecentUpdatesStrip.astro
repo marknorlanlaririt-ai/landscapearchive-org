@@ -1,5 +1,6 @@
 ---
 import { FOUNDATION_RECENT_PUBLIC_UPDATES } from '../data/recentPublicUpdates.js'
+import { formatShortDate } from '../data/articles.js'
 
 const { updates = FOUNDATION_RECENT_PUBLIC_UPDATES } = Astro.props
 ---
@@ -7,18 +8,16 @@ const { updates = FOUNDATION_RECENT_PUBLIC_UPDATES } = Astro.props
 <section class="updates-strip" aria-labelledby="recent-updates-heading">
   <div class="page updates-strip__inner">
     <div class="updates-strip__header">
-      <p class="eyebrow">What's new</p>
       <h2 id="recent-updates-heading" class="updates-strip__title">Recent public updates</h2>
       <p class="updates-strip__lead">
-        Interim milestones on the open specification and draft governance — for consultation, not as claims of
-        incorporated charity status or active programmes.
+        Open specification and draft governance milestones.
       </p>
     </div>
     <ul class="updates-strip__list">
       {
         updates.map((item) => (
           <li class="updates-strip__item">
-            <time class="updates-strip__date" datetime={item.date}>{item.date}</time>
+            <time class="updates-strip__date" datetime={item.date}>{formatShortDate(item.date)}</time>
             <h3 class="updates-strip__item-title">
               <a
                 class="updates-strip__link"
@@ -91,10 +90,9 @@ const { updates = FOUNDATION_RECENT_PUBLIC_UPDATES } = Astro.props
 
   .updates-strip__date {
     display: block;
-    font-size: 0.66rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     color: var(--ink-muted);
     margin-bottom: 0.35rem;
   }

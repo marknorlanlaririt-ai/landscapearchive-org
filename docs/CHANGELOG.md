@@ -1,4 +1,1095 @@
-﻿## 2026-07-09 - Standard Share + Field Notes JSON feed
+## 2026-07-16 - Licence sequence: pause tools + Licence & scope
+
+**Scope:** licence, foundation-tools, adopt, governance, pages-deploy
+**Status:** done
+
+### Did
+- Froze self-serve Foundation tools (Evidence Checker upload UI, validator “try it” CTAs) with calm paused / draft notices; kept dictionary / registry / crosswalks / charter as draft reference.
+- Added quiet `/licence` Licence & scope page (CC BY-NC-ND 4.0 public spec; Vault copyright; Archive commercial products separate; no dual-licence campaign).
+- Updated nav, footer, home, adopt, practice, governance, downloads, Field Notes gates, and before/after example nav for licence honesty.
+- Decision recorded in `foundationWing.js`: public spec stays CC BY-NC-ND 4.0. Deployed org. No commit.
+
+### Why
+- Founder six-step licence sequence while counsel is instructed: do not advertise production-ready tooling or imply Library/Hub/API are Creative Commons.
+
+### Files touched
+- `src/pages/licence.astro`, `evidence-checker.astro`, `downloads.astro`, `index.astro`, …
+- `src/data/foundationDownloads.js`, `licenceScopeContent.js`, `adoptContent.js`, `topicPages.js`, `homeContent.js`, `governanceContent.js`, `foundationWing.js`, `site.js`
+- `src/components/SiteFooter.astro`, `LicenceNotice.astro`, `FieldNotesMemberBody.astro`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Un-pause tools after counsel clears (`FOUNDATION_SELF_SERVE_TOOLS_PAUSED` in `foundationDownloads.js`).
+- Counsel docs live in sibling `la-frontend/docs/LICENCE_*`.
+
+### Links
+- https://landscapearchive.org/licence
+- https://landscapearchive.org/evidence-checker
+
+---
+
+## 2026-07-16 - Awards page: remove idea/sketch chrome
+
+**Scope:** foundation-awards, copy, pages-deploy
+**Status:** done
+
+### Did
+- Removed Awards status banner and intro lead chrome (`hideLead`).
+- Rewrote Scope/evaluative purpose and related awards copy in calm present voice — no idea/sketch/hypothetical framing; stripped all `draft emphasis:` prefixes.
+- Deleted the data-architecture line about the draft evaluative idea referencing the field registry.
+- Softened Field Notes awards CTA label; mirrored twin to la-frontend; deployed org (`deploy:unsafe` after smoke GET / flake + wrangler timeout retry).
+
+### Why
+- Founder: awards should read as professional programme copy, not a consultation sketch banner.
+
+### Files touched
+- `src/data/foundationAwardsProgramme.js`
+- `src/pages/[topic].astro`
+- `src/data/articles.js`
+- (sibling) `la-frontend/src/content/foundationAwardsProgramme.js`, `FoundationTopicPage.vue`
+
+### Follow-ups / blockers
+- None.
+
+### Links
+- https://landscapearchive.org/awards
+- https://eb20ad43.landscapearchive-org.pages.dev/awards
+
+---
+
+
+## 2026-07-16 - Awards page: idea/consultation posture
+
+**Scope:** foundation-awards, copy, pages-deploy
+**Status:** done
+
+### Did
+- Rewrote `/awards` as a draft idea for consultation: no launch years/dates, no “When active”, no `!` in public awards copy.
+- Removed Archival stewardship section; softened Scope/evaluative purpose + streams + criteria + governance CTAs.
+- Softened Field Notes awards cross-link in `articles.js`. Mirrored `foundationAwardsProgramme.js` to la-frontend content twin.
+- Deployed org (preview `f6c817e7`). No commit. No Flux.
+
+### Why
+- Founder: awards must read as exploration/feedback sketch, not a locked programme with countdown dates.
+
+### Files touched
+- `src/data/foundationAwardsProgramme.js`
+- `src/data/articles.js`
+- (sibling) `la-frontend/src/content/foundationAwardsProgramme.js`
+
+### Follow-ups / blockers
+- None for this copy slice.
+
+### Links
+- https://landscapearchive.org/awards
+- https://f6c817e7.landscapearchive-org.pages.dev/awards
+
+---
+
+## 2026-07-16 - Org Pages deploy (undeployed tree)
+
+**Scope:** pages-deploy, foundation
+**Status:** done
+
+### Did
+- Gated `npm run deploy` blocked on network `fetch failed` for GET `/` (+ related). Built + `deploy:unsafe`; first wrangler upload timed out; retry succeeded.
+- Preview `ce722436`; production `landscapearchive.org`. Ships local Foundation copy/rule/pages work in tree. No commit.
+
+### Why
+- Founder deploy ask for Foundation current state.
+
+### Files touched
+- (deploy only; tree already dirty)
+
+### Follow-ups / blockers
+- Smoke network flakes on prod GET `/` � recheck when CF connectivity steadier.
+
+### Links
+- https://ce722436.landscapearchive-org.pages.dev
+- https://landscapearchive.org/
+## 2026-07-16 - Gate Field Notes full text behind sign-in
+
+**Scope:** field-notes, foundation-auth, pages-deploy
+**Status:** done
+
+### Did
+- Mapped public vs gated Foundation surfaces; left dictionary / validator / Evidence Checker / open packs / charter / awards public (CC BY-NC-ND open-reference posture).
+- Implemented Field Notes preview→sign-in: guests get title, dek, short excerpt + Sign in CTA; signed-in members load full essay + Next Steps client-side (no full-body SSR for anonymous HTML).
+- Allowed `/articles` and `/articles/:slug` as Foundation session handoff paths (org `memberAccess.js` + Archive `foundationOrgAccess.js`) so return-to-essay works after `/sign-in`.
+- Public `/field-notes.json` now ships preview-only (v2) with a single Preview section for Ad Studio.
+- Soft dictionary link on the gate (grammar stays public). Smoke check `field-notes-preview-gate` added.
+- Deployed org Pages (`3fc4a33f`). Archive handoff twin (`3a116110`). Preview-gate smoke green on live. No Hub download flags. No Flux. No commit.
+
+### Why
+- Founder asked to gate Field Notes / instructional depth that “gives things away,” while preserving an open-standard credibility story. Gating the dictionary would contradict the free-grammar posture and look like a standards paywall — left public pending any explicit reverse decision.
+
+### Files touched
+- `src/pages/articles/[slug].astro`, `articles.astro`, `field-notes.json.js`, `sign-in.astro`
+- `src/components/FieldNotesMemberBody.astro`
+- `src/data/articles.js`, `memberAccess.js`
+- `scripts/smoke-org.mjs`, `docs/ORG_SIGN_IN_HANDOFF.md`, `docs/CHANGELOG.md`
+- Archive twin: `la-frontend/functions/_lib/foundationOrgAccess.js`, `src/config/foundationOrgAccess.js`
+
+### Follow-ups / blockers
+- Honest ceiling: full essay still lives in a signed-in-loaded JS chunk (`/_astro/articles.*.js`), not in article HTML — not DRM.
+- Optional later: gate Adopt deep instructional packs only if founder still wants; leave grammar public.
+
+### Links
+- https://landscapearchive.org/articles
+- https://landscapearchive.org/articles/four-things-land-art-technology-data
+- https://3fc4a33f.landscapearchive-org.pages.dev
+- https://schema.landscapearchive.org/dictionary
+
+---
+
+
+### Did
+- Rewrote shared `FIELD_NOTES_NEXT_STEPS` (all 6 published Field Notes) to understated factual pointers: lead with Studio Pilot Kit, quiet Archive for-studios link, Contact — no sales opener or membership/pathway pitch.
+- Deployed org Pages (`a8abae83`). Smoke 12/12. No Hub download flags. No Flux. No commit. Did not touch recent-updates (membership card already dropped).
+
+### Why
+- Founder feedback: Next Steps read as commercial soft-sell; keep the section and apex/studio links but editorial, not promo.
+
+### Files touched
+- `src/data/articles.js`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- None for org; apex sibling membership-card mirror can land independently.
+
+### Links
+- https://landscapearchive.org/articles
+- https://landscapearchive.org/adopt#studio-pilot
+- https://landscapearchive.com.au/for-studios
+
+---
+
+## 2026-07-16 - Drop Archive public membership What’s new card
+
+**Scope:** recent-updates, pages-deploy
+**Status:** done
+
+### Did
+- Removed “Archive public membership open” (2026-07-29) from `src/data/recentPublicUpdates.js`.
+- Deployed org Pages (`231311a4`) so live `/recent-updates.json` no longer lists it (15 items; card absent). No Hub download flags. No Flux. No commit.
+
+### Why
+- Founder ask: pull that self-serve membership / Hub waitlist / Store card from public What’s new.
+
+### Files touched
+- `src/data/recentPublicUpdates.js`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Sibling apex fallback removed and Pages redeployed (`462b1700`).
+
+### Links
+- https://landscapearchive.org/recent-updates.json
+
+---
+
+## 2026-07-16 - Public tone: defensiveness, passive-aggression, and sarcasm cut
+
+**Scope:** awards, field-notes, adopt, industry-practice, governance, marketing-copy, pages-deploy
+**Status:** done
+
+### Did
+- Cut defensive, passive-aggressive, and sarcastic public copy (soft-launch morality plays, wry digs at institutes/vendors/Hub, smart-arse Field Notes asides).
+- Awards: dominant DRAFT FRAMEWORK banner; streams A–D (no Distinguished Practitioner); future tense; consultation CTAs.
+- Field Notes: shared **Next Steps** on all 6 published articles → `https://landscapearchive.com.au/for-studios`.
+- Deployed Pages (`61f80262`, production custom domain). Smoke home GET flaked from agent network → `SKIP_ORG_SMOKES=1` used once after 10/11 secondary checks passed. No Hub download flags. No Flux. No commit.
+
+### Why
+- Founder ask: calm professional confidence — status facts without attitude, eye-rolls, or “we’re smarter than the field.”
+
+### Files touched
+- `src/data/{foundationAwardsProgramme,articles,adoptContent,topicPages,governanceContent,recentPublicUpdates,foundationWing,homeContent,purposeContent}.js`
+- `src/pages/[topic].astro`, `articles/[slug].astro`, `field-notes.json.js`, `propose-term.astro`, `directors/apply.astro`, `founding-charter.astro`
+- `src/components/{DirectorApplicationForm,DraftConsultationForm,TermProposalForm,VolunteerApplicationForm}.astro`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Optional: regenerate Awards Instagram carousel (DP removed from programme data).
+- Sibling apex deploy: Contact prefills + awards SPA + recent-updates fallback.
+
+### Links
+- https://landscapearchive.org/awards
+- https://landscapearchive.org/articles
+- https://landscapearchive.com.au/for-studios
+
+---
+
+## 2026-07-16 - Professional copy rewrite (defensiveness cut + Awards streams + Field Notes Next Steps)
+
+**Scope:** awards, field-notes, adopt, industry-practice, governance, marketing-copy, pages-deploy
+**Status:** done
+
+### Did
+- Cut defensive “we are not X” walls across public Foundation surfaces (Adopt, Industry & practice, governance CTAs, Field Notes openings, recent-updates blurbs, draft-consultation / director forms) while keeping clear status on incorporation and draft programmes.
+- Awards: dominant draft-status banner; collapsed categories into 4 streams (A–D) with future-tense rubrics; removed Distinguished Practitioner; consultation CTA (feedback, not entries).
+- Field Notes: shared **Next Steps** on all 6 published articles linking apex `https://landscapearchive.com.au/for-studios` (+ Studio Pilot Kit + Archive contact).
+- Deployed Pages when ready. No Hub download flags flipped. No Flux. No commit.
+
+### Why
+- Founder ask: calm professional confidence instead of repeated disclaimer energy; awards structure exactly as specified; every Field Note should hand off to the apex studio pathway.
+
+### Files touched
+- `src/data/foundationAwardsProgramme.js`, `articles.js`, `adoptContent.js`, `topicPages.js`, `governanceContent.js`, `recentPublicUpdates.js`, `foundationWing.js`
+- `src/pages/[topic].astro`, `articles/[slug].astro`, `field-notes.json.js`, `founding-charter.astro`
+- `src/components/DirectorApplicationForm.astro`, `DraftConsultationForm.astro`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Optional: regenerate Awards Instagram carousel assets (category slide count changed; Distinguished Practitioner removed from programme data).
+- Apex mirror: `la-frontend` Contact prefills + awards SPA + recent-updates fallback updated in sibling deploy.
+
+### Links
+- https://landscapearchive.org/awards
+- https://landscapearchive.org/articles
+- https://landscapearchive.com.au/for-studios
+
+---
+
+**Scope:** links, media, adopt, recent-updates, pages-deploy
+**Status:** done
+
+### Did
+- Added `/examples/before-after-conformance/index.html` so directory links resolve
+  (was README-only → likely 404).
+- Adopt “capability grant” CTA → public schema dictionary (was auth-walled
+  Archive `/foundation/capability-grant`).
+- Hid `/media` (and events) from public nav + sitemap until press kit ships;
+  Contact press route → Archive form + How to cite.
+- Rewrote 29 Jul What’s new blurb (removed Authenticode ops leak).
+
+### Why
+- Founder ask: ensure .org links work; placeholders were leaking into nav.
+
+### Files touched
+- `public/examples/before-after-conformance/index.html`
+- `src/data/{adoptContent,site,contactContent,recentPublicUpdates}.js`
+- `src/components/{SiteHeader,SiteFooter}.astro`
+- `astro.config.mjs`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Ship thin Media kit or keep /media orphaned until ready
+- Live-check schema portal deep links before launch week
+
+### Links
+- https://landscapearchive.org/examples/before-after-conformance/
+- https://landscapearchive.org/adopt
+
+---
+
+**Scope:** studio-pilot, industry-practice, soft-launch, pages-deploy
+**Status:** done
+
+### Did
+- Added `/adopt#studio-pilot-outreach`: 3–5 cohort tracker + invite email (open reference only; no Hub/Vault pitch).
+- Linked from industry-practice learning modules + studios section; recent-updates row; smoke checks outreach anchor.
+- Soft-launch honesty retained. Deployed with Pages when ready. No commit. No Flux.
+
+### Why
+- Industry tools roadmap I-1 — measurable studio outreach without new product surface.
+
+### Files touched
+- `src/data/adoptContent.js`
+- `src/data/topicPages.js`
+- `src/data/recentPublicUpdates.js`
+- `scripts/smoke-org.mjs`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Founder fills named studios and sends invites.
+- Optional apex recent-updates sync after deploy.
+
+### Links
+- Live: https://landscapearchive.org/adopt#studio-pilot-outreach
+
+---
+## 2026-07-13 - RFQ checklist (Industry & practice I-2)
+
+**Scope:** industry-practice, adopt, soft-launch, pages-deploy
+**Status:** done
+
+### Did
+- Added `/industry-practice#rfq-checklist`: printable procurement / RFQ one-pager (copy-paste) pairing Evidence Checker + validator + published procurement sentence.
+- Linked from practice path, learning modules, Studio Pilot Kit; recent-updates row; smoke looks for RFQ checklist.
+- Soft-launch honesty retained (interim Foundation, not ISO / accreditation). Deployed Pages. No commit. No Flux.
+
+### Why
+- Industry tools roadmap I-2 thin slice — Evidence Checker → procurement one-pager without new product surface.
+
+### Files touched
+- `src/data/topicPages.js`
+- `src/data/adoptContent.js`
+- `src/data/recentPublicUpdates.js`
+- `scripts/smoke-org.mjs`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Optional apex recent-updates sync after deploy.
+
+### Links
+- Live: https://landscapearchive.org/industry-practice#rfq-checklist
+- Studio Pilot: https://landscapearchive.org/adopt#studio-pilot
+
+---
+## 2026-07-13 - Practice copy: remove snark, academic tone
+
+**Scope:** industry-practice, adopt, soft-launch, pages-deploy
+**Status:** done
+
+### Did
+- Rewrote `/industry-practice` (Practice nav) copy to Foundation academic tone: removed “logo on a slide deck”, product-tour / essay-list digs, and stacked sales-negation phrasing.
+- Matched adoption-ladder + Studio Pilot Kit lines on `/adopt`; calmed practice founding-outreach email subject.
+- Soft-launch honesty retained (interim Foundation, not ISO, empty modules OK, dictionary free). Deployed Pages. No commit. No Flux.
+
+### Why
+- Founder ask: Practice section must read as precise, citeable Foundation prose — no passive-aggressive vendor or consultancy dunks.
+
+### Files touched
+- `src/data/topicPages.js`
+- `src/data/adoptContent.js`
+- `src/data/foundingAlliancePitch.js`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- None for this copy pass.
+
+### Links
+- Live: https://landscapearchive.org/industry-practice
+- Adopt ladder: https://landscapearchive.org/adopt#adoption-ladder
+- Deploy preview: https://5f6e3f67.landscapearchive-org.pages.dev/industry-practice
+
+---
+
+**Scope:** industry-practice, education, soft-launch, pages-deploy
+**Status:** done
+
+### Did
+- Added `/industry-practice#in-plain-language`: scannable plain-language blocks for dictionary, terms, schema pack, Evidence Checker/validator, free grammar vs paid fill, and next steps.
+- Linked from practice path, Studio Pilot Kit, registry quickstart, org homepage Specification, footer, and recent updates.
+- Soft-launch honesty preserved (interim Foundation, not ISO; empty modules OK; no invented keys). Deployed Pages. No commit. No Flux.
+
+### Why
+- Founder YES: user-friendly explainer for LAs / students / procurement — Foundation education path, not apex Hub dump; public copy says “plain language”, not “dumbed down”.
+
+### Files touched
+- `src/data/topicPages.js`
+- `src/data/adoptContent.js`
+- `src/pages/registry.astro`
+- `src/components/SiteFooter.astro`
+- `src/data/homeContent.js`
+- `src/data/recentPublicUpdates.js`
+- `scripts/smoke-org.mjs`
+- `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`
+- `docs/CHANGELOG.md`
+- Paired: `la-frontend/federation/portal/dictionary.html` (portal notice + CTA)
+
+### Follow-ups / blockers
+- Schema portal deploy picks up dictionary.html notice.
+- Apex already deep-links Industry & practice; optional dedicated “plain language” footer link later.
+
+### Links
+- Live: https://landscapearchive.org/industry-practice#in-plain-language
+- Studio Pilot: https://landscapearchive.org/adopt#studio-pilot
+- Dictionary: https://schema.landscapearchive.org/dictionary
+
+---
+
+## 2026-07-13 - Dictionary term proposals (Foundation form)
+
+**Scope:** propose-term, dictionary, soft-launch, pages-deploy
+**Status:** done
+
+### Did
+- Added `/propose-term` with structured TermProposalForm (change type, term key/id, rationale, evidence URLs).
+- Linked from contact routes, footer, and recent public updates; soft-launch honesty (steward review, no auto-merge, no GitHub required).
+- Paired with la-frontend `POST /api/foundation/term-proposal` + schema portal CTA rewiring.
+
+### Why
+- GitHub Issues path remains blocked; practitioners need a Foundation-native proposal channel.
+
+### Files touched
+- `src/pages/propose-term.astro`
+- `src/components/TermProposalForm.astro`
+- `src/data/contactContent.js`, `foundationWing.js`, `memberAccess.js`, `recentPublicUpdates.js`
+- `src/components/SiteFooter.astro`
+- `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Deploy with paired la-frontend Pages (API) + federation schema portal.
+- Optional Turnstile when secrets ready.
+
+### Links
+- https://landscapearchive.org/propose-term
+- https://schema.landscapearchive.org/dictionary
+
+---
+
+### Did
+- Expanded `/industry-practice` into education path: dictionary → Studio Pilot → Evidence Checker → draft consultation; free grammar / paid fill honesty; three thin learning modules.
+- Dictionary gravity: homepage Specification + Commercial actions, footer Open field dictionary, Studio Pilot citation loop + copy-paste brief.
+- Recent updates title refreshed; smoke + FOUR_DEPLOYMENTS criteria tightened.
+- Deployed Pages. No commit. No Flux.
+
+### Why
+- Founder YES on Top 5 from landscape-data future-options memo; Foundation owns public grammar/education.
+
+### Files touched
+- `src/data/topicPages.js`
+- `src/data/homeContent.js`
+- `src/data/adoptContent.js`
+- `src/data/recentPublicUpdates.js`
+- `src/components/SiteFooter.astro`
+- `scripts/smoke-org.mjs`
+- `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Apex mirror: sibling la-frontend sync recent-updates after apex deploy if needed.
+
+### Links
+- Live: https://landscapearchive.org/industry-practice
+- Studio Pilot: https://landscapearchive.org/adopt#studio-pilot
+- Dictionary: https://schema.landscapearchive.org/dictionary
+
+---
+
+## 2026-07-13 - Industry & practice brief
+
+**Scope:** industry-practice, education, soft-launch, pages-deploy
+**Status:** done
+
+### Did
+- Shipped `/industry-practice` topic page (nav label **Practice**): education-adjacent brief for studios/universities linking Studio Pilot Kit, Adopt, field registry, Evidence Checker, schema validator.
+- Soft-launch honesty: interim Foundation, no accreditation/ISO claims, no Hub ops / Workbench / pricing / installer language.
+- Wired footer Open standard link, homepage Specification actions, Recent updates row; extended `smoke:org` + FOUR_DEPLOYMENTS checklist.
+- Deployed Pages (`SKIP_ORG_SMOKES=1` for chicken-egg new feed title; post-deploy smoke **11/11**). No commit. No Flux.
+
+### Why
+- Founder asked for Education on org; thin practice landing advances Studio Pilot distribution without overbuilding courses or leaking product ops.
+
+### Files touched
+- `src/data/topicPages.js`
+- `src/data/site.js`
+- `src/data/homeContent.js`
+- `src/data/recentPublicUpdates.js`
+- `src/components/SiteFooter.astro`
+- `scripts/smoke-org.mjs`
+- `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Founder memo lives in sibling `la-frontend/docs/LANDSCAPE_DATA_FUTURE_OPTIONS.md`.
+
+### Links
+- Live: https://landscapearchive.org/industry-practice
+- Deploy: https://02c109c6.landscapearchive-org.pages.dev/industry-practice
+- Studio Pilot: https://landscapearchive.org/adopt#studio-pilot
+
+---
+
+## 2026-07-13 - Soft-launch smoke:org (pre-deploy)
+
+**Scope:** smoke, soft-launch, ops
+**Status:** done
+
+### Did
+- Added `npm run smoke:org` HTTP checks: home, `/adopt` Studio Pilot Kit, withdrawn Field Notes 301→/articles, `/recent-updates.json`, Evidence Checker, soft-launch honesty scan (no Hub ops / DocuSign / Workbench leaks).
+- Gated `npm run deploy` via `scripts/deploy-org-gated.mjs` (escape: `SKIP_ORG_SMOKES=1` or `deploy:unsafe`).
+- Updated `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`. Ran smoke **9/9**. No Pages deploy (scripts/docs only). No commit. No Flux.
+
+### Why
+- Soft-launch audit quick win: cheap pre-deploy probe for Foundation org without founder secrets.
+
+### Files touched
+- `scripts/smoke-org.mjs`
+- `scripts/deploy-org-gated.mjs`
+- `package.json`
+- `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- None.
+
+### Links
+- Live smoke base: https://landscapearchive.org/
+
+---
+
+## 2026-07-13 - Studio Pilot Kit on /adopt
+
+**Scope:** adopt, studio-pilot, recent-updates, pages-deploy
+**Status:** done
+
+### Did
+- Shipped Studio Pilot Kit as `/adopt#studio-pilot` (not a separate `/practice/` route — Adopt already owns procurement + validator path).
+- Copy-paste studio brief + three core links (schema portal validator, Evidence Checker, procurement sentence); gaps → draft consultation; optional before/after fixtures pointer.
+- Soft-launch honesty: interim Foundation, open reference only, empty modules OK, no Hub/Vault/Workbench marketing.
+- Wired discoverability: adopt intro CTA + TOC, footer Open standard link, downloads index entry, Recent updates one-liner.
+- Deployed landscapearchive-org Pages. No commit. No Flux.
+
+### Why
+- Founder YES to Studio Pilot Kit from soft-launch advisory — practice-facing handout without inventing registry keys or republishing withdrawn Field Notes.
+
+### Files touched
+- `src/data/adoptContent.js`
+- `src/components/DocsSection.astro`
+- `src/pages/adopt.astro`
+- `src/components/SiteFooter.astro`
+- `src/data/foundationDownloads.js`
+- `src/data/recentPublicUpdates.js`
+- `public/examples/before-after-conformance/README.md`
+- `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Apex recent-updates mirror picks up Studio Pilot Kit row via `/recent-updates.json` on next fetch.
+
+### Links
+- Live: https://landscapearchive.org/adopt#studio-pilot
+- Deploy: https://df6fd844.landscapearchive-org.pages.dev/adopt#studio-pilot
+
+---
+
+## 2026-07-13 - Withdraw two latest Field Notes
+
+**Scope:** field-notes, recent-updates, pages-deploy
+**Status:** done
+
+### Did
+- Removed published Field Notes *Before and after: a sanitised conformance case study* and *Messy landscape metadata and sustainability reporting appendix risk* from `articles.js`.
+- Dropped matching homepage Recent updates rows; LinkedIn marketing copy now points at IFRS/AASB crosswalks only.
+- 301 redirects from withdrawn slugs → `/articles`; updated soft-launch smoke checklist.
+- Deployed landscapearchive-org Pages.
+
+### Why
+- Founder asked to remove the two latest Field Notes from landscapearchive.org.
+
+### Files touched
+- `src/data/articles.js`
+- `src/data/recentPublicUpdates.js`
+- `docs/marketing/IFRS_S2_COMPLIANCE_PAIN_LINKEDIN.md`
+- `public/docs/marketing/IFRS_S2_COMPLIANCE_PAIN_LINKEDIN.md`
+- `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`
+- `public/_redirects`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Example artefacts under `public/examples/before-after-conformance/` left in place (not linked from Field Notes index).
+- Apex recent-updates mirror refreshes from org `/recent-updates.json` on next fetch.
+
+### Links
+- Deploy: https://4a3ecb6d.landscapearchive-org.pages.dev
+- https://landscapearchive.org/articles
+
+---
+
+
+**Scope:** field-notes, governance, volunteers, crosswalks, outreach, pages-deploy
+**Status:** done
+
+### Did
+- Draft consultation Trojan Horse: outreach scripts (`docs/outreach/DRAFT_CONSULTATION_OUTREACH.md`), governance `#draft-consultation` + awards CTA, on-site review-pack form on `/contact`, Evidence Checker / registry / shared-vocabulary links; founding-alliance seats framed as aspirational only.
+- Before/after conformance Field Note + sanitised messy excerpt + sample open TLA-185 JSON under `/examples/before-after-conformance/`.
+- Curated Technical reviewers / Registry contributors intake on `/volunteers` (tracks + skills); truth-tellers + footer wiring; VOLUNTEER_APPLICATIONS docs where submissions land (R2 + admin mail).
+- IFRS S2 / AASB sustainability-appendix Field Note + LinkedIn-ready markdown; public AASB S2 crosswalk page at `/crosswalk/aasb-s2` (mirrored markdown).
+- Recent updates strip + smoke checklist `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`. No commit. No Flux.
+
+### Why
+- Founder YES on all four operator moves from the soft-launch strategy brief: market outcomes + critique invites without leaking Hub/Vault/Workbench/DocuSign/pricing/pipeline internals.
+
+### Files touched
+- `docs/outreach/DRAFT_CONSULTATION_OUTREACH.md`
+- `docs/marketing/IFRS_S2_COMPLIANCE_PAIN_LINKEDIN.md`
+- `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`
+- `docs/VOLUNTEER_APPLICATIONS.md`
+- `docs/CHANGELOG.md`
+- `src/data/articles.js`, `governanceContent.js`, `topicPages.js`, `contactContent.js`, `recentPublicUpdates.js`, `foundationAwardsProgramme.js`, `foundationDownloads.js`, `adoptContent.js`
+- `src/components/DraftConsultationForm.astro`, `VolunteerApplicationForm.astro`, `SiteFooter.astro`
+- `src/pages/contact.astro`, `crosswalk/aasb-s2.astro`
+- `public/crosswalk/aasb-s2-tla185-mapping.md`
+- `public/examples/before-after-conformance/*`
+- `public/docs/marketing/IFRS_S2_COMPLIANCE_PAIN_LINKEDIN.md`
+
+### Follow-ups / blockers
+- Founder: fill outreach checklist with real contacts and send emails.
+- Requires paired **la-frontend** Pages deploy for contact enquiry type + volunteer track/skills API.
+- Partner Center / Vault PHP re-upload remain separate tracks.
+
+### Links
+- Deploy: https://018a7f82.landscapearchive-org.pages.dev
+- https://landscapearchive.org/governance#draft-consultation
+- https://landscapearchive.org/contact#draft-consultation
+- https://landscapearchive.org/articles/before-after-conformance-case-study
+- https://landscapearchive.org/volunteers#technical-reviewers
+- https://landscapearchive.org/articles/messy-metadata-sustainability-appendix-risk
+- https://landscapearchive.org/crosswalk/aasb-s2
+
+---
+
+**Scope:** field-notes, copy, pages-deploy
+**Status:** done
+
+### Did
+- Renamed essay title from *A shared vocabulary for a fragmented profession* → *A shared vocabulary for the profession* (card/H1 source in `articles.js`).
+- Essay body and dek left unchanged (dek already avoided “fragmented”).
+- Deployed `landscapearchive-org` **`7ccd775d`**. No commit. No la-frontend mirror of this title.
+
+### Why
+- Follow-up to dropping the Field Notes index fragmentation teaser: surface chrome should not still lead with “fragmented.”
+
+### Files touched
+- `src/data/articles.js`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- None.
+
+### Links
+- Deploy: https://7ccd775d.landscapearchive-org.pages.dev
+- Live: https://landscapearchive.org/articles/a-shared-vocabulary
+- Index: https://landscapearchive.org/articles
+
+---
+
+## 2026-07-12 - Field Notes index: drop fragmentation teaser
+
+**Scope:** field-notes, copy, pages-deploy
+**Status:** done
+
+### Did
+- Removed Field Notes index lead blurb that framed the profession as “fragmented” (redundant with H1 + essay deks).
+- Left Field Notes article bodies and titles untouched (including *A shared vocabulary for a fragmented profession*).
+- Deployed `landscapearchive-org` **`f22dc5ad`**. No commit.
+
+### Why
+- Soft-launch institutional tone: avoid marketing “fragmentation” framing on the index teaser; essay titles stay as published editorial.
+
+### Files touched
+- `src/pages/articles.astro`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- None.
+
+### Links
+- Deploy: https://f22dc5ad.landscapearchive-org.pages.dev
+- Live: https://landscapearchive.org/articles
+
+---
+
+## 2026-07-12 - Foundation site: institutional copy + motion cut
+
+**Scope:** foundation-chrome, copy, pages-deploy
+**Status:** done
+
+### Did
+- Disabled pixel mosaic chrome and portal entrance animations site-wide (solid header/footer; no ambient waves).
+- Tightened public copy on home, governance, purpose, charter, awards, contact, support, truth-tellers; removed promo eyebrows / hero stats / “Five standards, one argument” framing.
+- Shortened draft banner; Field Notes / articles untouched.
+- Deployed `landscapearchive-org` **`d7e141b1`**. No commit.
+
+### Why
+- Soft-launch posture: fewer words, less marketing motion, more secure-institution tone without changing Field Notes editorial.
+
+### Files touched
+- `src/layouts/BaseLayout.astro`
+- `src/pages/index.astro`, `governance.astro`, `contact.astro`, `founding-charter.astro`, `support.astro`, `[topic].astro`
+- `src/data/homeContent.js`, `governanceContent.js`, `purposeContent.js`, `contactContent.js`, `foundingCharterContent.js`, `foundationAwardsProgramme.js`, `topicPages.js`, `site.js`, `foundationWing.js`
+- `src/components/RecentUpdatesStrip.astro`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Optional: further trim awards category `webBody` paragraphs if still long in carousel export.
+- Mirror draft-banner string already synced in `la-frontend/src/config/foundationWing.js` (needs separate frontend deploy if banner surfaces there).
+
+### Links
+- Deploy: https://d7e141b1.landscapearchive-org.pages.dev
+- Live: https://landscapearchive.org/
+
+---
+
+## 2026-07-12 - Private /vault gate → vault.landscapearchive.org
+
+**Scope:** vault-privacy, redirects, pages-deploy
+**Status:** done
+
+### Did
+- Added noindex `/vault` Astro redirect + `public/_redirects` for `/vault` and `/vault/*` → `https://vault.landscapearchive.org` (Access-gated SPA on `m-laririt-m`).
+- robots.txt Disallow `/vault`; `_headers` noindex + no-referrer; sitemap filter excludes `/vault`.
+- README notes Vault is not Foundation marketing and must not appear in public nav (`SITE_NAV_LINKS` unchanged — no Vault link).
+- Deployed `landscapearchive-org` **`902ff8fb`**. No commit.
+
+### Why
+- Soft-launch privacy: Foundation apex must not advertise Vault; path fallback exists for bookmarks only.
+
+### Files touched
+- `src/pages/vault.astro`
+- `public/_redirects`, `public/robots.txt`, `public/_headers`
+- `astro.config.mjs`, `README.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Founder still needs DNS CNAME + Access on `vault.landscapearchive.org` (see `../la-frontend/docs/VAULT_CLOUDFLARE_TUNNEL.md`).
+
+### Links
+- Deploy: https://902ff8fb.landscapearchive-org.pages.dev
+- Gate: https://landscapearchive.org/vault
+
+---
+
+
+**Scope:** foundation-docs, w3id
+**Status:** done
+
+### Did
+- Documented permanent-ID namespace `https://w3id.org/tlaf/` in `docs/FOUNDATION_CHARTER_AND_AWARDS.md` (scheme root `…/tlaf/185`); note that `/tla/` is Total Learning Architecture, not Foundation.
+
+### Why
+- Align Foundation charter brief with the dedicated `/tlaf/` w3id registration after #6338 rejection.
+
+### Files touched
+- `docs/FOUNDATION_CHARTER_AND_AWARDS.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- None on this site until w3id PR merges (IDs already documented as pending).
+
+### Links
+- Closed: https://github.com/perma-id/w3id.org/pull/6338 (superseded)
+- New: https://github.com/perma-id/w3id.org/pull/6348
+
+---
+
+## 2026-07-11 - Recent updates dates + four-things Field Note
+
+**Scope:** recent-updates, field-notes, cultural-pillars, deploy
+**Status:** done
+
+### Did
+- Backfilled ISO dates on `recentPublicUpdates.js` (day-level from changelog context); UI shows casual short form via `formatShortDate` (e.g. 11 Jul 2026); softened date typography (no uppercase tracking).
+- Published Field Note **Four things: land, art, technology, data** at `/articles/four-things-land-art-technology-data`; linked lightly to `/governance#cultural-pillars`.
+- Added the essay as the newest homepage / feed update (2026-07-11).
+
+### Why
+- Month-only “July 2026” labels were too coarse; day dates make the What’s new strip scannable. Pillars needed a short reflective public home beyond the governance table.
+
+### Files touched
+- `src/data/recentPublicUpdates.js`
+- `src/data/articles.js`
+- `src/components/RecentUpdatesStrip.astro`
+- `docs/marketing/FOUNDATION_PUBLIC_UPDATE_POSTS.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Apex fallback + date formatter redeployed separately on `m-laririt-m` (live mirror still via `/recent-updates.json`).
+
+### Links
+- https://landscapearchive.org/articles/four-things-land-art-technology-data
+- https://landscapearchive.org/recent-updates.json
+- https://landscapearchive.org/governance#cultural-pillars
+- Deploy: `986c6db6` → https://986c6db6.landscapearchive-org.pages.dev
+
+---
+
+## 2026-07-11 - Four cultural pillars on /governance
+
+**Scope:** governance, cultural-pillars, founding-charter, deploy
+**Status:** done
+
+### Did
+- Published the four cultural pillars (Land, Art, Technology, Data) with does / does not clarity on `/governance#cultural-pillars`, placed before the five Foundation Standards.
+- Included product-as-instrument vs Foundation-as-charter framing; cross-linked from `/founding-charter` consultation respond section.
+- Updated founder brief pointers so live `/governance` is the public home for the cultural frame (awards left alone).
+
+### Why
+- Pillars are charter/identity, not awards recognition; `/governance` already hosts Standards and stewardship voice, so a dedicated subsection there beats a new URL or forcing `/awards`.
+
+### Files touched
+- `src/data/governanceContent.js`
+- `src/pages/governance.astro`
+- `src/data/foundingCharterContent.js`
+- `docs/FOUNDATION_CHARTER_AND_AWARDS.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- None for this publish; awards strand summary remains optional when strands are adopted.
+
+### Links
+- https://landscapearchive.org/governance#cultural-pillars
+- https://landscapearchive.org/founding-charter
+- Deploy: https://ad753a4f.landscapearchive-org.pages.dev
+
+---
+
+## 2026-07-11 - Foundation charter + awards brief (one-pager)
+
+**Scope:** foundation-charter, awards, docs
+**Status:** done
+
+### Did
+- Added founder-facing one-pager `docs/FOUNDATION_CHARTER_AND_AWARDS.md`: public trust layer (art × land × technology × data), product-as-instrument vs Foundation-as-charter, four cultural pillars, awards strands (Evidence / Instrument / Form / Offset) with anti-silo inclusion guidance.
+- Aligned explicitly with live `/founding-charter`, `/governance` (five Standards), and `/awards` (detailed categories in preparation); no public UI change.
+
+### Why
+- Founder needed a scannable cultural charter + awards brief that sits above legal draft constitution and the long awards category list, without contradicting published Foundation surfaces.
+
+### Files touched
+- `docs/FOUNDATION_CHARTER_AND_AWARDS.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Optional: when strands are adopted, fold a short public summary into `/awards` programme governance.
+- Founder may rename strands before any public copy lands.
+
+### Links
+- Doc: `docs/FOUNDATION_CHARTER_AND_AWARDS.md`
+- Live: https://landscapearchive.org/awards · https://landscapearchive.org/founding-charter · https://landscapearchive.org/governance
+
+---
+
+## 2026-07-11 - Public `/recent-updates.json` for apex mirror
+
+**Scope:** recent-updates, marketing-feed, deploy
+**Status:** done
+
+### Did
+- Added `/recent-updates.json` from `src/data/recentPublicUpdates.js` (absolute URLs) so apex marketing can mirror the homepage strip without duplicating cards.
+- Documented one-place edit path in `FOUNDATION_PUBLIC_UPDATE_POSTS.md`.
+
+### Why
+- Apex was hand-maintaining a drifted copy; SoT stays on .org.
+
+### Files touched
+- `src/pages/recent-updates.json.js`
+- `src/data/recentPublicUpdates.js`
+- `public/_headers`
+- `docs/marketing/FOUNDATION_PUBLIC_UPDATE_POSTS.md`
+
+### Links
+- Feed: https://landscapearchive.org/recent-updates.json
+- Deploy: https://abbbebd6.landscapearchive-org.pages.dev
+
+---
+
+## 2026-07-11 - Foundation downloads + Evidence Checker
+
+**Scope:** foundation-downloads, evidence-checker, landscapearchive-org, deploy
+**Status:** done
+
+### Did
+- Added footer **Foundation tools** column (labelled *Foundation tools — not Landscape Archive Hub*) with open artefacts only: TLA-185 schema pack, field registry preview JSON, open-pack zip, adopt kit, charter, UK crosswalk, Evidence Checker, and `/downloads` index.
+- Published `/downloads` (open artefacts index) and `/evidence-checker` (client-side inspector for TLA-185 JSON and Archive Audit Pack `.tlaa`).
+- Inspector refuses commercial Landscape Archive Package (`.tla` / `landscape-archive.tla.json` / `.rfa`) and encrypted `.lapkg` (no decrypt); files stay in-browser.
+- Bundled `public/foundation-wing/tla185-open-pack.zip` (preview JSON + crosswalk MDs + draft constitution).
+- Homepage “What’s new” item; README deploy notes for downloads/checker.
+
+### Why
+- Auditors and adopters need a clear Foundation-side download surface and a lightweight open-package inspector without conflating Hub / commercial `.tla` delivery.
+
+### Files touched
+- `src/data/foundationDownloads.js`
+- `src/components/SiteFooter.astro`
+- `src/pages/downloads.astro`
+- `src/pages/evidence-checker.astro`
+- `public/scripts/evidence-checker.js`
+- `public/foundation-wing/tla185-open-pack.zip`
+- `src/data/recentPublicUpdates.js`
+- `public/_headers`
+- `README.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Optional: wire schema-portal deep-validate handoff from checker results.
+- Hard-refresh landscapearchive.org after deploy so footer + `/scripts/evidence-checker.js` are not sticky.
+
+### Links
+- https://landscapearchive.org/downloads
+- https://landscapearchive.org/evidence-checker
+- Open pack: https://landscapearchive.org/foundation-wing/tla185-open-pack.zip
+- Deploy: https://1195d6af.landscapearchive-org.pages.dev (`npm run deploy`)
+
+---
+## 2026-07-09 - Director EOI globe: black dots on white
+
+**Scope:** directors, homepage, deploy
+**Status:** done
+
+### Did
+- Restored white media panel (`#ffffff`) on the homepage EOI popup.
+- Confirmed `/images/director-invite-globe-dots.png` is black dots + alpha on transparent; render without `filter: invert(1)` so the globe reads black-on-white.
+- Kept the shorter copy (no descriptive lead under “Help set the standard”).
+- Updated `docs/DIRECTOR_APPLICATIONS.md` popup notes.
+
+### Why
+- Prior “black panel” pass misread the ask: the reference is black halftone dots on white, not light dots on a black panel.
+
+### Files touched
+- `src/components/DirectorEasterEgg.astro`
+- `docs/DIRECTOR_APPLICATIONS.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Hard-refresh `/`; clear `sessionStorage` key `la-director-invite-dismissed` if popup was dismissed this tab.
+
+### Links
+- Live: https://landscapearchive.org/
+- Form: https://landscapearchive.org/directors/apply
+- Org deploy: https://0b33e5e2.landscapearchive-org.pages.dev
+
+---
+## 2026-07-09 - Director EOI popup: less copy + black globe
+
+**Scope:** directors, homepage, eoi-copy, deploy
+**Status:** done
+
+### Did
+- Removed descriptive lead + Singapore italic aside under “Help set the standard” on the homepage EOI popup; kept eyebrow, heading, legal note, and CTAs.
+- Pointed `aria-describedby` at the legal note; tightened title→note spacing slightly.
+- Globe media panel: black background (`#000`); removed `filter: invert(1)` so `/images/director-invite-globe-dots.png` shows native light dots on black.
+- Updated `docs/DIRECTOR_APPLICATIONS.md` popup notes.
+
+### Why
+- Founder ask: less text under the heading, and the invite image should read black (not the inverted white-panel treatment).
+
+### Files touched
+- `src/components/DirectorEasterEgg.astro`
+- `docs/DIRECTOR_APPLICATIONS.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Hard-refresh `/`; clear `sessionStorage` key `la-director-invite-dismissed` if popup was dismissed this tab.
+
+### Links
+- Live: https://landscapearchive.org/
+- Form: https://landscapearchive.org/directors/apply
+- Org deploy: https://745ab212.landscapearchive-org.pages.dev
+
+---
+## 2026-07-09 - Director EOI legal framing + white globe panel
+
+**Scope:** directors, homepage, eoi-copy, deploy
+**Status:** done
+
+### Did
+- Reframed homepage popup + `/directors/apply` as founding board / director **expression of interest** (not appointment/job offer); kept not-yet-incorporated disclaimer; added About intended Foundation + privacy notice + clearer consents; CTAs “Apply to express interest” / “Submit expression of interest”.
+- White left panel on invite modal; `filter: invert(1)` on light-on-black globe asset so dark dots read on white.
+- Documented counsel-still-required in `docs/DIRECTOR_APPLICATIONS.md`; softened la-frontend API success/email copy to match EOI tone.
+
+### Why
+- Comms/product hygiene toward “as legal as possible” without claiming compliance; mockup asked for white globe panel.
+
+### Files touched
+- `src/components/DirectorEasterEgg.astro`
+- `src/components/DirectorApplicationForm.astro`
+- `src/pages/directors/apply.astro`
+- `docs/DIRECTOR_APPLICATIONS.md`
+- `docs/CHANGELOG.md`
+- (la-frontend) `functions/api/foundation/director-application.js`
+
+### Follow-ups / blockers
+- **Counsel review still required** before treating copy as final.
+- Hard-refresh `/`; clear `sessionStorage` key `la-director-invite-dismissed` if popup was dismissed this tab.
+
+### Links
+- Live: https://landscapearchive.org/
+- Form: https://landscapearchive.org/directors/apply
+- Org deploy: https://38d38ac1.landscapearchive-org.pages.dev
+
+---
+## 2026-07-09 - Director invite horizontal mockup layout
+
+**Scope:** directors, homepage, deploy
+**Status:** done
+
+### Did
+- Restructured homepage director invitation to a wider horizontal split: static dots-globe left, invitation copy/actions right (stacks on mobile).
+- Copied globe asset to `public/images/director-invite-globe-dots.png`.
+- Added Share control (Web Share API + clipboard fallback) for `/directors/apply` on the current origin.
+- Kept Singapore italic aside, honesty disclaimer, Apply / Not now, and `sessionStorage` dismiss key.
+
+### Why
+- Match founder mockup: longer modal with side graphic, plus a share path for the apply URL.
+
+### Files touched
+- `src/components/DirectorEasterEgg.astro`
+- `public/images/director-invite-globe-dots.png`
+- `docs/DIRECTOR_APPLICATIONS.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Hard-refresh `/` to see the new layout; clear `sessionStorage` key `la-director-invite-dismissed` if the popup was already dismissed this tab.
+
+### Links
+- Live: https://landscapearchive.org/
+- Asset: `/images/director-invite-globe-dots.png`
+- Deploy: https://87a0b46b.landscapearchive-org.pages.dev
+
+---
+## 2026-07-09 - Director invite copy: Singapore aside
+
+**Scope:** directors, homepage, deploy
+**Status:** done
+
+### Did
+- Added smaller italic second line under London/DC invite copy: “or anywhere else, perhaps Singapore.”
+- Updated `docs/DIRECTOR_APPLICATIONS.md` popup copy note; deployed org Pages.
+
+### Why
+- Soften geography of the invitation without diluting the London/DC lead line.
+
+### Files touched
+- `src/components/DirectorEasterEgg.astro`
+- `docs/DIRECTOR_APPLICATIONS.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- None.
+
+### Links
+- Live: https://landscapearchive.org/
+- Deploy: https://b2035969.landscapearchive-org.pages.dev
+
+---
+## 2026-07-09 - Director invitation popup + apply form
+
+**Scope:** directors, foundation-auth, intake, homepage, deploy
+**Status:** done
+
+### Did
+- Replaced subtle homepage wink with a clear centered modal: London/DC invitation copy, Apply CTA, Not now / Escape / backdrop dismiss (sessionStorage).
+- Full director application at `/directors/apply` (Archive sign-in gate + structured fields).
+- Documented pipeline in `docs/DIRECTOR_APPLICATIONS.md`; org-access handoff includes `/directors/apply`.
+- Deployed landscapearchive-org Pages.
+
+### Why
+- Invitation must be noticeable on the Foundation homepage while staying on-brand and legally honest (apply ≠ appointment).
+
+### Files touched
+- `src/components/DirectorEasterEgg.astro`
+- `src/components/DirectorApplicationForm.astro`
+- `src/pages/directors/apply.astro`
+- `src/pages/index.astro`
+- `src/data/memberAccess.js`
+- `docs/DIRECTOR_APPLICATIONS.md`
+- `docs/ORG_SIGN_IN_HANDOFF.md`
+- `docs/CHANGELOG.md`
+
+### Follow-ups / blockers
+- Requires la-frontend deploy of `POST /api/foundation/director-application` + handoff path `/directors/apply` before submissions succeed in production.
+
+### Links
+- Form: https://landscapearchive.org/directors/apply
+- Doc: docs/DIRECTOR_APPLICATIONS.md
+- Deploy: https://2279665e.landscapearchive-org.pages.dev
+
+---
+## 2026-07-09 - Standard Share + Field Notes JSON feed
 
 **Scope:** section-share, field-notes, marketing-feed, deploy
 **Status:** done

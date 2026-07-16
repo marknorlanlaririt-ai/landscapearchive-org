@@ -26,15 +26,37 @@
 /events.html
   X-Robots-Tag: noindex, nofollow
 
+# Private Vault redirect gate — never index; no referrer leak to Vault host.
+/vault
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: no-referrer
+  Cache-Control: private, no-store
+
+/vault/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: no-referrer
+  Cache-Control: private, no-store
+
 # Hashed Astro assets are immutable
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Public marketing feeds (apex mirror + Ad Studio)
+/field-notes.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+
+/recent-updates.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
 
 # Registry data can be cached briefly
 /foundation-wing/*
   Cache-Control: public, max-age=3600
 
 /scripts/*
+  Cache-Control: public, max-age=3600
+
+/foundation-wing/tla185-open-pack.zip
+  Content-Type: application/zip
   Cache-Control: public, max-age=3600
 
 /og-foundation.png

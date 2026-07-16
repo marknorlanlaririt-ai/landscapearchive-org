@@ -92,9 +92,13 @@ Set-Cookie headers from WordPress are forwarded so the member also has an Archiv
 |------|-----|
 | `/sign-in` | Session bootstrap |
 | `/volunteers` | Volunteer application (`#apply` preserved via `return`) |
+| `/directors/apply` | Director application |
 | `/events` | Member-only working sessions |
+| `/articles` / `/articles/:slug` | Field Notes handoff — public preview; full essay after sign-in |
 
 Member-only pages (`/events`) hide from navigation for guests and redirect to `/governance` when the org-access token is missing or expired.
+
+Field Notes stay **publicly indexable as teasers** (title, dek, short excerpt + Sign in CTA). Full section HTML is not SSR’d for guests. Dictionary, schema portal validator, Evidence Checker, and open download packs remain ungated.
 
 ---
 
@@ -115,6 +119,8 @@ Member-only pages (`/events`) hide from navigation for guests and redirect to `/
 2. **landscapearchive-org** — ship `/sign-in` form UI (`npm run deploy`)
 
 Volunteer apply flow: `/volunteers#apply` → **Sign in to apply** → `/sign-in?return=/volunteers%23apply` → API → return with token → form unlocks.
+
+Director apply flow: homepage easter egg → `/directors/apply` → **Sign in to apply** → `/sign-in?return=/directors/apply` → API → return with token → form unlocks.
 
 ---
 

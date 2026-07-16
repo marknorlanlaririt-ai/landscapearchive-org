@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TermProposalForm from '../components/TermProposalForm.astro'
+import { SCHEMA_PORTAL_URL } from '../data/site.js'
+---
+
+<BaseLayout
+  title="Propose a dictionary term"
+  description="Propose a change to the TLA-185 Landscape Data Dictionary — steward review; proposals are not auto-merged into the field registry."
+  path="/propose-term"
+>
+  <div class="page propose-term">
+    <div class="propose-term__intro prose">
+      <h1>Dictionary term proposals</h1>
+      <p>
+        Practitioners, studios, and technical reviewers can propose dictionary changes here.
+        Stewards triage every proposal; accepted changes are published only after review.
+        A GitHub account is not required while public repository access remains limited.
+      </p>
+      <p class="propose-term__links">
+        <a href={`${SCHEMA_PORTAL_URL}/dictionary`} rel="noopener" target="_blank">Browse the dictionary</a>
+        ·
+        <a href="/contact#draft-consultation">Draft consultation (schema pack)</a>
+        ·
+        <a href="/volunteers#technical-reviewers">Volunteer as a technical reviewer</a>
+      </p>
+    </div>
+
+    <TermProposalForm />
+  </div>
+</BaseLayout>
+
+<style>
+  .propose-term__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 0.5rem;
+  }
+
+  .propose-term__links {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  .propose-term__links a {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+</style>

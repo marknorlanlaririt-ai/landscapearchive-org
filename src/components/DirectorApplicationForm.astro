@@ -1,0 +1,698 @@
+---
+import {
+  ARCHIVE_DIRECTOR_APPLICATION_URL,
+  buildOrgSignInUrl,
+  DIRECTOR_APPLY_PATH
+} from '../data/memberAccess.js'
+import { ARCHIVE_ORIGIN } from '../data/site.js'
+
+const experienceOptions = Object.freeze([
+  { id: 'boards', label: 'Boards / trusteeship' },
+  { id: 'ngos', label: 'NGOs / charities' },
+  { id: 'policy', label: 'Policy / regulation' },
+  { id: 'landscape', label: 'Landscape architecture / practice' },
+  { id: 'ecology', label: 'Ecology / environmental science' },
+  { id: 'bim', label: 'BIM / digital twins' },
+  { id: 'open-data', label: 'Open data / open standards' },
+  { id: 'standards', label: 'Standards bodies / conformance' },
+  { id: 'academia', label: 'Academia / research' },
+  { id: 'public-sector', label: 'Public sector / procurement' }
+])
+
+const locationOptions = Object.freeze([
+  { id: 'london', label: 'London' },
+  { id: 'dc', label: 'Washington, DC' },
+  { id: 'elsewhere', label: 'Elsewhere' },
+  { id: 'remote', label: 'Remote / no preference' }
+])
+
+const timeOptions = Object.freeze([
+  { id: 'light', label: 'Light (a few hours per month)' },
+  { id: 'moderate', label: 'Moderate (about one day per month)' },
+  { id: 'substantial', label: 'Substantial (several days per month)' },
+  { id: 'flexible', label: 'Flexible / to be discussed' }
+])
+
+const signInUrl = buildOrgSignInUrl(DIRECTOR_APPLY_PATH)
+---
+
+<section id="apply" class="director-apply" aria-labelledby="director-apply-title">
+  <div class="director-apply__inner prose">
+    <p class="eyebrow">Expression of interest</p>
+    <h2 id="director-apply-title">Founding board / director expression of interest</h2>
+    <p class="director-apply__lead">
+      Use this form to express interest in a possible founding board / director role with the
+      Landscape Archive Foundation. Submissions are expressions of interest only — selection and
+      appointment follow incorporation and due diligence. A Landscape Archive account is required
+      to submit.
+    </p>
+
+    <aside class="director-apply__about" aria-labelledby="director-about-title">
+      <h3 id="director-about-title" class="director-apply__about-title">About the intended Foundation</h3>
+      <p>
+        The intended Foundation would steward open landscape metadata infrastructure — including a
+        public field dictionary and TLA-185-style interchange standards — so planting and site-context
+        data can move between tools without locking into a single vendor.
+      </p>
+      <p>
+        The legal vehicle is still to be determined with counsel (for example, an Australian company
+        limited by guarantee or another not-for-profit form under review). No registration number or
+        charity status is claimed here. London, Washington DC, and Singapore are regions of interest
+        for outreach — not existing boards or offices.
+      </p>
+    </aside>
+
+    <div class="director-apply__privacy-notice" role="note">
+      <h3 class="director-apply__privacy-title">Privacy notice</h3>
+      <p>
+        We collect the details you provide (identity, contact, professional background, and any
+        disclosures) solely to review expressions of interest and coordinate follow-up. Data is stored
+        in private cloud storage operated by The Landscape Archive Pty Ltd as interim implementation
+        partner, and may be shared with a small internal review group. We do not sell this information.
+        See the
+        <a href={`${ARCHIVE_ORIGIN}/legal?tab=privacy-policy`} rel="noopener">Privacy Policy</a>
+        on landscapearchive.com.au for retention and your contact rights. This notice is operational
+        guidance, not legal advice.
+      </p>
+    </div>
+
+    <div class="director-apply__gate" data-director-gate>
+      <h3 class="director-apply__gate-title">Sign in to express interest</h3>
+      <p class="director-apply__gate-lead">
+        Use your Landscape Archive account to submit an expression of interest.
+      </p>
+      <div class="director-apply__actions">
+        <a class="director-apply__primary" href={signInUrl}>Sign in to express interest</a>
+        <a class="director-apply__secondary" href={`${ARCHIVE_ORIGIN}/sign-up`} rel="noopener">Create account</a>
+      </div>
+    </div>
+
+    <form
+      class="director-apply__form"
+      data-director-form
+      data-api-url={ARCHIVE_DIRECTOR_APPLICATION_URL}
+      hidden
+    >
+      <fieldset class="director-apply__fieldset">
+        <legend>Identity</legend>
+
+        <label class="director-apply__field">
+          <span>Full name</span>
+          <input type="text" name="fullName" autocomplete="name" required />
+        </label>
+
+        <label class="director-apply__field">
+          <span>Preferred name <em>(optional)</em></span>
+          <input type="text" name="preferredName" autocomplete="nickname" />
+        </label>
+
+        <label class="director-apply__field">
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" inputmode="email" required readonly />
+          <small class="director-apply__hint">Must match your signed-in Landscape Archive account.</small>
+        </label>
+
+        <label class="director-apply__field">
+          <span>Phone <em>(optional)</em></span>
+          <input type="tel" name="phone" autocomplete="tel" inputmode="tel" />
+        </label>
+      </fieldset>
+
+      <fieldset class="director-apply__fieldset">
+        <legend>Location</legend>
+
+        <div class="director-apply__row">
+          <label class="director-apply__field">
+            <span>City</span>
+            <input type="text" name="city" autocomplete="address-level2" required />
+          </label>
+          <label class="director-apply__field">
+            <span>Country</span>
+            <input type="text" name="country" autocomplete="country-name" required />
+          </label>
+        </div>
+
+        <label class="director-apply__field">
+          <span>Location preference for Foundation work</span>
+          <select name="locationPreference" required>
+            <option value="">Select…</option>
+            {locationOptions.map((option) => (
+              <option value={option.id}>{option.label}</option>
+            ))}
+          </select>
+          <small class="director-apply__hint">
+            London, Washington DC, and Singapore are regions of interest for outreach — not existing boards.
+          </small>
+        </label>
+      </fieldset>
+
+      <fieldset class="director-apply__fieldset">
+        <legend>Professional background</legend>
+
+        <label class="director-apply__field">
+          <span>Current role</span>
+          <input type="text" name="currentRole" autocomplete="organization-title" required />
+        </label>
+
+        <label class="director-apply__field">
+          <span>Organisation</span>
+          <input type="text" name="organisation" autocomplete="organization" required />
+        </label>
+
+        <label class="director-apply__field">
+          <span>LinkedIn profile URL</span>
+          <input type="url" name="linkedin" inputmode="url" placeholder="https://…" />
+        </label>
+
+        <label class="director-apply__field">
+          <span>CV / resume URL</span>
+          <input type="url" name="cvUrl" inputmode="url" placeholder="https://…" />
+          <small class="director-apply__hint">Provide at least one of LinkedIn or a CV / resume link.</small>
+        </label>
+      </fieldset>
+
+      <fieldset class="director-apply__fieldset">
+        <legend>Motivation and experience</legend>
+
+        <label class="director-apply__field director-apply__field--message">
+          <span>Why the Foundation, open standards, and governance?</span>
+          <textarea name="whyFoundation" rows="6" maxlength="4000" required placeholder="What draws you to this work, and how would you help set the standard?"></textarea>
+        </label>
+
+        <div class="director-apply__checks-wrap">
+          <span class="director-apply__checks-label">Relevant experience areas</span>
+          <div class="director-apply__checks">
+            {experienceOptions.map((option) => (
+              <label class="director-apply__check">
+                <input type="checkbox" name="experienceAreas" value={option.id} />
+                <span>{option.label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <label class="director-apply__field director-apply__field--message">
+          <span>Relevant experience in detail</span>
+          <textarea name="relevantExperience" rows="6" maxlength="4000" required placeholder="Boards, NGOs, policy, landscape, ecology, BIM, open data, standards…"></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset class="director-apply__fieldset">
+        <legend>Availability and disclosures</legend>
+
+        <label class="director-apply__field">
+          <span>Expected time commitment</span>
+          <select name="timeCommitment" required>
+            <option value="">Select…</option>
+            {timeOptions.map((option) => (
+              <option value={option.id}>{option.label}</option>
+            ))}
+          </select>
+        </label>
+
+        <label class="director-apply__field">
+          <span>Availability notes <em>(optional)</em></span>
+          <input type="text" name="availabilityNotes" placeholder="e.g. evenings UK time · travel to DC twice a year" />
+        </label>
+
+        <label class="director-apply__field director-apply__field--message">
+          <span>Conflicts of interest / disclosures</span>
+          <textarea name="conflicts" rows="4" maxlength="2000" placeholder="Commercial interests, competing standards work, political office, or other matters we should know. Write “None” if none."></textarea>
+          <small class="director-apply__hint">Required for a complete expression of interest — enter “None” if you have nothing to disclose.</small>
+        </label>
+
+        <label class="director-apply__field director-apply__field--message">
+          <span>References <em>(optional)</em></span>
+          <textarea name="references" rows="3" maxlength="1600" placeholder="Name, relationship, and contact for one or two people who can speak to your governance or professional work."></textarea>
+        </label>
+      </fieldset>
+
+      <p class="director-apply__consent-intro">Please confirm each of the following before submitting:</p>
+
+      <label class="director-apply__consent">
+        <input type="checkbox" name="invitationUnderstood" value="yes" required />
+        <span>
+          I understand this is an expression of interest for a possible founding board / director role.
+          Submitting does not create employment, appointment, or any legal relationship, and does not
+          guarantee selection. Foundation incorporation remains in preparation.
+        </span>
+      </label>
+
+      <label class="director-apply__consent">
+        <input type="checkbox" name="accuracyDeclared" value="yes" required />
+        <span>I declare that the information in this expression of interest is accurate to the best of my knowledge.</span>
+      </label>
+
+      <label class="director-apply__consent">
+        <input type="checkbox" name="privacyAccepted" value="yes" required />
+        <span>
+          I consent to The Landscape Archive Pty Ltd (interim implementation partner for the intended
+          Foundation) storing and reviewing the personal details I submit, solely to assess this
+          expression of interest and follow up. I have read the privacy notice above and the
+          <a href={`${ARCHIVE_ORIGIN}/legal?tab=privacy-policy`} rel="noopener">Privacy Policy</a>
+          on landscapearchive.com.au.
+        </span>
+      </label>
+
+      <input class="director-apply__honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="director-apply__actions">
+        <button class="director-apply__primary" type="submit">Submit expression of interest</button>
+      </div>
+
+      <p class="director-apply__status" data-director-status hidden aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var ORG_ACCESS_STORAGE_KEY = 'la-foundation-org-access'
+    var gateEl = document.querySelector('[data-director-gate]')
+    var formEl = document.querySelector('[data-director-form]')
+    var statusEl = document.querySelector('[data-director-status]')
+
+    if (!gateEl || !formEl) {
+      return
+    }
+
+    function readStoredOrgAccess() {
+      try {
+        var raw = sessionStorage.getItem(ORG_ACCESS_STORAGE_KEY)
+        if (!raw) {
+          return null
+        }
+        var data = JSON.parse(raw)
+        if (!data || !data.token || !data.expiresAt || Number(data.expiresAt) <= Date.now()) {
+          return null
+        }
+        return data
+      } catch (error) {
+        return null
+      }
+    }
+
+    function readSignedInEmail() {
+      var stored = readStoredOrgAccess()
+      if (stored && stored.email) {
+        return String(stored.email).trim()
+      }
+
+      var emailEl = document.querySelector('[data-session-email]')
+      if (!emailEl) {
+        return ''
+      }
+
+      var text = String(emailEl.textContent || '').trim()
+      var match = text.match(/Signed in as\s+(.+)/i)
+      return match ? match[1].trim() : ''
+    }
+
+    function setDirectorApplyState(loggedIn) {
+      gateEl.hidden = loggedIn
+      formEl.hidden = !loggedIn
+
+      if (loggedIn) {
+        var emailInput = formEl.querySelector('input[name="email"]')
+        if (emailInput instanceof HTMLInputElement) {
+          emailInput.value = readSignedInEmail()
+        }
+      }
+    }
+
+    function syncDirectorApplyState() {
+      var loggedIn = document.documentElement.dataset.archiveLoggedIn === 'true' && Boolean(readStoredOrgAccess()?.token)
+      setDirectorApplyState(loggedIn)
+    }
+
+    syncDirectorApplyState()
+    window.setInterval(syncDirectorApplyState, 1500)
+
+    formEl.addEventListener('submit', async function (event) {
+      event.preventDefault()
+
+      var apiUrl = formEl.getAttribute('data-api-url') || ''
+      var stored = readStoredOrgAccess()
+      if (!apiUrl || !stored || !stored.token) {
+        if (statusEl instanceof HTMLElement) {
+          statusEl.hidden = false
+          statusEl.textContent = 'Sign in again before submitting your expression of interest.'
+          statusEl.dataset.state = 'error'
+        }
+        return
+      }
+
+      var formData = new FormData(formEl)
+      var experienceAreas = formData.getAll('experienceAreas').map(function (value) {
+        return String(value || '').trim()
+      }).filter(Boolean)
+
+      var linkedin = String(formData.get('linkedin') || '').trim()
+      var cvUrl = String(formData.get('cvUrl') || '').trim()
+      if (!linkedin && !cvUrl) {
+        if (statusEl instanceof HTMLElement) {
+          statusEl.hidden = false
+          statusEl.textContent = 'Provide a LinkedIn profile URL or a CV / resume URL.'
+          statusEl.dataset.state = 'error'
+        }
+        return
+      }
+
+      if (!experienceAreas.length) {
+        if (statusEl instanceof HTMLElement) {
+          statusEl.hidden = false
+          statusEl.textContent = 'Select at least one relevant experience area.'
+          statusEl.dataset.state = 'error'
+        }
+        return
+      }
+
+      var conflicts = String(formData.get('conflicts') || '').trim()
+      if (!conflicts) {
+        if (statusEl instanceof HTMLElement) {
+          statusEl.hidden = false
+          statusEl.textContent = 'Enter conflicts of interest / disclosures, or write “None”.'
+          statusEl.dataset.state = 'error'
+        }
+        return
+      }
+
+      var submitButton = formEl.querySelector('button[type="submit"]')
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true
+      }
+
+      if (statusEl instanceof HTMLElement) {
+        statusEl.hidden = false
+        statusEl.textContent = 'Submitting…'
+        statusEl.dataset.state = 'pending'
+      }
+
+      try {
+        var response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({
+            fullName: String(formData.get('fullName') || '').trim(),
+            preferredName: String(formData.get('preferredName') || '').trim(),
+            email: String(formData.get('email') || '').trim(),
+            phone: String(formData.get('phone') || '').trim(),
+            city: String(formData.get('city') || '').trim(),
+            country: String(formData.get('country') || '').trim(),
+            locationPreference: String(formData.get('locationPreference') || '').trim(),
+            currentRole: String(formData.get('currentRole') || '').trim(),
+            organisation: String(formData.get('organisation') || '').trim(),
+            linkedin: linkedin,
+            cvUrl: cvUrl,
+            whyFoundation: String(formData.get('whyFoundation') || '').trim(),
+            experienceAreas: experienceAreas,
+            relevantExperience: String(formData.get('relevantExperience') || '').trim(),
+            timeCommitment: String(formData.get('timeCommitment') || '').trim(),
+            availabilityNotes: String(formData.get('availabilityNotes') || '').trim(),
+            conflicts: conflicts,
+            references: String(formData.get('references') || '').trim(),
+            website: String(formData.get('website') || '').trim(),
+            privacyAccepted: formData.get('privacyAccepted') === 'yes',
+            accuracyDeclared: formData.get('accuracyDeclared') === 'yes',
+            invitationUnderstood: formData.get('invitationUnderstood') === 'yes',
+            pagePath: window.location.pathname,
+            orgAccessToken: stored.token
+          })
+        })
+
+        var payload = await response.json().catch(function () { return {} })
+        var reference = payload.applicationId ? ' Reference: ' + payload.applicationId + '.' : ''
+        var message = payload.message || payload.error || (response.ok ? 'Expression of interest received.' : 'Unable to submit right now.')
+
+        if (statusEl instanceof HTMLElement) {
+          statusEl.textContent = message + reference
+          statusEl.dataset.state = response.ok ? 'success' : 'error'
+        }
+
+        if (response.ok) {
+          formEl.reset()
+          var emailInput = formEl.querySelector('input[name="email"]')
+          if (emailInput instanceof HTMLInputElement) {
+            emailInput.value = readSignedInEmail()
+          }
+        }
+      } catch (error) {
+        if (statusEl instanceof HTMLElement) {
+          statusEl.textContent = 'Network error — please try again shortly.'
+          statusEl.dataset.state = 'error'
+        }
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false
+        }
+      }
+    })
+  })()
+</script>
+
+<style>
+  .director-apply {
+    margin-block: 2rem 4rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .director-apply__inner {
+    max-width: 42rem;
+  }
+
+  .director-apply__lead {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+
+  .director-apply__about,
+  .director-apply__privacy-notice {
+    margin: 1.25rem 0 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    background: var(--paper);
+  }
+
+  .director-apply__about-title,
+  .director-apply__privacy-title {
+    margin: 0 0 0.55rem;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+
+  .director-apply__about p,
+  .director-apply__privacy-notice p {
+    margin: 0 0 0.65rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .director-apply__about p:last-child,
+  .director-apply__privacy-notice p:last-child {
+    margin-bottom: 0;
+  }
+
+  .director-apply__privacy-notice a {
+    color: var(--accent-strong);
+  }
+
+  .director-apply__gate-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+  }
+
+  .director-apply__gate-lead {
+    margin: 0 0 1rem;
+    color: var(--ink-soft);
+  }
+
+  .director-apply__gate,
+  .director-apply__form {
+    margin-top: 1.25rem;
+    padding: clamp(1.1rem, 3vw, 1.5rem);
+    background: var(--paper-raised);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+  }
+
+  .director-apply__gate[hidden],
+  .director-apply__form[hidden] {
+    display: none;
+  }
+
+  .director-apply__field,
+  .director-apply__fieldset {
+    display: grid;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .director-apply__fieldset {
+    margin-bottom: 1.5rem;
+    padding: 0;
+    border: 0;
+  }
+
+  .director-apply__fieldset legend {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+
+  .director-apply__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+
+  .director-apply__field span,
+  .director-apply__checks-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .director-apply__field em {
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .director-apply__field input,
+  .director-apply__field textarea,
+  .director-apply__field select {
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .director-apply__field textarea {
+    min-height: 7rem;
+    resize: vertical;
+  }
+
+  .director-apply__hint {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  .director-apply__checks-wrap {
+    display: grid;
+    gap: 0.55rem;
+    margin-bottom: 1rem;
+  }
+
+  .director-apply__checks {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .director-apply__check {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.55rem;
+    align-items: start;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .director-apply__consent-intro {
+    margin: 0.5rem 0 0.25rem;
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+
+  .director-apply__consent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.65rem;
+    align-items: start;
+    margin: 0.85rem 0;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .director-apply__consent a {
+    color: var(--accent-strong);
+  }
+
+  .director-apply__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .director-apply__primary,
+  .director-apply__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: var(--font-serif);
+    font-size: 0.92rem;
+    border: 1px solid var(--accent-strong);
+    cursor: pointer;
+  }
+
+  .director-apply__primary {
+    background: var(--accent-strong);
+    color: #f4f6f3;
+  }
+
+  .director-apply__secondary {
+    background: transparent;
+    color: var(--accent-strong);
+  }
+
+  .director-apply__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .director-apply__status {
+    margin: 1rem 0 0;
+    font-size: 0.92rem;
+    color: var(--accent-strong);
+  }
+
+  .director-apply__status[data-state='success'] {
+    color: #3d5a48;
+  }
+
+  .director-apply__status[data-state='error'] {
+    color: #8b3a3a;
+  }
+
+  .director-apply__status[hidden] {
+    display: none;
+  }
+
+  @media (max-width: 560px) {
+    .director-apply__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

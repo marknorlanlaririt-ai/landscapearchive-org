@@ -15,6 +15,14 @@ import {
   REGISTRY_PATH,
   isOpenStandardGithubPubliclyAvailable
 } from '../data/foundationWing.js'
+import {
+  FOUNDATION_DOWNLOAD_FOOTER_LINKS,
+  FOUNDATION_SELF_SERVE_TOOLS_PAUSED,
+  FOUNDATION_TOOLS_DISCLAIMER,
+  FOUNDATION_TOOLS_FOOTER_LABEL,
+  FOUNDATION_TOOLS_PAUSED_NOTICE
+} from '../data/foundationDownloads.js'
+import { LICENCE_PATH } from '../data/licenceScopeContent.js'
 
 const year = new Date().getFullYear()
 const copyrightLine = buildFoundationCopyrightLine(year)
@@ -29,13 +37,15 @@ const githubAvailable = isOpenStandardGithubPubliclyAvailable()
       <p class="site-footer__licence">
         {FOUNDATION_LICENCE_SUMMARY} Published under
         <a href={FOUNDATION_LICENCE_URL} rel="license noopener" target="_blank">{FOUNDATION_LICENCE_LABEL}</a>.
+        {' '}
+        <a href={LICENCE_PATH}>Licence &amp; scope</a>.
       </p>
       <FoundationNewsletterSignup />
     </div>
 
     <nav class="site-footer__col" aria-label="Foundation">
       <h2 class="site-footer__heading">Foundation</h2>
-      {SITE_NAV_LINKS.map((link) => (
+      {SITE_NAV_LINKS.filter((link) => !link.hidden).map((link) => (
         <a href={link.href} data-member-only={link.requiresLogin ? '' : undefined} hidden={link.requiresLogin ? true : undefined}>
           {link.label}
         </a>
@@ -54,10 +64,37 @@ const githubAvailable = isOpenStandardGithubPubliclyAvailable()
         )
       }
       <a href={FEDERATION_SCHEMA_PORTAL_URL} rel="noopener" target="_blank">Schema portal</a>
+      <a href={`${FEDERATION_SCHEMA_PORTAL_URL}/dictionary`} rel="noopener" target="_blank">Open field dictionary</a>
       <a href="/adopt">Adopt the standard</a>
+      <a href="/adopt#studio-pilot">Studio Pilot Kit</a>
+      <a href="/industry-practice">Industry &amp; practice</a>
+      <a href="/industry-practice#in-plain-language">Dictionary in plain language</a>
       <a href={REGISTRY_PATH}>Field registry</a>
+      <a href="/governance#draft-consultation">Draft consultation</a>
+      <a href="/propose-term">Propose a dictionary term</a>
       <a href="/governance#citation-guidance">Citation guidance</a>
       <a href="/governance#founding-alliance">Founding alliance</a>
+      <a href="/volunteers#technical-reviewers">Technical reviewers</a>
+    </nav>
+
+    <nav class="site-footer__col" aria-label="Foundation tools downloads">
+      <h2 class="site-footer__heading">{FOUNDATION_TOOLS_FOOTER_LABEL}</h2>
+      <p class="site-footer__tools-note">
+        {FOUNDATION_SELF_SERVE_TOOLS_PAUSED
+          ? FOUNDATION_TOOLS_PAUSED_NOTICE
+          : FOUNDATION_TOOLS_DISCLAIMER}
+      </p>
+      {
+        FOUNDATION_DOWNLOAD_FOOTER_LINKS.map((link) => (
+          <a
+            href={link.href}
+            rel={link.external ? 'noopener' : undefined}
+            target={link.external ? '_blank' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
 
     <nav class="site-footer__col" aria-label="Commercial">
@@ -84,8 +121,8 @@ const githubAvailable = isOpenStandardGithubPubliclyAvailable()
 
   .site-footer__inner {
     display: grid;
-    grid-template-columns: 1.6fr repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: 1.5fr repeat(4, minmax(0, 1fr));
+    gap: 1.75rem;
     padding-block: 3rem 2rem;
   }
 
@@ -147,6 +184,13 @@ const githubAvailable = isOpenStandardGithubPubliclyAvailable()
     cursor: help;
   }
 
+  .site-footer__tools-note {
+    margin: 0 0 0.35rem;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: #9fb0a3;
+  }
+
   .site-footer__base {
     display: flex;
     flex-wrap: wrap;
@@ -195,7 +239,7 @@ const githubAvailable = isOpenStandardGithubPubliclyAvailable()
     color: #ffffff;
   }
 
-  @media (max-width: 860px) {
+  @media (max-width: 1100px) {
     .site-footer__inner {
       grid-template-columns: 1fr 1fr;
     }

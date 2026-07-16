@@ -16,16 +16,15 @@ export function getSlideWebParagraphs(slide) {
 export const DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION = Object.freeze({
   heading: 'Awards and the data architecture',
   paragraphs: [
-    'The awards programme mirrors the Foundation standard\'s data architecture footprint — botanical and climatic fields alongside the documentary integrity of the entire built precinct. It operates as a peer-evaluative reference for landscape architects, urban planners, architects, and engineers: recognition rests on whether precinct-scale landscape claims remain documentarily honest across disciplines, not on presentation imagery alone.',
-    'Assessment draws on the public field registry as central metadata. Category rubrics map to published modules — architectural integration to project, delivery, botanical-asset, site-context, and Revit shared-parameter fields; civic and urban landscape to site-context, environment, sustainability, climate-screening, and site-risk; engineering and infrastructure to delivery, site-context, sustainability, site-risk, and project — with botanical, provenance, and cultural-context modules supporting cross-cutting evaluation regardless of delivery stream.',
-    `${BUILT_ENVIRONMENT_EXPORTS_INTRO} Published interchange profiles on the <a href="${BUILT_ENVIRONMENT_EXPORTS_PORTAL_URL}">schema portal</a> supply evaluation lenses for IFC property sets, GeoJSON civic registries, USD metadata sidecars, and spreadsheet crosswalks — rubrics reference these interchange paths when nominees demonstrate traceable records.`,
-    'This framing defines the scope within which rubrics assess whether landscape claims survive authoring, export, construction, and asset-management phases. JSON schema definitions and validated JSON emitters are the published baseline; native IFC STEP and USD file writers are scheduled for pipeline release.'
+    'Category rubrics map to published modules across architectural, civic/geospatial, and engineering streams, with botanical, provenance, and cultural-context modules as cross-cutting criteria.',
+    `${BUILT_ENVIRONMENT_EXPORTS_INTRO} Interchange profiles on the <a href="${BUILT_ENVIRONMENT_EXPORTS_PORTAL_URL}">schema portal</a> supply evaluation lenses for IFC, GeoJSON, USD, and spreadsheet crosswalks.`,
+    'JSON schema definitions and validated JSON emitters are the published baseline; native IFC STEP and USD writers remain scheduled pipeline work.'
   ],
   facts: [
-    { label: 'Architectural integration (BIM/IFC)', value: 'Project, delivery, botanical-asset, site-context, Revit shared-parameter modules; IFC4 property-set profile with published JSON emitter' },
-    { label: 'Civic & urban landscape (GIS)', value: 'Site-context, environment, sustainability, climate-screening, site-risk modules; GeoJSON civic registry profile' },
-    { label: 'Engineering & infrastructure', value: 'Delivery, site-context, sustainability, site-risk, project modules; hydrological and soil-matrix traceability to asset registers' },
-    { label: 'Cross-cutting modules', value: 'Taxonomy, traits, provenance, and cultural-context fields support all categories regardless of built-environment stream' }
+    { label: 'Architectural integration (BIM/IFC)', value: 'Project, delivery, botanical-asset, site-context, Revit shared-parameter modules' },
+    { label: 'Civic & urban landscape (GIS)', value: 'Site-context, environment, sustainability, climate-screening, site-risk; GeoJSON profile' },
+    { label: 'Engineering & infrastructure', value: 'Delivery, site-context, sustainability, site-risk, project modules' },
+    { label: 'Cross-cutting', value: 'Taxonomy, traits, provenance, cultural-context' }
   ],
   profileTable: BUILT_ENVIRONMENT_EXPORT_PROFILES.map((profile) => ({
     label: profile.label,
@@ -36,15 +35,134 @@ export const DATA_ARCHITECTURE_ALIGNMENT_WEB_SECTION = Object.freeze({
   }))
 })
 
-/** Website-only section — no carousel JPEG; merged into evaluative-purpose slide for Instagram. */
-export const ARCHIVAL_STEWERSHIP_WEB_SECTION = Object.freeze({
-  heading: 'Archival stewardship',
-  paragraphs: [
-    'Archival stewardship honours practitioners and institutions that treat the project archive as durable scholarly infrastructure rather than a presentation bundle assembled at project close-out. Nominated work demonstrates nomenclature aligned to accepted taxonomic and geospatial authorities, provenance for trait and site claims, and phase-labelled records that contractors, maintainers, and future reviewers can inspect as structured metadata alongside design deliverables.',
-    'Stewardship extends beyond individual projects to contributions that improve communal reference integrity — curated species and site datasets, validator tooling, crosswalk documentation, and institutional policies that keep open metadata accurate across authoring environments.',
-    'Evaluators look for project archives where planting schedules, establishment assumptions, maintenance intent, and sensitivity handling remain legible years after the originating team has moved on — evidence that landscape practice is being transmitted, not merely displayed.'
-  ]
-})
+/**
+ * Recognition streams (web).
+ * Sub-categories retain detail; Distinguished Practitioner is omitted.
+ */
+export const AWARDS_PROGRAMME_STREAMS = Object.freeze([
+  {
+    id: 'stream-a-built-environment',
+    heading: 'Stream A — Built Environment',
+    lead:
+      'Delivered landscape work and the documentary integrity of the built precinct across architectural, civic, and engineering contexts.',
+    subcategories: [
+      {
+        label: 'Applied landscape architecture',
+        text:
+          'Delivered and maintained landscape architecture where the project archive remains legible across phases — site analysis, planting intent, construction administration, and maintenance records.'
+      },
+      {
+        label: 'Architectural integration (BIM/IFC)',
+        text:
+          'Projects where landscape elements are structurally integrated with building fabric — green roofs, podium landscapes, atrium plantings — and where data integrity survives authoring through construction and handover.'
+      },
+      {
+        label: 'Civic & urban landscape (GIS)',
+        text:
+          'Municipal and regional programmes — urban forestry, heat-island mitigation, parkland networks — where civic landscape claims remain legible in geospatial registries over time.'
+      },
+      {
+        label: 'Engineering & infrastructure',
+        text:
+          'Civil and transport landscape delivery where ecological function is embedded in hard infrastructure, with hydrological and establishment claims traceable into asset-management records.'
+      },
+      {
+        label: 'Craft & visualisation',
+        text:
+          'Detail documentation and spatial communication that encode inspectable landscape claims — assemblies, measured drawings, analytical graphics — with methodology disclosed for independent review.'
+      }
+    ]
+  },
+  {
+    id: 'stream-b-knowledge-stewardship',
+    heading: 'Stream B — Knowledge & Stewardship',
+    lead:
+      'Communal datasets, scholarship, open interchange work, and disclosed computational methods that strengthen the profession’s shared record.',
+    subcategories: [
+      {
+        label: 'Data & reference stewardship',
+        text:
+          'Exemplary care for communal plant and site reference data — nomenclature, traits, provenance, and registry contributions that practitioners can cite with confidence.'
+      },
+      {
+        label: 'Research & publication',
+        text:
+          'Empirical inquiry, pedagogy, and published writing that advances the evidential basis of landscape practice with declared methodology and accessible fixtures where ethics permit.'
+      },
+      {
+        label: 'Open standards & interoperability',
+        text:
+          'Crosswalks, validators, reference implementations, and institutional programmes that keep landscape claims machine-checkable across authoring environments.'
+      },
+      {
+        label: 'Innovation',
+        text:
+          'Novel methods and institutional programmes that advance landscape metadata with reproducible experiments and peer-reviewable disclosure.'
+      },
+      {
+        label: 'Technology & AI',
+        text:
+          'Tools and computational methods that improve metadata fidelity and archival interchange under explicit methodological disclosure and provenance encoding.'
+      }
+    ]
+  },
+  {
+    id: 'stream-c-cultural-ecological',
+    heading: 'Stream C — Cultural & Ecological',
+    lead:
+      'Botanical literacy, custodial storytelling, heritage documentation, climate evidence, and time-based landscape communication.',
+    subcategories: [
+      {
+        label: 'Botanical & horticultural literacy',
+        text:
+          'Planting design and specification grounded in defensible plant knowledge — identification, phenology, establishment ecology — documented with accepted nomenclature and cited sources.'
+      },
+      {
+        label: 'Indigenous storytelling',
+        text:
+          'Landscape documentation that centres Indigenous and traditional custodial narrative authority, with culturally appropriate disclosure handling and community review remaining inspectable in the archive.'
+      },
+      {
+        label: 'Heritage & cultural landscape',
+        text:
+          'Documentation of heritage landscapes and layered place histories — conservation records and sensitivity-aware disclosure that remain inspectable for future stewardship.'
+      },
+      {
+        label: 'Climate positive impact',
+        text:
+          'Work that documents climate and site-context claims with cited evidence, disclosed methods, and reproducible metrics across project phases.'
+      },
+      {
+        label: 'Multimedia & moving picture',
+        text:
+          'Time-based and cinematic landscape communication where annotated sequences and production methods keep site claims legible beyond presentation-day playback.'
+      }
+    ]
+  },
+  {
+    id: 'stream-d-practice-advocacy',
+    heading: 'Stream D — Practice & Advocacy',
+    lead:
+      'Practitioners and institutions that embed open documentation discipline in live practice, participatory records, and studio education.',
+    subcategories: [
+      {
+        label: 'Practice advocacy & integration',
+        text:
+          'Contract language, delivery specifications, and institutional policy that embed open interchange, validator evidence, and vendor-neutral documentation in delivered archives.'
+      },
+      {
+        label: 'Community engagement',
+        text:
+          'Public-realm programmes and participatory documentation where participant intent, consent, and outcomes remain traceable in the project archive.'
+      },
+      {
+        label: 'Student awards',
+        text:
+          'Emerging practitioners and studio work that demonstrates archival literacy early — declared field scope, limitations, and sources under Foundation evaluative criteria.'
+      }
+    ]
+  }
+])
 
 /** @type {AwardsProgrammeSlide[]} */
 export const AWARDS_PROGRAMME_SLIDES = [
@@ -55,12 +173,10 @@ export const AWARDS_PROGRAMME_SLIDES = [
     intro: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Internationally oriented, vendor-neutral recognition for landscape architecture — from research and theory to built and documented practice — alongside urban design, ecological stewardship, and the data integrity of the entire built precinct. A peer-evaluative programme for architects, planners, and engineers. Programme in preparation — full charter at landscapearchive.org/awards.'
+      'Internationally oriented, vendor-neutral recognition in landscape architecture — from research and theory to built and documented practice — alongside urban design, ecological stewardship, and the data integrity of the built precinct. landscapearchive.org/awards'
     ],
     webBody: [
-      'The Landscape Archive Foundation Awards recognise exemplary contributions worldwide — work that advances landscape architecture as a discipline and in applied practice, alongside urban design, ecological stewardship, and allied fields. Eligible contributions include scholarship and pedagogy, delivered projects, reference data, documentation traditions, research, representation, tooling, and disclosed computational methods whose claims remain traceable to cited sources and open to independent review.',
-      'The programme evaluates data integrity across built-environment branches — architectural, civic and geospatial, and engineering and infrastructure contexts — not only botanical and climatic claims. Recognition rests on documentary integrity, metadata stewardship, and reproducible assessment material under the public field registry — not stylistic preference, tenure alone, national origin, or affiliation with a particular authoring environment.',
-      'Assessment criteria reference TLA-185 as central metadata, including cross-jurisdictional modules and published crosswalks where Australian field origins are adapted for other regions. The awards programme is in preparation under interim draft governance; full charter, category rubrics, and assessment process will be published at landscapearchive.org/awards before entries open.'
+      'Vendor-neutral recognition in landscape architecture and allied fields, where documentary integrity, metadata stewardship, and reproducible evidence under the public field registry take precedence over presentation alone.'
     ]
   },
   {
@@ -69,13 +185,12 @@ export const AWARDS_PROGRAMME_SLIDES = [
     title: 'Scope',
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Recognises work worldwide that strengthens landscape architecture — from scholarship and pedagogy to delivered projects — through inspectable records and open metadata stewardship across the built precinct: reference data, documentation traditions, research, representation, tooling, and disclosed computational methods.',
-      'Built-environment recognition streams — architectural, civic and geospatial, and engineering and infrastructure — sit alongside botanical, climatic, and archival categories. The programme does not confer government accreditation, professional registration, or vendor certification.'
+      'The programme recognises work worldwide that strengthens landscape architecture — from scholarship and pedagogy to delivered projects — through inspectable records and open metadata stewardship across the built precinct.',
+      'Four streams organise the rubrics: Built Environment, Knowledge & Stewardship, Cultural & Ecological, and Practice & Advocacy. Recognition is programme recognition only — not government accreditation, professional registration, or vendor certification.'
     ],
     webBody: [
-      'The programme recognises contributions across the full documentary lifecycle of landscape architecture and urban landscape practice — from site analysis and planting intent through tender documentation, construction administration, asset maintenance, and the communal reference data practitioners rely on when specifying, establishing, and stewarding living landscapes in any jurisdiction.',
-      'Eligible work includes delivered and maintained projects; stewardship of plant and site reference data; scholarship and publication; craft documentation and spatial communication; technology and interchange tooling; community engagement and heritage documentation; and institutional programmes that embed open metadata discipline in live practice. Built-environment recognition streams honour architectural integration, civic and urban systems, and engineering and infrastructure delivery where landscape ecology is embedded in hard infrastructure and interchange metadata survives project phases.',
-      'Submissions may draw on Australian field modules where they reflect the standard\'s origin, or on crosswalked and extended modules adapted for other regions through the published governance process. The programme does not confer government accreditation, professional registration, or vendor certification. Awards document independently reviewed exemplars within the Foundation\'s published scope — recognition that universities, agencies, and peers may cite alongside the open specification and field registry, without implying active Foundation operations in any particular country.'
+      'The programme covers work across the documentary lifecycle of landscape practice — from site analysis through construction and maintenance — including reference data, scholarship, tooling, and institutional programmes.',
+      'Four streams organise the rubrics: Built Environment; Knowledge & Stewardship; Cultural & Ecological; and Practice & Advocacy. Recognition documents independently reviewed exemplars within a published scope — not accreditation or vendor certification.'
     ]
   },
   {
@@ -85,13 +200,12 @@ export const AWARDS_PROGRAMME_SLIDES = [
     titleLong: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Entries are assessed for documentary integrity — whether claims remain traceable to cited sources, persist across project phases, and can be reviewed against the public field registry and intended interchange paths.',
-      'Assessment honours archives treated as scholarly infrastructure — accepted nomenclature, inspectable provenance, and reproducible evidence across built-environment branches — not stylistic preference or single-vendor workflow loyalty.'
+      'The evaluative lens asks whether claims remain traceable to cited sources, persist across project phases, and can be reviewed against the public field registry and intended interchange paths.',
+      'It privileges archives treated as scholarly infrastructure — accepted nomenclature, inspectable provenance, and reproducible evidence — independent of stylistic preference or single-vendor workflow loyalty.'
     ],
     webBody: [
-      'Entries are assessed for documentary integrity — whether stated landscape claims remain traceable to cited sources, endure from design intent through construction and long-term stewardship, and can be reviewed by a third party without proprietary tooling or informal briefing, regardless of project geography.',
-      'Evaluators prioritise reproducible evidence and archival legibility across the built precinct — architectural authoring environments, civic geospatial registries, and engineering asset-management handoffs included. A submission demonstrates evaluative purpose when its metadata encodes what was claimed, what supports each claim, and where material changed between project phases — with null or restricted values explained where sensitivity classes apply.',
-      'Assessment is deliberately independent of stylistic preference, media profile, national prestige, and single-vendor workflow loyalty. Category rubrics are intended to reference TLA-185 as central metadata and published crosswalks — IFC property sets, GeoJSON and GIS flattening, USD attributes, spreadsheet crosswalks — as evaluation lenses, without requiring that every exporter be live in production. Evaluators prioritise whether the archive remains honest, complete, and inspectable for the maintainers and reviewers who inherit it.'
+      'The evaluative lens centres documentary integrity: claims traceable to cited sources, durable across project phases, and reviewable against the public field registry without proprietary tooling.',
+      'Assessment is independent of stylistic preference, media profile, and single-vendor workflow loyalty.'
     ]
   },
   {
@@ -101,13 +215,12 @@ export const AWARDS_PROGRAMME_SLIDES = [
     titleLong: true,
     footerUrl: 'landscapearchive.org/awards',
     body: [
-      'Assessment follows published Foundation criteria: explicit scope of fields submitted, methodology and limitations stated, interchange and validator evidence where applicable, and sensitivity handling for cultural and disclosure contexts.',
+      'Assessment follows Foundation criteria shapes: explicit scope of fields submitted, methodology and limitations stated, interchange and validator evidence where applicable, and sensitivity handling for cultural and disclosure contexts.',
       'Computational and AI-assisted work requires disclosed methods and provenance encoding suitable for archival review.'
     ],
     webBody: [
-      'Assessment follows published Foundation criteria. Each entry declares the scope of fields submitted, the methodology used to populate them, and the limitations that bound interpretability — including where data were inferred, aggregated, or withheld under published sensitivity classes.',
-      'Where interchange is claimed, submissions supply validator evidence: schema version, registered field identifiers, export bundles, and crosswalk notes documenting any loss or transformation between authoring environments. Where empirical claims are made — climate performance, establishment ecology, carbon or water disclosure — cited sources and method notes must remain accessible for the assessment window.',
-      'Computational and AI-assisted work is eligible when methods and provenance are disclosed with sufficient detail for archival review: training data boundaries, synthetic asset lineage, human review steps, and explicit separation between measured field observation and model-generated inference.'
+      'Each submission declares field scope, methodology, and limitations — including inferred, aggregated, or withheld data under published sensitivity classes.',
+      'Where interchange is claimed, materials supply validator evidence and crosswalk notes. Computational and AI-assisted work requires disclosed methods and provenance suitable for archival review.'
     ]
   },
   {
@@ -227,7 +340,7 @@ export const AWARDS_PROGRAMME_SLIDES = [
     webBody: [
       'Climate positive impact recognises work that documents climate and site-context claims with cited evidence — carbon and water disclosure, heat and drought adaptation performance, lifecycle maintenance intent, and metadata that endures across project phases with cited baselines, disclosed methods, and reproducible metrics, in any climatic zone.',
       'Evaluators look for banded climate context rather than vague resilience language; planting and material choices linked to stated performance assumptions; and phase-to-phase records when substitutions affect environmental claims. Where calculators or models are used, method notes and input boundaries must be disclosed.',
-      'Recognition requires honesty about limits as well as ambition. A strong submission documents what was measured, what was modelled, what remains uncertain, and how maintainers should interpret performance claims after establishment — keeping climate narrative accountable to inspectable records.'
+      'Climate and site-context claims with cited evidence — what was measured, what was modelled, what remains uncertain — so performance narratives remain accountable to inspectable records.'
     ]
   },
   {
@@ -377,22 +490,6 @@ export const AWARDS_PROGRAMME_SLIDES = [
       'Evaluators assess whether hydrological performance, soil matrix composition, and establishment assumptions remain traceable from design through construction and maintenance; whether phase-labelled records document substitutions affecting drainage, filtration, or load-bearing planting; and whether metadata intended for asset registers remains inspectable without proprietary authoring environments.',
       'Eligible work includes multidisciplinary delivery where landscape architecture contributed planting, grading, and ecological performance logic to infrastructure programmes — provided submissions demonstrate that ecological claims were encoded with the same documentary rigour expected of structural and hydraulic records, and that maintainers inherit enough evidence to steward living systems within engineered constraints.'
     ]
-  },
-  {
-    filename: '23-distinguished-practitioner.jpg',
-    kicker: 'Award category',
-    title: 'Distinguished practitioner',
-    titleLong: true,
-    footerUrl: 'landscapearchive.org/awards',
-    body: [
-      'Sustained landscape practice over decades — a career portfolio whose archives remain legible across phases, with documented planting intent, site analysis, and maintenance records open to independent review.',
-      'Recognition includes mentorship, field stewardship, and contribution to botanical and documentation literacy. Assessment follows evaluative framing on reproducible evidence — not popularity, tenure alone, or media profile.'
-    ],
-    webBody: [
-      'Distinguished practitioner recognises sustained landscape practice over decades — a career portfolio of delivered projects whose archives remain legible across phases, with documented planting intent, site analysis, construction administration, and maintenance records inspectable as a body of work rather than reducible to a single flagship submission.',
-      'Evaluators assess cumulative contribution to archival literacy in the profession: mentorship that trains staff in nomenclature and metadata discipline; institutional programmes that raised documentation standards; field stewardship through post-occupancy review; and reference contributions that strengthened communal datasets practitioners rely on daily.',
-      'Recognition follows the same evaluative framing as all programme awards — reproducible evidence, vendor-neutral excellence, and inspectable records across built-environment branches where applicable. Popularity, tenure alone, or media profile do not substitute for demonstrated documentary integrity across a body of work nominees can substantiate for independent review.'
-    ]
   }
 ]
 
@@ -414,10 +511,6 @@ export function getAwardsProgrammeCategorySlides() {
   return AWARDS_PROGRAMME_SLIDES.filter((slide) => slide.kicker === 'Award category')
 }
 
-function slugifyCategoryId(title) {
-  return `category-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`
-}
-
 /**
  * Build Foundation Awards topic page content for Archive SPA and landscapearchive.org.
  *
@@ -434,13 +527,12 @@ export function buildFoundationAwardsTopicPage({
   supportContactPath,
   supportContactExternal = false
 }) {
-  const introSlide = AWARDS_PROGRAMME_SLIDES.find((slide) => slide.intro)
   const [scopeSlide, evaluativeSlide, methodologySlide] = getAwardsProgrammeFramingSlides()
-  const categorySlides = getAwardsProgrammeCategorySlides()
 
   return {
     title: 'Awards',
-    lead: `An internationally oriented, vendor-neutral recognition programme for landscape architecture — from research, education, and theory to built and documented practice — alongside urban design, ecological stewardship, and the data integrity of the entire built precinct. Intended as a peer-evaluative reference for landscape architects, urban planners, architects, and engineers — work that preserves, documents, and transmits the discipline through inspectable project records, cited sources, and reproducible evidence under the public ${tla185DisplayId} field registry, including cross-jurisdictional modules where published. Programme in preparation under interim draft governance; no entries or winners yet.`,
+    lead: `Vendor-neutral recognition assessed against the public ${tla185DisplayId} field registry. Entries are not currently being accepted.`,
+    hideLead: true,
     placeholder: false,
     sections: [
       {
@@ -449,14 +541,8 @@ export function buildFoundationAwardsTopicPage({
         paragraphs: [
           ...getSlideWebParagraphs(scopeSlide),
           ...getSlideWebParagraphs(evaluativeSlide),
-          ...(introSlide ? getSlideWebParagraphs(introSlide).slice(0, 2) : []),
-          'The programme is independent of any commercial product stack. Submissions may originate from any practice, institution, or open-source contributor in any region, using any authoring environment that meets published criteria and supplies sufficient material for independent review — without implying active Foundation programmes or branch operations abroad.'
+          'Submissions may originate from any practice, institution, or open-source contributor, using any authoring environment that meets published criteria and supplies sufficient material for independent review.'
         ].filter(Boolean)
-      },
-      {
-        id: 'archival-stewardship',
-        heading: ARCHIVAL_STEWERSHIP_WEB_SECTION.heading,
-        paragraphs: ARCHIVAL_STEWERSHIP_WEB_SECTION.paragraphs
       },
       {
         id: 'data-architecture-alignment',
@@ -474,12 +560,12 @@ export function buildFoundationAwardsTopicPage({
         id: 'evaluation-criteria',
         heading: 'Evaluation criteria',
         paragraphs: [
-          'Published rubrics will translate the Foundation Standards into category-specific checkpoints. The following dimensions apply across all categories unless a category rubric explicitly narrows scope.',
-          'Documentation integrity requires that stated claims appear in interchange metadata with phase-to-phase consistency. Fields must be populated consistently, with null or restricted values explained where sensitivity classes apply.',
-          'Archival legibility requires that submitted material remain interpretable beyond the originating project team — phase-labelled records, harmonised identifiers, and delivery archives that a third party could audit without proprietary tooling or informal briefing.',
-          'Interchange standards conformance requires that submitted bundles validate against published schema versions, use registered field identifiers from the public registry, and document any extensions or local profiles through crosswalk notes.',
-          'Reproducibility and auditability require that evidence URIs, method notes, or open repositories cited in metadata remain accessible to reviewers for the assessment window, and that material differences between design, construction, and as-maintained records are disclosed with phase-to-phase transparency.',
-          'Institutional and cultural accountability requires that entries involving Indigenous knowledge, restricted cultural detail, or community co-design respect published sensitivity classes — keeping restricted material out of open repositories while still documenting that protocol was followed, under the custodial authority applicable in each jurisdiction.'
+          'Rubrics translate the Foundation Standards into stream-specific checkpoints. The following dimensions apply across streams unless a stream rubric narrows scope.',
+          'Documentation integrity — stated claims appear in interchange metadata with phase-to-phase consistency, with null or restricted values explained where sensitivity classes apply.',
+          'Archival legibility — submitted material remains interpretable beyond the originating project team without proprietary tooling or informal briefing.',
+          'Interchange conformance — bundles validate against published schema versions, use registered field identifiers, and document extensions through crosswalk notes.',
+          'Reproducibility — evidence URIs, method notes, or open repositories remain accessible for review, with material differences across project phases disclosed.',
+          'Cultural accountability — work involving Indigenous knowledge, restricted cultural detail, or community co-design respects published sensitivity classes under the custodial authority applicable in each jurisdiction.'
         ],
         facts: [
           { label: 'Documentation integrity', value: 'Claims encoded in machine-readable fields with consistent phase-to-phase traceability' },
@@ -491,24 +577,30 @@ export function buildFoundationAwardsTopicPage({
           { label: 'Vendor neutrality', value: 'Assessment on artefact quality and conformance criteria, independent of authoring vendor' }
         ]
       },
-      ...categorySlides.map((slide) => ({
-        id: slugifyCategoryId(slide.title),
-        heading: slide.title,
-        paragraphs: getSlideWebParagraphs(slide)
+      ...AWARDS_PROGRAMME_STREAMS.map((stream) => ({
+        id: stream.id,
+        heading: stream.heading,
+        paragraphs: [stream.lead],
+        facts: stream.subcategories.map((sub) => ({
+          label: sub.label,
+          value: sub.text
+        }))
       })),
       {
         id: 'programme-governance',
-        heading: 'Programme governance and assessment process',
+        heading: 'Programme governance',
         paragraphs: [
-          'The awards programme is in preparation under interim draft governance. When active, entries will be assessed by an international panel comprising landscape architecture and urban design practice, academic research, public-sector delivery, Indigenous advisory representation, and interchange specialists — with published conflict-of-interest rules and category rubrics released before each cycle.',
-          'Assessment will be blind to entrant commercial affiliation where practical. Criteria, anonymised scoring rationales, and aggregate results are intended to be public so recognition can be inspected and cited in academic or institutional contexts worldwide.',
-          'Awards confer documented recognition within the programme\'s published scope: independently reviewed exemplars of landscape architecture — in research, theory, and applied practice — archival stewardship, and interchange discipline that universities, agencies, architects, planners, engineers, and peers may cite alongside the open specification and field registry. They do not confer government accreditation, professional registration, or vendor certification.'
+          'Entries are not currently being accepted. Under interim Foundation stewardship, panel composition may include landscape architecture and urban design practice, academic research, public-sector delivery, Indigenous advisory representation, and interchange specialists — with conflict-of-interest rules and stream rubrics published before any cycle.',
+          'Assessment aims to be blind to entrant commercial affiliation where practical. Criteria, anonymised scoring rationales, and aggregate results are intended to be public so recognition can be inspected and cited.',
+          'Recognition is documented programme recognition only — not government accreditation, professional registration, or vendor certification.',
+          'Feedback on these rubrics is welcome from practitioners, academics, and industry bodies. If you have experience with awards governance, interoperability standards, or landscape documentation, send input via the contact form.'
         ],
         actions: [
           { label: 'The Foundation Standards', href: governancePath },
+          { label: 'Send feedback on rubrics', href: '/contact#draft-consultation' },
           { label: 'Founding alliance', href: `${governancePath}#founding-alliance` },
           {
-            label: 'Register interest — entries and international jury advisory',
+            label: 'Awards feedback — contact form',
             href: `${supportContactPath}&intent=awards`,
             external: supportContactExternal
           }
@@ -518,4 +610,7 @@ export function buildFoundationAwardsTopicPage({
   }
 }
 
-export const AWARDS_PROGRAMME_CATEGORY_COUNT = getAwardsProgrammeCategorySlides().length
+export const AWARDS_PROGRAMME_CATEGORY_COUNT = AWARDS_PROGRAMME_STREAMS.reduce(
+  (n, stream) => n + stream.subcategories.length,
+  0
+)

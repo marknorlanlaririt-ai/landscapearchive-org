@@ -1,7 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import DocsSection from '../../components/DocsSection.astro'
-import { PUBLISHED_FIELD_NOTES, formatArticleDate } from '../../data/articles.js'
+import FieldNotesMemberBody from '../../components/FieldNotesMemberBody.astro'
+import {
+  PUBLISHED_FIELD_NOTES,
+  getArticlePreviewExcerpt,
+  formatArticleDate
+} from '../../data/articles.js'
+import { SCHEMA_PORTAL_URL } from '../../data/site.js'
 
 export function getStaticPaths() {
   return PUBLISHED_FIELD_NOTES.map((article) => ({
@@ -14,8 +19,9 @@ const { article } = Astro.props
 
 const articlePath = `/articles/${article.slug}`
 const articleUrl = new URL(articlePath, Astro.site ?? 'https://landscapearchive.org').toString()
+const previewExcerpt = getArticlePreviewExcerpt(article)
 
-// Article structured data — helps the essay surface as a citable Article.
+// Teaser structured data — indexable preview; full body is member-unlocked client-side.
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -25,6 +31,12 @@ const articleJsonLd = {
   mainEntityOfPage: articleUrl,
   datePublished: article.date,
   author: { '@type': 'Organization', name: article.author },
+  isAccessibleForFree: false,
+  hasPart: {
+    '@type': 'WebPageElement',
+    isAccessibleForFree: true,
+    cssSelector: '.essay__preview'
+  },
   publisher: {
     '@type': 'Organization',
     name: 'The Landscape Archive Foundation',
@@ -55,24 +67,43 @@ const articleJsonLd = {
       }
     </div>
 
-    {article.sections.map((section) => <DocsSection {...section} sharePagePath={articlePath} />)}
+    <div class="essay__preview prose">
+      <p>{previewExcerpt}</p>
+    </div>
+
+    <FieldNotesMemberBody slug={article.slug} articlePath={articlePath} />
 
     <footer class="essay__foot">
       {
         article.legalNote && (
-          <p class="essay__legal-note">{article.legalNote}</p>
+          <p class="essay__legal-note" data-field-notes-legal hidden>{article.legalNote}</p>
         )
       }
       <p>
         Published by The Landscape Archive Foundation under
         <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">
-          CC BY-NC-ND 4.0</a>. Cite with the title and this page URL.
+          CC BY-NC-ND 4.0</a>. Cite with the title and this page URL. Open grammar (
+        <a href={`${SCHEMA_PORTAL_URL}/dictionary`} rel="noopener">field dictionary</a>
+        ) remains publicly citable.
       </p>
       <p><a href="/articles">← All Field Notes</a></p>
     </footer>
   </article>
 
   <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} is:inline />
+
+  <script is:inline>
+    (function () {
+      function syncLegal() {
+        var loggedIn = document.documentElement.dataset.archiveLoggedIn === 'true'
+        document.querySelectorAll('[data-field-notes-legal]').forEach(function (el) {
+          el.hidden = !loggedIn
+        })
+      }
+      syncLegal()
+      window.setInterval(syncLegal, 1200)
+    })()
+  </script>
 </BaseLayout>
 
 <style>
@@ -117,6 +148,17 @@ const articleJsonLd = {
     padding: 0.1rem 0;
     border-bottom: 1px solid var(--line);
     border-radius: 0;
+  }
+
+  .essay__preview {
+    margin-top: 1.4rem;
+    color: var(--ink-soft);
+  }
+
+  .essay__preview p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
   }
 
   .essay__foot {

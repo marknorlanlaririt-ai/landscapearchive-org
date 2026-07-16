@@ -1,0 +1,226 @@
+---
+import { ARCHIVE_ORIGIN } from '../data/site.js'
+
+const apiUrl = `${ARCHIVE_ORIGIN}/api/foundation/contact`
+const enquiryType = 'Foundation draft consultation — review pack'
+---
+
+<section id="draft-consultation" class="draft-consult" aria-labelledby="draft-consult-title">
+  <div class="draft-consult__inner prose">
+    <p class="eyebrow">Draft consultation</p>
+    <h2 id="draft-consult-title">Request a review pack</h2>
+    <p class="draft-consult__lead">
+      Invite critique of the open TLA-185 schema pack. Founding-alliance language describes a proposed
+      consultation model; requesting a review pack does not create a seat. Incorporation remains in preparation.
+    </p>
+    <ul class="draft-consult__links">
+      <li><a href="/articles/a-shared-vocabulary">Field Note — A shared vocabulary</a></li>
+      <li><a href="/registry">Field registry</a></li>
+      <li><a href="https://schema.landscapearchive.org" rel="noopener" target="_blank">Schema portal</a></li>
+      <li><a href="/evidence-checker">Evidence Checker</a></li>
+    </ul>
+
+    <form
+      class="draft-consult__form"
+      data-draft-consult-form
+      data-api-url={apiUrl}
+      data-enquiry-type={enquiryType}
+    >
+      <label class="draft-consult__field">
+        <span>Name</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="draft-consult__field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" inputmode="email" required />
+      </label>
+      <label class="draft-consult__field">
+        <span>Organisation <em>(optional)</em></span>
+        <input type="text" name="organisation" autocomplete="organization" />
+      </label>
+      <label class="draft-consult__field draft-consult__field--message">
+        <span>What would you like to critique?</span>
+        <textarea
+          name="message"
+          rows="5"
+          maxlength="1600"
+          required
+          placeholder="e.g. schema pack clarity, field dictionary gaps, handover use-case, university studio pilot…"
+        ></textarea>
+      </label>
+      <label class="draft-consult__consent">
+        <input type="checkbox" name="privacyAccepted" value="yes" required />
+        <span>
+          I agree that The Landscape Archive Foundation (via its interim implementation partner) may store and
+          review this request. See the
+          <a href={`${ARCHIVE_ORIGIN}/legal?tab=privacy-policy`} rel="noopener">Privacy Policy</a>
+          on landscapearchive.com.au.
+        </span>
+      </label>
+      <input class="draft-consult__honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="draft-consult__actions">
+        <button class="draft-consult__primary" type="submit">Request review pack</button>
+      </div>
+      <p class="draft-consult__status" data-draft-consult-status hidden aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var formEl = document.querySelector('[data-draft-consult-form]')
+    var statusEl = document.querySelector('[data-draft-consult-status]')
+    if (!formEl) return
+
+    formEl.addEventListener('submit', async function (event) {
+      event.preventDefault()
+      var apiUrl = formEl.getAttribute('data-api-url') || ''
+      var enquiryType = formEl.getAttribute('data-enquiry-type') || 'Foundation draft consultation — review pack'
+      var fd = new FormData(formEl)
+      var name = String(fd.get('name') || '').trim()
+      var email = String(fd.get('email') || '').trim()
+      var organisation = String(fd.get('organisation') || '').trim()
+      var messageBody = String(fd.get('message') || '').trim()
+      var website = String(fd.get('website') || '').trim()
+      var submitBtn = formEl.querySelector('button[type="submit"]')
+
+      var message = messageBody
+      if (organisation) {
+        message = 'Organisation: ' + organisation + '\n\n' + messageBody
+      }
+      message +=
+        '\n\n---\nIntent: draft consultation / schema pack critique.'
+
+      if (submitBtn) submitBtn.disabled = true
+      if (statusEl) {
+        statusEl.hidden = false
+        statusEl.textContent = 'Submitting…'
+        statusEl.dataset.state = 'pending'
+      }
+
+      try {
+        var response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            enquiryType: enquiryType,
+            subject: 'Draft consultation — request a review pack',
+            message: message,
+            website: website,
+            pagePath: window.location.pathname + '#draft-consultation'
+          })
+        })
+        var payload = await response.json().catch(function () {
+          return {}
+        })
+        var ok = response.ok
+        if (statusEl) {
+          statusEl.textContent =
+            payload.message ||
+            (ok ? 'Request received. We will reply by email.' : 'Unable to send right now — please try again.')
+          statusEl.dataset.state = ok ? 'success' : 'error'
+        }
+        if (ok) formEl.reset()
+      } catch (err) {
+        if (statusEl) {
+          statusEl.textContent = 'Network error — please try again shortly.'
+          statusEl.dataset.state = 'error'
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false
+      }
+    })
+  })()
+</script>
+
+<style>
+  .draft-consult {
+    margin-block: 2.5rem 3rem;
+    padding: 1.6rem 0 0;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .draft-consult__lead {
+    color: var(--ink-soft);
+    max-width: 40rem;
+  }
+
+  .draft-consult__links {
+    margin: 0.8rem 0 1.4rem;
+    padding-left: 1.1rem;
+    color: var(--ink-soft);
+  }
+
+  .draft-consult__form {
+    display: grid;
+    gap: 0.85rem;
+    max-width: 32rem;
+  }
+
+  .draft-consult__field {
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+  }
+
+  .draft-consult__field input,
+  .draft-consult__field textarea {
+    font: inherit;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--surface, #fff);
+    color: var(--ink);
+  }
+
+  .draft-consult__consent {
+    display: flex;
+    gap: 0.55rem;
+    align-items: flex-start;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+
+  .draft-consult__honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  .draft-consult__primary {
+    font: inherit;
+    font-weight: 600;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--accent-strong);
+    background: transparent;
+    color: var(--accent-strong);
+    cursor: pointer;
+  }
+
+  .draft-consult__primary:hover {
+    background: var(--accent-strong);
+    color: #fff;
+  }
+
+  .draft-consult__primary:disabled {
+    opacity: 0.55;
+    cursor: wait;
+  }
+
+  .draft-consult__status[data-state='success'] {
+    color: var(--accent-strong);
+  }
+
+  .draft-consult__status[data-state='error'] {
+    color: #8b2e2e;
+  }
+
+  .draft-consult__status[data-state='pending'] {
+    color: var(--ink-muted);
+  }
+</style>

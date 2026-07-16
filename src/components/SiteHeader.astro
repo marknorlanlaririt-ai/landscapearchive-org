@@ -10,7 +10,7 @@ const { activePath = '/' } = Astro.props
 
 const normalize = (p: string) => (p !== '/' ? p.replace(/\/+$/, '') : p)
 const current = normalize(activePath)
-const primaryNavLinks = SITE_NAV_LINKS.filter((link) => link.id !== 'contact')
+const primaryNavLinks = SITE_NAV_LINKS.filter((link) => link.id !== 'contact' && !link.hidden)
 const contactLink = SITE_NAV_LINKS.find((link) => link.id === 'contact')
 ---
 

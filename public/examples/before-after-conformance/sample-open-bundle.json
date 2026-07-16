@@ -1,0 +1,51 @@
+{
+  "standardId": "TLA-185",
+  "federationSchemaVersion": "1.0.0",
+  "generatedAt": "2026-07-13T00:00:00Z",
+  "disclaimer": "Illustrative fictional project for Foundation Field Notes / Evidence Checker demos. Not a real client record. Not a statutory compliance certificate.",
+  "project": {
+    "title": "Coastal precinct pocket park — illustrative handover bundle",
+    "projectCode": "EX-DEMO-2026-01",
+    "phase": "as-designed",
+    "updatedAt": "2026-07-13T00:00:00Z",
+    "jurisdictionNote": "Fictional coastal AU site context for teaching interchange shape only."
+  },
+  "botanicalAssets": [
+    {
+      "taxonID": "ex:taxon:acacia-exemplaris",
+      "scientificName": "Acacia exemplaris",
+      "preferredCommonName": "Example wattle",
+      "growthForm": "shrub",
+      "plantingRole": "structure",
+      "nativeStatusDeclared": "declared-native-to-bioregion",
+      "quantity": 24,
+      "evidenceNote": "Fictional nursery schedule mapped to dictionary slots; not a live inventory."
+    },
+    {
+      "taxonID": "ex:taxon:lomandra-illustris",
+      "scientificName": "Lomandra illustris",
+      "preferredCommonName": "Example mat-rush",
+      "growthForm": "graminoid",
+      "plantingRole": "groundcover",
+      "nativeStatusDeclared": "declared-native-to-bioregion",
+      "quantity": 180,
+      "evidenceNote": "Quantity from illustrative schedule; method notes required before any performance claim."
+    },
+    {
+      "taxonID": "ex:taxon:banksia-ficta",
+      "scientificName": "Banksia ficta",
+      "preferredCommonName": "Example banksia",
+      "growthForm": "small-tree",
+      "plantingRole": "canopy",
+      "nativeStatusDeclared": "not-assessed",
+      "quantity": 6,
+      "evidenceNote": "Native status left not-assessed deliberately — honest null over slogan."
+    }
+  ],
+  "siteContext": {
+    "climateScreeningBand": "illustrative-moderate-heat",
+    "screeningMethodNote": "Banded estimate for demo only — not a site certificate.",
+    "sustainabilityClaimState": "not-assessed",
+    "evidenceLinks": []
+  }
+}

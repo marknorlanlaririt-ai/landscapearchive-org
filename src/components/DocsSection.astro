@@ -37,6 +37,9 @@ interface Props {
   factsToggleLabel?: string
   profileTable?: ProfileRow[]
   actions?: Action[]
+  /** Optional copy-paste block (e.g. studio brief). */
+  plainText?: string
+  plainTextLabel?: string
   /** When set, renders a share row after this section (public Foundation pages only). */
   sharePagePath?: string
 }
@@ -50,6 +53,8 @@ const {
   factsToggleLabel = 'Show details',
   profileTable = [],
   actions = [],
+  plainText,
+  plainTextLabel = 'Copy-paste text',
   sharePagePath
 } = Astro.props
 
@@ -129,6 +134,14 @@ const shareTitle = heading ?? 'This section'
             ))}
           </dl>
         ))
+    }
+
+    {
+      plainText && (
+        <pre class="docs-plain-text" aria-label={plainTextLabel}>
+          {plainText}
+        </pre>
+      )
     }
 
     {
@@ -263,5 +276,21 @@ const shareTitle = heading ?? 'This section'
     border-color: var(--line);
     color: var(--ink-muted);
     background: transparent;
+  }
+
+  .docs-plain-text {
+    margin-top: 1.2rem;
+    padding: 1rem 1.1rem;
+    max-height: 28rem;
+    overflow: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--paper-raised);
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 0.78rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--ink-soft);
   }
 </style>

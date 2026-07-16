@@ -16,69 +16,69 @@ export function buildFoundationIntendedPurposeSections() {
       id: 'intended-purpose',
       heading: 'Intended public purpose (draft)',
       paragraphs: [
-        'The sections below describe an intended public purpose — draft charitable scope published for consultation with advisers, founding members, and international collaborators. They do not constitute incorporated objects, registered charity status, or an active grant-making programme.',
-        'The Landscape Archive Foundation name reflects intended stewardship of the public specification once a suitable independent entity is established. Interim hosting and correspondence are provided by The Landscape Archive Pty Ltd (Australian implementation partner). Nothing on this page should be read as proceeding toward incorporation or as soliciting donations on behalf of a registered charity.'
+        'The sections below describe draft charitable scope for consultation. They are not incorporated objects, registered charity status, or an active grant programme.',
+        'The Foundation name reflects intended stewardship of the public specification once an independent entity exists. Interim hosting and correspondence are through The Landscape Archive Pty Ltd. Nothing here solicits donations on behalf of a registered charity.'
       ],
       actions: [
         {
-          label: 'Register interest in governance updates',
+          label: 'Governance updates',
           href: FOUNDATION_GOVERNANCE_UPDATES_FRAGMENT
         }
       ]
     },
     {
       id: 'draft-mission',
-      heading: 'Mission — environmental, social, and public benefit',
+      heading: 'Mission',
       paragraphs: [
-        `The intended mission is to advance environmental and social benefit through open, citable infrastructure for honest landscape documentation — and, with it, a durable future for landscape architecture as a digitally documented discipline: honest records, open standards, and inspectable claims rather than implied credentials. Botanical authenticity, auditable climate disclosure, culturally protocol-aware metadata, and ethical synthetic-nature provenance are encoded in the public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification, a shared vocabulary that makes project archives independently reviewable.`,
-        'That work supports capacity building internationally among landscape architects, ecologists, BIM information managers, and allied professions — including practitioners whose documentation, ecological, custodial, and information-management work is often unseen and unheard in public recognition, yet whose project records must remain legible at handover — in teaching, research, procurement, and public-sector digital programmes. Where landscape documentation intersects with biodiversity stewardship, climate adaptation, and culturally appropriate representation of Country, the Foundation’s role is definitional and archival, not humanitarian relief. We do not claim to operate disaster response, aid delivery, or community development programmes; we steward the metadata layer within which honest professional and institutional claims can be stated and reviewed.'
+        `Intended mission: advance environmental and social benefit through open, citable infrastructure for honest landscape documentation. Botanical authenticity, climate disclosure, cultural-protocol metadata, and synthetic-nature provenance are encoded in ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID}.`,
+        'Capacity building focuses on teaching, research, procurement, and public-sector digital programmes — the metadata layer for professional and institutional records.'
       ]
     },
     {
       id: 'draft-beneficiaries',
       heading: 'Intended beneficiaries',
       paragraphs: [
-        'The intended beneficiaries are groups who rely on inspectable landscape project records — directly, as practitioners and institutions, or indirectly, as publics affected by planting, climate, and cultural claims in the built environment. No active beneficiary services, enrolment programmes, or geographic operations are offered today.',
-        'Internationally, the specification is published for anyone to read and cite under the non-commercial licence. Australian field modules reflect the standard’s origin; crosswalk and extension work may adapt modules for other jurisdictions through the published governance process.'
+        'Intended beneficiaries rely on inspectable landscape project records. No beneficiary services or enrolment programmes are offered today.',
+        'The specification is published internationally for citation under the non-commercial licence. Australian field modules reflect the standard’s origin; other jurisdictions adapt via published crosswalks.'
       ],
       bullets: [
-        'Landscape practitioners, educators, and students who need a vendor-neutral reference for project metadata and archival handover',
-        'Researchers, herbaria, and open-data communities supplying taxonomic and environmental evidence behind botanical fields',
-        'Indigenous knowledge holders and Traditional Owner organisations whose protocol governs restricted cultural metadata',
-        'Public agencies, utilities, and standards bodies referencing open planting metadata in procurement and digital twin initiatives',
-        'Communities and publics who benefit when project archives remain legible after handover — as downstream beneficiaries of truth-telling infrastructure, not as recipients of Foundation grants or services at this stage'
+        'Practitioners, educators, and students needing a vendor-neutral metadata reference',
+        'Researchers and herbaria supplying taxonomic and environmental evidence',
+        'Indigenous knowledge holders whose protocol governs restricted cultural metadata',
+        'Public agencies and standards bodies referencing open planting metadata',
+        'Publics who benefit when project archives remain legible after handover'
       ]
     },
     {
       id: 'draft-activities',
-      heading: 'Activities — current work and intended programmes',
+      heading: 'Activities',
       paragraphs: [
-        'Today the Foundation’s live public work is specification stewardship: maintaining the field registry, schema documentation, reference validation tooling, governance pages, and truth-telling criteria. The awards programme, volunteer coordination, and institutional roundtables are in preparation — described on their respective pages, not yet operating as formal programmes.',
-        'Intended future activities — subject to independent entity formation, Council approval, and published charters — include open working groups and request-for-comment cycles; vendor-neutral awards recognition; published crosswalks between landscape metadata and broader BIM or geospatial standards; and institutional partnerships that reference the specification in curriculum, procurement, or research without vendor lock-in. Grant disbursement, paid services, and overseas branch operations are not active and are not promised on this interim site.'
+        'Live work: field registry, schema documentation, reference validation, governance pages, and conformance criteria. Awards, volunteer coordination, and institutional roundtables are in preparation.',
+        'Future activities require independent entity formation and Council approval. Grants, paid services, and overseas branch operations are not active.'
       ],
       bullets: [
-        'Live: public specification, registry, schema portal, governance documentation, and conformance criteria',
-        'In preparation: awards programme, structured volunteer onboarding, and public briefings (see Volunteers, Awards, Events)',
-        'Intended: RFC cycles, institutional memoranda, and capacity-building material for international adoption of the open standard',
-        'Not offered today: grants, scholarships, humanitarian field programmes, or certified training (Archive Certified remains a commercial credential)'
+        'Live: specification, registry, schema portal, governance, conformance criteria',
+        'In preparation: awards, volunteer onboarding, public briefings',
+        'Intended: RFC cycles, institutional memoranda, adoption materials',
+        'Later / separate: grants and scholarships after entity formation; Archive Certified training via Archive commercial channels'
       ]
     },
     {
       id: 'draft-funding',
-      heading: 'Funding mechanisms',
+      heading: 'Funding',
       paragraphs: [
-        'Voluntary support helps fund hosting, documentation, and governance preparation. Contributions are received interim by The Landscape Archive Pty Ltd and are not tax-deductible unless and until an independent Foundation entity is established and any applicable deductible gift recipient registration is obtained.',
-        'International supporters may use the same voluntary support routes; there is no separate foreign entity or currency account on this interim site. For invoicing, recurring support, institutional sponsorship, or grant partnerships, contact us first so arrangements can be documented appropriately once governance structures exist.'
+        'Voluntary support funds hosting, documentation, and governance preparation. Contributions are received interim by The Landscape Archive Pty Ltd and are not tax-deductible until entity formation and any applicable DGR registration.',
+        'For invoicing, recurring support, sponsorship, or grant partnerships, contact us first.'
       ],
       bullets: [
-        'Today: voluntary bank transfer and support enquiries via the Archive operations desk (see Support the standard)',
-        'Future intent: donations, grants, sponsorships, and institutional partnerships to sustain open specification stewardship — published only when entity structure and registration allow',
-        'Commercial implementation, populated datasets, and practitioner certification remain licensed through The Landscape Archive Pty Ltd, separate from Foundation voluntary support'
+        'Today: voluntary bank transfer and support enquiries (see Support)',
+        'Future: donations, grants, and sponsorships when entity structure allows',
+        'Commercial implementation remains licensed through The Landscape Archive Pty Ltd'
       ],
       actions: [
         { label: 'Support the standard', href: SUPPORT_PATH },
         {
-          label: 'Funding and partnership enquiry',
+          label: 'Funding enquiry',
           href: FOUNDATION_SUPPORT_CONTACT_PATH,
           external: true
         }

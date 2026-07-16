@@ -1,30 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import DocsSection from '../components/DocsSection.astro'
+import DraftConsultationForm from '../components/DraftConsultationForm.astro'
 import { buildFoundationContactSections, FOUNDATION_CONTACT_EMAIL } from '../data/contactContent.js'
 ---
 
 <BaseLayout
   title="Contact"
-  description="Contact routes for The Landscape Archive Foundation — open standard stewardship, commercial licensing handoffs, press, and voluntary support."
+  description="Contact routes for The Landscape Archive Foundation — open standard stewardship, draft consultation review packs, commercial licensing handoffs, press, and voluntary support."
   path="/contact"
 >
   <div class="page contact">
     <div class="contact__intro prose">
-      <p class="eyebrow">The Landscape Archive Foundation</p>
       <h1>Contact</h1>
       <p>
-        Questions about the open standard, governance, registry, licensing, or press coverage.
-        The Foundation site is public reference infrastructure; operational correspondence is handled
-        through the interim Archive desk.
+        Open standard, governance, registry, licensing, and press. Operational
+        correspondence is handled through the interim Archive desk.
       </p>
       <p class="contact__email">
-        Direct email:
+        Email:
         <a href={`mailto:${FOUNDATION_CONTACT_EMAIL}`}>{FOUNDATION_CONTACT_EMAIL}</a>
       </p>
     </div>
 
     {buildFoundationContactSections().map((section) => <DocsSection {...section} />)}
+
+    <DraftConsultationForm />
   </div>
 </BaseLayout>
 

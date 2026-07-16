@@ -8,6 +8,25 @@ Ready-to-adapt copy for LinkedIn, newsletter, and Foundation channels. **Use cau
 
 ---
 
+## Apex marketing mirror
+
+**Source of truth:** `src/data/recentPublicUpdates.js` (same list as the homepage RecentUpdatesStrip).
+
+**Public feed:** https://landscapearchive.org/recent-updates.json  
+
+**Apex consumer:** `landscapearchive.com.au` fetches via same-origin `GET /api/marketing/recent-public-updates` (Pages Function proxies the .org JSON — required because .org sets `Cross-Origin-Resource-Policy: same-site`).
+
+### How to add a new update (one place)
+
+1. Edit `landscapearchive-org/src/data/recentPublicUpdates.js` (newest first).
+   - Use ISO dates (`YYYY-MM-DD`); UI formats as e.g. `11 Jul 2026`.
+2. Deploy org: `npm run deploy` in `landscapearchive-org`.
+3. Apex picks up the feed within cache TTL (~5 minutes). No apex code change required unless you want the bundled first-paint fallback refreshed.
+
+Do **not** hand-edit apex `src/data/recentPublicUpdates.js` as the editorial source — that file is fallback only.
+
+---
+
 ## LinkedIn — short (Foundation page)
 
 Landscape metadata should stay inspectable across BIM, GIS, and asset-management handoffs — not locked inside any one vendor stack.

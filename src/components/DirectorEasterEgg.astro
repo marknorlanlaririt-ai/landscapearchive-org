@@ -1,0 +1,500 @@
+---
+import { DIRECTOR_APPLY_PATH } from '../data/memberAccess.js'
+
+const GLOBE_SRC = '/images/director-invite-globe-dots.png'
+---
+
+<div
+  class="director-invite"
+  data-director-invite
+  hidden
+>
+  <div class="director-invite__backdrop" data-director-invite-dismiss tabindex="-1" aria-hidden="true"></div>
+  <div
+    class="director-invite__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="director-invite-title"
+    aria-describedby="director-invite-note"
+    data-director-invite-dialog
+  >
+    <div class="director-invite__media" aria-hidden="true">
+      <img
+        class="director-invite__globe"
+        src={GLOBE_SRC}
+        alt=""
+        width="640"
+        height="640"
+        decoding="async"
+        fetchpriority="low"
+      />
+    </div>
+    <div class="director-invite__body">
+      <p class="director-invite__eyebrow">Expression of interest</p>
+      <h2 id="director-invite-title" class="director-invite__title">Help set the standard</h2>
+      <p id="director-invite-note" class="director-invite__note">
+        This is an invitation to express interest — not an offer of appointment or employment.
+        The Landscape Archive Foundation is not yet an incorporated entity. Submitting does not
+        create any legal relationship or guarantee of selection.
+      </p>
+      <div class="director-invite__actions">
+        <a class="director-invite__primary" href={DIRECTOR_APPLY_PATH} data-director-invite-cta>
+          Apply to express interest
+        </a>
+        <button type="button" class="director-invite__secondary" data-director-invite-dismiss>
+          Not now
+        </button>
+        <button
+          type="button"
+          class="director-invite__share"
+          data-director-invite-share
+          aria-live="polite"
+        >
+          Share
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = 'la-director-invite-dismissed'
+    var SHARE_PATH = '/directors/apply'
+    var root = document.querySelector('[data-director-invite]')
+    if (!root) {
+      return
+    }
+
+    var dialog = root.querySelector('[data-director-invite-dialog]')
+    var dismissButtons = root.querySelectorAll('[data-director-invite-dismiss]')
+    var cta = root.querySelector('[data-director-invite-cta]')
+    var shareButton = root.querySelector('[data-director-invite-share]')
+    var previouslyFocused = null
+    var openTimer = null
+    var shareResetTimer = null
+
+    function wasDismissed() {
+      try {
+        return sessionStorage.getItem(STORAGE_KEY) === '1'
+      } catch (error) {
+        return false
+      }
+    }
+
+    function markDismissed() {
+      try {
+        sessionStorage.setItem(STORAGE_KEY, '1')
+      } catch (error) {
+        /* ignore */
+      }
+    }
+
+    function getShareUrl() {
+      try {
+        return new URL(SHARE_PATH, window.location.origin).href
+      } catch (error) {
+        return 'https://landscapearchive.org/directors/apply'
+      }
+    }
+
+    function getFocusable() {
+      if (!(dialog instanceof HTMLElement)) {
+        return []
+      }
+      return Array.prototype.slice.call(
+        dialog.querySelectorAll('a[href], button:not([disabled])')
+      )
+    }
+
+    function setShareLabel(label) {
+      if (!(shareButton instanceof HTMLElement)) {
+        return
+      }
+      shareButton.textContent = label
+    }
+
+    function flashShareLabel(label) {
+      setShareLabel(label)
+      if (shareResetTimer) {
+        window.clearTimeout(shareResetTimer)
+      }
+      shareResetTimer = window.setTimeout(function () {
+        setShareLabel('Share')
+      }, 1800)
+    }
+
+    function copyShareUrl(url) {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        return navigator.clipboard.writeText(url)
+      }
+
+      return new Promise(function (resolve, reject) {
+        try {
+          var input = document.createElement('textarea')
+          input.value = url
+          input.setAttribute('readonly', '')
+          input.style.position = 'fixed'
+          input.style.opacity = '0'
+          document.body.appendChild(input)
+          input.select()
+          var ok = document.execCommand('copy')
+          document.body.removeChild(input)
+          if (ok) {
+            resolve()
+          } else {
+            reject(new Error('copy failed'))
+          }
+        } catch (error) {
+          reject(error)
+        }
+      })
+    }
+
+    function shareInvite() {
+      var url = getShareUrl()
+      var title = 'Help set the standard'
+      var text =
+        'Expression of interest for a founding board / director cohort of the intended Landscape Archive Foundation — not an offer of appointment.'
+
+      if (navigator.share) {
+        navigator
+          .share({ title: title, text: text, url: url })
+          .then(function () {
+            flashShareLabel('Shared')
+          })
+          .catch(function (error) {
+            if (error && error.name === 'AbortError') {
+              return
+            }
+            copyShareUrl(url)
+              .then(function () {
+                flashShareLabel('Link copied')
+              })
+              .catch(function () {
+                flashShareLabel('Copy failed')
+              })
+          })
+        return
+      }
+
+      copyShareUrl(url)
+        .then(function () {
+          flashShareLabel('Link copied')
+        })
+        .catch(function () {
+          flashShareLabel('Copy failed')
+        })
+    }
+
+    function openInvite() {
+      if (wasDismissed()) {
+        return
+      }
+
+      previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null
+      root.hidden = false
+      root.classList.add('is-open')
+      document.documentElement.classList.add('director-invite-open')
+
+      window.setTimeout(function () {
+        var focusables = getFocusable()
+        if (focusables[0] instanceof HTMLElement) {
+          focusables[0].focus()
+        }
+      }, 30)
+    }
+
+    function closeInvite() {
+      markDismissed()
+      root.classList.remove('is-open')
+      root.hidden = true
+      document.documentElement.classList.remove('director-invite-open')
+
+      if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+        previouslyFocused.focus()
+      }
+    }
+
+    dismissButtons.forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault()
+        closeInvite()
+      })
+    })
+
+    if (cta instanceof HTMLElement) {
+      cta.addEventListener('click', function () {
+        markDismissed()
+      })
+    }
+
+    if (shareButton instanceof HTMLElement) {
+      shareButton.addEventListener('click', function (event) {
+        event.preventDefault()
+        shareInvite()
+      })
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (root.hidden || !root.classList.contains('is-open')) {
+        return
+      }
+
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        closeInvite()
+        return
+      }
+
+      if (event.key !== 'Tab') {
+        return
+      }
+
+      var focusables = getFocusable()
+      if (!focusables.length) {
+        return
+      }
+
+      var first = focusables[0]
+      var last = focusables[focusables.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    })
+
+    var reduceMotion = false
+    try {
+      reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    } catch (error) {
+      reduceMotion = false
+    }
+
+    var delayMs = reduceMotion ? 200 : 900
+    openTimer = window.setTimeout(openInvite, delayMs)
+
+    window.addEventListener('pagehide', function () {
+      if (openTimer) {
+        window.clearTimeout(openTimer)
+      }
+      if (shareResetTimer) {
+        window.clearTimeout(shareResetTimer)
+      }
+    })
+  })()
+</script>
+
+<style>
+  .director-invite {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    padding: 1.25rem;
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .director-invite[hidden] {
+    display: none !important;
+  }
+
+  .director-invite__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(28, 31, 34, 0.52);
+    border: 0;
+    cursor: pointer;
+  }
+
+  .director-invite__dialog {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(12.5rem, 0.92fr) minmax(0, 1.2fr);
+    width: min(100%, 52rem);
+    max-height: min(90vh, 34rem);
+    overflow: hidden;
+    background: var(--paper-raised);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 22px 56px rgba(28, 31, 34, 0.2);
+  }
+
+  .director-invite.is-open .director-invite__dialog {
+    animation: director-invite-in 0.35s ease both;
+  }
+
+  .director-invite.is-open .director-invite__backdrop {
+    animation: director-invite-fade 0.3s ease both;
+  }
+
+  .director-invite__media {
+    display: grid;
+    place-items: center;
+    min-height: 100%;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  .director-invite__globe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: min(90vh, 34rem);
+    object-fit: cover;
+    object-position: center;
+    /* Asset is black dots + alpha on transparent — white panel, no invert. */
+  }
+
+  .director-invite__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    padding: clamp(1.45rem, 3.4vw, 2.15rem) clamp(1.35rem, 3.2vw, 2.1rem);
+  }
+
+  .director-invite__eyebrow {
+    margin: 0 0 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .director-invite__title {
+    margin: 0 0 0.65rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.55rem, 3.2vw, 1.95rem);
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .director-invite__note {
+    margin: 0 0 1.15rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .director-invite__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    align-items: center;
+  }
+
+  .director-invite__primary,
+  .director-invite__secondary,
+  .director-invite__share {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.55rem;
+    padding: 0.5rem 1.05rem;
+    border-radius: 2px;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .director-invite__primary {
+    background: var(--accent-strong);
+    border: 1px solid var(--accent-strong);
+    color: #f4f6f3;
+  }
+
+  .director-invite__primary:hover,
+  .director-invite__primary:focus-visible {
+    background: var(--ink);
+    border-color: var(--ink);
+    outline: none;
+  }
+
+  .director-invite__secondary,
+  .director-invite__share {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+
+  .director-invite__secondary:hover,
+  .director-invite__secondary:focus-visible,
+  .director-invite__share:hover,
+  .director-invite__share:focus-visible {
+    color: var(--ink);
+    border-color: var(--accent);
+    outline: none;
+  }
+
+  :global(html.director-invite-open) {
+    overflow: hidden;
+  }
+
+  @keyframes director-invite-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes director-invite-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .director-invite.is-open .director-invite__dialog,
+    .director-invite.is-open .director-invite__backdrop {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .director-invite__dialog {
+      grid-template-columns: 1fr;
+      width: min(100%, 28rem);
+      max-height: min(92vh, 40rem);
+      overflow: auto;
+    }
+
+    .director-invite__media {
+      min-height: 11.5rem;
+      max-height: 13.5rem;
+    }
+
+    .director-invite__globe {
+      max-height: 13.5rem;
+    }
+
+    .director-invite__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .director-invite__primary,
+    .director-invite__secondary,
+    .director-invite__share {
+      width: 100%;
+    }
+  }
+</style>

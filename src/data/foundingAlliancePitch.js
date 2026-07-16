@@ -88,7 +88,7 @@ Charter consultation: ${CONSULTATION_URL}
 `
 
 /** Plain-text outreach summary for private practice audiences. */
-export const FOUNDING_OUTREACH_EMAIL_PRACTICE = `Subject: One pilot, not another standards deck — ${TLA185_DISPLAY_ID}
+export const FOUNDING_OUTREACH_EMAIL_PRACTICE = `Subject: Pilot invitation — open landscape metadata (${TLA185_DISPLAY_ID})
 
 Dear [Principal / BIM lead],
 
@@ -98,7 +98,7 @@ ${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.offer}
 
 Pilot step: validate one bundle (${SCHEMA_PORTAL_URL}/validate) and cite the registry in one deliverable — handover memo, climate appendix, or client-facing methods section. Adoption quickstart: ${ADOPT_URL}
 
-Mapping gaps surfaced in pilots are intended as public RFC feedback — not a commercial sales conversation.
+Mapping gaps surfaced in pilots are intended as public RFC feedback for the specification process.
 
 Founding alliance language is draft consultation only (not incorporated). Review the charter to register interest as a founding supporter: ${CHARTER_URL}
 

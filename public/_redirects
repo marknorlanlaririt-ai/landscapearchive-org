@@ -1,0 +1,8 @@
+# Private Vault gate — not linked from Foundation marketing nav.
+# SPA lives on m-laririt-m at vault.landscapearchive.org (Access-gated).
+/vault https://vault.landscapearchive.org/ 302
+/vault/* https://vault.landscapearchive.org/:splat 302
+
+# Withdrawn Field Notes (2026-07-13) — send bookmarks to the index
+/articles/before-after-conformance-case-study /articles 301
+/articles/messy-metadata-sustainability-appendix-risk /articles 301

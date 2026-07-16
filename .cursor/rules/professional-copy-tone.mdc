@@ -1,0 +1,42 @@
+---
+description: Founder tone law — professional, calm copy; no dismissive, passive-aggressive, or defensive writing
+alwaysApply: true
+---
+
+# Professional copy tone (founder tone law)
+
+Applies to **all** agent writing for The Landscape Archive Foundation (`.org`) and any Archive-adjacent copy touched from this repo: public pages, UI, user-facing-adjacent docs.
+
+Canonical twin also lives in `la-frontend/.cursor/rules/professional-copy-tone.mdc` (keep wording aligned when editing).
+
+## Do
+
+- Professional, calm, straight to the point.
+- Status facts are fine: draft, waitlist, not accepting entries, empty / sparse programmes — state them plainly.
+- Soft-launch honesty (Archive): emptiness and hold truths without attitude. **Honesty ≠ snide.** See sibling `la-frontend/.cursor/rules/soft-launch-honesty.mdc`.
+
+## Never
+
+| Ban | Meaning |
+|-----|---------|
+| Dismissive framing | “not as branding wallpaper”, “not a decksheet”, “rather than wallpaper”, “unlike a brochure” |
+| Passive-aggressive | Digs at imagined audiences, competitors, or “people who don’t get it” |
+| Sarcasm / smart-arse | Winks, eye-rolls, clever put-downs |
+| Defensiveness | Disclaimer walls; “we are not X” throat-clearing that dominates the line |
+
+## Anti-examples → preferred
+
+| Avoid | Prefer |
+|-------|--------|
+| “This is not branding wallpaper.” | “Photography supports the specimen record.” |
+| “Not a decksheet — real plant data.” | “Species records with measured traits and sources.” |
+| “Unlike a brochure site…” | Lead with what the programme *is*; skip the foil. |
+| “We’re not vaporware / not just marketing.” | Ship status: “Draft.” / “Not accepting entries.” / “Waitlist open.” |
+| “Empty because others fake it.” | “This section is empty until the next intake.” |
+
+## Checklist before shipping copy
+
+1. Does any sentence exist mainly to reject a lesser category (wallpaper, brochure, deck)? Delete the reject; keep the claim.
+2. Would a calm founding member say this out loud to a peer or funder? If not, rewrite.
+3. Status / emptiness: fact only — no moral superiority.
+---

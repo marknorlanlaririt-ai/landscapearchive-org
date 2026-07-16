@@ -35,11 +35,18 @@ npm run preview
 ## Deploy (Cloudflare Pages)
 
 ```bash
-npm run deploy     # astro build && wrangler pages deploy dist --project-name landscapearchive-org
+npm run deploy     # astro build && wrangler pages deploy dist --project-name landscapearchive-org --branch main --commit-dirty=true
 ```
 
 Custom domain `landscapearchive.org` is attached to the Pages project in the
 Cloudflare dashboard (Full-strict SSL). `www.landscapearchive.org` 301s to apex.
+
+### Foundation downloads & Evidence Checker
+
+- `/downloads` — open artefacts index (schema pack, registry preview, crosswalks, charter, zip)
+- `/evidence-checker` — client-side inspector for open **TLA-185** JSON and **Archive Audit Pack** (`.tlaa`); refuses commercial **Landscape Archive Package** (`.tla`) and encrypted `.lapkg`
+- Footer column **Foundation tools** links the same set; labelled *Foundation tools — not Landscape Archive Hub*
+- Open pack zip: `/foundation-wing/tla185-open-pack.zip`
 
 ## Structure
 
@@ -67,7 +74,7 @@ for the mapping and what remains on the commercial site.
 
 ## Relationship to other repos
 
-- `../la-frontend` — commercial Archive site (`.com.au`), app, admin. Its
-  `/foundation` routes are being soft-redirected here.
+- `../la-frontend` — commercial Archive site (`.com.au`), app, admin, and **Vault SPA** on `vault.landscapearchive.org` (Access-gated; same Pages project `m-laririt-m`). Boundary: `../la-frontend/docs/VAULT_ARCHIVE_BOUNDARY.md`. Private Access runbook: `../la-frontend/docs/VAULT_CLOUDFLARE_TUNNEL.md`.
+- This repo's `/vault` path is a **noindex redirect gate only** — never linked from Foundation header/footer nav.
 - `../la-frontend/federation/` — the JSON Schema + static schema portal, published
   at `schema.landscapearchive.org`. Not yet moved into this repo (see MIGRATION.md).

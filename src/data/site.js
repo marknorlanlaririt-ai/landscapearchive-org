@@ -21,17 +21,20 @@ export const SITE_NAV_LINKS = Object.freeze([
   { id: 'governance', label: 'Governance', href: '/governance' },
   { id: 'registry', label: 'Registry', href: '/registry' },
   { id: 'adopt', label: 'Adopt', href: '/adopt' },
+  { id: 'industry-practice', label: 'Practice', href: '/industry-practice' },
+  { id: 'licence', label: 'Licence', href: '/licence' },
   { id: 'truth-tellers', label: 'Truth-tellers', href: '/truth-tellers' },
   { id: 'awards', label: 'Awards', href: '/awards' },
   { id: 'volunteers', label: 'Volunteers', href: '/volunteers' },
   { id: 'articles', label: 'Field Notes', href: '/articles' },
-  { id: 'media', label: 'Media', href: '/media' },
+  // Media page remains reachable at /media but stays out of public nav until press kit ships.
+  { id: 'media', label: 'Media', href: '/media', hidden: true },
   { id: 'contact', label: 'Contact', href: '/contact' },
-  { id: 'events', label: 'Events', href: '/events', requiresLogin: true }
+  { id: 'events', label: 'Events', href: '/events', requiresLogin: true, hidden: true }
 ])
 
 export const SITE_TAGLINE =
-  'Global data layer and governance standard for living digital twins.'
+  'Open landscape metadata standard.'
 
 export const SITE_DESCRIPTION =
-  'The Landscape Archive Foundation stewards the open TLA-185 / TLA-169 specification — a global data layer and governance standard for living digital twins. Public infrastructure for archival stewardship and truth in landscape metadata: botanical authenticity, auditable climate disclosure, honest sustainability, and ethical synthetic nature.'
+  'The Landscape Archive Foundation stewards the open TLA-185 / TLA-169 landscape metadata specification — field registry, schemas, and conformance criteria under CC BY-NC-ND 4.0.'

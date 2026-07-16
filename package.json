@@ -10,7 +10,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "deploy": "astro build && wrangler pages deploy dist --project-name landscapearchive-org --branch main --commit-dirty=true"
+    "smoke:org": "node scripts/smoke-org.mjs",
+    "deploy": "node scripts/deploy-org-gated.mjs",
+    "deploy:unsafe": "astro build && wrangler pages deploy dist --project-name landscapearchive-org --branch main --commit-dirty=true"
   },
   "dependencies": {
     "astro": "^5.6.1",

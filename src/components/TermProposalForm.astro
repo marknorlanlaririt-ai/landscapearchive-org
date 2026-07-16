@@ -1,0 +1,309 @@
+---
+import { ARCHIVE_ORIGIN, SCHEMA_PORTAL_URL } from '../data/site.js'
+
+const apiUrl = `${ARCHIVE_ORIGIN}/api/foundation/term-proposal`
+---
+
+<section id="term-proposal" class="term-propose" aria-labelledby="term-propose-title">
+  <div class="term-propose__inner prose">
+    <p class="eyebrow">Dictionary intake</p>
+    <h2 id="term-propose-title">Propose a dictionary change</h2>
+    <p class="term-propose__lead">
+      Suggest a revision, synonym, clarification, or new term for the published TLA-185 Landscape Data
+      Dictionary. A GitHub account is not required. Stewards review every proposal before any change
+      reaches the published field registry. Prefer public evidence links; do not paste third-party
+      personal data or confidential project files.
+    </p>
+    <ul class="term-propose__links">
+      <li>
+        <a href={`${SCHEMA_PORTAL_URL}/dictionary`} rel="noopener" target="_blank">Open field dictionary</a>
+      </li>
+      <li><a href="/governance">Governance (interim stewardship)</a></li>
+      <li><a href="/volunteers#technical-reviewers">Technical reviewers</a></li>
+    </ul>
+
+    <form
+      class="term-propose__form"
+      data-term-propose-form
+      data-api-url={apiUrl}
+    >
+      <label class="term-propose__field">
+        <span>Name</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="term-propose__field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" inputmode="email" required />
+      </label>
+      <label class="term-propose__field">
+        <span>Organisation <em>(optional)</em></span>
+        <input type="text" name="organisation" autocomplete="organization" />
+      </label>
+      <label class="term-propose__field">
+        <span>Change type</span>
+        <select name="changeType" required>
+          <option value="revise-definition">Revise definition</option>
+          <option value="clarify-usage">Clarify usage / scope</option>
+          <option value="add-synonym">Add synonym / alternate label</option>
+          <option value="deprecate">Propose deprecation</option>
+          <option value="new-term">Propose a new term</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <div class="term-propose__row">
+        <label class="term-propose__field">
+          <span>Term key <em>(e.g. acceptedScientificName)</em></span>
+          <input type="text" name="termKey" data-term-key autocomplete="off" spellcheck="false" />
+        </label>
+        <label class="term-propose__field">
+          <span>Term id <em>(e.g. 185-004)</em></span>
+          <input type="text" name="termId" data-term-id autocomplete="off" spellcheck="false" />
+        </label>
+      </div>
+      <label class="term-propose__field">
+        <span>Term label <em>(optional)</em></span>
+        <input type="text" name="termLabel" data-term-label autocomplete="off" />
+      </label>
+      <label class="term-propose__field term-propose__field--message">
+        <span>Rationale</span>
+        <textarea
+          name="rationale"
+          rows="5"
+          maxlength="2400"
+          required
+          placeholder="What should change, why it matters in practice, and any mapping or procurement impact…"
+        ></textarea>
+      </label>
+      <label class="term-propose__field term-propose__field--message">
+        <span>Proposed wording <em>(optional)</em></span>
+        <textarea
+          name="proposedText"
+          rows="3"
+          maxlength="2400"
+          placeholder="Suggested definition or synonym text (optional)."
+        ></textarea>
+      </label>
+      <label class="term-propose__field">
+        <span>Evidence links <em>(optional, public http(s) URLs, one per line)</em></span>
+        <textarea
+          name="evidenceUrls"
+          rows="2"
+          maxlength="1500"
+          placeholder="https://…"
+        ></textarea>
+      </label>
+      <label class="term-propose__consent">
+        <input type="checkbox" name="privacyAccepted" value="yes" required />
+        <span>
+          I agree that The Landscape Archive Foundation (via its interim implementation partner) may store and
+          review this proposal for dictionary stewardship. See the
+          <a href={`${ARCHIVE_ORIGIN}/legal?tab=privacy-policy`} rel="noopener">Privacy Policy</a>
+          on landscapearchive.com.au. I will not submit third-party personal data or confidential files.
+        </span>
+      </label>
+      <input class="term-propose__honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="term-propose__actions">
+        <button class="term-propose__primary" type="submit">Submit proposal</button>
+      </div>
+      <p class="term-propose__status" data-term-propose-status hidden aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var formEl = document.querySelector('[data-term-propose-form]')
+    var statusEl = document.querySelector('[data-term-propose-status]')
+    if (!formEl) return
+
+    try {
+      var params = new URLSearchParams(window.location.search)
+      var termKey = params.get('term') || params.get('termKey') || ''
+      var termId = params.get('id') || params.get('termId') || ''
+      var termLabel = params.get('label') || params.get('termLabel') || ''
+      var keyInput = formEl.querySelector('[data-term-key]')
+      var idInput = formEl.querySelector('[data-term-id]')
+      var labelInput = formEl.querySelector('[data-term-label]')
+      if (keyInput && termKey) keyInput.value = termKey
+      if (idInput && termId) idInput.value = termId
+      if (labelInput && termLabel) labelInput.value = termLabel
+      var changeSelect = formEl.querySelector('select[name="changeType"]')
+      if (changeSelect && params.get('type')) {
+        var type = String(params.get('type') || '').trim()
+        if ([].some.call(changeSelect.options, function (opt) { return opt.value === type })) {
+          changeSelect.value = type
+        }
+      }
+    } catch (_) {}
+
+    formEl.addEventListener('submit', async function (event) {
+      event.preventDefault()
+      var apiUrl = formEl.getAttribute('data-api-url') || ''
+      var fd = new FormData(formEl)
+      var name = String(fd.get('name') || '').trim()
+      var email = String(fd.get('email') || '').trim()
+      var organisation = String(fd.get('organisation') || '').trim()
+      var changeType = String(fd.get('changeType') || '').trim()
+      var termKey = String(fd.get('termKey') || '').trim()
+      var termId = String(fd.get('termId') || '').trim()
+      var termLabel = String(fd.get('termLabel') || '').trim()
+      var rationale = String(fd.get('rationale') || '').trim()
+      var proposedText = String(fd.get('proposedText') || '').trim()
+      var evidenceRaw = String(fd.get('evidenceUrls') || '').trim()
+      var website = String(fd.get('website') || '').trim()
+      var submitBtn = formEl.querySelector('button[type="submit"]')
+      var evidenceUrls = evidenceRaw
+        ? evidenceRaw.split(/[\n,]+/).map(function (part) { return part.trim() }).filter(Boolean)
+        : []
+
+      if (submitBtn) submitBtn.disabled = true
+      if (statusEl) {
+        statusEl.hidden = false
+        statusEl.textContent = 'Submitting…'
+        statusEl.dataset.state = 'pending'
+      }
+
+      try {
+        var response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            organisation: organisation,
+            changeType: changeType,
+            termKey: termKey,
+            termId: termId,
+            termLabel: termLabel,
+            rationale: rationale,
+            proposedText: proposedText,
+            evidenceUrls: evidenceUrls,
+            website: website,
+            pagePath: window.location.pathname + window.location.search
+          })
+        })
+        var payload = await response.json().catch(function () {
+          return {}
+        })
+        var ok = response.ok
+        if (statusEl) {
+          statusEl.textContent =
+            payload.message ||
+            (ok
+              ? 'Proposal received. Stewards will review — nothing is auto-merged.'
+              : payload.error || 'Unable to send right now — please try again.')
+          statusEl.dataset.state = ok ? 'success' : 'error'
+        }
+        if (ok) formEl.reset()
+      } catch (err) {
+        if (statusEl) {
+          statusEl.textContent = 'Network error — please try again shortly.'
+          statusEl.dataset.state = 'error'
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false
+      }
+    })
+  })()
+</script>
+
+<style>
+  .term-propose {
+    margin-block: 1.5rem 3rem;
+    padding: 0;
+  }
+
+  .term-propose__lead {
+    color: var(--ink-soft);
+    max-width: 42rem;
+  }
+
+  .term-propose__links {
+    margin: 0.8rem 0 1.4rem;
+    padding-left: 1.1rem;
+    color: var(--ink-soft);
+  }
+
+  .term-propose__form {
+    display: grid;
+    gap: 0.85rem;
+    max-width: 36rem;
+  }
+
+  .term-propose__row {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  @media (min-width: 640px) {
+    .term-propose__row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .term-propose__field {
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+  }
+
+  .term-propose__field input,
+  .term-propose__field textarea,
+  .term-propose__field select {
+    font: inherit;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--surface, #fff);
+    color: var(--ink);
+  }
+
+  .term-propose__consent {
+    display: flex;
+    gap: 0.55rem;
+    align-items: flex-start;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+
+  .term-propose__honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  .term-propose__primary {
+    font: inherit;
+    font-weight: 600;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--accent-strong);
+    background: transparent;
+    color: var(--accent-strong);
+    cursor: pointer;
+  }
+
+  .term-propose__primary:hover {
+    background: var(--accent-strong);
+    color: #fff;
+  }
+
+  .term-propose__primary:disabled {
+    opacity: 0.55;
+    cursor: wait;
+  }
+
+  .term-propose__status[data-state='success'] {
+    color: var(--accent-strong);
+  }
+
+  .term-propose__status[data-state='error'] {
+    color: #8b2e2e;
+  }
+
+  .term-propose__status[data-state='pending'] {
+    color: var(--ink-muted);
+  }
+</style>

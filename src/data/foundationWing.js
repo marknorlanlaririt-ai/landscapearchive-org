@@ -37,6 +37,10 @@ export const OPEN_STANDARD_GITHUB_TEMPORARILY_UNAVAILABLE = true
 export const OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE =
   'The public GitHub repository is temporarily unavailable while we review access controls and security posture. The TLA-185 specification remains documented on this site and through the schema portal.'
 
+/** Foundation-native dictionary term proposals (no GitHub required). */
+export const TERM_PROPOSAL_PATH = '/propose-term'
+export const TERM_PROPOSAL_URL = `${SITE_ORIGIN}${TERM_PROPOSAL_PATH}`
+
 export function isOpenStandardGithubPubliclyAvailable() {
   return !OPEN_STANDARD_GITHUB_TEMPORARILY_UNAVAILABLE
 }
@@ -47,6 +51,9 @@ export const OPEN_STANDARD_GITHUB_TAG_URL = `https://github.com/${OPEN_STANDARD_
 export const FEDERATION_SCHEMA_PORTAL_URL = SCHEMA_PORTAL_URL
 
 // Licence -------------------------------------------------------------------
+// Decision (for now): public specification stays CC BY-NC-ND 4.0 — do not switch
+// to BY-SA on public surfaces. Vault→Archive commercial rights are a private deed
+// (see la-frontend/docs/LICENCE_DUAL_AND_INTRA_GROUP_LAWYER_BRIEF.md).
 
 export const FOUNDATION_LICENCE_ID = 'CC-BY-NC-ND-4.0'
 export const FOUNDATION_LICENCE_LABEL = 'CC BY-NC-ND 4.0'
@@ -89,17 +96,17 @@ export const FOUNDATION_GOVERNANCE_CITATION_URL = `${SITE_ORIGIN.replace(/\/$/, 
 // Notices -------------------------------------------------------------------
 
 export const FOUNDATION_LICENCE_SUMMARY =
-  'Public TLA-185 / TLA-169 specification and schema documentation — attribution required; non-commercial reference without modification.'
+  'Public TLA-185 / TLA-169 specification and schema documentation — attribution required; non-commercial reference without modification. Library, Hub, Studio+™, Data API, and populated datasets are licensed separately.'
 
 export const FOUNDATION_COMMERCIAL_LICENCE_NOTICE =
-  'Commercial use, TLA Brain, enterprise integration, and 3D assets require a separate licence.'
+  'Commercial use, Library, Hub, TLA Brain, enterprise integration, Studio+™, Data API, and 3D assets require a separate licence and are not under Creative Commons.'
 
 export const FOUNDATION_HOSTING_NOTICE =
   `Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification copyright is held by ${FOUNDATION_IP_HOLDER} (IP holding company). Interim hosting by ${FOUNDATION_INTERIM_HOST} (implementation partner). Copyright is intended for assignment to ${FOUNDATION_ASSIGNEE} when a suitable independent entity is established.`
 
 /** Keep in sync with la-frontend/src/config/foundationWing.js and federation/portal/site-config.js */
 export const FOUNDATION_DRAFT_BANNER =
-  'Draft governance (interim). The Landscape Archive Foundation name and governance model described here reflect intended stewardship of the public specification once a suitable independent entity is established. The Landscape Archive Pty Ltd provides interim hosting as implementation partner. These pages describe draft governance and licence terms for discussion only; consult qualified advisers for legal interpretation.'
+  'Draft governance under interim stewardship. The Landscape Archive Pty Ltd provides interim hosting until an independent Foundation entity is established. Terms here are for consultation — seek qualified legal advice before relying on them.'
 
 /** Footer newsletter anchor — governance/incorporation updates without over-promising. */
 export const FOUNDATION_GOVERNANCE_UPDATES_FRAGMENT = '#foundation-updates'

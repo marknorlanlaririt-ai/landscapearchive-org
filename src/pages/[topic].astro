@@ -21,10 +21,17 @@ const showVolunteerApplication = page.slug === 'volunteers'
 <BaseLayout title={page.title} description={page.lead} path={pagePath} noindex={memberOnly}>
   <div class="page topic" data-member-only-page={memberOnly ? '' : undefined}>
     <div class="topic__intro prose">
-      <p class="eyebrow">The Landscape Archive Foundation</p>
       <h1>{page.title}</h1>
-      <p class="topic__lead">{page.lead}</p>
-      {page.placeholder && <p class="topic__flag">In preparation — interim working-group material.</p>}
+      {
+        page.statusBanner && (
+          <aside class="topic__status-banner" role="status" aria-label="Programme status">
+            <p class="topic__status-banner-title">{page.statusBanner.title}</p>
+            <p class="topic__status-banner-body">{page.statusBanner.body}</p>
+          </aside>
+        )
+      }
+      {page.lead && !page.hideLead && <p class="topic__lead">{page.lead}</p>}
+      {page.placeholder && <p class="topic__flag">In preparation.</p>}
     </div>
 
     {page.sections.map((section) => <DocsSection {...section} sharePagePath={pagePath} />)}
@@ -40,6 +47,31 @@ const showVolunteerApplication = page.slug === 'volunteers'
 
   .topic__lead {
     font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+
+  .topic__status-banner {
+    margin: 1.25rem 0 1.5rem;
+    padding: 1.35rem 1.4rem 1.45rem;
+    border: 2px solid var(--ink);
+    background: var(--paper-raised);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+  }
+
+  .topic__status-banner-title {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .topic__status-banner-body {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.55;
     color: var(--ink-soft);
   }
 

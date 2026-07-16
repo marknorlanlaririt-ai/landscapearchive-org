@@ -6,12 +6,20 @@ import {
 import { ARCHIVE_ORIGIN } from '../data/site.js'
 
 const skillOptions = Object.freeze([
+  { id: 'technical-reviewer', label: 'Technical reviewer (schema pack / dictionary corners)' },
+  { id: 'registry-contributor', label: 'Registry contributor (labels, synonyms, citations)' },
   { id: 'documentation', label: 'Schema and documentation review' },
   { id: 'schema-review', label: 'Schema and conformance review' },
   { id: 'crosswalks', label: 'Crosswalk and mapping work' },
   { id: 'truth-telling', label: 'Truth-telling field trials' },
   { id: 'translation', label: 'Translation and accessibility' },
   { id: 'outreach', label: 'Community outreach' }
+])
+
+const trackOptions = Object.freeze([
+  { id: 'general', label: 'General volunteer' },
+  { id: 'technical-reviewer', label: 'Technical reviewer (curated)' },
+  { id: 'registry-contributor', label: 'Registry contributor (curated)' }
 ])
 
 const signInUrl = buildOrgSignInUrl('/volunteers#apply')
@@ -22,7 +30,9 @@ const signInUrl = buildOrgSignInUrl('/volunteers#apply')
     <p class="eyebrow">Application</p>
     <h2 id="volunteer-apply-title">Apply to volunteer</h2>
     <p class="volunteer-apply__lead">
-      Share your skills and availability. A Landscape Archive account is required to submit an application.
+      Placements are curated to published needs. Technical reviewer and registry contributor tracks
+      help stress-test field-dictionary corners and conformance notes. A Landscape Archive account is
+      required to submit. Email and pack review are welcome while public GitHub write access remains limited.
     </p>
 
     <div class="volunteer-apply__gate" data-volunteer-gate>
@@ -52,6 +62,19 @@ const signInUrl = buildOrgSignInUrl('/volunteers#apply')
         <input type="email" name="email" autocomplete="email" inputmode="email" required readonly />
         <small class="volunteer-apply__hint">Must match your signed-in Landscape Archive account.</small>
       </label>
+
+      <fieldset class="volunteer-apply__fieldset">
+        <legend>Intake track</legend>
+        <div class="volunteer-apply__checks">
+          {trackOptions.map((option, index) => (
+            <label class="volunteer-apply__check">
+              <input type="radio" name="track" value={option.id} required={index === 0} />
+              <span>{option.label}</span>
+            </label>
+          ))}
+        </div>
+        <small class="volunteer-apply__hint">Choose Technical reviewer or Registry contributor for the curated registry path.</small>
+      </fieldset>
 
       <fieldset class="volunteer-apply__fieldset">
         <legend>Contribution areas</legend>
@@ -207,6 +230,7 @@ const signInUrl = buildOrgSignInUrl('/volunteers#apply')
           body: JSON.stringify({
             name: String(formData.get('name') || '').trim(),
             email: String(formData.get('email') || '').trim(),
+            track: String(formData.get('track') || 'general').trim(),
             skills: skills,
             timezone: String(formData.get('timezone') || '').trim(),
             institution: String(formData.get('institution') || '').trim(),

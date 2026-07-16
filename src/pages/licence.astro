@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DocsSection from '../components/DocsSection.astro'
+import {
+  buildLicenceScopeSections,
+  LICENCE_PAGE_DESCRIPTION,
+  LICENCE_PAGE_TITLE,
+  LICENCE_PATH
+} from '../data/licenceScopeContent.js'
+import { GOVERNANCE_PATH } from '../data/foundationWing.js'
+
+const sections = buildLicenceScopeSections()
+---
+
+<BaseLayout
+  title={LICENCE_PAGE_TITLE}
+  description={LICENCE_PAGE_DESCRIPTION}
+  path={LICENCE_PATH}
+>
+  <div class="page licence-page">
+    <header class="licence-page__intro prose">
+      <p class="eyebrow">Open specification · Scope</p>
+      <h1>{LICENCE_PAGE_TITLE}</h1>
+      <p>
+        Quiet record of what the Creative Commons notice covers — and what remains
+        separately licensed. This page is reference copy, not a dual-licence campaign.
+      </p>
+      <div class="action-row">
+        <a class="btn" href={GOVERNANCE_PATH}>Governance</a>
+      </div>
+    </header>
+
+    {sections.map((section) => <DocsSection {...section} sharePagePath={LICENCE_PATH} />)}
+  </div>
+</BaseLayout>
+
+<style>
+  .licence-page__intro {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 1rem;
+  }
+</style>
