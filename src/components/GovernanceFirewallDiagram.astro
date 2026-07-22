@@ -1,0 +1,174 @@
+---
+import {
+  FOUNDATION_IP_HOLDER,
+  FOUNDATION_INTERIM_HOST,
+  FOUNDATION_LICENCE_LABEL,
+  TLA185_DISPLAY_ID,
+  TLA169_DISPLAY_ID
+} from '../data/foundationWing.js'
+import { FOUNDATION_DISPLAY_NAME } from '../data/site.js'
+
+interface Props {
+  id?: string
+  heading?: string
+}
+
+const { id = 'firewall-diagram', heading = 'Three-entity structure' } = Astro.props
+---
+
+<section id={id} class="firewall section-block" aria-label={heading}>
+  <div class="prose">
+    <h2>{heading}</h2>
+    <p>
+      A separation of roles keeps the public specification clean of commercial control. The commercial
+      and IP layers exist today; the Foundation layer is proposed and not yet an independent entity.
+    </p>
+  </div>
+
+  <div class="firewall__diagram">
+    <div class="firewall__node firewall__node--custodian">
+      <span class="firewall__role">IP custodian · today</span>
+      <h3 class="firewall__name">{FOUNDATION_IP_HOLDER}</h3>
+      <p class="firewall__desc">
+        Holds proprietary IP and interim copyright in the public specification, pending assignment.
+        Stewards and powers the Foundation until it incorporates.
+      </p>
+    </div>
+
+    <div class="firewall__stem" aria-hidden="true"></div>
+
+    <div class="firewall__branches">
+      <div class="firewall__node firewall__node--commercial">
+        <span class="firewall__role">Commercial operator · today</span>
+        <h3 class="firewall__name">{FOUNDATION_INTERIM_HOST}</h3>
+        <ul class="firewall__list">
+          <li>SaaS, Library, Hub, Data API</li>
+          <li>Revit / BIM integrations</li>
+          <li>Subscriptions, contracts, support</li>
+        </ul>
+        {/* TODO(founder-confirm-abn): verify ABN 90 694 672 403 against ASIC before launch. */}
+        <p class="firewall__meta">Active Australian company · ABN 90 694 672 403</p>
+      </div>
+
+      <div class="firewall__node firewall__node--foundation">
+        <span class="firewall__role firewall__role--proposed">Standards steward · proposed</span>
+        <h3 class="firewall__name">{FOUNDATION_DISPLAY_NAME}</h3>
+        <ul class="firewall__list">
+          <li>Public specification stewardship</li>
+          <li>Open RFC / registry process</li>
+          <li>First Nations advisory review (proposed)</li>
+        </ul>
+        <p class="firewall__meta firewall__meta--flag">
+          Proposed independent steward — not yet incorporated. Terms shown for consultation only.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <p class="firewall__footnote">
+    Public {TLA185_DISPLAY_ID} / {TLA169_DISPLAY_ID} specification is licensed under {FOUNDATION_LICENCE_LABEL}.
+    Library, Hub, Studio+™, Data API, and populated datasets are licensed separately by the commercial
+    operator and are not under Creative Commons.
+  </p>
+</section>
+
+<style>
+  .firewall__diagram {
+    margin-top: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .firewall__node {
+    width: 100%;
+    max-width: 24rem;
+    padding: 1.2rem 1.3rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+  }
+
+  .firewall__node--custodian {
+    border-color: var(--accent-strong);
+    border-width: 2px;
+    text-align: center;
+  }
+
+  .firewall__stem {
+    width: 2px;
+    height: 2rem;
+    background: var(--line);
+  }
+
+  .firewall__branches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 50rem;
+  }
+
+  .firewall__node--foundation {
+    border-style: dashed;
+    border-color: var(--accent);
+    background: var(--accent-tint);
+  }
+
+  .firewall__role {
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .firewall__role--proposed {
+    color: var(--accent-strong);
+  }
+
+  .firewall__name {
+    font-size: 1.05rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .firewall__desc {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .firewall__list {
+    margin: 0;
+    padding-left: 1.05rem;
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .firewall__list li {
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+  }
+
+  .firewall__meta {
+    margin: 0.8rem 0 0;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--line-soft);
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+  }
+
+  .firewall__meta--flag {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+
+  .firewall__footnote {
+    margin: 1.6rem 0 0;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    max-width: var(--measure);
+  }
+</style>

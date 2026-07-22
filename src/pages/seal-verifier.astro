@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { ARCHIVE_ORIGIN } from '../data/site.js'
+import { TLA185_DISPLAY_ID } from '../data/foundationWing.js'
+
+const ARCHIVE_SEAL = `${ARCHIVE_ORIGIN}/archive-seal`
+const ARCHIVE_AUTHORISED = `${ARCHIVE_ORIGIN}/authorised`
+const ARCHIVE_FOUNDING = `${ARCHIVE_ORIGIN}/founding-offer`
+---
+
+<BaseLayout
+  title="Archive Seal"
+  description="Open TLA-185 grammar vs licensed Archive package and Archive Seal. Authenticity checks are performed by Landscape Archive administrators — not a public self-serve tool."
+  path="/seal-verifier"
+>
+  <div class="page seal">
+    <div class="seal__intro prose">
+      <p class="eyebrow">Landscape Archive · commercial attestation</p>
+      <h1>Archive Seal</h1>
+      <p>
+        The open {TLA185_DISPLAY_ID} grammar stays free to cite. A <strong>licensed Archive package</strong>
+        and an <strong>active Seal</strong> are separate commercial instruments from The Landscape Archive Pty Ltd —
+        used when a brief requires Landscape Archive–attested deliverables.
+      </p>
+      <p class="seal__banner" role="note">
+        <strong>Authenticity checks are not public.</strong>
+        Landscape Archive administrators verify whether a seal mark or organisation entitlement is registry-backed.
+        This Foundation page does not run live seal checks and does not call Archive verify APIs.
+        It is not Foundation Approved, not a government approval, and not the paused Foundation Evidence Checker.
+      </p>
+      <p>
+        For RFQs: require a licensed package from an organisation on the authorised directory, and an Archive Seal
+        when the brief asks for one. Seals renew on a period basis; expired seals are not current.
+      </p>
+      <div class="action-row">
+        <a class="btn btn--primary" href={ARCHIVE_SEAL} rel="noopener" target="_blank">
+          Purchase Archive Seal <span class="btn__ext" aria-hidden="true">↗</span>
+        </a>
+        <a class="btn" href={ARCHIVE_AUTHORISED} rel="noopener" target="_blank">Authorised directory ↗</a>
+        <a class="btn" href={ARCHIVE_FOUNDING} rel="noopener" target="_blank">Founding offer ↗</a>
+        <a class="btn" href="/industry-practice#rfq-checklist">RFQ checklist</a>
+      </div>
+    </div>
+
+    <section class="seal__panel" aria-labelledby="seal-split-heading">
+      <h2 id="seal-split-heading">Open grammar vs licensed Seal</h2>
+      <ul class="seal__list">
+        <li>
+          <strong>Open specification</strong> — field dictionary and conformance rules under CC BY-NC-ND 4.0;
+          free to read and cite.
+        </li>
+        <li>
+          <strong>Licensed Archive package</strong> — commercial delivery from an authorised organisation
+          when a brief requires Landscape Archive–attested output.
+        </li>
+        <li>
+          <strong>Archive Seal</strong> — renewable org-level attestation mark / manifest for sealed packs;
+          purchase and directory listing live on the Archive site.
+        </li>
+        <li>
+          <strong>Verification</strong> — performed by Landscape Archive (admin), using the HMAC-backed registry.
+          There is no public DIY verifier on this Foundation site.
+        </li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .seal {
+    display: grid;
+    gap: 1.75rem;
+    padding-block: clamp(2rem, 5vw, 3.5rem) 4rem;
+  }
+
+  .seal__banner {
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .seal__panel {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .seal__panel h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .seal__list {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.65rem;
+    color: rgba(0, 0, 0, 0.78);
+    line-height: 1.5;
+  }
+
+  .btn__ext {
+    font-size: 0.85em;
+  }
+</style>

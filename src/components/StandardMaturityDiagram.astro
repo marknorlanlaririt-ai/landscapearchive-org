@@ -1,0 +1,168 @@
+---
+interface Props {
+  id?: string
+  heading?: string
+}
+
+const { id = 'standard-maturity', heading = 'How the standard matures' } = Astro.props
+
+const layers = [
+  {
+    index: 'Layer 1',
+    title: 'Open specification',
+    state: 'live',
+    stateLabel: 'Live',
+    detail: 'Field registry, JSON schemas, worked examples, RFC process, and semantic versioning are published.'
+  },
+  {
+    index: 'Layer 2',
+    title: 'De facto adoption',
+    state: 'early',
+    stateLabel: 'Early',
+    detail: 'Export profiles, jurisdiction crosswalks, and pilot references are forming. Reference tooling is partly paused during the licence review.'
+  },
+  {
+    index: 'Layer 3',
+    title: 'Formal standardisation',
+    state: 'not-started',
+    stateLabel: 'Not started',
+    detail: 'Formal recognition (e.g. ISO, buildingSMART, OGC) requires an incorporated Foundation, independent governance, and real-world use. No status is claimed today.'
+  }
+]
+---
+
+<section id={id} class="maturity section-block" aria-label={heading}>
+  <div class="prose">
+    <h2>{heading}</h2>
+    <p>
+      Credibility builds in layers, not on a launch date. This is the honest current position — what is
+      live, what is early, and what has not started.
+    </p>
+  </div>
+
+  <ol class="maturity__ladder">
+    {
+      layers.map((layer) => (
+        <li class:list={['maturity__step', `maturity__step--${layer.state}`]}>
+          <div class="maturity__marker" aria-hidden="true"></div>
+          <div class="maturity__body">
+            <div class="maturity__head">
+              <span class="maturity__index">{layer.index}</span>
+              <h3 class="maturity__title">{layer.title}</h3>
+              <span class:list={['maturity__state', `maturity__state--${layer.state}`]}>
+                {layer.stateLabel}
+              </span>
+            </div>
+            <p class="maturity__detail">{layer.detail}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .maturity__ladder {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+  }
+
+  .maturity__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4rem 1fr;
+    gap: 1rem;
+    padding: 0 0 1.6rem;
+  }
+
+  .maturity__step:last-child {
+    padding-bottom: 0;
+  }
+
+  .maturity__step::before {
+    content: '';
+    position: absolute;
+    left: 0.6rem;
+    top: 1.1rem;
+    bottom: -0.2rem;
+    width: 2px;
+    background: var(--line);
+  }
+
+  .maturity__step:last-child::before {
+    display: none;
+  }
+
+  .maturity__marker {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-top: 0.15rem;
+    border-radius: 50%;
+    border: 2px solid var(--accent-strong);
+    background: var(--paper);
+    z-index: 1;
+  }
+
+  .maturity__step--live .maturity__marker {
+    background: var(--accent-strong);
+  }
+
+  .maturity__step--not-started .maturity__marker {
+    border-style: dashed;
+    border-color: var(--line);
+  }
+
+  .maturity__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.7rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .maturity__index {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .maturity__title {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .maturity__state {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 0.28rem 0.5rem;
+    border-radius: 2px;
+    border: 1px solid var(--line);
+    color: var(--ink-muted);
+    background: var(--paper);
+  }
+
+  .maturity__state--live {
+    border-color: rgba(52, 61, 74, 0.4);
+    color: var(--accent-strong);
+    background: rgba(52, 61, 74, 0.06);
+  }
+
+  .maturity__state--not-started {
+    border-style: dashed;
+  }
+
+  .maturity__detail {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+</style>

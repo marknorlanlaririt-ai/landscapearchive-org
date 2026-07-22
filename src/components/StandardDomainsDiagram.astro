@@ -1,0 +1,108 @@
+---
+import { STANDARD_DOMAINS, STANDARD_DOMAINS_INTRO } from '../data/standardDomains.js'
+
+interface Props {
+  /** Optional section id for in-page anchors. */
+  id?: string
+  heading?: string
+}
+
+const { id = 'standard-domains', heading = 'What the standard covers' } = Astro.props
+---
+
+<section id={id} class="domains section-block" aria-label={heading}>
+  <div class="prose">
+    <h2>{heading}</h2>
+    <p>{STANDARD_DOMAINS_INTRO}</p>
+  </div>
+
+  <ol class="domains__grid">
+    {
+      STANDARD_DOMAINS.map((domain) => (
+        <li class="domain-card">
+          <div class="domain-card__head">
+            <span class="domain-card__index">{domain.index}</span>
+            <h3 class="domain-card__title">{domain.title}</h3>
+          </div>
+          <p class="domain-card__summary">{domain.summary}</p>
+          <ul class="domain-card__points">
+            {domain.points.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .domains__grid {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+  }
+
+  .domain-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.3rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+  }
+
+  .domain-card__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .domain-card__index {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+
+  .domain-card__title {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .domain-card__summary {
+    margin: 0 0 0.9rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .domain-card__points {
+    margin: auto 0 0;
+    padding: 0.85rem 0 0;
+    list-style: none;
+    border-top: 1px solid var(--line-soft);
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .domain-card__points li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+
+  .domain-card__points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.32rem;
+    height: 0.32rem;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+</style>

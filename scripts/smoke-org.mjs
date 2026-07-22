@@ -199,28 +199,27 @@ async function main() {
     })
   }
 
-  // 3b. Published Field Note — public teaser only (no full-body SSR dump)
+  // 3b. Published Field Note — full essay is public HTML
   {
     const sample = await probe(`${base}/articles/four-things-land-art-technology-data`)
     const hasGate = /Sign in to (read the full Field Note|continue)/i.test(sample.bodyText)
     const hasPreview = /Four cultural pillars|cultural frame/i.test(sample.bodyText)
-    // Deep body phrasing from later sections should not appear in anonymous HTML.
-    const bodyLeak = /None of the four is enough alone/i.test(sample.bodyText)
+    const hasBody = /None of the four is enough alone/i.test(sample.bodyText)
     const pass =
       !sample.error
       && sample.status === 200
-      && hasGate
+      && !hasGate
       && hasPreview
-      && !bodyLeak
+      && hasBody
     checks.push({
-      id: 'field-notes-preview-gate',
-      label: 'GET /articles/:slug preview gate',
+      id: 'field-notes-public-read',
+      label: 'GET /articles/:slug public read',
       pass,
       detail: sample.error
         ? sample.error
         : pass
-          ? 'HTTP 200 · teaser + sign-in gate · deep body absent from HTML'
-          : `HTTP ${sample.status || 0} · gate=${hasGate} · preview=${hasPreview} · bodyLeak=${bodyLeak}`
+          ? 'HTTP 200 · full essay in HTML · no sign-in gate'
+          : `HTTP ${sample.status || 0} · gate=${hasGate} · preview=${hasPreview} · body=${hasBody}`
     })
   }
 

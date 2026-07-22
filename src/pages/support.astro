@@ -1,30 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import DocsSection from '../components/DocsSection.astro'
-import { buildFoundationHomeSections } from '../data/homeContent.js'
-
-const support = buildFoundationHomeSections().find((section) => section.id === 'support')
+import { FOUNDATION_SUPPORT_CONTACT_PATH, TLA185_DISPLAY_ID, TLA169_DISPLAY_ID } from '../data/foundationWing.js'
+import { ARCHIVE_ORIGIN } from '../data/site.js'
 ---
 
 <BaseLayout
   title="Support the standard"
-  description="Voluntary contributions toward hosting, documentation, and governance preparation for The Landscape Archive Foundation. Referencing the open TLA-185 / TLA-169 standard under CC BY-NC-ND 4.0 requires no payment."
+  description="Voluntary contribution intake for The Landscape Archive Foundation is paused while incorporation status is resolved. Referencing the open TLA-185 / TLA-169 specification under CC BY-NC-ND 4.0 requires no payment."
   path="/support"
 >
   <div class="page support">
     <div class="support__intro prose">
       <h1>Support the standard</h1>
+      <p class="support__status" role="status">
+        Due to our incorporation status, voluntary contribution intake has been taken down.
+      </p>
       <p>
-        Referencing the open specification is free under CC BY-NC-ND 4.0. Voluntary contributions
-        fund hosting, documentation, and governance preparation.
+        The Landscape Archive Foundation is not yet an independent incorporated entity. Until
+        that structure is in place, we are not accepting bank transfers, donations, or public
+        fundraising on this site.
+      </p>
+      <p>
+        Referencing {TLA185_DISPLAY_ID} or {TLA169_DISPLAY_ID} under CC BY-NC-ND 4.0 remains free
+        and does not require payment. Commercial products and datasets stay separately licensed
+        through
+        <a href={ARCHIVE_ORIGIN} rel="noopener" target="_blank">The Landscape Archive</a>.
+      </p>
+      <p>
+        For institutional partnerships, grants, or sponsorship conversations after incorporation,
+        use a foundation enquiry — not a donation form.
+      </p>
+      <p>
+        <a
+          class="support__cta"
+          href={FOUNDATION_SUPPORT_CONTACT_PATH}
+          rel="noopener"
+          target="_blank"
+        >Foundation enquiry</a>
       </p>
     </div>
-    {support && <DocsSection {...support} />}
   </div>
 </BaseLayout>
 
 <style>
   .support__intro {
-    padding-block: clamp(2.6rem, 6vw, 4rem) 0.5rem;
+    padding-block: clamp(2.6rem, 6vw, 4rem) 2rem;
+    max-width: 40rem;
+  }
+
+  .support__status {
+    margin: 0 0 1.1rem;
+    padding: 0.85rem 1rem;
+    border: 0.5px solid rgba(20, 28, 24, 0.14);
+    border-radius: 4px;
+    background: rgba(20, 28, 24, 0.04);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .support__cta {
+    display: inline-block;
+    margin-top: 0.35rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
   }
 </style>

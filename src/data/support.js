@@ -1,4 +1,5 @@
-// Voluntary Foundation support — bank transfer (interim via Archive Pty Ltd).
+// Voluntary Foundation support — bank transfer details WITHDRAWN from public pages
+// (incorporation status). Kept here for ops recovery only; do not surface until counsel/entity OK.
 
 export const FOUNDATION_SUPPORT_ACCOUNT_NAME = 'The Landscape Archive Pty Ltd'
 export const FOUNDATION_SUPPORT_BSB = '067-873'

@@ -33,7 +33,7 @@ export function buildFoundationGovernanceSections({
       heading: 'Standard stewardship',
       paragraphs: [
         'The Foundation’s public mandate is stewardship of the open specification — field registry, schemas, and conformance criteria — not subscriptions, proprietary datasets, or delivery tooling.',
-        'The Landscape Vault Pty Ltd holds proprietary IP. The Landscape Archive Pty Ltd operates commercially under Vault licence and provides interim Foundation hosting. Until an independent steward exists, the draft terms on this page apply for consultation only.'
+        'The Landscape Vault Pty Ltd holds proprietary IP and, in the interim, stewards and powers the Foundation. The Landscape Archive Pty Ltd operates commercially under Vault licence. Until an independent steward exists, the draft terms on this page apply for consultation only.'
       ]
     },
     ...buildFoundationIntendedPurposeSections(),
@@ -59,8 +59,8 @@ export function buildFoundationGovernanceSections({
         'Commercial assets remain with the Vault and Archive. The public specification resides in the Foundation layer.'
       ],
       facts: [
-        { label: 'The Landscape Vault Pty Ltd', value: 'Private holding company. Proprietary IP: TLA Brain, 3D assets, databases, pipelines.' },
-        { label: 'The Landscape Archive Pty Ltd', value: 'Commercial operator under Vault licence. Products, sales, interim Foundation hosting.' },
+        { label: 'The Landscape Vault Pty Ltd', value: 'Private IP holding company. Proprietary IP: TLA Brain, 3D assets, databases, pipelines. Stewards and powers the Foundation until incorporation.' },
+        { label: 'The Landscape Archive Pty Ltd', value: 'Commercial operator under Vault licence. Products, subscriptions, sales, support. Regional hub: landscapearchive.com.au (Australian data portal).' },
         { label: 'The Landscape Archive Foundation', value: `Intended independent steward (incorporation in preparation). Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} under CC BY-NC-ND 4.0.` }
       ]
     },
@@ -280,12 +280,12 @@ export function buildFoundationGovernanceSections({
       id: 'interim-stewardship',
       heading: 'Interim stewardship',
       paragraphs: [
-        'The Foundation name reflects intended stewardship once an independent entity exists. Interim hosting: The Landscape Archive Pty Ltd. Copyright in the public specification: The Landscape Vault Pty Ltd, pending assignment.',
+        'The Foundation name reflects intended stewardship once an independent entity exists. In the interim it is stewarded and powered by The Landscape Vault Pty Ltd, which holds copyright in the public specification pending assignment. Commercial operations: The Landscape Archive Pty Ltd.',
         'These pages describe draft governance and licence terms for discussion only.'
       ],
       bullets: [
         `Specification under ${FOUNDATION_LICENCE_LABEL}`,
-        'Interim copyright held by The Landscape Vault Pty Ltd',
+        'Stewarded and powered by The Landscape Vault Pty Ltd, which holds interim copyright',
         'Species values, automation, and commercial assets excluded from the open layer'
       ]
     },
@@ -315,7 +315,7 @@ export function buildFoundationGovernanceSections({
       ],
       actions: [
         { label: 'Commercial licensing', href: FOUNDATION_COMMERCIAL_CONTACT_PATH, external: true },
-        { label: 'Support the standard', href: SUPPORT_PATH }
+        { label: 'Support status', href: SUPPORT_PATH }
       ]
     }
   ])

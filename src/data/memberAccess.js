@@ -19,15 +19,6 @@ export const SESSION_HANDOFF_ORG_PATHS = Object.freeze([
   '/directors/apply'
 ])
 
-/**
- * Field Notes — index + essay paths are session handoffs (preview public, full body after sign-in).
- * Not member-only: guests keep the teaser; signed-in members unlock the essay.
- */
-export function isFieldNotesOrgPath(path = '') {
-  const normalized = normalizeOrgPath(path)
-  return normalized === '/articles' || normalized.startsWith('/articles/')
-}
-
 export const ARCHIVE_SESSION_VERIFY_URL = `${ARCHIVE_ORIGIN}/api/foundation/session-verify`
 export const ARCHIVE_ORG_ACCESS_VERIFY_URL = `${ARCHIVE_ORIGIN}/api/foundation/org-access-verify`
 export const ARCHIVE_ORG_SIGN_IN_URL = `${ARCHIVE_ORIGIN}/api/foundation/org-sign-in`
@@ -57,7 +48,7 @@ export function isMemberOnlyOrgPath(path = '') {
 
 export function isSessionHandoffOrgPath(path = '') {
   const normalized = normalizeOrgPath(path)
-  return SESSION_HANDOFF_ORG_PATHS.includes(normalized) || isFieldNotesOrgPath(normalized)
+  return SESSION_HANDOFF_ORG_PATHS.includes(normalized)
 }
 
 export function isAccessHandoffOrgPath(path = '') {

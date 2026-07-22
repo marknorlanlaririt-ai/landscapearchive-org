@@ -46,19 +46,32 @@ export function formatProcurementRfqChecklistPlainText() {
     `☐ Public validator — paused: ${VALIDATE_URL}`,
     `☐ Evidence Checker — paused: https://landscapearchive.org${EVIDENCE_CHECKER_PATH}`,
     '',
+    'WHEN THE BRIEF REQUIRES ARCHIVE-ATTESTED DELIVERABLES',
+    '☐ Require a licensed Landscape Archive package from an authorised organisation',
+    '  (not merely open TLA-185 JSON). Directory: https://landscapearchive.com.au/authorised',
+    '☐ Where seals are specified, require an Archive Seal mark / seal manifest',
+    '  that is within its valid period (Seals renew monthly; expired seals are invalid).',
+    '  Seal: https://landscapearchive.com.au/archive-seal',
+    '☐ Authenticity of seals is checked by Landscape Archive administrators',
+    '  (not a public self-serve tool). Directory: https://landscapearchive.com.au/authorised',
+    '☐ Do not treat Foundation Approved / Evidence Checker as an Archive licence',
+    '  or as government approval.',
+    '',
     'PROCUREMENT REFERENCE LANGUAGE',
     ADOPT_PROCUREMENT_SENTENCE,
     '',
     'NOTES',
     '• Empty modules / missing fields → note the gap and send to draft consultation.',
-    '• Commercial Library, Hub, Studio+™, Data API, and delivery tooling are separate',
-    '  Archive products — not Creative Commons; citing the dictionary does not require a purchase.',
+    '• Open TLA-185 grammar is free to cite — citing the dictionary does not require a purchase.',
+    '• Commercial Library, Hub, Studio+™, Data API, licensed packages, and Archive Seal',
+    '  are separate Archive products (not Creative Commons).',
     '',
     'NEXT LINKS',
     '• Industry & practice: https://landscapearchive.org/industry-practice',
     '• Licence & scope: https://landscapearchive.org/licence',
     '• Studio Pilot Kit: https://landscapearchive.org/adopt#studio-pilot',
     '• Draft consultation: https://landscapearchive.org/governance#draft-consultation',
+    '• Authorised organisations: https://landscapearchive.com.au/authorised',
     '',
     'Checklist page: https://landscapearchive.org/industry-practice#rfq-checklist'
   ].join('\n')
@@ -76,13 +89,15 @@ export const foundationTopicPages = Object.freeze({
         heading: 'The practice path (start here)',
         paragraphs: [
           'Follow this sequence once. Each step should yield a durable, citeable artefact — a dictionary URL, a cited procurement sentence, or a documented mapping gap — suitable for methods sections, studio assessment, or procurement files.',
-          'Self-serve validators and the Evidence Checker are paused. Empty or draft JSON Schema modules are acceptable for a pilot: document gaps and do not invent registry field keys. Mapping gaps belong in draft consultation rather than private schema forks.'
+          'Self-serve validators and the Evidence Checker are paused. Empty or draft JSON Schema modules are acceptable for a pilot: document gaps and do not invent registry field keys. Mapping gaps belong in draft consultation rather than private schema forks.',
+          'Open TLA-185 grammar remains free to read and cite. Where a project brief requires Landscape Archive–attested deliverables, require a licensed Archive package from an authorised organisation (and an Archive Seal when specified). Foundation Approved is not an Archive licence.'
         ],
         bullets: [
           '1. Open field dictionary — free public grammar (preferred labels and structural definitions)',
           '2. Studio Pilot Kit — one mandated studio or practice citation deliverable',
           '3. Draft consultation — send mapping gaps back into the public process',
-          'Note: interactive validator / Evidence Checker — paused, not available yet'
+          'Note: interactive validator / Evidence Checker — paused, not available yet',
+          'When briefs require Archive-attested output: licensed package from an authorised org (landscapearchive.com.au/authorised)'
         ],
         actions: [
           { label: 'In plain language', href: '#in-plain-language' },
@@ -90,6 +105,7 @@ export const foundationTopicPages = Object.freeze({
           { label: 'Studio Pilot Kit', href: `${ADOPT_PATH}#studio-pilot` },
           { label: 'Licence & scope', href: '/licence' },
           { label: 'RFQ checklist', href: '#rfq-checklist' },
+          { label: 'Archive Seal', href: '/seal-verifier' },
           { label: 'Draft consultation', href: `${GOVERNANCE_PATH}#draft-consultation` }
         ]
       },
@@ -213,7 +229,7 @@ export const foundationTopicPages = Object.freeze({
         ],
         actions: [
           { label: 'Governance & licence', href: GOVERNANCE_PATH },
-          { label: 'Support the standard', href: FOUNDATION_SUPPORT_CONTACT_PATH, external: true }
+          { label: 'Foundation enquiry', href: FOUNDATION_SUPPORT_CONTACT_PATH, external: true }
         ]
       }
     ]

@@ -18,6 +18,13 @@ import {
 /** @type {readonly PublicUpdateItem[]} */
 export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
   {
+    date: '2026-07-21',
+    title: 'Meaning between data and computation',
+    summary:
+      'Raw records and generative models face opposite directions on the same coin; neither yields consequence without interpretive work. A note on art, overclaim, labour, and the profession landscape architecture must become, not merely automate.',
+    href: '/articles/meaning-between-data-and-computation'
+  },
+  {
     date: '2026-07-13',
     title: 'Studio Pilot outreach pack',
     summary:

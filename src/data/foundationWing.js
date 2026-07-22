@@ -67,10 +67,16 @@ export const FOUNDATION_LICENCE_URL = 'https://creativecommons.org/licenses/by-n
 // it is incorporated. On incorporation the public-spec copyright is assigned
 // from the Vault to the Foundation. See governance → "Three-entity structure".
 
-/** Private IP holding company — current copyright owner (interim). */
+/**
+ * Private IP holding company — current copyright owner (interim). Stewards and
+ * powers the Foundation until it incorporates.
+ */
 export const FOUNDATION_IP_HOLDER = 'The Landscape Vault Pty Ltd'
 
-/** Commercial operating company + interim host / implementation partner. */
+/**
+ * Commercial operating company (OpCo). Runs products, subscriptions, contracts,
+ * and support. (Constant name retained for compatibility with existing imports.)
+ */
 export const FOUNDATION_INTERIM_HOST = 'The Landscape Archive Pty Ltd'
 
 /** Intended eventual owner of the public specification copyright. */
@@ -96,17 +102,17 @@ export const FOUNDATION_GOVERNANCE_CITATION_URL = `${SITE_ORIGIN.replace(/\/$/, 
 // Notices -------------------------------------------------------------------
 
 export const FOUNDATION_LICENCE_SUMMARY =
-  'Public TLA-185 / TLA-169 specification and schema documentation — attribution required; non-commercial reference without modification. Library, Hub, Studio+™, Data API, and populated datasets are licensed separately.'
+  'Public TLA-185 / TLA-169 specification and schema documentation — attribution required; non-commercial reference without modification. Library, Hub, Landscape Archive Tools desktop apps, Archive Seal, Studio+™, Data API, and populated datasets are licensed separately.'
 
 export const FOUNDATION_COMMERCIAL_LICENCE_NOTICE =
-  'Commercial use, Library, Hub, TLA Brain, enterprise integration, Studio+™, Data API, and 3D assets require a separate licence and are not under Creative Commons.'
+  'Commercial use, Library, Hub, Landscape Archive Tools desktop apps, Archive Seal, TLA Brain, enterprise integration, Studio+™, Data API, and 3D assets require a separate licence and are not under Creative Commons. Open grammar citation is not a licensed Archive package or Seal.'
 
 export const FOUNDATION_HOSTING_NOTICE =
-  `Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification copyright is held by ${FOUNDATION_IP_HOLDER} (IP holding company). Interim hosting by ${FOUNDATION_INTERIM_HOST} (implementation partner). Copyright is intended for assignment to ${FOUNDATION_ASSIGNEE} when a suitable independent entity is established.`
+  `${FOUNDATION_ASSIGNEE} is stewarded and powered by ${FOUNDATION_IP_HOLDER} — the IP holding company that owns the underlying software and holds the public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification copyright. The Foundation is not yet incorporated as an independent entity; copyright is intended for assignment to it once a suitable independent entity is established. Commercial products and support are operated by ${FOUNDATION_INTERIM_HOST}.`
 
 /** Keep in sync with la-frontend/src/config/foundationWing.js and federation/portal/site-config.js */
 export const FOUNDATION_DRAFT_BANNER =
-  'Draft governance under interim stewardship. The Landscape Archive Pty Ltd provides interim hosting until an independent Foundation entity is established. Terms here are for consultation — seek qualified legal advice before relying on them.'
+  'Draft governance under interim stewardship. The Landscape Archive Foundation is stewarded and powered by The Landscape Vault until an independent Foundation entity is established. Terms here are for consultation — seek qualified legal advice before relying on them.'
 
 /** Footer newsletter anchor — governance/incorporation updates without over-promising. */
 export const FOUNDATION_GOVERNANCE_UPDATES_FRAGMENT = '#foundation-updates'

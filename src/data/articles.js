@@ -44,6 +44,105 @@ export const FIELD_NOTES_NEXT_STEPS = Object.freeze({
 })
 export const FIELD_NOTES = Object.freeze([
   {
+    slug: 'meaning-between-data-and-computation',
+    status: 'published',
+    title: 'Meaning between data and computation',
+    dek: 'Raw records and generative models face opposite directions on the same coin; neither yields consequence without interpretive work. A note on art, overclaim, labour, and the profession landscape architecture must become, not merely automate.',
+    author: 'Mark Norlan Laririt',
+    date: '2026-07-21',
+    readingTime: '10 min',
+    topics: ['Culture', 'Automation', 'Professional practice'],
+    sections: [
+      {
+        heading: 'Two directions on one coin',
+        paragraphs: [
+          'Contemporary discourse about landscape practice often treats artificial intelligence and project data as if they were the same kind of thing, or as if one would soon replace the other. They are not, and it will not. They are better understood as opposite faces of a single coin.',
+          'At one face sits <em>raw data</em>: measurements, taxon identifiers, survey coordinates, nursery lists, climate layers, maintenance logs, traces of a site and its afterlife that accumulate whether or not anyone interprets them. Data does not argue. It does not choose a planting community, reconcile a brief with a covenant, or decide what may be published under cultural protocol. It waits.',
+          'At the other face sits <em>computation</em>: increasingly, generative models and automated pipelines that infer, complete, render, and optimise from patterns in those traces. Computation moves. It proposes forms, fills gaps, accelerates repetition, and scales output. But it does not, by itself, know which proposal belongs to which place, client, or obligation. It extrapolates.',
+          'The coin is incomplete if you stare at only one side. A planting schedule without interpretive judgement is inert inventory. A photorealistic canopy without documented taxon lineage is persuasive imagery that may mislead at handover. The Foundation’s cultural frame (land, art, technology, data) already names the four coordinates this note tries to sharpen: neither data nor computation is sufficient alone; meaning is what lets either become consequential in public.'
+        ],
+        actions: [
+          {
+            label: 'Four things: land, art, technology, data',
+            href: '/articles/four-things-land-art-technology-data'
+          }
+        ]
+      },
+      {
+        heading: 'The interpretive middle',
+        paragraphs: [
+          'Between raw record and automated inference lies interpretive work: the slow labour of deciding what a field means in context, what claim is being made, what evidence supports it, and what must remain restricted. That middle is not a software layer waiting to be productised. It is professional practice.',
+          'Interpretation shows up in mundane decisions: whether “native” in this brief refers to pre-1750 reference communities or to a nursery-available mix; whether a climate band is indicative or contractual; whether a massing tree is a survey anchor or a placeholder; whether a render is evidence or illustration. Each decision alters what downstream reviewers (councils, asset teams, researchers, community members) are entitled to believe.',
+          'Open field definitions, such as those in the Foundation’s dictionary, do not remove that labour. They make it <em>legible</em>. When teams align metadata to published terms, disagreement becomes inspectable rather than buried in incompatible templates. When they do not, the middle collapses into slogan (“sustainable,” “resilient,” “AI-assisted”) that travels well in procurement decks and poorly in archives.',
+          'Meaning, in this sense, is neither decoration nor post hoc narrative. It is the connective tissue that binds trace to claim, claim to evidence, and evidence to accountability. Without it, data stays inert and computation stays speculative, often impressively so, but not yet professional.'
+        ],
+        actions: [
+          { label: 'Browse the field dictionary', href: DICTIONARY_URL, external: true },
+          { label: 'Guidelines for honest project records', href: '/articles/guidelines-for-honest-records' }
+        ]
+      },
+      {
+        heading: 'Art as evidence, not ornament',
+        paragraphs: [
+          'Landscape architecture has long been suspicious of anything that sounds like “art” in the same sentence as “data,” as if the two were rivals. That suspicion protects the discipline from empty styling; it also risks misplacing what art actually does in practice.',
+          'Art, here, is not a render aesthetic or a competition board. It is the representational discipline through which places are made legible: section, plan, model, photograph, exhibition, annotated atlas, mixed media that carries dates, scales, and lineage alongside composition. Representation is how belief about a site is formed. That power is why art belongs in the charter alongside land, technology, and data: it is a way of knowing that can be careful or careless.',
+          'When metadata is treated as part of the artefact, the artefact becomes evidence as well as illustration. A procedural canopy that documents growth habit teaches differently from a generic RPC tree. A planting concept board that states “indicative, not for construction” teaches differently from one that silently implies specification. The distinction is not anti-digital; it is anti-conflation.',
+          'Generative tools intensify the problem rather than dissolving it. They can produce plausible vegetation, plausible sections, and plausible sustainability narratives faster than any studio could manually. Plausibility is not truth-telling. Art, in the expanded sense this note defends, is the interpretive practice that keeps representation answerable to site, protocol, and handover. Without that practice, automation does not clarify the profession; it accelerates ambiguity.'
+        ],
+        actions: [
+          { label: 'Reading the landscape as data', href: '/articles/reading-the-landscape-as-data' }
+        ]
+      },
+      {
+        heading: 'Claims presented as settled fact',
+        paragraphs: [
+          'The built-environment software market rewards certainty in sales language. Features ship as “complete,” “scientific,” “compliant,” “AI-powered,” often implying that the hard questions (botanical identity, climate suitability, cultural authority, archival durability) have already been settled inside the product. Many of those claims are overstated, or true only inside narrow assumptions that disappear in the fine print.',
+          'This is not an indictment of commercial tools. Implementation work (trait engines, geometry libraries, validators, interchange) remains necessary and valuable. The caution is epistemic. When a platform’s defaults become the profession’s implicit vocabulary, teams may stop asking what is being claimed and whether the bundle would survive independent review. The appearance of precision can substitute for documented evidence.',
+          'Peak bodies and procurement frameworks face a related pressure: to endorse digital maturity without always distinguishing grammar from inventory, or automation from accountability. Standards language can advance while implementable artefacts lag; conversely, products can leap ahead while public definitions remain proprietary. Neither imbalance is cured by marketing adjectives.',
+          'The Foundation’s posture is narrower: publish citable definitions, require explicit evidence states, and treat conformance as something that can be checked, not assumed from a logo slide. Practitioners still choose tools; they should also choose what those tools are allowed to assert on their behalf.'
+        ],
+        actions: [
+          {
+            label: 'Institutions, standards, and the infrastructure gap',
+            href: '/articles/institutions-standards-and-the-infrastructure-gap'
+          }
+        ]
+      },
+      {
+        heading: 'What persists: value, money, meaning, and labour',
+        paragraphs: [
+          'Predictions that automation will “eliminate” landscape work misunderstand what is being automated. Repetitive drafting, nomenclature cross-checks, geometry generation, and bundle validation: these tasks can and should take less manual time as pipelines mature. That shift does not abolish fees, clients, sites, or responsibility. It relocates effort.',
+          'Value persists because clients still need places that work ecologically, culturally, and operationally, not only models that look resolved. Money persists because implementation, liability, and maintenance still flow through contracts, nurseries, councils, and asset registers. Meaning persists because publics still ask what a project <em>was for</em>, long after the design team has moved on. Labour persists because someone must still walk the site, negotiate protocol, sign drawings, and answer when a claim is challenged.',
+          'Automation changes marginal cost; it does not automatically change marginal <em>worth</em>. A library that once required linear catalogue labour may become compound once trait ingestion and dictionary alignment run through documented machinery, as other Field Notes in this series describe. The economic inversion is real: clearer records may become more accessible. But accessibility is not the same as abdication. The interpretive middle remains billable, teachable, and defensible, because it is where consequence is assigned.',
+          'Workforce anxiety in the discipline is therefore best addressed honestly. Train for the middle: reading and writing records, aligning representation to claims, governing synthetic lineage, participating in definitional debate. Tools will continue to change; the need to make meaning precise enough for handover will not.'
+        ],
+        actions: [{ label: 'Who owns the words?', href: '/articles/who-owns-the-words' }]
+      },
+      {
+        heading: 'Precision without a profession to hold it',
+        paragraphs: [
+          'Technical capability in landscape data has advanced faster than professional agreement about what to do with it. Teams can now model individual plants and trees to high geometric fidelity, assemble planting plans with botanical identifiers and climate-screened traits, and export bundles that satisfy digital-handover checklists in less time than a decade ago would have required a dedicated BIM librarian and a catalogue subscription.',
+          'That capability is welcome. It is also politically silent. Every hour saved on scientifically accurate planting documentation is an hour that can be reinvested in survey, community consultation, or design iteration, or an hour removed from the fee structure because a client believes the software has “done the landscape part.” The question is not whether precision is possible. It is <em>which industry</em> absorbs the saving, and which obligations are quietly transferred.',
+          'Landscape architecture can narrow itself to the tasks machines perform well (massing, scheduling, documentation hygiene) and hope allied disciplines will still credit the outcome as design. Or it can expand: take interpretive responsibility for how data enters the record, how computation is disclosed, how art states its claims, and how handover archives remain honest under climate and nature-related scrutiny. Expansion is harder to automate because it requires judgement across land, representation, tooling, and trace.',
+          'The Foundation does not prescribe studio aesthetics or mandate a single vendor stack. It argues that the profession’s credible future lies in holding the middle: open grammar publicly, implementation contestable in the market, interpretive labour valued rather than hidden behind renders. Automation should widen who can produce clear records; it should not shrink who is answerable for what those records mean.'
+        ],
+        actions: [
+          { label: 'Cultural pillars on governance', href: `${GOVERNANCE_PATH}#cultural-pillars` },
+          { label: 'Foundation Standards', href: `${GOVERNANCE_PATH}#charter-pillars` }
+        ]
+      },
+      {
+        heading: 'Expansion as the honest path',
+        paragraphs: [
+          'Progress in landscape architecture will not come from pretending that data and computation are already aligned, nor from treating art as packaging around a technical core. It will come from expanding the discipline’s account of its own work, explicitly, to include the interpretive practices that make records consequential.',
+          'That expansion is compatible with rigorous automation. Indeed, open definitions and validated pipelines lower the cost of being precise, which is why the Foundation stewards grammar separately from licensed inventories. But precision without meaning is an empty deliverable; meaning without traceable structure is a fragile promise. The coin needs both faces and the interpretive edge between them.',
+          'Readers who disagree with this framing are invited to disagree in public, through definitional proposals, working-group comment, or a responding Field Note. The point is not to win a slogan war about AI. It is to keep professional language from collapsing into product defaults, and to keep landscape work answerable to the places it modifies.',
+          'Land, art, technology, data: held together, not collapsed. That is the cultural work this note asks the profession to treat as central, not residual.'
+        ]
+      }
+    ]
+  },
+  {
     slug: 'four-things-land-art-technology-data',
     status: 'published',
     title: 'Four things: land, art, technology, data',
@@ -56,7 +155,7 @@ export const FIELD_NOTES = Object.freeze([
       {
         heading: 'Four cultural pillars',
         paragraphs: [
-          'We keep returning to four words: land, art, technology, data. They are easy to print on a slide and easy to empty out. This note keeps them full — as a cultural frame for accountable public knowledge, not as branding wallpaper.',
+          'We keep returning to four words: land, art, technology, data. They are easy to print on a slide and easy to empty out. This note keeps them full — as a cultural frame for accountable public knowledge.',
           'The Landscape Archive Foundation sits where those four meet. Product ships tools. The Foundation holds the charter those tools are supposed to serve. If that split sounds abstract, the four things are how we keep it concrete.'
         ],
         actions: [{ label: 'Four cultural pillars on governance', href: `${GOVERNANCE_PATH}#cultural-pillars` }]
@@ -156,7 +255,7 @@ export const FIELD_NOTES = Object.freeze([
         actions: [
           { label: 'Adopt the open standard', href: '/adopt' },
           { label: 'Founding alliance (draft consultation)', href: `${GOVERNANCE_PATH}#founding-alliance` },
-          { label: 'Support the standard', href: '/support' }
+          { label: 'Support status', href: '/support' }
         ]
       }
     ]
@@ -312,7 +411,7 @@ export const FIELD_NOTES = Object.freeze([
           'Stewardship is not free. Hosting, governance preparation, dictionary maintenance, and crosswalk work require sustained support — which is why the Foundation publishes transparent interim arrangements and invites institutional participation while a suitable independent entity is established. The alternative cost is higher: a profession that cannot compare projects across time, place, or platform because it never owned its words in the first place.',
           'Open infrastructure also shifts competitive advantage toward implementation quality rather than definitional capture. Vendors that validate conformance, publish crosswalks, and train practitioners on careful disclosure can differentiate on service — while the profession retains a stable reference it can cite in contracts, journals, and policy submissions worldwide. The future this programme is written for keeps commercial tools competitive while treating the grammar of landscape metadata as shared professional infrastructure.'
         ],
-        actions: [{ label: 'Support the standard', href: '/support' }]
+        actions: [{ label: 'Support status', href: '/support' }]
       }
     ]
   },
@@ -360,7 +459,7 @@ export const FIELD_NOTES = Object.freeze([
         heading: 'An open reference for global studios',
         paragraphs: [
           `${TLA185_DISPLAY_ID} began with Australian field modules because that is where the first conformance exercises ran; it is published for global reference under open licence and Foundation stewardship. Universities in other regions need not adopt Australian species lists to adopt the pedagogical point: public definitions, versioned governance, and conformance rules that students can read, test, and challenge.`,
-          'The Foundation does not prescribe studio aesthetics or replace site visits with dashboards. It offers a shared grammar so that when a graduate joins a practice in Rotterdam, Riyadh, or Auckland, they recognize the same structural questions: What identifies the planting? What context screened it? What supports the sustainability claim? What must stay restricted? Reading the landscape as data is, finally, a <em>humanistic skill</em> — the ability to make meaning precise enough to survive translation across software, jurisdictions, and time.',
+          'The Foundation does not prescribe studio aesthetics or replace site visits with dashboards. It offers a shared grammar so that when a graduate joins a practice in Rotterdam, Riyadh, or Auckland, they recognise the same structural questions: What identifies the planting? What context screened it? What supports the sustainability claim? What must stay restricted? Reading the landscape as data is, finally, a <em>humanistic skill</em> — the ability to make meaning precise enough to survive translation across software, jurisdictions, and time.',
           'Faculty need not become database administrators to teach this. The schema portal and field dictionary are reading assignments in their own right: public artefacts students can query, compare across versions, and critique in seminar the same way they critique precedent projects. That openness is the pedagogical point. A closed template teaches compliance; a citable standard teaches professional agency — including the agency to propose that a definition is wrong and should change through published governance.'
         ],
         actions: [{ label: 'How governance works', href: GOVERNANCE_PATH }]
@@ -384,8 +483,7 @@ function stripHtml(value) {
 }
 
 /**
- * Public teaser for guests / crawlers — dek already on the card; body preview from first section.
- * Full essay HTML is not SSR'd; signed-in clients load sections after session unlock.
+ * Short excerpt for cards and feeds — dek already on the card; body preview from first section.
  */
 export function getArticlePreviewExcerpt(article, maxLength = 340) {
   const fromSection = stripHtml(article?.sections?.[0]?.paragraphs?.[0] || '')

@@ -1,0 +1,136 @@
+---
+import {
+  BUILT_ENVIRONMENT_EXPORT_PROFILES,
+  BUILT_ENVIRONMENT_EXPORTS_INTRO,
+  BUILT_ENVIRONMENT_EXPORTS_PORTAL_URL,
+  builtEnvironmentSchemaUrl
+} from '../data/builtEnvironmentExports.js'
+
+interface Props {
+  id?: string
+  heading?: string
+}
+
+const { id = 'export-profiles', heading = 'Built-environment export profiles' } = Astro.props
+---
+
+<section id={id} class="exports section-block" aria-label={heading}>
+  <div class="prose">
+    <h2>{heading}</h2>
+    <p set:html={BUILT_ENVIRONMENT_EXPORTS_INTRO} />
+  </div>
+
+  <ul class="exports__grid">
+    {
+      BUILT_ENVIRONMENT_EXPORT_PROFILES.map((profile) => (
+        <li class="export-card">
+          <div class="export-card__head">
+            <h3 class="export-card__title">{profile.label}</h3>
+            <span
+              class:list={['export-card__status', `export-card__status--${profile.status.toLowerCase()}`]}
+            >
+              {profile.status}
+            </span>
+          </div>
+          <p class="export-card__format">{profile.targetFormat}</p>
+          <p class="export-card__purpose">{profile.purpose}</p>
+          <a class="export-card__link" href={builtEnvironmentSchemaUrl(profile)} rel="noopener" target="_blank">
+            Schema<span aria-hidden="true"> ↗</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="exports__note">
+    Interchange profiles are export bindings of the same canonical record — not parallel standards.
+    Schemas and worked examples live on the
+    <a href={BUILT_ENVIRONMENT_EXPORTS_PORTAL_URL} rel="noopener" target="_blank">schema portal</a>.
+  </p>
+</section>
+
+<style>
+  .exports__grid {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+  }
+
+  .export-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+  }
+
+  .export-card__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .export-card__title {
+    font-family: var(--font-sans);
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .export-card__status {
+    flex-shrink: 0;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 0.28rem 0.5rem;
+    border-radius: 2px;
+    border: 1px solid var(--line);
+    color: var(--ink-muted);
+    background: var(--paper);
+  }
+
+  .export-card__status--mvp {
+    border-color: rgba(52, 61, 74, 0.4);
+    color: var(--accent-strong);
+    background: rgba(52, 61, 74, 0.06);
+  }
+
+  .export-card__status--draft {
+    border-style: dashed;
+  }
+
+  .export-card__format {
+    margin: 0;
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-muted);
+  }
+
+  .export-card__purpose {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+
+  .export-card__link {
+    align-self: flex-start;
+    font-size: 0.8rem;
+    color: var(--accent-strong);
+  }
+
+  .exports__note {
+    margin: 1.4rem 0 0;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    max-width: var(--measure);
+  }
+</style>

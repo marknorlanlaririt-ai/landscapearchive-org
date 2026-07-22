@@ -17,7 +17,7 @@ export function buildFoundationIntendedPurposeSections() {
       heading: 'Intended public purpose (draft)',
       paragraphs: [
         'The sections below describe draft charitable scope for consultation. They are not incorporated objects, registered charity status, or an active grant programme.',
-        'The Foundation name reflects intended stewardship of the public specification once an independent entity exists. Interim hosting and correspondence are through The Landscape Archive Pty Ltd. Nothing here solicits donations on behalf of a registered charity.'
+        'The Foundation name reflects intended stewardship of the public specification once an independent entity exists. In the interim it is stewarded and powered by The Landscape Vault Pty Ltd; correspondence and commercial operations are through The Landscape Archive Pty Ltd. Nothing here solicits donations on behalf of a registered charity.'
       ],
       actions: [
         {
@@ -67,18 +67,18 @@ export function buildFoundationIntendedPurposeSections() {
       id: 'draft-funding',
       heading: 'Funding',
       paragraphs: [
-        'Voluntary support funds hosting, documentation, and governance preparation. Contributions are received interim by The Landscape Archive Pty Ltd and are not tax-deductible until entity formation and any applicable DGR registration.',
-        'For invoicing, recurring support, sponsorship, or grant partnerships, contact us first.'
+        'Due to our incorporation status, voluntary contribution intake has been taken down. The Foundation is not yet an independent incorporated entity, so we are not accepting bank transfers, donations, or public fundraising on this site.',
+        'Referencing the open specification remains free under CC BY-NC-ND 4.0. For institutional partnerships or funding conversations after incorporation, contact us — not a donation form.'
       ],
       bullets: [
-        'Today: voluntary bank transfer and support enquiries (see Support)',
+        'Today: contribution intake paused (see Support page)',
         'Future: donations, grants, and sponsorships when entity structure allows',
         'Commercial implementation remains licensed through The Landscape Archive Pty Ltd'
       ],
       actions: [
-        { label: 'Support the standard', href: SUPPORT_PATH },
+        { label: 'Support status', href: SUPPORT_PATH },
         {
-          label: 'Funding enquiry',
+          label: 'Foundation enquiry',
           href: FOUNDATION_SUPPORT_CONTACT_PATH,
           external: true
         }

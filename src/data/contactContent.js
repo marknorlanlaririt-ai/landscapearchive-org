@@ -26,7 +26,7 @@ export function buildFoundationContactSections() {
       facts: [
         { label: 'Open standard & governance', value: 'Specification stewardship, registry, citation, governance updates.' },
         { label: 'Commercial licensing', value: 'Enterprise use, TLA Brain, BIM integration, paid implementation beyond CC BY-NC-ND.' },
-        { label: 'Voluntary support', value: 'Hosting contributions — see Support the standard.' }
+        { label: 'Voluntary support', value: 'Paused — incorporation status (see Support page).' }
       ]
     },
     {
@@ -40,7 +40,6 @@ export function buildFoundationContactSections() {
         { label: 'Propose a dictionary term', href: '/propose-term' },
         { label: 'Foundation enquiry', href: `${ARCHIVE_ORIGIN}/contact?topic=foundation-support`, external: true },
         { label: 'Commercial licensing', href: FOUNDATION_COMMERCIAL_CONTACT_PATH, external: true },
-        { label: 'Support the standard', href: FOUNDATION_SUPPORT_CONTACT_PATH, external: true },
         { label: 'Email', href: `mailto:${FOUNDATION_CONTACT_EMAIL}?subject=${encodeURIComponent('Foundation enquiry')}` }
       ]
     },
@@ -55,7 +54,7 @@ export function buildFoundationContactSections() {
         { label: 'Field registry', href: REGISTRY_PATH },
         { label: 'Citation', href: `${GOVERNANCE_PATH}#citation-guidance` },
         { label: 'Archive citations', href: ARCHIVE_CITATIONS_PATH, external: true },
-        { label: 'Voluntary support', href: SUPPORT_PATH }
+        { label: 'Support status', href: SUPPORT_PATH }
       ]
     },
     {

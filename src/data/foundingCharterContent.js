@@ -31,7 +31,7 @@ export function buildFoundingCharterSections() {
         'The draft constitution is a starting point for qualified advisers. It is <strong>not filing-ready</strong> until reviewed by an Australian not-for-profit / charity lawyer.',
         'Do <strong>not</strong> claim incorporated charity status, ACNC registration, or government endorsement until those processes complete. Public specification copyright is held by <strong>' +
           FOUNDATION_IP_HOLDER +
-          '</strong> pending assignment. Interim hosting: <strong>' +
+          '</strong> pending assignment, and the Foundation is stewarded and powered by it in the interim. Commercial operator: <strong>' +
           FOUNDATION_INTERIM_HOST +
           '</strong>.'
       ],
@@ -81,8 +81,8 @@ export function buildFoundingCharterSections() {
       id: 'three-entity',
       heading: 'Three-entity structure',
       facts: [
-        { label: FOUNDATION_IP_HOLDER, value: 'Current copyright owner of the public specification pending assignment.' },
-        { label: FOUNDATION_INTERIM_HOST, value: 'Commercial operator and interim Foundation hosting. No default Council vote.' },
+        { label: FOUNDATION_IP_HOLDER, value: 'Current copyright owner of the public specification pending assignment. Stewards and powers the Foundation until incorporation.' },
+        { label: FOUNDATION_INTERIM_HOST, value: 'Commercial operator (products, subscriptions, support). No default Council vote.' },
         { label: 'The Landscape Archive Foundation Limited (proposed)', value: 'Intended independent steward. Not incorporated.' }
       ]
     },

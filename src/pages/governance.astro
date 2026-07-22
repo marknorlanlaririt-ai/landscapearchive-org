@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import DocsSection from '../components/DocsSection.astro'
+import GovernanceFirewallDiagram from '../components/GovernanceFirewallDiagram.astro'
+import StandardMaturityDiagram from '../components/StandardMaturityDiagram.astro'
 import { buildFoundationGovernanceSections } from '../data/governanceContent.js'
 import { SITE_NAV_LINKS } from '../data/site.js'
 
@@ -17,7 +19,7 @@ const sections = buildFoundationGovernanceSections()
       <h1>Governance</h1>
       <p>
         Intended stewardship of the open landscape metadata specification: three-entity
-        structure, Foundation Standards, licence, and interim hosting. Draft terms for
+        structure, Foundation Standards, licence, and interim stewardship. Draft terms for
         consultation only.
       </p>
     </div>
@@ -25,6 +27,9 @@ const sections = buildFoundationGovernanceSections()
     <nav class="gov__toc" aria-label="On this page">
       {sections.map((section) => <a href={`#${section.id}`}>{section.heading}</a>)}
     </nav>
+
+    <GovernanceFirewallDiagram />
+    <StandardMaturityDiagram />
 
     {sections.map((section) => <DocsSection {...section} sharePagePath="/governance" />)}
   </div>

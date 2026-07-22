@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import SectionShareLinks from '../components/SectionShareLinks.astro'
+import StandardDomainsDiagram from '../components/StandardDomainsDiagram.astro'
+import ExportProfilesDiagram from '../components/ExportProfilesDiagram.astro'
 import preview from '../data/tla185-fields-preview.json'
 import LicenceNotice from '../components/LicenceNotice.astro'
 import {
@@ -79,6 +81,9 @@ for (const field of fields) {
         </a>
       </div>
     </div>
+
+    <StandardDomainsDiagram />
+    <ExportProfilesDiagram />
 
     <div class="reg__modules">
       {

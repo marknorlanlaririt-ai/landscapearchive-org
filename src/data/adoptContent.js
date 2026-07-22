@@ -15,7 +15,7 @@ const CAPABILITY_GRANT_URL = `${SCHEMA_PORTAL_URL}/dictionary`
 
 /** Paste-ready procurement sentence — open reference specification. */
 export const ADOPT_PROCUREMENT_SENTENCE =
-  'Landscape metadata interchange shall use the open TLA-185 field registry and JSON Schema modules published at schema.landscapearchive.org. Vendor implementations may declare scope via published capability grant manifests. This is a non-commercial reference specification under CC BY-NC-ND 4.0 and does not require purchase of a specific commercial product. Commercial products, populated datasets, and software remain separately licensed.'
+  'Landscape metadata interchange shall use the open TLA-185 field registry and JSON Schema modules published at schema.landscapearchive.org. Vendor implementations may declare scope via published capability grant manifests. This is a non-commercial reference specification under CC BY-NC-ND 4.0 and does not require purchase of a specific commercial product. Where the brief requires Landscape Archive–attested deliverables, submit a licensed Landscape Archive package from an authorised organisation (see landscapearchive.com.au/authorised); Archive Seal marks may be required for pack attestation. Commercial Library, Hub, Studio+™, populated datasets, and software remain separately licensed.'
 
 const EVIDENCE_CHECKER_URL = 'https://landscapearchive.org/evidence-checker'
 const PROCUREMENT_ANCHOR_URL = 'https://landscapearchive.org/adopt#procurement-sentence'
