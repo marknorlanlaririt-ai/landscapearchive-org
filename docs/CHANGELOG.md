@@ -14,12 +14,10 @@
 ### Why
 - Marathon Wave 2: wire Evidence / TLA-EVID without inventing un-pause or Seal.
 
-### Files touched
-- `public/scripts/evidence-checker.js`
-- `src/pages/evidence-checker.astro`
-- `src/data/foundationDownloads.js`, `governanceContent.js`
-- `docs/EVIDENCE_CHECKER_TLA_EVID_WIRING.md`
-- `docs/CHANGELOG.md`
+### Links
+- Commit: `4fde503`
+- Pages: https://03ea368b.landscapearchive-org.pages.dev
+- Live: https://landscapearchive.org/evidence-checker
 
 ---
 
