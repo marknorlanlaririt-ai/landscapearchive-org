@@ -59,7 +59,7 @@ export function buildFoundationHomeSections({
       heading: 'About',
       paragraphs: [
         'Landscape project records must remain legible after handover: species, site context, evidence for claims, restricted cultural material, and custody of synthetic assets. The open specification supplies a shared vocabulary for those declarations.',
-        `Three entities separate roles. The Landscape Vault holds proprietary IP and, in the interim, stewards and powers the Foundation; The Landscape Archive Pty Ltd is the commercial operator (products, subscriptions, support), with landscapearchive.com.au as the Australian data portal; the Foundation (once incorporated) stewards the public specification. Populated datasets and client records remain licensed separately; the field dictionary and conformance rules stay citable under CC BY-NC-ND 4.0.`
+        `Three entities separate roles. The Landscape Vault holds proprietary IP and, in the interim, stewards and powers the Foundation; The Landscape Archive Pty Ltd is the commercial operator (products, subscriptions, support), with landscapearchive.com.au as the live Australian commercial hub; the Foundation (once incorporated) stewards the public specification internationally at landscapearchive.org. Additional regional hubs are planned and not live. We do not claim ownership of landscapearchive.com. The commercial operator is independent of AILA, LI, ASLA, IFLA, and similar institutes unless stated in writing. Populated datasets and client records remain licensed separately; the field dictionary and conformance rules stay citable under CC BY-NC-ND 4.0.`
       ],
       actions: [{ label: 'Governance', href: GOVERNANCE_PATH }]
     },

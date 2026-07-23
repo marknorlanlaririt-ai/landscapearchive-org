@@ -60,7 +60,7 @@ export function buildFoundationGovernanceSections({
       ],
       facts: [
         { label: 'The Landscape Vault Pty Ltd', value: 'Private IP holding company. Proprietary IP: TLA Brain, 3D assets, databases, pipelines. Stewards and powers the Foundation until incorporation.' },
-        { label: 'The Landscape Archive Pty Ltd', value: 'Commercial operator under Vault licence. Products, subscriptions, sales, support. Regional hub: landscapearchive.com.au (Australian data portal).' },
+        { label: 'The Landscape Archive Pty Ltd', value: 'Commercial operator under Vault licence. Products, subscriptions, sales, support. Live regional hub: landscapearchive.com.au (Australian data portal). Additional hubs planned — not live. Made in Australia; international customers welcome on published Terms. Independent of AILA, LI, ASLA, IFLA unless stated in writing.' },
         { label: 'The Landscape Archive Foundation', value: `Intended independent steward (incorporation in preparation). Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} under CC BY-NC-ND 4.0.` }
       ]
     },

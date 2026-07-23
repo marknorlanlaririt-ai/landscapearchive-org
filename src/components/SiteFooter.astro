@@ -1,5 +1,10 @@
 ---
-import { ARCHIVE_ORIGIN, SITE_NAV_LINKS } from '../data/site.js'
+import {
+  ARCHIVE_ORIGIN,
+  SITE_NAV_LINKS,
+  LANDSCAPE_ARCHIVE_INDEPENDENCE_FOOTER_LINE,
+  LANDSCAPE_ARCHIVE_GEOGRAPHIC_SCOPE_NOTICE
+} from '../data/site.js'
 import TlaLettermark from './TlaLettermark.astro'
 import FoundationNewsletterSignup from './FoundationNewsletterSignup.astro'
 import {
@@ -111,6 +116,8 @@ const githubAvailable = isOpenStandardGithubPubliclyAvailable()
 
   <div class="page site-footer__base">
     <p class="site-footer__notice">{FOUNDATION_HOSTING_NOTICE}</p>
+    <p class="site-footer__notice">{LANDSCAPE_ARCHIVE_GEOGRAPHIC_SCOPE_NOTICE}</p>
+    <p class="site-footer__notice">{LANDSCAPE_ARCHIVE_INDEPENDENCE_FOOTER_LINE}</p>
     <p class="site-footer__copy">{copyrightLine}</p>
   </div>
 </footer>
