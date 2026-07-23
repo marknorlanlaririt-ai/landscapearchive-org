@@ -1,4 +1,38 @@
-﻿## 2026-07-17 - Company-page copy tidy (remove amateurish frames)
+﻿## 2026-07-23 - Standards constellation (draft orbits)
+
+**Scope:** governance, standards, charter-pillars, recent-updates, pages-deploy
+**Status:** done (deployed)
+
+### Did
+- Named TLA-185 as published spine with draft orbits TLA-SYN / TLA-EVID / TLA-ML on Governance
+  (`standardsConstellation.js` + `StandardsConstellationDiagram.astro`). Honest maturity chips;
+  Seal explicitly not opened; deferred regional / cultural / recipe orbits labelled in development.
+- Lightly extended charter pillar blurbs + home pillars CTA to constellation without overclaiming.
+- Recent updates strip entry for the constellation naming.
+
+### Why
+- Founder: pursue standards orbits beyond TLA-185 so the Foundation reads as an institute in its
+  own right — orbits, not rival dictionaries.
+
+### Files touched
+- `src/data/standardsConstellation.js`
+- `src/components/StandardsConstellationDiagram.astro`
+- `src/pages/governance.astro`
+- `src/pages/index.astro`
+- `src/data/charterPillars.js`
+- `src/data/recentPublicUpdates.js`
+
+### Follow-ups / blockers
+- Private stubs live in strategy + `la-frontend/docs/TLA_*`. Public HTML orbit pages + validators next.
+- Founder: CC tick, Foundation legal name, assignment deed.
+- Deployed: https://c4164db6.landscapearchive-org.pages.dev
+
+### Links
+- https://landscapearchive.org/governance#standards-constellation
+
+---
+
+## 2026-07-17 - Company-page copy tidy (remove amateurish frames)
 
 **Scope:** copy, foundation-org, field-notes, tone-law, pages-deploy
 **Status:** done (deployed)

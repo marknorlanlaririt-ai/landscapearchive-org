@@ -3,15 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import DocsSection from '../components/DocsSection.astro'
 import GovernanceFirewallDiagram from '../components/GovernanceFirewallDiagram.astro'
 import StandardMaturityDiagram from '../components/StandardMaturityDiagram.astro'
+import StandardsConstellationDiagram from '../components/StandardsConstellationDiagram.astro'
 import { buildFoundationGovernanceSections } from '../data/governanceContent.js'
-import { SITE_NAV_LINKS } from '../data/site.js'
+import { STANDARDS_CONSTELLATION_TITLE } from '../data/standardsConstellation.js'
 
 const sections = buildFoundationGovernanceSections()
 ---
 
 <BaseLayout
   title="Governance"
-  description="Governance of the open landscape metadata standard — Foundation Standards, three-entity structure, truth-telling, licence, and interim stewardship."
+  description="Governance of the open landscape metadata standard — Foundation Standards, standards constellation, three-entity structure, truth-telling, licence, and interim stewardship."
   path="/governance"
 >
   <div class="page gov">
@@ -19,17 +20,19 @@ const sections = buildFoundationGovernanceSections()
       <h1>Governance</h1>
       <p>
         Intended stewardship of the open landscape metadata specification: three-entity
-        structure, Foundation Standards, licence, and interim stewardship. Draft terms for
-        consultation only.
+        structure, Foundation Standards, standards constellation (spine + orbits), licence,
+        and interim stewardship. Draft terms for consultation only.
       </p>
     </div>
 
     <nav class="gov__toc" aria-label="On this page">
+      <a href="#standards-constellation">{STANDARDS_CONSTELLATION_TITLE}</a>
       {sections.map((section) => <a href={`#${section.id}`}>{section.heading}</a>)}
     </nav>
 
     <GovernanceFirewallDiagram />
     <StandardMaturityDiagram />
+    <StandardsConstellationDiagram />
 
     {sections.map((section) => <DocsSection {...section} sharePagePath="/governance" />)}
   </div>

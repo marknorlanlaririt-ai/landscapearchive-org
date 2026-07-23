@@ -18,6 +18,13 @@ import {
 /** @type {readonly PublicUpdateItem[]} */
 export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
   {
+    date: '2026-07-23',
+    title: 'Standards constellation (draft orbits)',
+    summary:
+      'TLA-185 remains the published spine. Draft orbits TLA-SYN, TLA-EVID, and TLA-ML are named for consultation — not rival dictionaries; Archive Seal stays commercial.',
+    href: '/governance#standards-constellation'
+  },
+  {
     date: '2026-07-21',
     title: 'Meaning between data and computation',
     summary:
