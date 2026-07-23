@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { ARCHIVE_ORIGIN } from '../data/site.js'
+import { TLA185_DISPLAY_ID } from '../data/foundationWing.js'
+
+const ARCHIVE_SEAL = `${ARCHIVE_ORIGIN}/archive-seal`
+const GOVERNANCE_SPLIT = '/governance#foundation-vs-archive'
+---
+
+<BaseLayout
+  title="Foundation Approved vs Archive Seal"
+  description="Counsel-ready distinction: Foundation Approved is open-spec conformance when criteria are published. Archive Seal is a separate commercial attestation from The Landscape Archive Pty Ltd. Neither invents wet-ink or MoUs."
+  path="/foundation-approved"
+>
+  <div class="page fa">
+    <div class="fa__intro prose">
+      <p class="eyebrow">Landscape Archive Foundation · honesty page</p>
+      <h1>Foundation Approved vs Archive Seal</h1>
+      <p>
+        Two different instruments share the Archive name-space. Mixing them up creates procurement risk.
+        This page states the split plainly. It does <strong>not</strong> claim Foundation incorporation,
+        published Approved criteria, or live Seal crypto on this Foundation site.
+      </p>
+      <p class="fa__banner" role="note">
+        <strong>Draft posture.</strong>
+        Foundation Approved criteria are not yet a public machine-checkable product on this site
+        (self-serve validators remain paused pending licence / stewardship clarity).
+        Archive Seal purchase and admin authenticity checks live on the commercial Archive —
+        not as a Foundation open standard.
+      </p>
+    </div>
+
+    <section class="fa__grid" aria-labelledby="fa-compare-heading">
+      <h2 id="fa-compare-heading" class="visually-hidden">Comparison</h2>
+      <article class="fa__card">
+        <h3>Foundation Approved</h3>
+        <p class="fa__role">Open-specification conformance (when criteria are published)</p>
+        <ul>
+          <li>Stewarded as a Foundation / open-spec concept — vendor-neutral intent.</li>
+          <li>Assesses whether a bundle meets <strong>published open criteria</strong> against {TLA185_DISPLAY_ID} / orbit shapes.</li>
+          <li>Does <strong>not</strong> sell Library fill, Hub seats, or Studio+™.</li>
+          <li>Does <strong>not</strong> issue Archive Seal marks or period-bound crypto manifests.</li>
+          <li>Status today: criteria and self-serve checker are <strong>not</strong> a live public product — see Governance.</li>
+        </ul>
+      </article>
+      <article class="fa__card">
+        <h3>Archive Seal</h3>
+        <p class="fa__role">Commercial attestation — The Landscape Archive Pty Ltd</p>
+        <ul>
+          <li>Paid, renewable, organisation- or practitioner-scoped attestation.</li>
+          <li>Attests integrity / issuer / process provenance for sealed packs — <strong>not</strong> botanical truth of every taxon.</li>
+          <li>Authenticity checks are performed by Landscape Archive administrators (and commercial Archive APIs where published).</li>
+          <li>This Foundation site does <strong>not</strong> run a public DIY Seal verifier.</li>
+          <li>Purchase and authorised directory live on the commercial Archive site.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="fa__panel" aria-labelledby="fa-also-heading">
+      <h2 id="fa-also-heading">Also distinct</h2>
+      <ul class="fa__list">
+        <li>
+          <strong>Archive Certified</strong> — paid practitioner / training credential from the commercial Archive.
+          Not Foundation Approved.
+        </li>
+        <li>
+          <strong>TLA-EVID</strong> — Draft open evidence <em>shape</em> (orbit). Packaging claims ≠ Seal issue.
+        </li>
+        <li>
+          <strong>Vault</strong> — IP holder. Does not bill customers. Does not grant Seal or Foundation Approved.
+        </li>
+      </ul>
+    </section>
+
+    <div class="action-row">
+      <a class="btn" href={GOVERNANCE_SPLIT}>Governance · Foundation and Archive</a>
+      <a class="btn" href="/seal-verifier">Archive Seal (Foundation explainer)</a>
+      <a class="btn" href="/standards/tla-evid">TLA-EVID draft orbit</a>
+      <a class="btn btn--primary" href={ARCHIVE_SEAL} rel="noopener" target="_blank">
+        Purchase Archive Seal <span class="btn__ext" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .fa {
+    display: grid;
+    gap: 1.75rem;
+    padding-block: clamp(2rem, 5vw, 3.5rem) 4rem;
+  }
+
+  .fa__banner {
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .fa__grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .fa__card,
+  .fa__panel {
+    display: grid;
+    gap: 0.65rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .fa__card h3,
+  .fa__panel h2 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  .fa__role {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(0, 0, 0, 0.72);
+  }
+
+  .fa__card ul,
+  .fa__list {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.55rem;
+    color: rgba(0, 0, 0, 0.78);
+    line-height: 1.5;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .btn__ext {
+    font-size: 0.85em;
+  }
+</style>

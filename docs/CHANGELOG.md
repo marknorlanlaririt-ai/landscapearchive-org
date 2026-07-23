@@ -1,4 +1,31 @@
-﻿## 2026-07-23 - Orbit required-keys validators (Draft)
+﻿## 2026-07-23 - Foundation Approved page + deeper Draft orbit enums
+
+**Scope:** governance, standards, seals, honesty
+**Status:** shipping
+
+### Did
+- Public `/foundation-approved` page: Foundation Approved ≠ Archive Seal ≠ Archive Certified
+  (draft posture; no invented criteria product).
+- Nav/footer + Seal explainer + governance actions cross-link the split.
+- Deepened SYN/EVID/ML required-keys schemas with Hub-aligned enums; validator
+  smoke supports `enum` (3/3 golden examples pass).
+- Recent updates + TLA-ML orbit page enumerate draft vocabularies.
+
+### Why
+- Marathon Phase-1: counsel-ready distinction + deepen Draft orbits without
+  flipping CC or opening Seal as an open standard.
+
+### Files touched
+- `src/pages/foundation-approved.astro`
+- `src/pages/seal-verifier.astro`
+- `src/data/site.js`, `governanceContent.js`, `recentPublicUpdates.js`, `standardsOrbits.js`
+- `src/components/SiteFooter.astro`
+- `public/schemas/orbits/*`, `scripts/validate-orbit-examples.mjs`
+- `docs/CHANGELOG.md`
+
+---
+
+## 2026-07-23 - Orbit required-keys validators (Draft)
 
 **Scope:** standards, orbits, schemas, validate-script, smoke, pages-deploy
 **Status:** done (deployed)

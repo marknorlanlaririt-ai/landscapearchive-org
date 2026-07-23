@@ -157,7 +157,25 @@ export const STANDARDS_ORBITS = Object.freeze([
       { notThis: 'Model weights / trainers', where: 'Product / research systems' },
       { notThis: 'Archive Seal', where: 'Commercial attestation' }
     ],
-    enumerations: [],
+    enumerations: [
+      {
+        field: 'modality',
+        values: 'mesh | photo | silhouette | other'
+      },
+      {
+        field: 'part',
+        values:
+          'whole_plant | leaf | flower | fruit | twig | branch | trunk | bark | root | seed | stem | cluster | foliage_spray | other'
+      },
+      {
+        field: 'quality',
+        values: 'gold | good | ok | reject'
+      },
+      {
+        field: 'training_role',
+        values: 'train | val | test | holdout | unassigned'
+      }
+    ],
     normativeIntent: [
       'schema_id remains la.archive.ml-label.v1 for new labels — do not invent a second id.',
       'schema_version stays integer 1 while Hub asserts === 1.',

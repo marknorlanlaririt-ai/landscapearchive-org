@@ -27,10 +27,13 @@ const ARCHIVE_FOUNDING = `${ARCHIVE_ORIGIN}/founding-offer`
         Landscape Archive administrators verify whether a seal mark or organisation entitlement is registry-backed.
         This Foundation page does not run live seal checks and does not call Archive verify APIs.
         It is not Foundation Approved, not a government approval, and not the paused Foundation Evidence Checker.
+        See <a href="/foundation-approved">Foundation Approved vs Archive Seal</a> for the counsel-ready split.
       </p>
       <p>
         For RFQs: require a licensed package from an organisation on the authorised directory, and an Archive Seal
         when the brief asks for one. Seals renew on a period basis; expired seals are not current.
+        Commercial Archive may expose public authenticity endpoints on <code>landscapearchive.com.au</code>;
+        this Foundation page still does not proxy or run those checks.
       </p>
       <div class="action-row">
         <a class="btn btn--primary" href={ARCHIVE_SEAL} rel="noopener" target="_blank">
@@ -38,6 +41,7 @@ const ARCHIVE_FOUNDING = `${ARCHIVE_ORIGIN}/founding-offer`
         </a>
         <a class="btn" href={ARCHIVE_AUTHORISED} rel="noopener" target="_blank">Authorised directory ↗</a>
         <a class="btn" href={ARCHIVE_FOUNDING} rel="noopener" target="_blank">Founding offer ↗</a>
+        <a class="btn" href="/foundation-approved">Foundation Approved</a>
         <a class="btn" href="/industry-practice#rfq-checklist">RFQ checklist</a>
       </div>
     </div>

@@ -67,6 +67,11 @@ function validateAgainst(value, schema, path = []) {
       issues.push({ path, message: `${here}: expected string` })
     } else if (typeof schema.minLength === 'number' && value.length < schema.minLength) {
       issues.push({ path, message: `${here}: string too short` })
+    } else if (Array.isArray(schema.enum) && !schema.enum.includes(value)) {
+      issues.push({
+        path,
+        message: `${here}: expected one of ${JSON.stringify(schema.enum)}, got ${JSON.stringify(value)}`
+      })
     }
     return issues
   }

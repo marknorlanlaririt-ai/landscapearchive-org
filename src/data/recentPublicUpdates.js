@@ -19,6 +19,13 @@ import {
 export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
   {
     date: '2026-07-23',
+    title: 'Foundation Approved vs Archive Seal',
+    summary:
+      'Counsel-ready distinction page: open-spec conformance (when criteria publish) is not a commercial Seal. Draft posture stated honestly.',
+    href: '/foundation-approved'
+  },
+  {
+    date: '2026-07-23',
     title: 'Draft orbit pages (SYN / EVID / ML)',
     summary:
       'Public Draft — not normative HTML for TLA-SYN, TLA-EVID, and TLA-ML with golden JSON examples. Spine stays TLA-185; Archive Seal stays commercial.',

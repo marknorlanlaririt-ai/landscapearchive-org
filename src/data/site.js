@@ -67,6 +67,7 @@ export const SITE_NAV_LINKS = Object.freeze([
   { id: 'adopt', label: 'Adopt', href: '/adopt' },
   { id: 'industry-practice', label: 'Practice', href: '/industry-practice' },
   { id: 'seal-verifier', label: 'Archive Seal', href: '/seal-verifier' },
+  { id: 'foundation-approved', label: 'Foundation Approved', href: '/foundation-approved' },
   { id: 'licence', label: 'Licence', href: '/licence' },
   { id: 'truth-tellers', label: 'Truth-tellers', href: '/truth-tellers' },
   { id: 'awards', label: 'Awards', href: '/awards' },

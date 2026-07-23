@@ -108,7 +108,10 @@ export function buildFoundationGovernanceSections({
         '“Foundation Approved” = open conformance; “Archive Certified” = practitioner credential',
         'Certification, commerce, and licensed datasets remain with the Archive'
       ],
-      actions: [{ label: 'Commercial licensing', href: FOUNDATION_COMMERCIAL_CONTACT_PATH, external: true }]
+      actions: [
+        { label: 'Foundation Approved vs Archive Seal', href: '/foundation-approved' },
+        { label: 'Commercial licensing', href: FOUNDATION_COMMERCIAL_CONTACT_PATH, external: true }
+      ]
     },
     {
       id: 'draft-consultation',
