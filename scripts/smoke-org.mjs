@@ -380,6 +380,26 @@ async function main() {
     })
   }
 
+  // 8. Foundation Approved vs Archive Seal honesty page
+  {
+    const page = await probe(`${base}/foundation-approved`)
+    const looksHonest =
+      /Foundation Approved/i.test(page.bodyText)
+      && /Archive Seal/i.test(page.bodyText)
+      && /Draft posture|not yet a public machine-checkable/i.test(page.bodyText)
+    const pass = !page.error && page.status === 200 && looksHonest
+    checks.push({
+      id: 'foundation-approved',
+      label: 'GET /foundation-approved',
+      pass,
+      detail: page.error
+        ? page.error
+        : pass
+          ? 'HTTP 200 · Approved ≠ Seal honesty'
+          : `Expected honesty page, got HTTP ${page.status || 0}`
+    })
+  }
+
   for (const check of checks) printCheck(check)
 
   const passed = checks.filter((c) => c.pass).length

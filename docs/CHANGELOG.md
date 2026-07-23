@@ -1,7 +1,7 @@
 ﻿## 2026-07-23 - Foundation Approved page + deeper Draft orbit enums
 
 **Scope:** governance, standards, seals, honesty
-**Status:** shipping
+**Status:** done (deployed)
 
 ### Did
 - Public `/foundation-approved` page: Foundation Approved ≠ Archive Seal ≠ Archive Certified
@@ -10,6 +10,7 @@
 - Deepened SYN/EVID/ML required-keys schemas with Hub-aligned enums; validator
   smoke supports `enum` (3/3 golden examples pass).
 - Recent updates + TLA-ML orbit page enumerate draft vocabularies.
+- Smoke covers `/foundation-approved`.
 
 ### Why
 - Marathon Phase-1: counsel-ready distinction + deepen Draft orbits without
@@ -21,7 +22,13 @@
 - `src/data/site.js`, `governanceContent.js`, `recentPublicUpdates.js`, `standardsOrbits.js`
 - `src/components/SiteFooter.astro`
 - `public/schemas/orbits/*`, `scripts/validate-orbit-examples.mjs`
+- `scripts/smoke-org.mjs`
 - `docs/CHANGELOG.md`
+
+### Links
+- Commit: `302fb11`
+- Pages: https://eaeb05b0.landscapearchive-org.pages.dev
+- Live: https://landscapearchive.org/foundation-approved
 
 ---
 
