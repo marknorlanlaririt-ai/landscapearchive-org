@@ -1,7 +1,7 @@
 ﻿## 2026-07-23 - Draft orbit HTML (TLA-SYN / TLA-EVID / TLA-ML)
 
 **Scope:** standards, orbits, governance-links, examples, pages-deploy
-**Status:** in progress
+**Status:** done (deployed)
 
 ### Did
 - Shipped public Draft — not normative orbit pages under `/standards` for TLA-SYN,
@@ -27,6 +27,7 @@
 - JSON Schema + minimal required-key validator smoke (later Phase-1).
 - Founder: CC tick, Foundation legal name, assignment deed.
 - Do not claim published/normative; Seal stays commercial.
+- Deployed: https://fd7ede97.landscapearchive-org.pages.dev
 
 ### Links
 - https://landscapearchive.org/standards
