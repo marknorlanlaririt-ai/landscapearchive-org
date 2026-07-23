@@ -1,0 +1,41 @@
+{
+  "schema_id": "la.archive.audit-pack.v1",
+  "schema_version": 1,
+  "pack_id": "evid-ex-001",
+  "project": {
+    "project_ref": null,
+    "title": null,
+    "jurisdiction_hint": null
+  },
+  "created_at": "2026-07-23T00:00:00.000Z",
+  "claims": [
+    {
+      "claim_id": "c-001",
+      "topic": "sustainability",
+      "statement": "Short human-readable claim text",
+      "tla185": {
+        "field_id": null,
+        "json_path": null
+      },
+      "evidence": [
+        {
+          "uri": "https://example.org/method-note",
+          "kind": "method_note",
+          "accessed_at": null,
+          "note": null
+        }
+      ],
+      "confidence": "documented",
+      "residual_judgement": null
+    }
+  ],
+  "exclusions": {
+    "cultural_restricted": false,
+    "notes": null
+  },
+  "attestation": {
+    "foundation_approved_ref": null,
+    "archive_seal_ref": null,
+    "note": "Optional pointers only. Presence of seal_ref does not imply this pack issues a Seal."
+  }
+}

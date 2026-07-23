@@ -1,0 +1,36 @@
+{
+  "schema_id": "la.archive.synthetic-nature.v1",
+  "schema_version": 1,
+  "pack_id": "syn-ex-001",
+  "created_at": "2026-07-23T00:00:00.000Z",
+  "asset": {
+    "asset_id": "optional-stable-id",
+    "file": "optional-relative-or-uri"
+  },
+  "nature_class": "synthetic",
+  "generation": {
+    "method": "procedural",
+    "tool": "workbench",
+    "model_or_pipeline": null,
+    "human_authored": true
+  },
+  "lineage": {
+    "parents": [],
+    "derived_from": null,
+    "revision": 1
+  },
+  "attribution": {
+    "creator": null,
+    "organisation": null,
+    "licence_note": null
+  },
+  "disclosure": {
+    "marked_synthetic": true,
+    "viewer_facing_label": "Synthetic / generated asset",
+    "notes": null
+  },
+  "tla185_refs": {
+    "record_id": null,
+    "field_paths": []
+  }
+}

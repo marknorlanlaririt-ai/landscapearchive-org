@@ -311,6 +311,57 @@ async function main() {
     }
   }
 
+  // 7. Draft standards orbits (Phase-1 HTML — not normative)
+  {
+    const index = await probe(`${base}/standards`)
+    const hasDraft =
+      /Draft\s*[—\-]\s*not normative|TLA-SYN|TLA-EVID|TLA-ML/i.test(index.bodyText)
+    const pass = !index.error && index.status === 200 && hasDraft
+    checks.push({
+      id: 'standards-index',
+      label: 'GET /standards',
+      pass,
+      detail: index.error
+        ? index.error
+        : pass
+          ? 'HTTP 200 · draft orbit index'
+          : `Expected draft orbits index, got HTTP ${index.status || 0}`
+    })
+  }
+  for (const slug of ['tla-syn', 'tla-evid', 'tla-ml']) {
+    const page = await probe(`${base}/standards/${slug}`)
+    const hasBanner = /Draft\s*[—\-]\s*not normative/i.test(page.bodyText)
+    const hasSchema = /la\.archive\./i.test(page.bodyText)
+    const pass = !page.error && page.status === 200 && hasBanner && hasSchema
+    checks.push({
+      id: `standards-${slug}`,
+      label: `GET /standards/${slug}`,
+      pass,
+      detail: page.error
+        ? page.error
+        : pass
+          ? 'HTTP 200 · Draft banner + schema id'
+          : `HTTP ${page.status || 0} · banner=${hasBanner} · schema=${hasSchema}`
+    })
+    const example = await probe(`${base}/examples/orbits/${slug}-example.json`, {
+      accept: 'application/json'
+    })
+    const examplePass =
+      !example.error
+      && example.status === 200
+      && /"schema_id"\s*:/.test(example.bodyText)
+    checks.push({
+      id: `orbit-example-${slug}`,
+      label: `GET /examples/orbits/${slug}-example.json`,
+      pass: examplePass,
+      detail: example.error
+        ? example.error
+        : examplePass
+          ? 'HTTP 200 · golden JSON'
+          : `Expected golden JSON, got HTTP ${example.status || 0}`
+    })
+  }
+
   for (const check of checks) printCheck(check)
 
   const passed = checks.filter((c) => c.pass).length

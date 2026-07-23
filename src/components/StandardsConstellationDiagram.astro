@@ -26,7 +26,9 @@ const { id = 'standards-constellation', heading = STANDARDS_CONSTELLATION_TITLE 
         <li class:list={['constellation__item', `constellation__item--${item.role}`]}>
           <div class="constellation__head">
             <span class="constellation__role">{item.role === 'spine' ? 'Spine' : 'Orbit'}</span>
-            <h3 class="constellation__name">{item.shortName}</h3>
+            <h3 class="constellation__name">
+              {item.href ? <a href={item.href}>{item.shortName}</a> : item.shortName}
+            </h3>
             <span class:list={['constellation__maturity', `constellation__maturity--${item.maturity}`]}>
               {item.maturityLabel}
             </span>
@@ -39,6 +41,13 @@ const { id = 'standards-constellation', heading = STANDARDS_CONSTELLATION_TITLE 
             ) : null
           }
           <p class="constellation__summary">{item.summary}</p>
+          {
+            item.href && item.maturity === 'draft' ? (
+              <p class="constellation__link">
+                <a href={item.href}>Draft page — not normative</a>
+              </p>
+            ) : null
+          }
         </li>
       ))
     }
@@ -87,6 +96,21 @@ const { id = 'standards-constellation', heading = STANDARDS_CONSTELLATION_TITLE 
     margin: 0;
     font-size: 1.15rem;
     flex: 1 1 auto;
+  }
+
+  .constellation__name a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .constellation__name a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .constellation__link {
+    margin: 0.55rem 0 0;
+    font-size: 0.82rem;
   }
 
   .constellation__maturity {

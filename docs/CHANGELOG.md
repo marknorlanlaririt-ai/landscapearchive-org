@@ -1,4 +1,44 @@
-﻿## 2026-07-23 - Standards constellation (draft orbits)
+﻿## 2026-07-23 - Draft orbit HTML (TLA-SYN / TLA-EVID / TLA-ML)
+
+**Scope:** standards, orbits, governance-links, examples, pages-deploy
+**Status:** in progress
+
+### Did
+- Shipped public Draft — not normative orbit pages under `/standards` for TLA-SYN,
+  TLA-EVID, and TLA-ML, with golden JSON examples and honest maturity banners.
+- Linked draft orbits from Governance constellation + footer Open standard nav.
+- Recent-updates strip entry pointing at `/standards`.
+
+### Why
+- Phase-1 constellation roadmap: public HTML stubs marked Draft — not normative,
+  without waiting on CC tick or opening Seal.
+
+### Files touched
+- `src/data/standardsOrbits.js`
+- `src/data/standardsConstellation.js`
+- `src/pages/standards/index.astro`
+- `src/pages/standards/[orbit].astro`
+- `src/components/StandardsConstellationDiagram.astro`
+- `src/components/SiteFooter.astro`
+- `src/data/recentPublicUpdates.js`
+- `public/examples/orbits/*`
+
+### Follow-ups / blockers
+- JSON Schema + minimal required-key validator smoke (later Phase-1).
+- Founder: CC tick, Foundation legal name, assignment deed.
+- Do not claim published/normative; Seal stays commercial.
+
+### Links
+- https://landscapearchive.org/standards
+- https://landscapearchive.org/standards/tla-syn
+- https://landscapearchive.org/standards/tla-evid
+- https://landscapearchive.org/standards/tla-ml
+- https://landscapearchive.org/governance#standards-constellation
+
+---
+
+## 2026-07-23 - Standards constellation (draft orbits)
+
 
 **Scope:** governance, standards, charter-pillars, recent-updates, pages-deploy
 **Status:** done (deployed)

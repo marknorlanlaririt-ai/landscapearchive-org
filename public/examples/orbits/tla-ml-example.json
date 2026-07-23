@@ -1,0 +1,12 @@
+{
+  "schema_id": "la.archive.ml-label.v1",
+  "schema_version": 1,
+  "asset": {
+    "file": "corymbia-citriodora-whole.glb"
+  },
+  "modality": "mesh",
+  "part": "whole_plant",
+  "source": "workbench",
+  "quality": "gold",
+  "training_role": "train"
+}

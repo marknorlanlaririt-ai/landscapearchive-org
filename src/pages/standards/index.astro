@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import SectionShareLinks from '../../components/SectionShareLinks.astro'
+import { GOVERNANCE_PATH, TLA185_DISPLAY_ID } from '../../data/foundationWing.js'
+import {
+  STANDARDS_ORBIT_MATURITY_BANNER,
+  STANDARDS_ORBITS,
+  STANDARDS_ORBITS_INDEX_PATH
+} from '../../data/standardsOrbits.js'
+---
+
+<BaseLayout
+  title="Draft standards orbits"
+  description={`Draft Foundation orbits beside ${TLA185_DISPLAY_ID}: TLA-SYN, TLA-EVID, and TLA-ML. Consultation shapes — not normative publications.`}
+  path={STANDARDS_ORBITS_INDEX_PATH}
+>
+  <article class="page orbit-index">
+    <header class="orbit-index__head prose">
+      <p class="eyebrow">
+        <a class="orbit-index__back" href={`${GOVERNANCE_PATH}#standards-constellation`}>Governance · Standards constellation</a>
+      </p>
+      <h1>Draft standards orbits</h1>
+      <p class="orbit-index__dek">
+        {TLA185_DISPLAY_ID} is the published spine. Named orbits extend provenance, evidence packaging,
+        and plant-form labelling without creating a rival dictionary. Every page below is
+        <strong>Draft — not normative</strong>.
+      </p>
+      <p class="orbit-index__banner" role="note">{STANDARDS_ORBIT_MATURITY_BANNER}</p>
+      <SectionShareLinks
+        title="Draft standards orbits"
+        pagePath={STANDARDS_ORBITS_INDEX_PATH}
+        anchorId="draft-orbits"
+      />
+    </header>
+
+    <ol class="orbit-index__list">
+      {
+        STANDARDS_ORBITS.map((orbit) => (
+          <li class="orbit-index__item">
+            <div class="orbit-index__item-head">
+              <h2>
+                <a href={orbit.path}>{orbit.shortName}</a>
+              </h2>
+              <span class="orbit-index__chip">{orbit.maturityLabel}</span>
+            </div>
+            <p class="orbit-index__schema">
+              <code>{orbit.schemaId}</code>
+            </p>
+            <p class="orbit-index__summary">{orbit.description}</p>
+            <p class="orbit-index__actions">
+              <a href={orbit.path}>Open draft page</a>
+              {' · '}
+              <a href={orbit.exampleHref}>Golden JSON</a>
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="orbit-index__footnote prose">
+      Regional flora packs and further orbits remain in development on the
+      <a href={`${GOVERNANCE_PATH}#standards-constellation`}>constellation</a>.
+      Archive Seal stays a commercial Archive product.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .orbit-index__head {
+    padding-block: clamp(2.6rem, 6vw, 4rem) 1rem;
+  }
+
+  .orbit-index__back {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .orbit-index__back:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .orbit-index__dek {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    max-width: 46rem;
+  }
+
+  .orbit-index__banner {
+    max-width: 46rem;
+    margin: 1rem 0 0;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    background: var(--accent-tint);
+    border-inline-start: 3px solid var(--accent);
+  }
+
+  .orbit-index__list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .orbit-index__item {
+    padding: 1.15rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+  }
+
+  .orbit-index__item-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.55rem 0.85rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .orbit-index__item-head h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    flex: 1 1 auto;
+  }
+
+  .orbit-index__item-head a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .orbit-index__item-head a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .orbit-index__chip {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 0.2rem;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+
+  .orbit-index__schema {
+    margin: 0 0 0.45rem;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+  }
+
+  .orbit-index__summary {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+
+  .orbit-index__actions {
+    margin: 0.7rem 0 0;
+    font-size: 0.85rem;
+  }
+
+  .orbit-index__footnote {
+    padding-block: 1.6rem 3rem;
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+  }
+</style>
