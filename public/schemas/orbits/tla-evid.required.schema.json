@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://landscapearchive.org/schemas/orbits/tla-evid.required.schema.json",
+  "title": "TLA-EVID required-keys smoke (Draft — not normative)",
+  "description": "Minimal required-key check for la.archive.audit-pack.v1 golden examples. Not a full normative schema; not Archive Seal.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_id",
+    "schema_version",
+    "pack_id",
+    "project",
+    "created_at",
+    "claims",
+    "exclusions",
+    "attestation"
+  ],
+  "properties": {
+    "schema_id": { "const": "la.archive.audit-pack.v1" },
+    "schema_version": { "type": "integer", "const": 1 },
+    "pack_id": { "type": "string", "minLength": 1 },
+    "project": { "type": "object" },
+    "created_at": { "type": "string", "minLength": 1 },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "topic", "statement", "evidence", "confidence"],
+        "properties": {
+          "claim_id": { "type": "string", "minLength": 1 },
+          "topic": { "type": "string", "minLength": 1 },
+          "statement": { "type": "string", "minLength": 1 },
+          "evidence": { "type": "array" },
+          "confidence": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "exclusions": { "type": "object" },
+    "attestation": { "type": "object" }
+  }
+}

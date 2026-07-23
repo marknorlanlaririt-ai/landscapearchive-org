@@ -360,6 +360,24 @@ async function main() {
           ? 'HTTP 200 · golden JSON'
           : `Expected golden JSON, got HTTP ${example.status || 0}`
     })
+    const schema = await probe(`${base}/schemas/orbits/${slug}.required.schema.json`, {
+      accept: 'application/json'
+    })
+    const schemaPass =
+      !schema.error
+      && schema.status === 200
+      && /"required"\s*:/.test(schema.bodyText)
+      && /Draft/i.test(schema.bodyText)
+    checks.push({
+      id: `orbit-schema-${slug}`,
+      label: `GET /schemas/orbits/${slug}.required.schema.json`,
+      pass: schemaPass,
+      detail: schema.error
+        ? schema.error
+        : schemaPass
+          ? 'HTTP 200 · required-keys schema'
+          : `Expected required-keys schema, got HTTP ${schema.status || 0}`
+    })
   }
 
   for (const check of checks) printCheck(check)

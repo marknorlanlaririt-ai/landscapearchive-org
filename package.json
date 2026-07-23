@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "smoke:org": "node scripts/smoke-org.mjs",
+    "validate:orbits": "node scripts/validate-orbit-examples.mjs",
     "deploy": "node scripts/deploy-org-gated.mjs",
     "deploy:unsafe": "astro build && wrangler pages deploy dist --project-name landscapearchive-org --branch main --commit-dirty=true"
   },

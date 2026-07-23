@@ -1,4 +1,39 @@
-﻿## 2026-07-23 - Draft orbit HTML (TLA-SYN / TLA-EVID / TLA-ML)
+﻿## 2026-07-23 - Orbit required-keys validators (Draft)
+
+**Scope:** standards, orbits, schemas, validate-script, smoke, pages-deploy
+**Status:** done (deployed)
+
+### Did
+- Added Draft required-keys JSON Schema smokes for TLA-SYN / TLA-EVID / TLA-ML under
+  `/schemas/orbits/*.required.schema.json`.
+- Zero-dep `npm run validate:orbits` against the three golden examples.
+- Linked schemas from `/standards` index + per-orbit golden-example sections.
+- Extended `smoke:org` to probe the public schema URLs.
+
+### Why
+- Phase-1 constellation follow-up: validators without claiming normative status or opening Seal.
+
+### Files touched
+- `public/schemas/orbits/*`
+- `scripts/validate-orbit-examples.mjs`
+- `scripts/smoke-org.mjs`
+- `src/data/standardsOrbits.js`
+- `src/pages/standards/index.astro`
+- `src/pages/standards/[orbit].astro`
+- `public/examples/orbits/README.md`
+- `package.json`
+
+### Follow-ups / blockers
+- Keep Draft — not normative. Full Ajv / Seal crypto out of scope.
+- Founder: CC tick, Foundation legal name, assignment deed.
+
+### Links
+- https://landscapearchive.org/standards
+- https://landscapearchive.org/schemas/orbits/tla-syn.required.schema.json
+
+---
+
+## 2026-07-23 - Draft orbit HTML (TLA-SYN / TLA-EVID / TLA-ML)
 
 **Scope:** standards, orbits, governance-links, examples, pages-deploy
 **Status:** done (deployed)
@@ -24,7 +59,6 @@
 - `public/examples/orbits/*`
 
 ### Follow-ups / blockers
-- JSON Schema + minimal required-key validator smoke (later Phase-1).
 - Founder: CC tick, Foundation legal name, assignment deed.
 - Do not claim published/normative; Seal stays commercial.
 - Deployed: https://fd7ede97.landscapearchive-org.pages.dev

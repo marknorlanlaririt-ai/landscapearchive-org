@@ -23,7 +23,9 @@ import { TLA185_DISPLAY_ID } from './foundationWing.js'
  *   normativeIntent: string[],
  *   foundationVsArchive: { foundation: string, archive: string }[],
  *   exampleHref: string,
- *   exampleFilename: string
+ *   exampleFilename: string,
+ *   schemaHref: string,
+ *   schemaFilename: string
  * }} OrbitPage
  */
 
@@ -79,7 +81,9 @@ export const STANDARDS_ORBITS = Object.freeze([
       }
     ],
     exampleHref: '/examples/orbits/tla-syn-example.json',
-    exampleFilename: 'tla-syn-example.json'
+    exampleFilename: 'tla-syn-example.json',
+    schemaHref: '/schemas/orbits/tla-syn.required.schema.json',
+    schemaFilename: 'tla-syn.required.schema.json'
   },
   {
     slug: 'tla-evid',
@@ -130,7 +134,9 @@ export const STANDARDS_ORBITS = Object.freeze([
       }
     ],
     exampleHref: '/examples/orbits/tla-evid-example.json',
-    exampleFilename: 'tla-evid-example.json'
+    exampleFilename: 'tla-evid-example.json',
+    schemaHref: '/schemas/orbits/tla-evid.required.schema.json',
+    schemaFilename: 'tla-evid.required.schema.json'
   },
   {
     slug: 'tla-ml',
@@ -168,7 +174,9 @@ export const STANDARDS_ORBITS = Object.freeze([
       }
     ],
     exampleHref: '/examples/orbits/tla-ml-example.json',
-    exampleFilename: 'tla-ml-example.json'
+    exampleFilename: 'tla-ml-example.json',
+    schemaHref: '/schemas/orbits/tla-ml.required.schema.json',
+    schemaFilename: 'tla-ml.required.schema.json'
   }
 ])
 

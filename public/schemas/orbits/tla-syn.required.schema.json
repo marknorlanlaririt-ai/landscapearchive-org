@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://landscapearchive.org/schemas/orbits/tla-syn.required.schema.json",
+  "title": "TLA-SYN required-keys smoke (Draft — not normative)",
+  "description": "Minimal required-key check for la.archive.synthetic-nature.v1 golden examples. Not a full normative schema; not Archive Seal.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_id",
+    "schema_version",
+    "pack_id",
+    "created_at",
+    "asset",
+    "nature_class",
+    "generation",
+    "lineage",
+    "attribution",
+    "disclosure",
+    "tla185_refs"
+  ],
+  "properties": {
+    "schema_id": { "const": "la.archive.synthetic-nature.v1" },
+    "schema_version": { "type": "integer", "const": 1 },
+    "pack_id": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "minLength": 1 },
+    "asset": { "type": "object" },
+    "nature_class": { "type": "string", "minLength": 1 },
+    "generation": {
+      "type": "object",
+      "required": ["method"],
+      "properties": {
+        "method": { "type": "string", "minLength": 1 }
+      }
+    },
+    "lineage": { "type": "object" },
+    "attribution": { "type": "object" },
+    "disclosure": {
+      "type": "object",
+      "required": ["marked_synthetic"],
+      "properties": {
+        "marked_synthetic": { "type": "boolean" }
+      }
+    },
+    "tla185_refs": { "type": "object" }
+  }
+}

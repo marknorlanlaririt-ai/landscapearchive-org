@@ -144,7 +144,10 @@ const exampleJson = readFileSync(examplePath, 'utf8').trim()
       <h2>Golden example (illustrative)</h2>
       <p>
         Minimal worked example for consultation. Not a production product API.
-        <a href={orbit.exampleHref} download={orbit.exampleFilename}>Download JSON</a>.
+        <a href={orbit.exampleHref} download={orbit.exampleFilename}>Download JSON</a>
+        {' · '}
+        <a href={orbit.schemaHref} download={orbit.schemaFilename}>Required-keys schema (Draft)</a>.
+        Repo smoke: <code>npm run validate:orbits</code>.
       </p>
       <pre class="orbit__code"><code>{exampleJson}</code></pre>
     </section>
