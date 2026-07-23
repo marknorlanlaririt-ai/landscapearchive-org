@@ -24,8 +24,10 @@
 | Checker script | `landscapearchive-org/public/scripts/evidence-checker.js` (recognises `schema_id`) |
 | Engineering stub | `la-frontend/docs/TLA_EVID_AUDIT_PACK_v1.md` |
 | Remapper draft export | Admin `/admin-conduit` → Download draft TLA-EVID JSON |
+| Remapper self-serve design | `la-frontend/docs/CONDUIT_REMAPPER_SELF_SERVE_DESIGN.md` — **flag stays OFF** |
 | Desktop Evidence EXE | `la-desktop` `TLA-Evidence.exe` — local required-keys for `la.archive.audit-pack.v1` (Wave 3) |
 | Store suite package prep | `la-desktop/docs/STORE_LISTING_LANDSCAPE_ARCHIVE_TOOLS.md` — zip ready; **submit** founder-only |
+| Update-manifest sketch | `la-desktop/packaging/update-manifest/archive-tools-update.v0.json` — `packageUrl` null until founder hosts HTTPS |
 
 ## Acceptance when upload UI re-opens
 
