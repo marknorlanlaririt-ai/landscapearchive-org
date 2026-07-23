@@ -1,7 +1,7 @@
 ﻿## 2026-07-23 - Orbit required-keys validators (Draft)
 
 **Scope:** standards, orbits, schemas, validate-script, smoke, pages-deploy
-**Status:** committed locally — push/deploy pending DNS recovery
+**Status:** done (deployed)
 
 ### Did
 - Added Draft required-keys JSON Schema smokes for TLA-SYN / TLA-EVID / TLA-ML under
@@ -26,11 +26,13 @@
 ### Follow-ups / blockers
 - Keep Draft — not normative. Full Ajv / Seal crypto out of scope.
 - Founder: CC tick, Foundation legal name, assignment deed.
-- Push `f491a4a` + Pages deploy when GitHub/DNS recovers.
+- Deployed: https://ad058c4e.landscapearchive-org.pages.dev
 
 ### Links
 - https://landscapearchive.org/standards
 - https://landscapearchive.org/schemas/orbits/tla-syn.required.schema.json
+- https://landscapearchive.org/schemas/orbits/tla-evid.required.schema.json
+- https://landscapearchive.org/schemas/orbits/tla-ml.required.schema.json
 
 ---
 
