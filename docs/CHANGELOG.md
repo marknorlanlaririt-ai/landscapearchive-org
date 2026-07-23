@@ -1,4 +1,22 @@
-﻿## 2026-07-23 - Wave 2: Evidence Checker ↔ TLA-EVID wiring + pause honesty
+﻿## 2026-07-23 - Wave 3: Evidence Checker ↔ desktop TLA-EVID cross-link
+
+**Scope:** evidence-checker, docs
+**Status:** shipping
+
+### Did
+- Wiring doc cross-links desktop `TLA-Evidence` TLA-EVID required-keys + Store
+  suite package prep (submit still founder-only). Upload UI remains paused.
+
+### Why
+- Marathon Wave 3 docs hygiene after desktop Evidence wiring.
+
+### Links
+- Live: https://landscapearchive.org/evidence-checker
+- Desktop: `la-desktop/src/profession-apps/TLA.Evidence/MainForm.cs`
+
+---
+
+## 2026-07-23 - Wave 2: Evidence Checker ↔ TLA-EVID wiring + pause honesty
 
 **Scope:** evidence-checker, standards, honesty, docs
 **Status:** shipping
