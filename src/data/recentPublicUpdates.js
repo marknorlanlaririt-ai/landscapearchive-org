@@ -19,6 +19,13 @@ import {
 export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
   {
     date: '2026-07-23',
+    title: 'Evidence Checker wired to TLA-EVID (upload paused)',
+    summary:
+      'Inspector recognises Draft TLA-EVID audit-pack JSON. Upload UI stays paused pending stewardship clarity; CC BY-NC-ND KEEP is settled. Local check ≠ Archive Seal.',
+    href: '/evidence-checker'
+  },
+  {
+    date: '2026-07-23',
     title: 'Foundation Approved vs Archive Seal',
     summary:
       'Counsel-ready distinction page: open-spec conformance (when criteria publish) is not a commercial Seal. Draft posture stated honestly.',

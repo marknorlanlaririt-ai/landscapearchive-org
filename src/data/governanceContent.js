@@ -117,7 +117,7 @@ export function buildFoundationGovernanceSections({
       id: 'draft-consultation',
       heading: 'Draft consultation — request a review pack',
       paragraphs: [
-        'The published schema pack and field registry are open for critique as draft reference. Self-serve validators and the Evidence Checker are paused while licence clarity is completed. Request a review pack when you want structured follow-up on handover vocabulary.',
+        'The published schema pack and field registry are open for critique as draft reference. Self-serve validators and the Evidence Checker upload UI stay paused pending stewardship / incorporation clarity (CC BY-NC-ND 4.0 KEEP is settled). Draft orbit pages including TLA-EVID remain citable. Request a review pack when you want structured follow-up on handover vocabulary.',
         'Founding-alliance language elsewhere on this site describes a proposed consultation model. The Foundation is preparing for incorporation; requesting a review pack does not create an alliance seat.',
         'Start with the shared-vocabulary Field Note and the field registry / draft dictionary.'
       ],

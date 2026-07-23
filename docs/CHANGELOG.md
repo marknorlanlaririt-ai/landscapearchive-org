@@ -1,4 +1,29 @@
-﻿## 2026-07-23 - Foundation Approved page + deeper Draft orbit enums
+﻿## 2026-07-23 - Wave 2: Evidence Checker ↔ TLA-EVID wiring + pause honesty
+
+**Scope:** evidence-checker, standards, honesty, docs
+**Status:** shipping
+
+### Did
+- Evidence Checker script recognises Draft TLA-EVID (`la.archive.audit-pack.v1`)
+  with Seal ≠ local-check distinction.
+- Paused upload UI copy updated: CC BY-NC-ND KEEP settled; pause is stewardship /
+  incorporation. Links to TLA-EVID orbit + golden example + Foundation Approved.
+- Wiring doc `docs/EVIDENCE_CHECKER_TLA_EVID_WIRING.md`; governance pause sentence
+  aligned.
+
+### Why
+- Marathon Wave 2: wire Evidence / TLA-EVID without inventing un-pause or Seal.
+
+### Files touched
+- `public/scripts/evidence-checker.js`
+- `src/pages/evidence-checker.astro`
+- `src/data/foundationDownloads.js`, `governanceContent.js`
+- `docs/EVIDENCE_CHECKER_TLA_EVID_WIRING.md`
+- `docs/CHANGELOG.md`
+
+---
+
+## 2026-07-23 - Foundation Approved page + deeper Draft orbit enums
 
 **Scope:** governance, standards, seals, honesty
 **Status:** done (deployed)

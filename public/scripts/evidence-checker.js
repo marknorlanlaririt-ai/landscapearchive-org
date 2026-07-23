@@ -3,6 +3,7 @@
  *
  * Accepts:
  *   - TLA-185 JSON (*.json / *.tla185.bundle.json)
+ *   - TLA-EVID draft JSON (`schema_id: la.archive.audit-pack.v1`)
  *   - Archive Audit Pack (.tlaa) — ZIP with landscape-archive.tlaa.json
  *
  * Refuses:
@@ -10,6 +11,7 @@
  *   - Encrypted commercial transit (.lapkg) — no decrypt
  *   - Packages containing .rfa / commercial geometry roles
  *
+ * Local structure checks ≠ Archive Seal issue ≠ Foundation Approved.
  * Files never leave the browser.
  */
 ;(function () {
@@ -20,6 +22,22 @@
   const COMMERCIAL_PACKAGE_TYPE = 'landscape-archive-tla-package'
   const AUDIT_PACKAGE_TYPE = 'landscape-archive-audit-pack'
   const ENCRYPTED_PACKAGE_TYPE = 'landscape-archive-encrypted-package'
+  const TLA_EVID_SCHEMA_ID = 'la.archive.audit-pack.v1'
+  const TLA_EVID_TOPICS = new Set([
+    'botanical',
+    'climate',
+    'sustainability',
+    'risk',
+    'cultural',
+    'synthetic',
+    'other'
+  ])
+  const TLA_EVID_CONFIDENCE = new Set([
+    'documented',
+    'partial',
+    'asserted_without_uri',
+    'unknown'
+  ])
 
   const FORBIDDEN_EXTENSIONS = [
     '.rfa',
@@ -198,6 +216,49 @@
         'Foundation Evidence Checker does not decrypt Landscape Archive Packages. Entitled delivery stays on the commercial Hub path.',
       detail: 'Detected .lapkg / encrypted commercial transit wrapper.',
       hubUrl: `${ARCHIVE_ORIGIN}/`
+    }
+  }
+
+  function summarizeTlaEvid(payload, fileName) {
+    const issues = []
+    if (payload.schema_id !== TLA_EVID_SCHEMA_ID) {
+      issues.push(`Expected schema_id "${TLA_EVID_SCHEMA_ID}"`)
+    }
+    if (payload.schema_version !== 1 && payload.schema_version !== undefined) {
+      issues.push(`Unexpected schema_version: ${payload.schema_version}`)
+    }
+    if (!payload.pack_id) issues.push('Missing pack_id')
+    if (!Array.isArray(payload.claims)) issues.push('Missing claims array')
+
+    const claims = Array.isArray(payload.claims) ? payload.claims : []
+    for (const claim of claims.slice(0, 40)) {
+      if (claim.topic && !TLA_EVID_TOPICS.has(claim.topic)) {
+        issues.push(`Unexpected claim topic: ${claim.topic}`)
+      }
+      if (claim.confidence && !TLA_EVID_CONFIDENCE.has(claim.confidence)) {
+        issues.push(`Unexpected claim confidence: ${claim.confidence}`)
+      }
+    }
+
+    const sealRef = payload.attestation?.archive_seal_ref
+    return {
+      ok: issues.length === 0,
+      kind: 'tla-evid',
+      title: 'TLA-EVID draft audit pack (open shape)',
+      fileName,
+      distinction:
+        'Open evidence shape only. Local structure check ≠ Archive Seal issue ≠ Foundation Approved.',
+      summary: {
+        schema_id: payload.schema_id || '(missing)',
+        schema_version: payload.schema_version ?? '—',
+        pack_id: payload.pack_id || '(missing)',
+        claimCount: claims.length,
+        projectTitle: payload.project?.title || '—',
+        archive_seal_ref: sealRef || '(none — correct for draft)',
+        foundation_approved_ref: payload.attestation?.foundation_approved_ref || '(none)'
+      },
+      issues,
+      contents: [{ name: fileName, role: 'tla-evid-json', sizeLabel: 'JSON document' }]
     }
   }
 
@@ -431,6 +492,9 @@
     if (payload.packageType === AUDIT_PACKAGE_TYPE || payload.formatExtension === '.tlaa') {
       return summarizeAuditManifest(payload, [], fileName)
     }
+    if (payload.schema_id === TLA_EVID_SCHEMA_ID) {
+      return summarizeTlaEvid(payload, fileName)
+    }
 
     return summarizeTla185(payload, fileName)
   }
@@ -576,8 +640,9 @@
           </table>
         </div>
         <p class="ec-naming">
-          Open TLA-185 and Archive Audit Pack (<code>.tlaa</code>) only.
+          Open TLA-185, TLA-EVID draft (<code>la.archive.audit-pack.v1</code>), and Archive Audit Pack (<code>.tlaa</code>) only.
           Commercial Landscape Archive Package (<code>.tla</code>) and encrypted <code>.lapkg</code> are refused.
+          Local check ≠ Seal.
         </p>
       </article>
     `

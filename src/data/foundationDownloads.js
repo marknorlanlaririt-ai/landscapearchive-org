@@ -2,8 +2,9 @@
  * Foundation tools / open downloads — public artefacts only.
  * Never list Hub installers, Revit connectors, commercial `.tla`, or `.lapkg`.
  *
- * Self-serve interactive tools stay paused until licence comfort improves
- * (see la-frontend/docs/LICENCE_DUAL_AND_INTRA_GROUP_LAWYER_BRIEF.md).
+ * Self-serve interactive tools stay paused pending stewardship / incorporation
+ * clarity. CC BY-NC-ND 4.0 KEEP is settled (2026-07-23) — pause is no longer
+ * a licence-tick wait. See Evidence Checker ↔ TLA-EVID wiring notes.
  */
 
 import {
@@ -29,7 +30,7 @@ export const DOWNLOADS_PATH = '/downloads'
 export const FOUNDATION_SELF_SERVE_TOOLS_PAUSED = true
 
 export const FOUNDATION_TOOLS_PAUSED_NOTICE =
-  'Self-serve Foundation tools are paused while we complete licence and stewardship clarity. Draft dictionary and registry reference remain available.'
+  'Self-serve Foundation tools (Evidence Checker upload UI and validator try-it) stay paused pending stewardship and incorporation clarity. Open TLA-185 remains CC BY-NC-ND 4.0. Draft dictionary, registry, and Draft orbit pages (including TLA-EVID) remain available for citation.'
 
 export const FOUNDATION_TOOLS_FOOTER_LABEL = 'Foundation tools'
 export const FOUNDATION_TOOLS_DISCLAIMER =

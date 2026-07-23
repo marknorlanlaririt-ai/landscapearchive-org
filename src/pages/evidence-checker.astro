@@ -29,16 +29,21 @@ import { LICENCE_PATH } from '../data/licenceScopeContent.js'
         FOUNDATION_SELF_SERVE_TOOLS_PAUSED ? (
           <>
             <p class="ec__banner" role="status">
-              <strong>Paused — not available yet.</strong>
+              <strong>Paused — upload UI not available yet.</strong>
               {FOUNDATION_TOOLS_PAUSED_NOTICE}
             </p>
             <p>
-              This inspector will return when licence and stewardship notices are
-              settled. Until then, use the draft field dictionary and registry for
-              calm reference citation.
+              The inspector script is wired for open {TLA185_DISPLAY_ID} JSON, Draft
+              <strong> TLA-EVID</strong> packs (<code>la.archive.audit-pack.v1</code>), and Archive
+              Audit Packs (<code>.tlaa</code>). Self-serve upload stays paused pending stewardship /
+              incorporation clarity — not because the CC licence tick is open (KEEP BY-NC-ND 4.0).
+              Local structure checks never issue Archive Seal or Foundation Approved.
             </p>
             <div class="action-row">
-              <a class="btn btn--primary" href="/registry">Field registry</a>
+              <a class="btn btn--primary" href="/standards/tla-evid">TLA-EVID draft orbit</a>
+              <a class="btn" href="/examples/orbits/tla-evid-example.json">Golden TLA-EVID example</a>
+              <a class="btn" href="/foundation-approved">Foundation Approved ≠ Seal</a>
+              <a class="btn" href="/registry">Field registry</a>
               <a class="btn" href={DOWNLOADS_PATH}>Foundation downloads</a>
               <a class="btn" href={LICENCE_PATH}>Licence &amp; scope</a>
               <a class="btn" href={`${ARCHIVE_ORIGIN}/`} rel="noopener" target="_blank">
@@ -50,14 +55,16 @@ import { LICENCE_PATH } from '../data/licenceScopeContent.js'
           <>
             <p class="ec__banner" role="note">
               <strong>{FOUNDATION_TOOLS_DISCLAIMER}.</strong>
-              This page inspects open {TLA185_DISPLAY_ID} JSON and Archive Audit Packs (
+              This page inspects open {TLA185_DISPLAY_ID} JSON, Draft TLA-EVID packs (
+              <code>la.archive.audit-pack.v1</code>), and Archive Audit Packs (
               <code>.tlaa</code>) entirely in your browser. It does not decrypt{' '}
               <code>.lapkg</code>, does not open commercial Landscape Archive Packages (
-              <code>.tla</code>), and is not the Landscape Archive Hub.
+              <code>.tla</code>), and is not the Landscape Archive Hub. Local check ≠ Seal.
             </p>
             <p>
               Upload a file to list contents, show a manifest summary, and run basic
-              structure checks.
+              structure checks. Prefer the{' '}
+              <a href="/standards/tla-evid">TLA-EVID draft orbit</a> when packaging claims.
             </p>
           </>
         )
