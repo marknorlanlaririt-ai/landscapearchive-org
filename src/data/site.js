@@ -53,6 +53,10 @@ export function isVaultPublicSiteLive() {
 export const LANDSCAPE_ARCHIVE_INDEPENDENCE_NOTICE =
   'The Landscape Archive Pty Ltd is an independent commercial operator. We are not affiliated with, endorsed by, sponsored by, or representative of any professional institute, industry association, registration board, university, government agency, or standards body (including, for example, AILA, the Landscape Institute (UK), ASLA, IFLA, or government training regulators) unless and until we state that relationship expressly in writing signed by us and, where required, by that third party.'
 
+/** Short footer line — no institute name list in chrome. */
+export const LANDSCAPE_ARCHIVE_INDEPENDENCE_FOOTER_LINE =
+  'Independent operator — not affiliated with professional institutes unless stated in writing.'
+
 export const LANDSCAPE_ARCHIVE_GEOGRAPHIC_SCOPE_NOTICE =
   'Made in Australia. The open TLA-185 standard is international; landscapearchive.com.au is the live commercial hub; additional regional hubs are planned and not live until published. We do not claim ownership of landscapearchive.com.'
 
