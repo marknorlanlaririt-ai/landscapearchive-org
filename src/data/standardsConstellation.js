@@ -104,4 +104,6 @@ export const STANDARDS_CONSTELLATION = Object.freeze([
 export const STANDARDS_CONSTELLATION_FOOTNOTE =
   'Draft and in-development items are consultation shapes, not normative Foundation publications. ' +
   'Public draft pages live under /standards. ' +
+  'Beside the constellation, the Foundation names institutional asks EBDA and ELDX ' +
+  '(proposed stewardship instruments — not existing authorities); see Governance. ' +
   'Commercial Library, Hub, Studio+™, populated datasets, and Archive Seal stay separately licensed.'

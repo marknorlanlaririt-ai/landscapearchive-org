@@ -17,6 +17,14 @@ import {
   isOpenStandardGithubPubliclyAvailable
 } from './foundationWing.js'
 import { ARCHIVE_ORIGIN } from './site.js'
+import {
+  INSTITUTIONAL_ASKS,
+  INSTITUTIONAL_ASKS_FOOTNOTE,
+  INSTITUTIONAL_ASKS_HEADING,
+  INSTITUTIONAL_ASKS_INTRO,
+  INSTITUTIONAL_ASKS_SECTION_ID,
+  INSTITUTIONAL_ASKS_STATUS_LINE
+} from './institutionalAsks.js'
 import { buildFoundationIntendedPurposeSections } from './purposeContent.js'
 
 /**
@@ -198,6 +206,25 @@ export function buildFoundationGovernanceSections({
         { label: 'US SEC climate', href: '/crosswalk/us-sec-climate' },
         { label: 'Schema portal', href: FEDERATION_SCHEMA_PORTAL_URL, external: true },
         { label: 'Draft constitution', href: '/founding-charter' }
+      ]
+    },
+    {
+      id: INSTITUTIONAL_ASKS_SECTION_ID,
+      heading: INSTITUTIONAL_ASKS_HEADING,
+      paragraphs: [
+        INSTITUTIONAL_ASKS_INTRO,
+        INSTITUTIONAL_ASKS_STATUS_LINE,
+        INSTITUTIONAL_ASKS_FOOTNOTE
+      ],
+      facts: INSTITUTIONAL_ASKS.map((ask) => ({
+        label: ask.fullName,
+        value: ask.definition
+      })),
+      actions: [
+        { label: 'Standards constellation', href: '#standards-constellation' },
+        { label: 'Draft orbits', href: '/standards' },
+        { label: 'International adoption', href: '#international-adoption' },
+        { label: 'Founding alliance', href: '#founding-alliance' }
       ]
     },
     {

@@ -18,6 +18,13 @@ import {
 /** @type {readonly PublicUpdateItem[]} */
 export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
   {
+    date: '2026-07-24',
+    title: 'Institutional asks: EBDA and ELDX',
+    summary:
+      'The Foundation asks for two proposed instruments beside TLA-185: EBDA (ecological & built-environment data stewardship gravity) and ELDX (cross-border land/landscape interchange). Asks in formation — not existing authorities.',
+    href: '/governance#institutional-asks'
+  },
+  {
     date: '2026-07-23',
     title: 'Evidence Checker wired to TLA-EVID (upload paused)',
     summary:

@@ -54,6 +54,9 @@ const { id = 'standards-constellation', heading = STANDARDS_CONSTELLATION_TITLE 
   </ol>
 
   <p class="constellation__footnote">{STANDARDS_CONSTELLATION_FOOTNOTE}</p>
+  <p class="constellation__asks">
+    <a href="/governance#institutional-asks">Institutional asks · EBDA / ELDX</a>
+  </p>
 </section>
 
 <style>
@@ -159,5 +162,20 @@ const { id = 'standards-constellation', heading = STANDARDS_CONSTELLATION_TITLE 
     font-size: 0.85rem;
     color: var(--ink-muted);
     line-height: 1.45;
+  }
+
+  .constellation__asks {
+    margin: 0.55rem 0 0;
+    font-size: 0.85rem;
+  }
+
+  .constellation__asks a {
+    color: var(--accent-strong);
+    text-decoration: none;
+  }
+
+  .constellation__asks a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
   }
 </style>

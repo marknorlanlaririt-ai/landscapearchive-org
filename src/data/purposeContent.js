@@ -60,6 +60,7 @@ export function buildFoundationIntendedPurposeSections() {
         'Live: specification, registry, schema portal, governance, conformance criteria',
         'In preparation: awards, volunteer onboarding, public briefings',
         'Intended: RFC cycles, institutional memoranda, adoption materials',
+        'Institutional asks (proposed, not existing): Ecological & Built-Environment Data Authority (EBDA); International Land-Data Exchange (ELDX)',
         'Later / separate: grants and scholarships after entity formation; Archive Certified training via Archive commercial channels'
       ]
     },

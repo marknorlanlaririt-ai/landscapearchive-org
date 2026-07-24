@@ -14,6 +14,10 @@ import {
   TLA185_REGISTRY_PREVIEW_FIELD_LIMIT,
   isOpenStandardGithubPubliclyAvailable
 } from './foundationWing.js'
+import {
+  INSTITUTIONAL_ASKS_HOME_BLURB,
+  INSTITUTIONAL_ASKS_PATH
+} from './institutionalAsks.js'
 
 const ARCHIVE_SEAL_URL = `${ARCHIVE_ORIGIN}/archive-seal`
 const ARCHIVE_AUTHORISED_URL = `${ARCHIVE_ORIGIN}/authorised`
@@ -50,9 +54,13 @@ export function buildFoundationHomeSections({
       heading: 'Mission',
       paragraphs: [
         `Draft public purpose: advance environmental and social benefit through open, citable infrastructure for landscape documentation. Botanical authenticity, climate disclosure, cultural-protocol metadata, and synthetic-nature provenance are encoded in the public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification.`,
-        'This is draft charitable scope for consultation. Incorporation and grant programmes remain forward work; live publishing today is the open specification and related trust tooling.'
+        'This is draft charitable scope for consultation. Incorporation and grant programmes remain forward work; live publishing today is the open specification and related trust tooling.',
+        INSTITUTIONAL_ASKS_HOME_BLURB
       ],
-      actions: [{ label: 'Draft mission (governance)', href: `${GOVERNANCE_PATH}#draft-mission` }]
+      actions: [
+        { label: 'Draft mission (governance)', href: `${GOVERNANCE_PATH}#draft-mission` },
+        { label: 'Institutional asks', href: INSTITUTIONAL_ASKS_PATH }
+      ]
     },
     {
       id: 'about-us',

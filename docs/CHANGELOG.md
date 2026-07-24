@@ -1,3 +1,25 @@
+## 2026-07-24 - Institutional asks: EBDA and ELDX
+
+**Scope:** governance, home, standards, recent-updates, pages-deploy
+**Status:** shipping
+
+### Did
+- Named two Foundation institutional asks on Governance: Ecological & Built-Environment
+  Data Authority (EBDA) and International Land-Data Exchange (ELDX). Framed as proposed
+  stewardship instruments / public asks in formation ? not existing authorities.
+- Shared copy module `src/data/institutionalAsks.js`; light mentions on home Mission,
+  standards constellation footnote, `/standards` index, footer, Activities bullet, and
+  recent-updates strip.
+
+### Why
+- Founder asked the Foundation to surface EBDA and ELDX as things it asks for.
+
+### Links
+- Live: https://landscapearchive.org/governance#institutional-asks
+- Home mission: https://landscapearchive.org/#mission-draft
+
+---
+
 ## 2026-07-23 - Wave 5: Evidence wiring cross-links (docs)
 
 **Scope:** evidence-checker, docs
@@ -108,7 +130,7 @@
 - `package.json`
 
 ### Follow-ups / blockers
-- Keep Draft � not normative. Full Ajv / Seal crypto out of scope.
+- Keep Draft ? not normative. Full Ajv / Seal crypto out of scope.
 - Founder: CC tick, Foundation legal name, assignment deed.
 - Deployed: https://ad058c4e.landscapearchive-org.pages.dev
 
@@ -126,13 +148,13 @@
 **Status:** done (deployed)
 
 ### Did
-- Shipped public Draft � not normative orbit pages under `/standards` for TLA-SYN,
+- Shipped public Draft ? not normative orbit pages under `/standards` for TLA-SYN,
   TLA-EVID, and TLA-ML, with golden JSON examples and honest maturity banners.
 - Linked draft orbits from Governance constellation + footer Open standard nav.
 - Recent-updates strip entry pointing at `/standards`.
 
 ### Why
-- Phase-1 constellation roadmap: public HTML stubs marked Draft � not normative,
+- Phase-1 constellation roadmap: public HTML stubs marked Draft ? not normative,
   without waiting on CC tick or opening Seal.
 
 ### Files touched
@@ -174,7 +196,7 @@
 
 ### Why
 - Founder: pursue standards orbits beyond TLA-185 so the Foundation reads as an institute in its
-  own right � orbits, not rival dictionaries.
+  own right ? orbits, not rival dictionaries.
 
 ### Files touched
 - `src/data/standardsConstellation.js`
@@ -204,9 +226,9 @@
   `soft-launch-honesty.mdc`. The `.org` surfaces were already clean; two edits in `src/data/articles.js`
   (Field Notes):
   - Removed the banned dismissive frame "…not as branding wallpaper" (kept the claim per tone law).
-  - AU-spelling fix "recognize" → "recognise".
+  - AU-spelling fix "recognize" �? "recognise".
 - No other hype, exclamation, emoji-as-icon, or defensive-framing issues found in `.org` data/pages
-  (donation-pause status facts and "proposed — not yet incorporated" governance labels left intact as
+  (donation-pause status facts and "proposed �? not yet incorporated" governance labels left intact as
   deliberate soft-launch honesty). Strategy diagrams and sign-off holds untouched.
 
 ### Why
@@ -232,24 +254,24 @@
 
 ### Did
 - Wrote `docs/STRATEGY_FRAMING_PROPOSAL.md`: per-element matrix of the founder's ecosystem
-  strategy deck → site (.org / .com.au / internal) + safe/sign-off/internal ruling + how each
+  strategy deck �? site (.org / .com.au / internal) + safe/sign-off/internal ruling + how each
   graphic was rebuilt natively. Includes a recommended `.org` framing narrative (standard as
-  public good → proposed governance → honest maturity).
+  public good �? proposed governance �? honest maturity).
 - Rebuilt the clean strategy graphics natively (no Tailwind/Chart.js/Inter; existing slate/paper
   tokens only): `StandardDomainsDiagram.astro` (4 metadata domains) + `ExportProfilesDiagram.astro`
   on `/registry`; `GovernanceFirewallDiagram.astro` (three-entity, Foundation node labelled
-  "Proposed — not yet incorporated") + `StandardMaturityDiagram.astro` (Layer 1 live / 2 early /
+  "Proposed �? not yet incorporated") + `StandardMaturityDiagram.astro` (Layer 1 live / 2 early /
   3 not started) on `/governance`. New data: `src/data/standardDomains.js`; export data reused from
   `builtEnvironmentExports.js`.
 
 ### Why
 - Founder likes the deck's simple HTML/CSS diagrams and asked how to incorporate them on .org/.com.au
-  and use the strategy to frame the .org site — without publishing pre-incorporation/legal/pricing
+  and use the strategy to frame the .org site �? without publishing pre-incorporation/legal/pricing
   claims as fact.
 
 ### Held for founder sign-off (NOT published)
 - July 2026 hard launch date; GPL v3 asserted as code licence; "7 voting seats" / appointed Indigenous
-  Advisory veto as existing; DPGA certification; GDP-indexed pricing ($50k–$500k / $0 Sovereign Gift);
+  Advisory veto as existing; DPGA certification; GDP-indexed pricing ($50k�?$500k / $0 Sovereign Gift);
   "National/Sovereign Gift" narrative; NSW Schoolyard "Country Kit" self-serve CTA (tooling paused).
 
 ### Files touched
@@ -280,7 +302,7 @@
 ### Did
 - Took down public bank-transfer / donation intake on `/support`, home Support section, purpose Funding, contact, footer, and related CTAs.
 - Calm status copy: due to incorporation status (Foundation not yet an independent incorporated entity), contribution intake is paused; open-spec reference remains free under CC BY-NC-ND.
-- Bank facts kept in `support.js` for ops only — not rendered. Deployed org.
+- Bank facts kept in `support.js` for ops only �? not rendered. Deployed org.
 
 ### Why
 - Founder asked to remove the donation surface until incorporation is clear.
@@ -302,7 +324,7 @@
 **Status:** done
 
 ### Did
-- Froze self-serve Foundation tools (Evidence Checker upload UI, validator “try it” CTAs) with calm paused / draft notices; kept dictionary / registry / crosswalks / charter as draft reference.
+- Froze self-serve Foundation tools (Evidence Checker upload UI, validator “try it� CTAs) with calm paused / draft notices; kept dictionary / registry / crosswalks / charter as draft reference.
 - Added quiet `/licence` Licence & scope page (CC BY-NC-ND 4.0 public spec; Vault copyright; Archive commercial products separate; no dual-licence campaign).
 - Updated nav, footer, home, adopt, practice, governance, downloads, Field Notes gates, and before/after example nav for licence honesty.
 - Decision recorded in `foundationWing.js`: public spec stays CC BY-NC-ND 4.0. Deployed org. No commit.
@@ -333,7 +355,7 @@
 
 ### Did
 - Removed Awards status banner and intro lead chrome (`hideLead`).
-- Rewrote Scope/evaluative purpose and related awards copy in calm present voice — no idea/sketch/hypothetical framing; stripped all `draft emphasis:` prefixes.
+- Rewrote Scope/evaluative purpose and related awards copy in calm present voice �? no idea/sketch/hypothetical framing; stripped all `draft emphasis:` prefixes.
 - Deleted the data-architecture line about the draft evaluative idea referencing the field registry.
 - Softened Field Notes awards CTA label; mirrored twin to la-frontend; deployed org (`deploy:unsafe` after smoke GET / flake + wrangler timeout retry).
 
@@ -362,7 +384,7 @@
 **Status:** done
 
 ### Did
-- Rewrote `/awards` as a draft idea for consultation: no launch years/dates, no “When active”, no `!` in public awards copy.
+- Rewrote `/awards` as a draft idea for consultation: no launch years/dates, no “When active�, no `!` in public awards copy.
 - Removed Archival stewardship section; softened Scope/evaluative purpose + streams + criteria + governance CTAs.
 - Softened Field Notes awards cross-link in `articles.js`. Mirrored `foundationAwardsProgramme.js` to la-frontend content twin.
 - Deployed org (preview `f6c817e7`). No commit. No Flux.
@@ -412,14 +434,14 @@
 
 ### Did
 - Mapped public vs gated Foundation surfaces; left dictionary / validator / Evidence Checker / open packs / charter / awards public (CC BY-NC-ND open-reference posture).
-- Implemented Field Notes preview→sign-in: guests get title, dek, short excerpt + Sign in CTA; signed-in members load full essay + Next Steps client-side (no full-body SSR for anonymous HTML).
+- Implemented Field Notes preview�?sign-in: guests get title, dek, short excerpt + Sign in CTA; signed-in members load full essay + Next Steps client-side (no full-body SSR for anonymous HTML).
 - Allowed `/articles` and `/articles/:slug` as Foundation session handoff paths (org `memberAccess.js` + Archive `foundationOrgAccess.js`) so return-to-essay works after `/sign-in`.
 - Public `/field-notes.json` now ships preview-only (v2) with a single Preview section for Ad Studio.
 - Soft dictionary link on the gate (grammar stays public). Smoke check `field-notes-preview-gate` added.
 - Deployed org Pages (`3fc4a33f`). Archive handoff twin (`3a116110`). Preview-gate smoke green on live. No Hub download flags. No Flux. No commit.
 
 ### Why
-- Founder asked to gate Field Notes / instructional depth that “gives things away,” while preserving an open-standard credibility story. Gating the dictionary would contradict the free-grammar posture and look like a standards paywall — left public pending any explicit reverse decision.
+- Founder asked to gate Field Notes / instructional depth that “gives things away,� while preserving an open-standard credibility story. Gating the dictionary would contradict the free-grammar posture and look like a standards paywall �? left public pending any explicit reverse decision.
 
 ### Files touched
 - `src/pages/articles/[slug].astro`, `articles.astro`, `field-notes.json.js`, `sign-in.astro`
@@ -429,7 +451,7 @@
 - Archive twin: `la-frontend/functions/_lib/foundationOrgAccess.js`, `src/config/foundationOrgAccess.js`
 
 ### Follow-ups / blockers
-- Honest ceiling: full essay still lives in a signed-in-loaded JS chunk (`/_astro/articles.*.js`), not in article HTML — not DRM.
+- Honest ceiling: full essay still lives in a signed-in-loaded JS chunk (`/_astro/articles.*.js`), not in article HTML �? not DRM.
 - Optional later: gate Adopt deep instructional packs only if founder still wants; leave grammar public.
 
 ### Links
@@ -442,7 +464,7 @@
 
 
 ### Did
-- Rewrote shared `FIELD_NOTES_NEXT_STEPS` (all 6 published Field Notes) to understated factual pointers: lead with Studio Pilot Kit, quiet Archive for-studios link, Contact — no sales opener or membership/pathway pitch.
+- Rewrote shared `FIELD_NOTES_NEXT_STEPS` (all 6 published Field Notes) to understated factual pointers: lead with Studio Pilot Kit, quiet Archive for-studios link, Contact �? no sales opener or membership/pathway pitch.
 - Deployed org Pages (`a8abae83`). Smoke 12/12. No Hub download flags. No Flux. No commit. Did not touch recent-updates (membership card already dropped).
 
 ### Why
@@ -468,7 +490,7 @@
 **Status:** done
 
 ### Did
-- Removed “Archive public membership open” (2026-07-29) from `src/data/recentPublicUpdates.js`.
+- Removed “Archive public membership open� (2026-07-29) from `src/data/recentPublicUpdates.js`.
 - Deployed org Pages (`231311a4`) so live `/recent-updates.json` no longer lists it (15 items; card absent). No Hub download flags. No Flux. No commit.
 
 ### Why
@@ -493,12 +515,12 @@
 
 ### Did
 - Cut defensive, passive-aggressive, and sarcastic public copy (soft-launch morality plays, wry digs at institutes/vendors/Hub, smart-arse Field Notes asides).
-- Awards: dominant DRAFT FRAMEWORK banner; streams A–D (no Distinguished Practitioner); future tense; consultation CTAs.
-- Field Notes: shared **Next Steps** on all 6 published articles → `https://landscapearchive.com.au/for-studios`.
-- Deployed Pages (`61f80262`, production custom domain). Smoke home GET flaked from agent network → `SKIP_ORG_SMOKES=1` used once after 10/11 secondary checks passed. No Hub download flags. No Flux. No commit.
+- Awards: dominant DRAFT FRAMEWORK banner; streams A�?D (no Distinguished Practitioner); future tense; consultation CTAs.
+- Field Notes: shared **Next Steps** on all 6 published articles �? `https://landscapearchive.com.au/for-studios`.
+- Deployed Pages (`61f80262`, production custom domain). Smoke home GET flaked from agent network �? `SKIP_ORG_SMOKES=1` used once after 10/11 secondary checks passed. No Hub download flags. No Flux. No commit.
 
 ### Why
-- Founder ask: calm professional confidence — status facts without attitude, eye-rolls, or “we’re smarter than the field.”
+- Founder ask: calm professional confidence �? status facts without attitude, eye-rolls, or “we’re smarter than the field.�
 
 ### Files touched
 - `src/data/{foundationAwardsProgramme,articles,adoptContent,topicPages,governanceContent,recentPublicUpdates,foundationWing,homeContent,purposeContent}.js`
@@ -523,8 +545,8 @@
 **Status:** done
 
 ### Did
-- Cut defensive “we are not X” walls across public Foundation surfaces (Adopt, Industry & practice, governance CTAs, Field Notes openings, recent-updates blurbs, draft-consultation / director forms) while keeping clear status on incorporation and draft programmes.
-- Awards: dominant draft-status banner; collapsed categories into 4 streams (A–D) with future-tense rubrics; removed Distinguished Practitioner; consultation CTA (feedback, not entries).
+- Cut defensive “we are not X� walls across public Foundation surfaces (Adopt, Industry & practice, governance CTAs, Field Notes openings, recent-updates blurbs, draft-consultation / director forms) while keeping clear status on incorporation and draft programmes.
+- Awards: dominant draft-status banner; collapsed categories into 4 streams (A�?D) with future-tense rubrics; removed Distinguished Practitioner; consultation CTA (feedback, not entries).
 - Field Notes: shared **Next Steps** on all 6 published articles linking apex `https://landscapearchive.com.au/for-studios` (+ Studio Pilot Kit + Archive contact).
 - Deployed Pages when ready. No Hub download flags flipped. No Flux. No commit.
 
@@ -553,11 +575,11 @@
 
 ### Did
 - Added `/examples/before-after-conformance/index.html` so directory links resolve
-  (was README-only → likely 404).
-- Adopt “capability grant” CTA → public schema dictionary (was auth-walled
+  (was README-only �? likely 404).
+- Adopt “capability grant� CTA �? public schema dictionary (was auth-walled
   Archive `/foundation/capability-grant`).
 - Hid `/media` (and events) from public nav + sitemap until press kit ships;
-  Contact press route → Archive form + How to cite.
+  Contact press route �? Archive form + How to cite.
 - Rewrote 29 Jul What’s new blurb (removed Authenticode ops leak).
 
 ### Why
@@ -584,12 +606,12 @@
 **Status:** done
 
 ### Did
-- Added `/adopt#studio-pilot-outreach`: 3–5 cohort tracker + invite email (open reference only; no Hub/Vault pitch).
+- Added `/adopt#studio-pilot-outreach`: 3�?5 cohort tracker + invite email (open reference only; no Hub/Vault pitch).
 - Linked from industry-practice learning modules + studios section; recent-updates row; smoke checks outreach anchor.
 - Soft-launch honesty retained. Deployed with Pages when ready. No commit. No Flux.
 
 ### Why
-- Industry tools roadmap I-1 — measurable studio outreach without new product surface.
+- Industry tools roadmap I-1 �? measurable studio outreach without new product surface.
 
 ### Files touched
 - `src/data/adoptContent.js`
@@ -617,7 +639,7 @@
 - Soft-launch honesty retained (interim Foundation, not ISO / accreditation). Deployed Pages. No commit. No Flux.
 
 ### Why
-- Industry tools roadmap I-2 thin slice — Evidence Checker → procurement one-pager without new product surface.
+- Industry tools roadmap I-2 thin slice �? Evidence Checker �? procurement one-pager without new product surface.
 
 ### Files touched
 - `src/data/topicPages.js`
@@ -640,12 +662,12 @@
 **Status:** done
 
 ### Did
-- Rewrote `/industry-practice` (Practice nav) copy to Foundation academic tone: removed “logo on a slide deck”, product-tour / essay-list digs, and stacked sales-negation phrasing.
+- Rewrote `/industry-practice` (Practice nav) copy to Foundation academic tone: removed “logo on a slide deck�, product-tour / essay-list digs, and stacked sales-negation phrasing.
 - Matched adoption-ladder + Studio Pilot Kit lines on `/adopt`; calmed practice founding-outreach email subject.
 - Soft-launch honesty retained (interim Foundation, not ISO, empty modules OK, dictionary free). Deployed Pages. No commit. No Flux.
 
 ### Why
-- Founder ask: Practice section must read as precise, citeable Foundation prose — no passive-aggressive vendor or consultancy dunks.
+- Founder ask: Practice section must read as precise, citeable Foundation prose �? no passive-aggressive vendor or consultancy dunks.
 
 ### Files touched
 - `src/data/topicPages.js`
@@ -672,7 +694,7 @@
 - Soft-launch honesty preserved (interim Foundation, not ISO; empty modules OK; no invented keys). Deployed Pages. No commit. No Flux.
 
 ### Why
-- Founder YES: user-friendly explainer for LAs / students / procurement — Foundation education path, not apex Hub dump; public copy says “plain language”, not “dumbed down”.
+- Founder YES: user-friendly explainer for LAs / students / procurement �? Foundation education path, not apex Hub dump; public copy says “plain language�, not “dumbed down�.
 
 ### Files touched
 - `src/data/topicPages.js`
@@ -688,7 +710,7 @@
 
 ### Follow-ups / blockers
 - Schema portal deploy picks up dictionary.html notice.
-- Apex already deep-links Industry & practice; optional dedicated “plain language” footer link later.
+- Apex already deep-links Industry & practice; optional dedicated “plain language� footer link later.
 
 ### Links
 - Live: https://landscapearchive.org/industry-practice#in-plain-language
@@ -729,7 +751,7 @@
 ---
 
 ### Did
-- Expanded `/industry-practice` into education path: dictionary → Studio Pilot → Evidence Checker → draft consultation; free grammar / paid fill honesty; three thin learning modules.
+- Expanded `/industry-practice` into education path: dictionary �? Studio Pilot �? Evidence Checker �? draft consultation; free grammar / paid fill honesty; three thin learning modules.
 - Dictionary gravity: homepage Specification + Commercial actions, footer Open field dictionary, Studio Pilot citation loop + copy-paste brief.
 - Recent updates title refreshed; smoke + FOUR_DEPLOYMENTS criteria tightened.
 - Deployed Pages. No commit. No Flux.
@@ -797,7 +819,7 @@
 **Status:** done
 
 ### Did
-- Added `npm run smoke:org` HTTP checks: home, `/adopt` Studio Pilot Kit, withdrawn Field Notes 301→/articles, `/recent-updates.json`, Evidence Checker, soft-launch honesty scan (no Hub ops / DocuSign / Workbench leaks).
+- Added `npm run smoke:org` HTTP checks: home, `/adopt` Studio Pilot Kit, withdrawn Field Notes 301�?/articles, `/recent-updates.json`, Evidence Checker, soft-launch honesty scan (no Hub ops / DocuSign / Workbench leaks).
 - Gated `npm run deploy` via `scripts/deploy-org-gated.mjs` (escape: `SKIP_ORG_SMOKES=1` or `deploy:unsafe`).
 - Updated `docs/ops/FOUR_DEPLOYMENTS_SMOKE.md`. Ran smoke **9/9**. No Pages deploy (scripts/docs only). No commit. No Flux.
 
@@ -825,14 +847,14 @@
 **Status:** done
 
 ### Did
-- Shipped Studio Pilot Kit as `/adopt#studio-pilot` (not a separate `/practice/` route — Adopt already owns procurement + validator path).
-- Copy-paste studio brief + three core links (schema portal validator, Evidence Checker, procurement sentence); gaps → draft consultation; optional before/after fixtures pointer.
+- Shipped Studio Pilot Kit as `/adopt#studio-pilot` (not a separate `/practice/` route �? Adopt already owns procurement + validator path).
+- Copy-paste studio brief + three core links (schema portal validator, Evidence Checker, procurement sentence); gaps �? draft consultation; optional before/after fixtures pointer.
 - Soft-launch honesty: interim Foundation, open reference only, empty modules OK, no Hub/Vault/Workbench marketing.
 - Wired discoverability: adopt intro CTA + TOC, footer Open standard link, downloads index entry, Recent updates one-liner.
 - Deployed landscapearchive-org Pages. No commit. No Flux.
 
 ### Why
-- Founder YES to Studio Pilot Kit from soft-launch advisory — practice-facing handout without inventing registry keys or republishing withdrawn Field Notes.
+- Founder YES to Studio Pilot Kit from soft-launch advisory �? practice-facing handout without inventing registry keys or republishing withdrawn Field Notes.
 
 ### Files touched
 - `src/data/adoptContent.js`
@@ -862,7 +884,7 @@
 ### Did
 - Removed published Field Notes *Before and after: a sanitised conformance case study* and *Messy landscape metadata and sustainability reporting appendix risk* from `articles.js`.
 - Dropped matching homepage Recent updates rows; LinkedIn marketing copy now points at IFRS/AASB crosswalks only.
-- 301 redirects from withdrawn slugs → `/articles`; updated soft-launch smoke checklist.
+- 301 redirects from withdrawn slugs �? `/articles`; updated soft-launch smoke checklist.
 - Deployed landscapearchive-org Pages.
 
 ### Why
@@ -934,12 +956,12 @@
 **Status:** done
 
 ### Did
-- Renamed essay title from *A shared vocabulary for a fragmented profession* → *A shared vocabulary for the profession* (card/H1 source in `articles.js`).
-- Essay body and dek left unchanged (dek already avoided “fragmented”).
+- Renamed essay title from *A shared vocabulary for a fragmented profession* �? *A shared vocabulary for the profession* (card/H1 source in `articles.js`).
+- Essay body and dek left unchanged (dek already avoided “fragmented�).
 - Deployed `landscapearchive-org` **`7ccd775d`**. No commit. No la-frontend mirror of this title.
 
 ### Why
-- Follow-up to dropping the Field Notes index fragmentation teaser: surface chrome should not still lead with “fragmented.”
+- Follow-up to dropping the Field Notes index fragmentation teaser: surface chrome should not still lead with “fragmented.�
 
 ### Files touched
 - `src/data/articles.js`
@@ -961,12 +983,12 @@
 **Status:** done
 
 ### Did
-- Removed Field Notes index lead blurb that framed the profession as “fragmented” (redundant with H1 + essay deks).
+- Removed Field Notes index lead blurb that framed the profession as “fragmented� (redundant with H1 + essay deks).
 - Left Field Notes article bodies and titles untouched (including *A shared vocabulary for a fragmented profession*).
 - Deployed `landscapearchive-org` **`f22dc5ad`**. No commit.
 
 ### Why
-- Soft-launch institutional tone: avoid marketing “fragmentation” framing on the index teaser; essay titles stay as published editorial.
+- Soft-launch institutional tone: avoid marketing “fragmentation� framing on the index teaser; essay titles stay as published editorial.
 
 ### Files touched
 - `src/pages/articles.astro`
@@ -988,7 +1010,7 @@
 
 ### Did
 - Disabled pixel mosaic chrome and portal entrance animations site-wide (solid header/footer; no ambient waves).
-- Tightened public copy on home, governance, purpose, charter, awards, contact, support, truth-tellers; removed promo eyebrows / hero stats / “Five standards, one argument” framing.
+- Tightened public copy on home, governance, purpose, charter, awards, contact, support, truth-tellers; removed promo eyebrows / hero stats / “Five standards, one argument� framing.
 - Shortened draft banner; Field Notes / articles untouched.
 - Deployed `landscapearchive-org` **`d7e141b1`**. No commit.
 
@@ -1012,15 +1034,15 @@
 
 ---
 
-## 2026-07-12 - Private /vault gate → vault.landscapearchive.org
+## 2026-07-12 - Private /vault gate �? vault.landscapearchive.org
 
 **Scope:** vault-privacy, redirects, pages-deploy
 **Status:** done
 
 ### Did
-- Added noindex `/vault` Astro redirect + `public/_redirects` for `/vault` and `/vault/*` → `https://vault.landscapearchive.org` (Access-gated SPA on `m-laririt-m`).
+- Added noindex `/vault` Astro redirect + `public/_redirects` for `/vault` and `/vault/*` �? `https://vault.landscapearchive.org` (Access-gated SPA on `m-laririt-m`).
 - robots.txt Disallow `/vault`; `_headers` noindex + no-referrer; sitemap filter excludes `/vault`.
-- README notes Vault is not Foundation marketing and must not appear in public nav (`SITE_NAV_LINKS` unchanged — no Vault link).
+- README notes Vault is not Foundation marketing and must not appear in public nav (`SITE_NAV_LINKS` unchanged �? no Vault link).
 - Deployed `landscapearchive-org` **`902ff8fb`**. No commit.
 
 ### Why
@@ -1075,7 +1097,7 @@
 - Added the essay as the newest homepage / feed update (2026-07-11).
 
 ### Why
-- Month-only “July 2026” labels were too coarse; day dates make the What’s new strip scannable. Pillars needed a short reflective public home beyond the governance table.
+- Month-only “July 2026� labels were too coarse; day dates make the What’s new strip scannable. Pillars needed a short reflective public home beyond the governance table.
 
 ### Files touched
 - `src/data/recentPublicUpdates.js`
@@ -1091,7 +1113,7 @@
 - https://landscapearchive.org/articles/four-things-land-art-technology-data
 - https://landscapearchive.org/recent-updates.json
 - https://landscapearchive.org/governance#cultural-pillars
-- Deploy: `986c6db6` → https://986c6db6.landscapearchive-org.pages.dev
+- Deploy: `986c6db6` �? https://986c6db6.landscapearchive-org.pages.dev
 
 ---
 
@@ -1131,7 +1153,7 @@
 **Status:** done
 
 ### Did
-- Added founder-facing one-pager `docs/FOUNDATION_CHARTER_AND_AWARDS.md`: public trust layer (art × land × technology × data), product-as-instrument vs Foundation-as-charter, four cultural pillars, awards strands (Evidence / Instrument / Form / Offset) with anti-silo inclusion guidance.
+- Added founder-facing one-pager `docs/FOUNDATION_CHARTER_AND_AWARDS.md`: public trust layer (art �? land �? technology �? data), product-as-instrument vs Foundation-as-charter, four cultural pillars, awards strands (Evidence / Instrument / Form / Offset) with anti-silo inclusion guidance.
 - Aligned explicitly with live `/founding-charter`, `/governance` (five Standards), and `/awards` (detailed categories in preparation); no public UI change.
 
 ### Why
@@ -1181,11 +1203,11 @@
 **Status:** done
 
 ### Did
-- Added footer **Foundation tools** column (labelled *Foundation tools — not Landscape Archive Hub*) with open artefacts only: TLA-185 schema pack, field registry preview JSON, open-pack zip, adopt kit, charter, UK crosswalk, Evidence Checker, and `/downloads` index.
+- Added footer **Foundation tools** column (labelled *Foundation tools �? not Landscape Archive Hub*) with open artefacts only: TLA-185 schema pack, field registry preview JSON, open-pack zip, adopt kit, charter, UK crosswalk, Evidence Checker, and `/downloads` index.
 - Published `/downloads` (open artefacts index) and `/evidence-checker` (client-side inspector for TLA-185 JSON and Archive Audit Pack `.tlaa`).
 - Inspector refuses commercial Landscape Archive Package (`.tla` / `landscape-archive.tla.json` / `.rfa`) and encrypted `.lapkg` (no decrypt); files stay in-browser.
 - Bundled `public/foundation-wing/tla185-open-pack.zip` (preview JSON + crosswalk MDs + draft constitution).
-- Homepage “What’s new” item; README deploy notes for downloads/checker.
+- Homepage “What’s new� item; README deploy notes for downloads/checker.
 
 ### Why
 - Auditors and adopters need a clear Foundation-side download surface and a lightweight open-package inspector without conflating Hub / commercial `.tla` delivery.
@@ -1221,11 +1243,11 @@
 ### Did
 - Restored white media panel (`#ffffff`) on the homepage EOI popup.
 - Confirmed `/images/director-invite-globe-dots.png` is black dots + alpha on transparent; render without `filter: invert(1)` so the globe reads black-on-white.
-- Kept the shorter copy (no descriptive lead under “Help set the standard”).
+- Kept the shorter copy (no descriptive lead under “Help set the standard�).
 - Updated `docs/DIRECTOR_APPLICATIONS.md` popup notes.
 
 ### Why
-- Prior “black panel” pass misread the ask: the reference is black halftone dots on white, not light dots on a black panel.
+- Prior “black panel� pass misread the ask: the reference is black halftone dots on white, not light dots on a black panel.
 
 ### Files touched
 - `src/components/DirectorEasterEgg.astro`
@@ -1247,8 +1269,8 @@
 **Status:** done
 
 ### Did
-- Removed descriptive lead + Singapore italic aside under “Help set the standard” on the homepage EOI popup; kept eyebrow, heading, legal note, and CTAs.
-- Pointed `aria-describedby` at the legal note; tightened title→note spacing slightly.
+- Removed descriptive lead + Singapore italic aside under “Help set the standard� on the homepage EOI popup; kept eyebrow, heading, legal note, and CTAs.
+- Pointed `aria-describedby` at the legal note; tightened title�?note spacing slightly.
 - Globe media panel: black background (`#000`); removed `filter: invert(1)` so `/images/director-invite-globe-dots.png` shows native light dots on black.
 - Updated `docs/DIRECTOR_APPLICATIONS.md` popup notes.
 
@@ -1275,12 +1297,12 @@
 **Status:** done
 
 ### Did
-- Reframed homepage popup + `/directors/apply` as founding board / director **expression of interest** (not appointment/job offer); kept not-yet-incorporated disclaimer; added About intended Foundation + privacy notice + clearer consents; CTAs “Apply to express interest” / “Submit expression of interest”.
+- Reframed homepage popup + `/directors/apply` as founding board / director **expression of interest** (not appointment/job offer); kept not-yet-incorporated disclaimer; added About intended Foundation + privacy notice + clearer consents; CTAs “Apply to express interest� / “Submit expression of interest�.
 - White left panel on invite modal; `filter: invert(1)` on light-on-black globe asset so dark dots read on white.
 - Documented counsel-still-required in `docs/DIRECTOR_APPLICATIONS.md`; softened la-frontend API success/email copy to match EOI tone.
 
 ### Why
-- Comms/product hygiene toward “as legal as possible” without claiming compliance; mockup asked for white globe panel.
+- Comms/product hygiene toward “as legal as possible� without claiming compliance; mockup asked for white globe panel.
 
 ### Files touched
 - `src/components/DirectorEasterEgg.astro`
@@ -1335,7 +1357,7 @@
 **Status:** done
 
 ### Did
-- Added smaller italic second line under London/DC invite copy: “or anywhere else, perhaps Singapore.”
+- Added smaller italic second line under London/DC invite copy: “or anywhere else, perhaps Singapore.�
 - Updated `docs/DIRECTOR_APPLICATIONS.md` popup copy note; deployed org Pages.
 
 ### Why
@@ -1414,7 +1436,7 @@
 ### Links
 - Feed: https://landscapearchive.org/field-notes.json
 - Deploy: https://67907f19.landscapearchive-org.pages.dev (`npm run deploy`, commit `0f628b9`)
-- Share smoke: any article section Share button — hard-refresh Ctrl+Shift+R
+- Share smoke: any article section Share button �? hard-refresh Ctrl+Shift+R
 
 ---
 ## 2026-07-09 - Foundation browser tab title pattern
@@ -1449,7 +1471,7 @@
 ### Did
 - Confirmed **production was stale**: `landscapearchive.org/scripts/section-share-instagram.js` still served the old white-canvas theme (no mint/charcoal); preview `2dac5ad0` had the redesign. Redeployed org Pages so apex gets the new template.
 - Clarified download path: **Instagram Story pack (multi)** â†’ ZIP of PNGs (`tla-foundation-story-pack-*.zip`), not a PDF.
-- Share speed: open menu paints instantly + warms fonts/mark in background; stop awaiting `document.fonts.ready`; parallel slide renders; progress label (â€œSlide n/mâ€¦â€) + visible status; script `?v=20260709b` cache-bust.
+- Share speed: open menu paints instantly + warms fonts/mark in background; stop awaiting `document.fonts.ready`; parallel slide renders; progress label (â€�?Slide n/mâ€¦â€�) + visible status; script `?v=20260709b` cache-bust.
 
 ### Why
 - Prior redesign landed on a preview URL / CF cache HIT on apex (`max-age=14400`), so hard-refresh still showed old frames. Pack generation also blocked on sequential canvas + full font-ready.
@@ -1480,18 +1502,18 @@
 ### Did
 - Redesigned Foundation Instagram story pack canvas: charcoal header/footer bars, cream field, mint accent rules (aligned with Ad Studio foundation-light + Hub mint).
 - Replaced dense bullet slides with **descriptor + highlighted quote** slides; title â†’ quotes â†’ CTA structure (up to 6 frames).
-- Footer shows host only (`landscapearchive.org`) â€” no runaway article paths; cream disc behind mark for charcoal contrast.
-- Kept honesty bullet as its own quote slide (â€œnot claimed here as accomplished factâ€).
+- Footer shows host only (`landscapearchive.org`) â€� no runaway article paths; cream disc behind mark for charcoal contrast.
+- Kept honesty bullet as its own quote slide (â€�?not claimed here as accomplished factâ€�).
 
 ### Why
-- Draft pack screenshots were plain white, top-heavy, with truncated long URLs and dense bullets â€” not presentation-ready for IG Stories.
+- Draft pack screenshots were plain white, top-heavy, with truncated long URLs and dense bullets â€� not presentation-ready for IG Stories.
 
 ### Files touched
 - `public/scripts/section-share-instagram.js`
 - `docs/CHANGELOG.md`
 
 ### Follow-ups / blockers
-- Re-export from article share row after deploy: Field Note â†’ section â€œHow automation flips the modelâ€ â†’ Instagram Story pack (multi).
+- Re-export from article share row after deploy: Field Note â†’ section â€�?How automation flips the modelâ€� â†’ Instagram Story pack (multi).
 
 ### Links
 - Article: https://landscapearchive.org/articles/institutions-standards-and-the-infrastructure-gap
@@ -1525,7 +1547,7 @@
 
 ---
 
-## 2026-07-09 - Foundation adoption copy â€” institutional tone
+## 2026-07-09 - Foundation adoption copy â€� institutional tone
 
 **Scope:** adoption, homepage, registry, governance, schema-portal
 **Status:** done
@@ -1545,7 +1567,7 @@
 - `../la-frontend/federation/portal/index.html`
 
 ### Follow-ups / blockers
-- None â€” deploy via `npm run deploy`.
+- None â€� deploy via `npm run deploy`.
 
 ---
 
@@ -1565,7 +1587,7 @@
 - `src/pages/sign-in.astro`
 
 ### Follow-ups / blockers
-- None â€” deploy via `npm run deploy`.
+- None â€� deploy via `npm run deploy`.
 
 ---
 
@@ -1580,7 +1602,7 @@
 - Documented handoff contract in `docs/ORG_SIGN_IN_HANDOFF.md`; updated `docs/VOLUNTEER_APPLICATIONS.md`.
 
 ### Why
-- Member programme access should sign in on the Foundation site while using the same Landscape Archive identity â€” without exposing implementation detail or storing credentials on `.org`.
+- Member programme access should sign in on the Foundation site while using the same Landscape Archive identity â€� without exposing implementation detail or storing credentials on `.org`.
 
 ### Files touched
 - `src/pages/sign-in.astro`
@@ -1604,13 +1626,13 @@
 **Status:** done
 
 ### Did
-- Ran `npm run deploy` â€” production `/volunteers#apply` was still serving pre-187e365 WordPress/cookie exposition until this deploy (commit was on `main` but Pages had not been updated).
+- Ran `npm run deploy` â€� production `/volunteers#apply` was still serving pre-187e365 WordPress/cookie exposition until this deploy (commit was on `main` but Pages had not been updated).
 
 ### Why
 - Copy fix was merged locally but `.org` uses manual `npm run deploy`, not git-connected auto-publish.
 
 ### Files touched
-- (deploy only â€” no source edits)
+- (deploy only â€� no source edits)
 
 ### Follow-ups / blockers
 - None
@@ -1627,7 +1649,7 @@
 **Status:** done
 
 ### Did
-- Shortened volunteer `#apply` sign-in gate and intro lead in `VolunteerApplicationForm.astro` â€” removed cross-domain cookie/token exposition.
+- Shortened volunteer `#apply` sign-in gate and intro lead in `VolunteerApplicationForm.astro` â€� removed cross-domain cookie/token exposition.
 
 ### Why
 - Applicants do not need implementation detail about WordPress sessions or handoff tokens; concise account sign-in copy is enough.
@@ -1649,9 +1671,9 @@
 **Status:** done
 
 ### Did
-- Fixed story/post canvas layout: measured title/body fit, Instagram safe-zone footer, wrapped URLs, explicit 1080Ã—1920 export canvas (no DPR/CSS bleed).
+- Fixed story/post canvas layout: measured title/body fit, Instagram safe-zone footer, wrapped URLs, explicit 1080Ã�?1920 export canvas (no DPR/CSS bleed).
 - Removed export-only hint line that sat below the footer stack and appeared cropped in Story uploads.
-- Added **Instagram Story pack (multi)** â€” ZIP of 2â€“5 slides (`tla-story-01.png` â€¦) built from section title, bullets/excerpt, and CTA.
+- Added **Instagram Story pack (multi)** â€� ZIP of 2â€“5 slides (`tla-story-01.png` â€¦) built from section title, bullets/excerpt, and CTA.
 
 ### Why
 - Long governance headings hit hard line caps and footer content sat in Instagramâ€™s bottom crop zone, making downloads look truncated. Multi-slide ZIP matches manual Story carousel workflow better than a single tall composite.
@@ -1680,7 +1702,7 @@
 - Added `body.section-share-open { overflow: hidden }` on mobile sheet open to prevent scroll bleed.
 
 ### Why
-- Prior fix (1100/1099 on separate body children) still painted behind following `.section-block` headings on narrow viewports â€” likely competing stacking contexts from `[data-animate-in]` transforms and sticky chrome. Single isolated overlay root with max practical z-index guarantees the sheet covers all page content.
+- Prior fix (1100/1099 on separate body children) still painted behind following `.section-block` headings on narrow viewports â€� likely competing stacking contexts from `[data-animate-in]` transforms and sticky chrome. Single isolated overlay root with max practical z-index guarantees the sheet covers all page content.
 
 ### Files touched
 - `public/scripts/section-share.js`
@@ -1735,7 +1757,7 @@
 - Mobile: 44px min touch targets on trigger and menu items; `touch-action: manipulation` on tap surfaces.
 
 ### Why
-- Share rows sit at the bottom of each section; absolutely positioned panels (`z-index: 30` within parent stacking context) painted behind the next sectionâ€™s DOM (e.g. â€œEncode claimsâ€ heading). Mobile taps hit obscured or clipped panels.
+- Share rows sit at the bottom of each section; absolutely positioned panels (`z-index: 30` within parent stacking context) painted behind the next sectionâ€™s DOM (e.g. â€�?Encode claimsâ€� heading). Mobile taps hit obscured or clipped panels.
 
 ### Files touched
 - `src/components/SectionShareLinks.astro`
@@ -1834,7 +1856,7 @@
 **Status:** done
 
 ### Did
-- Legal-hardened `institutions-standards-and-the-infrastructure-gap` in `articles.js` â€” neutral institutional framing, conditional adoption language, opinion markers, softened market-economics copy, article-level `legalNote`.
+- Legal-hardened `institutions-standards-and-the-infrastructure-gap` in `articles.js` â€� neutral institutional framing, conditional adoption language, opinion markers, softened market-economics copy, article-level `legalNote`.
 - Updated `articles/[slug].astro` to render optional `legalNote` disclaimer footer on Field Notes.
 
 ### Why
@@ -1855,7 +1877,7 @@
 **Status:** done
 
 ### Did
-- Rewrote **Founding alliance** section in `governanceContent.js` â€” intent/possibility language; explicit "no alliance exists today"; removed "under review with advisers and prospective members"; softened participant/CTA framing; updated facts row.
+- Rewrote **Founding alliance** section in `governanceContent.js` â€� intent/possibility language; explicit "no alliance exists today"; removed "under review with advisers and prospective members"; softened participant/CTA framing; updated facts row.
 
 ### Why
 - Public copy implied an alliance was being actively convened or in preparation. Align with `FOUNDATION_PUBLIC_NAMING_AND_LEGAL_SAFETY.md`: draft/interim tone, no incorporated entity, affiliate â‰  founding.
@@ -1874,7 +1896,7 @@
 
 ### Did
 - Added `/adopt` practitioner guide: why specs go unused, 15-minute path (open pack â†’ validator â†’ procurement sentence), adoption ladder, honest interim footer.
-- Added `foundingAlliancePitch.js` â€” copy-paste email templates (university, public body, practice) and one-page plain-text pitch.
+- Added `foundingAlliancePitch.js` â€� copy-paste email templates (university, public body, practice) and one-page plain-text pitch.
 - Published `/founding-charter` consultation page with draft constitution sections and `?intent=founding-alliance` CTA.
 - Homepage primary CTA â†’ adopt; registry quick-start banner; nav + footer links; governance founding-alliance and international-adoption cross-links.
 - Updated recent public updates strip.
@@ -1901,7 +1923,7 @@
 **Status:** done
 
 ### Did
-- Extended `SectionShareLinks` with **IG story** (1080Ã—1920), **IG post** (1080Ã—1080) card downloads and **Copy caption** (title + short URL + hashtags).
+- Extended `SectionShareLinks` with **IG story** (1080Ã�?1920), **IG post** (1080Ã�?1080) card downloads and **Copy caption** (title + short URL + hashtags).
 - Added client-side canvas renderer `public/scripts/section-share-instagram.js`; wired from `section-share.js`.
 
 ### Why
@@ -1926,7 +1948,7 @@
 **Status:** done
 
 ### Did
-- Root cause: Astro never emitted `SectionShareLinks` component `<script>` in production HTML when many instances render per page â€” Copy link buttons had no listeners.
+- Root cause: Astro never emitted `SectionShareLinks` component `<script>` in production HTML when many instances render per page â€� Copy link buttons had no listeners.
 - Moved init to `public/scripts/section-share.js`, loaded once from `BaseLayout.astro`; binds all `.section-share` rows with idempotent `data-share-initialized` guard.
 - Hardened la-frontend `federation/portal/share.js` with the same init guard and DOM-ready mount.
 
@@ -1954,7 +1976,7 @@
 - Attached custom domains `landscapearchive.org` and `www.landscapearchive.org` to Cloudflare Pages project `landscapearchive-org` via REST API (wrangler has no `pages domain add` command).
 
 ### Why
-- Third non-AU jurisdiction crosswalk for US Reg S-K Item 1300 adopters â€” same structural mapping as UK/EU with NOAA / USFS / USGS / NEX-GDDP bindings.
+- Third non-AU jurisdiction crosswalk for US Reg S-K Item 1300 adopters â€� same structural mapping as UK/EU with NOAA / USFS / USGS / NEX-GDDP bindings.
 - Custom domains required for production Foundation home at apex `.org`.
 
 ### Files touched
@@ -1983,7 +2005,7 @@
 - Updated UK crosswalk markdown with EU related-artefact link.
 
 ### Why
-- Second non-AU jurisdiction crosswalk for CSRD adopters â€” same structural mapping as UK/AASB with EU dataset bindings.
+- Second non-AU jurisdiction crosswalk for CSRD adopters â€� same structural mapping as UK/AASB with EU dataset bindings.
 
 ### Files touched
 - `src/data/governanceContent.js`
@@ -2025,7 +2047,7 @@
 **Status:** done
 
 ### Did
-- Added `SectionShareLinks.astro` â€” restrained copy-link, LinkedIn, email, and Web Share API on mobile; slate `#343d4a` small-caps styling.
+- Added `SectionShareLinks.astro` â€� restrained copy-link, LinkedIn, email, and Web Share API on mobile; slate `#343d4a` small-caps styling.
 - Integrated after each `DocsSection` block on governance, awards, volunteers, homepage, and Field Notes essays; article-level share on essay footer; registry module groups.
 - Schema portal: auto-injected share rows on `.foundation-section` via `federation/portal/share.js`.
 
@@ -2048,7 +2070,7 @@
 **Status:** done
 
 ### Did
-- Added homepage **What's new** strip (`RecentUpdatesStrip.astro`, `recentPublicUpdates.js`) â€” founding alliance draft, export profiles, awards data architecture; interim/consultation tone.
+- Added homepage **What's new** strip (`RecentUpdatesStrip.astro`, `recentPublicUpdates.js`) â€� founding alliance draft, export profiles, awards data architecture; interim/consultation tone.
 - Schema portal: **Recently published** callout + reframed founding section as international founding alliance (draft consultation).
 - Draft social copy kit at `docs/marketing/FOUNDATION_PUBLIC_UPDATE_POSTS.md` (LinkedIn, newsletter, Instagram hook; flags stale LAUNCH_ANNOUNCEMENT kit).
 
@@ -2070,8 +2092,8 @@
 **Status:** done
 
 ### Did
-- Added **Founding alliance** section to governance page â€” international coalition framing (practices, universities, public bodies, Indigenous protocol authorities, nurseries, implementation partners worldwide).
-- Clarified affiliate partner programme (commercial Archive referral) â‰  Foundation founding membership; no separate â€œLandscape Allianceâ€ trademark.
+- Added **Founding alliance** section to governance page â€� international coalition framing (practices, universities, public bodies, Indigenous protocol authorities, nurseries, implementation partners worldwide).
+- Clarified affiliate partner programme (commercial Archive referral) â‰  Foundation founding membership; no separate â€�?Landscape Allianceâ€� trademark.
 - Linked schema portal, awards data-architecture anchor, charter consultation contact intent, and commercial `/partners`.
 - Footer nav link to `#founding-alliance`; awards programme governance cross-link back to governance.
 - Synced `foundationGovernanceContent.js` and awards source in la-frontend.
@@ -2118,7 +2140,7 @@
 - Updated governance open-infrastructure pillar export-profile sentence; synced from la-frontend awards source.
 
 ### Why
-- User-facing copy should describe IFC property sets, GeoJSON civic registries, USD sidecars, and spreadsheet crosswalks in professional language â€” not internal profile codes.
+- User-facing copy should describe IFC property sets, GeoJSON civic registries, USD sidecars, and spreadsheet crosswalks in professional language â€� not internal profile codes.
 
 ### Files touched
 - `src/data/builtEnvironmentExports.js`, `src/data/foundationAwardsProgramme.js`, `src/data/governanceContent.js`, `src/components/DocsSection.astro`
