@@ -33,7 +33,7 @@ export function buildFoundationHomeSections({
       heading: 'Archive Seal',
       paragraphs: [
         `Open ${TLA185_DISPLAY_ID} grammar stays free to cite. Where a brief requires Landscape Archive–attested deliverables, ask for a licensed Archive package from an authorised organisation — and an Archive Seal when the brief specifies one.`,
-        'Archive Seal is a renewable commercial attestation from The Landscape Archive Pty Ltd (period-bound marks and manifests). Authenticity checks are performed by Landscape Archive administrators — not a public DIY verifier on this Foundation site. Foundation Approved / Evidence Checker are not an Archive licence.'
+        'Archive Seal is a renewable commercial attestation from The Landscape Archive Pty Ltd (period-bound marks and manifests). Authenticity checks are performed by Landscape Archive administrators on the commercial Archive site. Foundation Approved / Evidence Checker remain separate from Archive licensing.'
       ],
       bullets: [
         'Purchase Seal and compare plans on the Archive site',
@@ -53,12 +53,21 @@ export function buildFoundationHomeSections({
       id: 'mission-draft',
       heading: 'Mission',
       paragraphs: [
-        `Draft public purpose: advance environmental and social benefit through open, citable infrastructure for landscape documentation. Botanical authenticity, climate disclosure, cultural-protocol metadata, and synthetic-nature provenance are encoded in the public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification.`,
-        'This is draft charitable scope for consultation. Incorporation and grant programmes remain forward work; live publishing today is the open specification and related trust tooling.',
+        `Draft public purpose: steward open, citable digital infrastructure for landscape architecture so institutions and companies can keep honest project records over time. Botanical authenticity, climate disclosure, cultural-protocol metadata, and synthetic-nature provenance are encoded in the public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification.`,
+        'Four consultation commitments: human stewardship of that infrastructure; a published structure for storing and citing landscape metadata internationally; renewal paths that respect institutional budget limits; and treating landscape project records as registerable professional assets. This is not a securities offer or endowment prospectus.',
+        'Incorporation, grant programmes, and any future capital structures remain forward work. Live publishing today is the open specification, adoption language, and related trust tooling. Commercial seats and Archive Seal renewals on the Australian hub fund ongoing labour separately.',
         INSTITUTIONAL_ASKS_HOME_BLURB
       ],
+      bullets: [
+        'People — support labour that keeps shared digital infrastructure usable',
+        'Structure — citable grammar and storage-facing shapes beyond one vendor cycle',
+        'Renewal — steady renewal and predictable pricing paths for institutions on shared infrastructure',
+        'Records as assets — open grammar, integrity digests, renewable Seal attestation where required'
+      ],
       actions: [
-        { label: 'Draft mission (governance)', href: `${GOVERNANCE_PATH}#draft-mission` },
+        { label: 'Full mission (governance)', href: `${GOVERNANCE_PATH}#draft-mission` },
+        { label: 'Mission boundaries', href: `${GOVERNANCE_PATH}#draft-mission-boundaries` },
+        { label: 'Foundation Approved vs Archive Seal', href: '/foundation-approved' },
         { label: 'Institutional asks', href: INSTITUTIONAL_ASKS_PATH }
       ]
     },
@@ -122,7 +131,7 @@ export function buildFoundationHomeSections({
       id: 'commercial',
       heading: 'Commercial implementation',
       paragraphs: [
-        'The field dictionary stays free to cite. Seats, Library depth, Landscape Archive Tools desktop apps, BIM / Hub delivery, Seal attestation, Evidence/compliance paths, and (when cleared) Data API / OEM redistribution are licensed through The Landscape Archive Pty Ltd — not under the public Creative Commons notice. See Archive Terms for free vs paid posture.',
+        'The field dictionary stays free to cite. Seats, Library depth, Landscape Archive Tools desktop apps, BIM / Hub delivery, Seal attestation, Evidence/compliance paths, and (when cleared) Data API / OEM redistribution are licensed through The Landscape Archive Pty Ltd under Archive Terms. See Archive Terms for free vs paid posture.',
         'Foundation Approved denotes open-specification conformance. It is distinct from Archive Certified, a paid vendor credential, and from Archive Seal.'
       ],
       actions: [

@@ -80,7 +80,7 @@ export const SITE_NAV_LINKS = Object.freeze([
 ])
 
 export const SITE_TAGLINE =
-  'Open landscape metadata standard.'
+  'Open digital infrastructure for landscape architecture.'
 
 export const SITE_DESCRIPTION =
-  'The Landscape Archive Foundation stewards the open TLA-185 / TLA-169 landscape metadata specification — field registry, schemas, and conformance criteria under CC BY-NC-ND 4.0.'
+  'The Landscape Archive Foundation stewards open, citable digital infrastructure for landscape architecture — TLA-185 / TLA-169 field registry, schemas, and conformance criteria under CC BY-NC-ND 4.0. Human stewardship, global structure, institutional renewal, and records as professional assets. Not a securities offer.'
