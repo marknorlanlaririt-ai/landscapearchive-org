@@ -1,0 +1,64 @@
+{
+  "title": "TLA-185 jurisdiction packs",
+  "version": "1.1.0",
+  "schema": "./schema.json",
+  "honesty": "Jurisdiction packs bind local subnational codes and dataset pointers to fixed TLA-185 field IDs. They are Layer-2 adoption artifacts — not live commercial hubs. The live Archive commercial hub remains landscapearchive.com.au (AUD / Victoria law) until additional hubs are published. Planned regional domains in hub config are placeholders, not ownership claims.",
+  "packs": [
+    {
+      "packId": "au",
+      "country": "AU",
+      "label": "Australia",
+      "status": "reference",
+      "href": "./au.json"
+    },
+    {
+      "packId": "uk",
+      "country": "GB",
+      "label": "United Kingdom",
+      "status": "starter",
+      "href": "./uk.json"
+    },
+    {
+      "packId": "ca",
+      "country": "CA",
+      "label": "Canada",
+      "status": "starter",
+      "href": "./ca.json"
+    },
+    {
+      "packId": "us",
+      "country": "US",
+      "label": "United States",
+      "status": "starter",
+      "href": "./us.json"
+    },
+    {
+      "packId": "nz",
+      "country": "NZ",
+      "label": "New Zealand",
+      "status": "starter",
+      "href": "./nz.json"
+    },
+    {
+      "packId": "sg",
+      "country": "SG",
+      "label": "Singapore",
+      "status": "starter",
+      "href": "./sg.json"
+    },
+    {
+      "packId": "hk",
+      "country": "HK",
+      "label": "Hong Kong",
+      "status": "starter",
+      "href": "./hk.json"
+    },
+    {
+      "packId": "za",
+      "country": "ZA",
+      "label": "South Africa",
+      "status": "starter",
+      "href": "./za.json"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "packId": "sg",
+  "country": "SG",
+  "label": "Singapore",
+  "status": "starter",
+  "subnational": {
+    "fieldKey": "jurisdiction.stateOrTerritory",
+    "label": "Planning region",
+    "codes": [
+      { "code": "SG", "label": "Singapore (city-state)" }
+    ]
+  },
+  "datasetBindings": [
+    {
+      "slot": "climate",
+      "label": "MSS / regional climate layers (indicative)",
+      "note": "Starter pointer only — not a live Singapore commercial hub."
+    }
+  ],
+  "crosswalks": [],
+  "honesty": "Starter jurisdiction pack for Singapore. Does not open a Singapore Archive hub, SGD checkout, or trademark claims. Planned domain placeholders are not ownership claims."
+}

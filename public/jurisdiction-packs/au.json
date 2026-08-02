@@ -1,0 +1,34 @@
+{
+  "packId": "au",
+  "country": "AU",
+  "label": "Australia",
+  "status": "reference",
+  "subnational": {
+    "fieldKey": "jurisdiction.stateOrTerritory",
+    "label": "State or territory",
+    "codes": [
+      { "code": "ACT", "label": "Australian Capital Territory" },
+      { "code": "NSW", "label": "New South Wales" },
+      { "code": "NT", "label": "Northern Territory" },
+      { "code": "QLD", "label": "Queensland" },
+      { "code": "SA", "label": "South Australia" },
+      { "code": "TAS", "label": "Tasmania" },
+      { "code": "VIC", "label": "Victoria" },
+      { "code": "WA", "label": "Western Australia" }
+    ]
+  },
+  "datasetBindings": [
+    {
+      "slot": "climate",
+      "label": "SILO / CCIA (Australian climate products)",
+      "note": "Live reference bindings in the AU dictionary profile — not universal."
+    }
+  ],
+  "crosswalks": [
+    {
+      "label": "AASB S2 climate disclosure crosswalk",
+      "href": "/crosswalk/aasb-s2"
+    }
+  ],
+  "honesty": "AU is the live reference fill and live commercial hub for The Landscape Archive Pty Ltd. Plant distribution and native-status semantics in many dictionary examples are AU-framed; other packs supply structure only until local flora libraries are published."
+}

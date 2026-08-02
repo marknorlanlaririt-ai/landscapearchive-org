@@ -1,0 +1,30 @@
+{
+  "packId": "za",
+  "country": "ZA",
+  "label": "South Africa",
+  "status": "starter",
+  "subnational": {
+    "fieldKey": "jurisdiction.stateOrTerritory",
+    "label": "Province",
+    "codes": [
+      { "code": "EC", "label": "Eastern Cape" },
+      { "code": "FS", "label": "Free State" },
+      { "code": "GP", "label": "Gauteng" },
+      { "code": "KZN", "label": "KwaZulu-Natal" },
+      { "code": "LP", "label": "Limpopo" },
+      { "code": "MP", "label": "Mpumalanga" },
+      { "code": "NC", "label": "Northern Cape" },
+      { "code": "NW", "label": "North West" },
+      { "code": "WC", "label": "Western Cape" }
+    ]
+  },
+  "datasetBindings": [
+    {
+      "slot": "climate",
+      "label": "SAWS / regional climate layers (indicative)",
+      "note": "Starter pointer only — not a live South African commercial hub."
+    }
+  ],
+  "crosswalks": [],
+  "honesty": "Starter jurisdiction pack for South Africa. Does not open a ZA Archive hub, ZAR checkout, or trademark claims. Planned domain placeholders are not ownership claims."
+}

@@ -1,0 +1,22 @@
+{
+  "packId": "hk",
+  "country": "HK",
+  "label": "Hong Kong",
+  "status": "starter",
+  "subnational": {
+    "fieldKey": "jurisdiction.stateOrTerritory",
+    "label": "District",
+    "codes": [
+      { "code": "HK", "label": "Hong Kong SAR" }
+    ]
+  },
+  "datasetBindings": [
+    {
+      "slot": "climate",
+      "label": "HKO climate layers (indicative)",
+      "note": "Starter pointer only — hub domain TBD; not a live Hong Kong commercial hub."
+    }
+  ],
+  "crosswalks": [],
+  "honesty": "Starter jurisdiction pack for Hong Kong. Does not open a Hong Kong Archive hub or claim a live host. Confirm domain mapping before go-live."
+}

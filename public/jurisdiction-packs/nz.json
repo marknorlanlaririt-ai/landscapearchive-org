@@ -1,0 +1,37 @@
+{
+  "packId": "nz",
+  "country": "NZ",
+  "label": "New Zealand",
+  "status": "starter",
+  "subnational": {
+    "fieldKey": "jurisdiction.stateOrTerritory",
+    "label": "Region",
+    "codes": [
+      { "code": "AUK", "label": "Auckland" },
+      { "code": "BOP", "label": "Bay of Plenty" },
+      { "code": "CAN", "label": "Canterbury" },
+      { "code": "GIS", "label": "Gisborne" },
+      { "code": "HKB", "label": "Hawke's Bay" },
+      { "code": "MWT", "label": "Manawatū-Whanganui" },
+      { "code": "MBH", "label": "Marlborough" },
+      { "code": "NSN", "label": "Nelson" },
+      { "code": "NTL", "label": "Northland" },
+      { "code": "OTA", "label": "Otago" },
+      { "code": "STL", "label": "Southland" },
+      { "code": "TKI", "label": "Taranaki" },
+      { "code": "TAS", "label": "Tasman" },
+      { "code": "WKO", "label": "Waikato" },
+      { "code": "WGN", "label": "Wellington" },
+      { "code": "WTC", "label": "West Coast" }
+    ]
+  },
+  "datasetBindings": [
+    {
+      "slot": "climate",
+      "label": "NIWA climate layers (indicative)",
+      "note": "Starter pointer only — bind via published climate crosswalk; not a live NZ commercial hub."
+    }
+  ],
+  "crosswalks": [],
+  "honesty": "Starter jurisdiction pack. Enables NZ country + region codes on TLA-185 project.jurisdiction. Does not open a NZ Archive hub, NZD checkout, or NZ trademark claims. Planned domain placeholders are not ownership claims."
+}

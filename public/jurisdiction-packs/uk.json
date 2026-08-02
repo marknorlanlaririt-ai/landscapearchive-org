@@ -1,0 +1,30 @@
+{
+  "packId": "uk",
+  "country": "GB",
+  "label": "United Kingdom",
+  "status": "starter",
+  "subnational": {
+    "fieldKey": "jurisdiction.stateOrTerritory",
+    "label": "Nation",
+    "codes": [
+      { "code": "ENG", "label": "England" },
+      { "code": "SCT", "label": "Scotland" },
+      { "code": "WLS", "label": "Wales" },
+      { "code": "NIR", "label": "Northern Ireland" }
+    ]
+  },
+  "datasetBindings": [
+    {
+      "slot": "climate",
+      "label": "UK Met Office / UKCP18 (indicative)",
+      "note": "Starter pointer only — bind via published climate crosswalk; not a live UK commercial hub."
+    }
+  ],
+  "crosswalks": [
+    {
+      "label": "UK IFRS S2 climate disclosure crosswalk",
+      "href": "/crosswalk/uk-ifrs-s2"
+    }
+  ],
+  "honesty": "Starter jurisdiction pack. Enables GB country + nation codes on TLA-185 project.jurisdiction. Does not open a UK Archive hub, GBP checkout, or UK trademark claims."
+}

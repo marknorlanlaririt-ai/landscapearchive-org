@@ -1,0 +1,34 @@
+{
+  "packId": "ca",
+  "country": "CA",
+  "label": "Canada",
+  "status": "starter",
+  "subnational": {
+    "fieldKey": "jurisdiction.stateOrTerritory",
+    "label": "Province or territory",
+    "codes": [
+      { "code": "AB", "label": "Alberta" },
+      { "code": "BC", "label": "British Columbia" },
+      { "code": "MB", "label": "Manitoba" },
+      { "code": "NB", "label": "New Brunswick" },
+      { "code": "NL", "label": "Newfoundland and Labrador" },
+      { "code": "NS", "label": "Nova Scotia" },
+      { "code": "NT", "label": "Northwest Territories" },
+      { "code": "NU", "label": "Nunavut" },
+      { "code": "ON", "label": "Ontario" },
+      { "code": "PE", "label": "Prince Edward Island" },
+      { "code": "QC", "label": "Quebec" },
+      { "code": "SK", "label": "Saskatchewan" },
+      { "code": "YT", "label": "Yukon" }
+    ]
+  },
+  "datasetBindings": [
+    {
+      "slot": "climate",
+      "label": "ECCC / Canadian climate normals (indicative)",
+      "note": "Starter pointer only — bind via published climate crosswalk; not a live Canadian commercial hub."
+    }
+  ],
+  "crosswalks": [],
+  "honesty": "Starter jurisdiction pack. Enables CA country + province/territory codes on TLA-185 project.jurisdiction. Does not open a CA Archive hub, CAD checkout, or Canadian trademark claims."
+}

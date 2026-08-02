@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://landscapearchive.org/jurisdiction-packs/schema.json",
+  "title": "TLA-185 jurisdiction pack",
+  "description": "Layer-2 binding: same TLA-185 field IDs, local subnational enums and dataset pointers. Not a commercial hub declaration.",
+  "type": "object",
+  "required": [
+    "packId",
+    "country",
+    "label",
+    "status",
+    "subnational",
+    "honesty"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "packId": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(-[a-z0-9]+)?$",
+      "description": "Stable pack id (usually lowercase ISO country)."
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2 country code written to project.jurisdiction.country."
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["reference", "starter"]
+    },
+    "subnational": {
+      "type": "object",
+      "required": ["fieldKey", "label", "codes"],
+      "additionalProperties": false,
+      "properties": {
+        "fieldKey": {
+          "type": "string",
+          "const": "jurisdiction.stateOrTerritory"
+        },
+        "label": {
+          "type": "string",
+          "description": "UI label for the subnational selector (state, nation, region)."
+        },
+        "codes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["code", "label"],
+            "additionalProperties": false,
+            "properties": {
+              "code": { "type": "string", "minLength": 1 },
+              "label": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    "datasetBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slot", "label"],
+        "additionalProperties": false,
+        "properties": {
+          "slot": { "type": "string" },
+          "label": { "type": "string" },
+          "href": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "crosswalks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "href"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "type": "string" },
+          "href": { "type": "string" }
+        }
+      }
+    },
+    "honesty": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
