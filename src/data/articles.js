@@ -2,7 +2,7 @@ import { GOVERNANCE_PATH, REGISTRY_PATH, TLA185_DISPLAY_ID } from './foundationW
 import { SCHEMA_PORTAL_URL } from './site.js'
 
 /**
- * Field Notes — the Foundation's essays and working-group explainers.
+ * Field Notes — the Foundation's essays and explainers.
  *
  * Each entry is either `status: 'published'` (has `sections`) or
  * `status: 'planned'` (title + dek only, shown as an upcoming commission).
@@ -43,6 +43,255 @@ export const FIELD_NOTES_NEXT_STEPS = Object.freeze({
   ]
 })
 export const FIELD_NOTES = Object.freeze([
+  {
+    slug: 'outsourcing-truths-nail-and-agent',
+    status: 'published',
+    title: 'Outsourcing truths: the nail and the agent',
+    dek: 'A nail extends the hand. Agentic software proposes what the hand should mean. Landscape practice is learning that difference under pressure from tools, budgets, labour, politics, and time, and under a harder question still: where living nature ends and digital nature begins.',
+    author: 'Mark Norlan Laririt',
+    date: '2026-07-31',
+    readingTime: '10 min',
+    topics: ['Culture', 'Automation', 'Professional practice', 'Digital nature'],
+    legalNote:
+      'This Field Note is Foundation commentary and opinion. It is not legal, professional, or investment advice. Survey and market figures are cited from publicly reported sources; readers should consult the originals for methods, sample sizes, and caveats.',
+    sections: [
+      {
+        heading: 'A nail is not a claim',
+        paragraphs: [
+          'A nail is a tool with almost no politics. It does not invent a species. It does not tell a client that a canopy is climate resilient. It does not migrate a planting schedule into an asset register under a logo that implies the hard questions are already settled. Drive it correctly and it holds timber. Fail, and the failure is local, inspectable, and usually yours.',
+          'Agentic software, systems that plan, draft, rearrange, and complete work across files, models, and briefs, is not that kind of tool. It moves. It proposes. It fills gaps. It can look like labour that has already been performed. Used carefully, it can absorb repetition in the sense earlier Field Notes have defended: hygiene, scaffolding, first passes. Used carelessly, it outsources something else entirely: <em>truth</em>, the quiet assignment of consequence to a claim.',
+          'The difference is epistemic rather than romantic. A nail does not speak for the site. An agent that writes a methods paragraph, selects a plant list, or completes a BIM attribute table does speak, unless someone in the studio insists on reading what was said.'
+        ],
+        actions: [
+          {
+            label: 'Meaning between data and computation',
+            href: '/articles/meaning-between-data-and-computation'
+          },
+          {
+            label: 'What automation replaces in landscape practice',
+            href: '/articles/what-automation-replaces-and-cannot-sign-for'
+          }
+        ]
+      },
+      {
+        heading: 'Evidence of uptake, and of uneven accountability',
+        paragraphs: [
+          'Practitioner evidence already shows the gap between adoption and professional closure. In the 2024 ASLA Digital Technology PPN survey, 55% of respondents reported using AI in practice, teaching, or research, yet only 27% said it had saved them time, while 48% were unsure and 7% said it had added time. Only 15% of firms allowed billable time for AI experimentation. Most respondents (56%) did not disclose AI use in deliverables, and only 7% said their firm permitted AI-generated content in stamped plans.',
+          'The 2025 joint CSLA–ASLA–IFLA follow-up, acknowledging a lower response rate than earlier waves, found approximately half of respondents still incorporating AI into practice, with 75% reporting greater task efficiency where AI was used, and 92% learning by trial and error. Respondents also called for clearer professional scaffolding: 62% for declarations on AI use, 53% for theoretical discussion, and 51% for dedicated class time on tools, ethics, and environmental footprint.',
+          'At the wider AEC scale, McKinsey’s analysis of AI in architecture, engineering, and construction estimates that AI could automate roughly 50% of nonphysical work in architecture and engineering and 39% in construction, identifying some 150 workflows across 25 domains, with early gains concentrated in design, modelling, and feasibility. The same analysis projects that AI and related automation could unlock on the order of USD 228 billion in annual value for the United States AEC industry by 2030, and roughly USD 126 billion for European construction, while cautioning that AI is unlikely to be an extinction event for firms and will not, alone, solve the sector’s productivity problem. Those forecasts describe task automation potential, not the automatic transfer of professional meaning.',
+          'Read together, the landscape surveys and the AEC forecasts point to the same tension: efficiency can rise while disclosure, training, and sign-off lag. That is precisely the condition under which truths get outsourced.'
+        ]
+      },
+      {
+        heading: 'What gets outsourced when attention slips',
+        paragraphs: [
+          'Studios rarely outsource truth in a single dramatic gesture. They outsource it through small economies.',
+          'Tools arrive first: a generative canopy that looks surveyed; a language model that drafts a climate narrative; a remapper that fills empty fields because empty fields look unfinished. Budgets arrive second: the hour saved is removed from the fee, or never returned to survey, nursery coordination, or cultural protocol. Labour arrives third: the junior who once learned by checking lists now prompts; the senior who once signed meaning now signs volume. Politics arrive fourth: the client wants certainty on a slide; the vendor wants AI capability named in the brief; the council wants digital twin vocabulary that no one on the project owns. Time remains scarce throughout, so the plausible answer becomes the answer that ships.',
+          'None of that abolishes landscape architecture. It relocates the interpretive middle. Meaning between data and computation does not disappear; it migrates into defaults, prompts, and product assumptions that are hard to audit after handover. The record still exists. What weakens is the profession’s grip on what the record is allowed to mean.'
+        ],
+        actions: [
+          {
+            label: 'Guidelines for honest project records',
+            href: '/articles/guidelines-for-honest-records'
+          }
+        ]
+      },
+      {
+        heading: 'Compromise the means, not the claim',
+        paragraphs: [
+          'Practice has always compromised. Specification against cost. Design ambition against maintenance budgets. Community process against programme. Digital work is no exception. Choosing a cheaper asset library, a faster render pipeline, or an agent to draft the first schedule is often rational.',
+          'The line worth defending is narrower: compromise the means, not accountability for claims.',
+          'A placeholder tree may be acceptable in concept stage. It should not travel silently into construction documentation as if it were a surveyed taxon. An agent may draft a sustainability appendix. That draft should not be presented as settled method because the prose sounded confident. Automation may buy time. That saving should not be sold as proof that ecological or cultural work is finished.',
+          'Budgets and politics will keep pressing toward the second option. They always have. The profession’s task is to keep the first option speakable in fees, RFQs, and studio culture, so that faster does not quietly become someone else decided what is true.'
+        ]
+      },
+      {
+        heading: 'Nature and digital nature',
+        paragraphs: [
+          'Here the line is not merely technical. It is ontological enough to matter in public.',
+          'Nature, in the sense this Foundation keeps returning to under land, is the living world and its afterlife: growth, failure, recovery, maintenance, protocol, the thing that does not care how persuasive a model was. Digital nature is representation and simulation: geometry, traits, climate bands, synthetic canopies, twin layers, agent-authored inventories. Useful, sometimes indispensable, and still not the site.',
+          'Market and reporting pressure intensifies the risk of conflation. As of the TNFD’s 2025 status reporting, hundreds of organisations had committed to nature-related disclosure aligned with the Taskforce’s recommendations, with voluntary adopter commitments representing on the order of USD 20 trillion in assets under management and more than 500 TNFD-aligned reports already identified in market scans. Later public tallies placed adopters above 700 organisations and assets under management above USD 22 trillion. Those frameworks increase demand for nature evidence. They do not, by themselves, guarantee that a digital twin layer, a generative planting board, or an AI-completed schedule is an honest proxy for living systems.',
+          'The danger is not that digital nature exists. Landscape architecture has always worked through drawings that are not the ground. The danger is conflation: when digital nature is treated as a sufficient substitute for encounter with living systems, or when synthetic assets inherit the authority of survey without lineage. Practices such as explicit synthetic provenance exist for that reason: not as theology about technology, but as a refusal to let render-ready vegetation impersonate botanical certainty.',
+          'Where is the line drawn? Not at never use AI, and not at the model is the place. The line is drawn wherever a deliverable asks someone downstream (client, council, maintainer, community, future practitioner) to believe something about living systems. At that point, digital nature must declare itself: indicative or specified; generated or surveyed; estimated or evidenced; open or restricted. If it cannot declare itself, it is not yet professional material. It is scenery with credentials.'
+        ],
+        actions: [
+          {
+            label: 'Four things: land, art, technology, data',
+            href: '/articles/four-things-land-art-technology-data'
+          },
+          { label: 'TLA-SYN (synthetic provenance)', href: '/standards/tla-syn' }
+        ]
+      },
+      {
+        heading: 'Holding the hand that holds the tool',
+        paragraphs: [
+          'A nail extends the hand. Agentic software can extend the studio, or replace the studio’s judgement with a fluent approximation of judgement. The difference will not be settled by banning tools or by worshipping them. It will be settled by whether landscape architecture keeps interpretive labour visible: the slow decisions that bind trace to claim, claim to evidence, and evidence to someone who can still be answerable when the planting fails, the twin drifts, or a resilient line in a brief is challenged years later.',
+          'Outsourcing repetition can be wise. Outsourcing truths is how a discipline loses the right to speak for the places it modifies.',
+          'Land remains the test. Art remains how belief is made. Technology remains how evidence becomes usable. Data remains the trace. Between them, and between nail and agent, meaning is still work.'
+        ],
+        actions: [
+          { label: 'Studio Pilot Kit', href: '/adopt#studio-pilot' },
+          { label: 'Cultural pillars on governance', href: `${GOVERNANCE_PATH}#cultural-pillars` }
+        ]
+      },
+      {
+        heading: 'Sources',
+        paragraphs: [
+          'Figures above are summarised from publicly reported sources. Consult the originals for methods, sample sizes, and caveats.'
+        ],
+        bullets: [
+          'ASLA Digital Technology PPN (2024). <a href="https://www.asla.org/news-insights/the-field/how-landscape-architects-are-incorporating-artificial-intelligence" rel="noopener" target="_blank">How Landscape Architects Are Incorporating Artificial Intelligence</a>.',
+          'CSLA, ASLA, and IFLA (2025). <a href="https://www.csla-aapc.ca/sites/csla-aapc.ca/files/2025-ai-survey-descriptive-results.docx.pdf" rel="noopener" target="_blank">2025 AI+LA Practitioner Survey Findings</a>.',
+          'McKinsey &amp; Company (2026). <a href="https://www.mckinsey.com/industries/engineering-construction-and-building-materials/our-insights/how-ai-is-reshaping-the-future-of-the-aec-industry" rel="noopener" target="_blank">How AI is reshaping the future of the AEC industry</a>.',
+          'TNFD (2025). <a href="https://tnfd.global/tnfd-2025-status-report/" rel="noopener" target="_blank">TNFD Status Report</a>; see also TNFD Adopter announcements for later public tallies.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'what-automation-replaces-and-cannot-sign-for',
+    status: 'published',
+    title: 'What automation replaces in landscape practice',
+    dek: 'AI absorbs repetitive hygiene and generic drafting so the profession keeps judgment liability and the open systems that make records trustworthy.',
+    author: 'Mark Norlan Laririt',
+    date: '2026-07-28',
+    readingTime: '7 min',
+    topics: ['Culture', 'Open infrastructure', 'Professional practice', 'Automation'],
+    sections: [
+      {
+        heading: 'From physical labour to interpretive labour',
+        paragraphs: [
+          'In earlier industrial shifts, machines and institutions displaced manual roles: the draftsperson grinding sheets, the clerk filing cards, the calculator working by hand. Emerging systems absorbed the physical repetition.',
+          'In the era of AI and computational data, the pattern is different. Technology does not erase the practitioner. It removes repetitive, low leverage mechanical work so that professional value concentrates where it always belonged: judgment, accountability, and interpretation.',
+          'That distinction matters for landscape architecture, where a plausible picture is not the same thing as a claim that can survive audit, ecology, or handover.'
+        ],
+        actions: [
+          {
+            label: 'Meaning between data and computation',
+            href: '/articles/meaning-between-data-and-computation'
+          },
+          {
+            label: 'Consequential data, time, and infrastructure',
+            href: '/articles/consequential-data-time-and-infrastructure'
+          }
+        ]
+      },
+      {
+        heading: 'What AI and automation replace in this work',
+        paragraphs: [
+          'Through The Landscape Archive and the Foundation, the open materials we publish (field dictionaries, open BIM schemas, citation guidance, computational taxonomy) sit next to a wider automation wave. Together they help reduce work that used to burn junior hours and studio budget. Interactive Foundation validators remain paused while stewardship arrangements are clarified.',
+          'Repetitive data hygiene and auditing: shared field IDs and published schemas reduce the need for each office to invent private labels for species names, nursery lists, and BIM metadata.',
+          'Generative drafting and generic visuals: models can produce plausible canopies, massing options, and marketing imagery quickly. That reduces the need to pay for purely generic blocking out of baseline 3D assets or repetitive layout drafting.',
+          'Closed vendor lock in for basic records: open schemas and published field definitions reduce the need to buy expensive proprietary templates simply to keep project records aligned.',
+          'These are real gains. They are also the wrong place to locate professional authority.'
+        ],
+        actions: [
+          { label: 'Browse the field dictionary', href: DICTIONARY_URL, external: true },
+          { label: 'Open field registry', href: REGISTRY_PATH }
+        ]
+      },
+      {
+        heading: 'What AI cannot replace',
+        paragraphs: [
+          'As argued in Meaning between data and computation, AI generates plausibility, not truth. A photorealistic canopy does not prove that the taxon fits local ecological protocol, climate screening, cultural sensitivity, or the contract that governs handover.',
+          'AI cannot replace the interpretive middle: deciding what a dataset means in a specific physical and cultural context, reconciling brief, site, native communities, protocol, and climate reality.',
+          'AI cannot replace legal liability and sign off. A model cannot sign a drawing set, stand before a municipal authority, or carry financial and legal responsibility when an asset claim fails at handover.',
+          'AI cannot replace system architecture. It produces output inside a system. It does not author the open dictionaries, governance, and standards (such as TLA-185) that let different software speak about the same landscape claims.'
+        ],
+        actions: [
+          {
+            label: 'Guidelines for honest project records',
+            href: '/articles/guidelines-for-honest-records'
+          },
+          {
+            label: 'Institutions, standards, and the infrastructure gap',
+            href: '/articles/institutions-standards-and-the-infrastructure-gap'
+          }
+        ]
+      },
+      {
+        heading: 'The takeaway',
+        paragraphs: [
+          'AI is not replacing the landscape architect. It is replacing low level drafting and data clutter that once consumed the discipline.',
+          'By authoring open schemas and validation tools, we build the infrastructure that governs how automation may behave. AI replaces the busywork. The profession retains authority over meaning, accountability for claims, and authorship of the systems those claims depend on.',
+          'That is not a slogan against technology. It is a boundary condition for honest practice: automate hygiene; never outsource truth.'
+        ],
+        actions: [
+          { label: `About ${TLA185_DISPLAY_ID}`, href: `${GOVERNANCE_PATH}#charter-pillars` },
+          { label: 'Who owns the words?', href: '/articles/who-owns-the-words' }
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'consequential-data-time-and-infrastructure',
+    status: 'published',
+    title: 'Consequential data, time, and the infrastructure we cannot postpone',
+    dek: 'Landscape records do not become consequential because they are digital. They become consequential when time, infrastructure, and professional obligation meet, and that meeting is no longer optional.',
+    author: 'Mark Norlan Laririt',
+    date: '2026-07-27',
+    readingTime: '8 min',
+    topics: ['Culture', 'Open infrastructure', 'Professional practice'],
+    sections: [
+      {
+        heading: 'What consequential actually means',
+        paragraphs: [
+          'Most project data is ambient. It sits in folders, models, and schedules until a claim is made in public: that a planting is suitable, that a canopy will persist, that a handover is complete, that a nature related disclosure can be trusted.',
+          'Consequential data is the subset that can change someone’s entitlement to believe. A council planner, an asset manager, a researcher, a community reviewer: each is entitled to treat a documented claim as something they may act on. When the record cannot survive that scrutiny, the data was never inert in the moral sense; it was only unverified.',
+          'Data without consequence is inventory. Data with consequence is infrastructure for accountability.'
+        ],
+        actions: [
+          {
+            label: 'Meaning between data and computation',
+            href: '/articles/meaning-between-data-and-computation'
+          },
+          {
+            label: 'Guidelines for honest project records',
+            href: '/articles/guidelines-for-honest-records'
+          }
+        ]
+      },
+      {
+        heading: 'Time is the other half of the claim',
+        paragraphs: [
+          'Landscape work is slow in ways software is not. Trees mature on decades. Maintenance regimes outlive design teams. Climate bands shift under the feet of yesterday’s assumptions. Cultural protocol does not expire with a project fee.',
+          'Time is what converts a plausible schedule into either evidence or embarrassment. A taxon identifier that looked precise at issue can mislead at year twelve if lineage, method, and disclosure were never recorded. A render that persuaded at DA can quietly rewrite memory if no one marked it as illustration.',
+          'So the Foundation’s concern is not “more data.” It is data that remains answerable across time: citable definitions, explicit evidence states, honest synthetic lineage, and enough structure that a later reader can check what was meant.'
+        ],
+        actions: [
+          { label: 'Browse the field dictionary', href: DICTIONARY_URL, external: true },
+          { label: 'Four things: land, art, technology, data', href: '/articles/four-things-land-art-technology-data' }
+        ]
+      },
+      {
+        heading: 'Infrastructure is how inevitability arrives',
+        paragraphs: [
+          'Digital handover, climate and nature related disclosure, digital twins, and AI assisted documentation are not fashion cycles. They are converging procurement and governance pressures. Somewhere, a shared vocabulary will settle: either as open, revisable public grammar, or as the accumulated defaults of whichever products happen to win.',
+          'That is the infrastructure question. Peak bodies can endorse principles; vendors can ship pipelines; studios can produce beautiful work. Without a citable middle layer (fields, conformance, dictionaries that survive any single product lifecycle), the profession rents its memory and inherits someone else’s inevitability.',
+          'Open infrastructure does not remove judgement. It makes disagreement inspectable. Automation can lower the cost of precision; it cannot assign consequence. That remains professional labour: survey, protocol, sign off, and the interpretive middle between raw record and generative completion.'
+        ],
+        actions: [
+          {
+            label: 'Institutions, standards, and the infrastructure gap',
+            href: '/articles/institutions-standards-and-the-infrastructure-gap'
+          },
+          { label: 'Who owns the words?', href: '/articles/who-owns-the-words' }
+        ]
+      },
+      {
+        heading: 'Inevitability is not destiny',
+        paragraphs: [
+          'Inevitability, here, does not mean one company, one schema, or one aesthetic. It means that opaque records will become indefensible, and that “we meant well” will not satisfy archives, auditors, or places that keep living after the board is packed away.',
+          'The choice is narrower and more practical: standardise deliberately (land, art, technology, and data held together), or accept standardisation as residue from tools that never owed the profession a public grammar.',
+          'Meaning is what makes data consequential. Time is what tests it. Infrastructure is what carries it. Inevitability is only the pressure to stop pretending otherwise.'
+        ],
+        actions: [
+          { label: 'Cultural pillars on governance', href: `${GOVERNANCE_PATH}#cultural-pillars` },
+          { label: 'Foundation Standards', href: `${GOVERNANCE_PATH}#charter-pillars` }
+        ]
+      }
+    ]
+  },
   {
     slug: 'meaning-between-data-and-computation',
     status: 'published',
@@ -206,7 +455,7 @@ export const FIELD_NOTES = Object.freeze([
     slug: 'institutions-standards-and-the-infrastructure-gap',
     status: 'published',
     title: 'Institutions, standards, and the infrastructure gap',
-    dek: 'In our view, peak bodies and professional institutes are typically structured for governance and endorsement rather than sustained product engineering — botanical pipelines, trait engines, and BIM-ready asset libraries. That division of labour is structural; where automation lowers marginal cost, a different relationship between open infrastructure and institutional voice may become possible.',
+    dek: 'Peak bodies and professional institutes excel at governance, education, and endorsement. Sustained product engineering — botanical pipelines, trait engines, and BIM-ready asset libraries — is a different kind of work. Where automation lowers the marginal cost of clear records, institutes and open infrastructure can reinforce each other.',
     author: 'Mark Norlan Laririt',
     date: '2026-07-08',
     readingTime: '8 min',
@@ -215,12 +464,12 @@ export const FIELD_NOTES = Object.freeze([
       'This Field Note is a Foundation essay and opinion piece. It is not legal, professional, or investment advice, and it does not represent endorsement by any peak body, institute, or standards organisation. It describes The Landscape Archive Foundation’s own approach and observations only; readers should evaluate institutional relationships on their own evidence and qualified advisers.',
     sections: [
       {
-        heading: 'The institutional bottleneck',
+        heading: 'Complementary roles, not competing ones',
         paragraphs: [
-          'Landscape architecture in Australia — like most built-environment disciplines — relies on institutions that speak for the profession in public. Peak professional bodies and national institutes are rightly expected to champion quality, education, advocacy, and the standards that let practitioners work with councils, clients, and allied consultants on shared terms. In our view, that mandate is typically <em>governance and endorsement</em> rather than sustained software engineering.',
-          'One reading of the tension — familiar across professions — is structural rather than personal: the organisation best placed to endorse a data framework is not always the same organisation resourced to build and maintain one at product scale. Committees, position papers, and continuing-education programmes align well with governance mandates; versioned field registries, automated trait ingestion, conformance validators, and high-fidelity three-dimensional planting assets generally require sustained technical pipelines — data engineering, botanical QA, interchange testing, release discipline — that are often organised outside volunteer governance structures and peak-body operating models.',
-          'Institutional landscape architecture bodies were generally not chartered to operate nursery-exchange APIs or species trait engines. The gap we observe appears when the profession needs <em>both</em> credible institutional voice <em>and</em> operational digital infrastructure at the same time — and when stakeholders assume one organisation must supply both. Standards language can advance more slowly when implementable artefacts lag; commercially licensed libraries may then supply records project by project, which can fragment shared vocabulary unless an open interchange layer is also available.',
-          'The Landscape Archive began, in part, from that observation: that the open grammar of landscape metadata and the automated machinery to populate it could be pursued as implementation work — while still leaving room, where appropriate and if invited, for institutions to recognise, cite, or eventually adopt a framework they did not themselves compile.'
+          'Landscape architecture in Australia — like most built-environment disciplines — relies on institutions that speak for the profession in public. Peak professional bodies and national institutes are rightly expected to champion quality, education, advocacy, and the standards that let practitioners work with councils, clients, and allied consultants on shared terms. That mandate centres on <em>governance and endorsement</em>; sustained software engineering is typically organised elsewhere.',
+          'Across professions, the organisation best placed to endorse a data framework is not always the same organisation resourced to build and maintain one at product scale. Committees, position papers, and continuing-education programmes align well with governance mandates. Versioned field registries, automated trait ingestion, conformance validators, and high-fidelity three-dimensional planting assets generally require sustained technical pipelines — data engineering, botanical QA, interchange testing, release discipline — that sit more naturally with product and research teams.',
+          'Institutional landscape architecture bodies were generally not chartered to operate nursery-exchange APIs or species trait engines, and they need not be. The opportunity appears when the profession needs <em>both</em> credible institutional voice <em>and</em> operational digital infrastructure: institutes set expectations and cite shared grammar; implementers maintain the pipelines. When those layers stay aligned, practitioners gain citable definitions without waiting for any single organisation to supply every artefact.',
+          'The Landscape Archive began, in part, from that opportunity: to pursue open landscape-metadata grammar and the automated machinery to populate it as implementation work — while leaving clear room for institutions to recognise, cite, or eventually adopt a framework that complements their governance role.'
         ],
         actions: [{ label: 'Governance and the three-entity split', href: GOVERNANCE_PATH }]
       },
@@ -229,7 +478,7 @@ export const FIELD_NOTES = Object.freeze([
         paragraphs: [
           'Before automation could shoulder repetitive work, “high fidelity” in landscape data meant manual labour at every step. A botanically defensible species record — growth form, mature dimensions, climate context, maintenance implications, and a three-dimensional representation usable in BIM or visualisation — was assembled by specialists: horticultural researchers, modellers, librarians, and vendor cataloguers billing hours per taxon. Scale was linear. A thousand species meant a thousand commissioning cycles.',
           'Commercial libraries priced that labour accordingly. Subscription-based asset catalogues, enterprise planting databases, and per-seat BIM content licences reflected the economics of handcrafted records. Practices with larger budgets could license those catalogues; others often worked from generic placeholders — massing trees without stable taxon identifiers, shrub mixes without trait provenance, climate claims without documented screening. The cost was not only financial; it was also <em>access</em>. Small studios, regional councils, and university studios could face higher unit costs for the same botanical rigour that larger firms absorbed as project overhead.',
-          'Institutes could publish principles — prefer native planting, document sustainability claims, prepare for digital handover — while implementation datasets remained the work of vendors, researchers, and project teams. Universities could teach taxonomy and ecology; maintaining a live national inventory synced to revised nomenclature and climate layers is a different scale of operation. High-fidelity data has historically been delivered as a premium product; public interchange grammar offers a complementary infrastructure layer.',
+          'Professional institutes have long published guidance — prefer native planting, document sustainability claims, prepare for digital handover — while vendors, researchers, and project teams have carried the day-to-day work of building implementation datasets. Universities teach taxonomy and ecology; maintaining a live national inventory synced to revised nomenclature and climate layers is a different scale of operation. High-fidelity data has historically been delivered as a premium product; public interchange grammar offers a complementary infrastructure layer that institutes can cite without having to operate the production pipeline themselves.',
           `${TLA185_DISPLAY_ID} separates the structural question from the asset question on purpose. The Foundation stewards field definitions, conformance rules, and citation — the grammar of what a clear record should carry. Populated inventories, trait automation, and modelled geometry remain implementation work, historically costly in part because production relied on manual gates. Understanding that history clarifies what automation may change — and what it leaves with professionals: judgement, site survey, cultural protocol, and client sign-off.`
         ],
         actions: [
@@ -238,13 +487,13 @@ export const FIELD_NOTES = Object.freeze([
         ]
       },
       {
-        heading: 'How automation flips the model',
+        heading: 'How automation supports institutional voice',
         paragraphs: [
           'Automation does not eliminate botanical expertise; it changes where that expertise is applied. When trait ingestion, nomenclature cross-checks, geometry generation, and dictionary alignment can run through documented pipelines — Python and interchange tooling rather than ad hoc spreadsheets — the marginal cost of adding a species may fall sharply. A library that would once have required a catalogue team to grow linearly can compound: each new source dataset, each revised climate layer, each conformance rule propagates through the same machinery.',
           'That shift is what makes an accessible library plausible for everyday landscape architects — not only for enterprises with dedicated BIM managers. A practice in Hobart, a council streetscape team in Western Sydney, and a studio in Brisbane could work from the same citable field grammar and, where appropriately licensed, from implementation datasets that export dictionary-aligned bundles. In our view, the economics can invert: infrastructure becomes something teams may <em>license and implement</em>, while definitions remain something they can <em>cite in public</em> without binding project metadata to a single vendor’s proprietary field list.',
           'Roles can stay clear without collapsing Foundation and peak body into one entity. A professional body may choose to reference an open specification in education guidance, awards criteria, or policy submissions without having built the pipeline behind it. It could acknowledge implementation partners that validate conformance while insisting that the public dictionary stays vendor-neutral. It may participate in draft founding alliance consultation — if invited and if it wishes — as one independent organisation among others.',
           `No peak body adoption of ${TLA185_DISPLAY_ID} or Landscape Archive products is asserted here. If automated infrastructure lowers the cost of clear records, institutes can continue to set professional expectations and point practitioners toward citable infrastructure — with implementation remaining contestable in the market.`,
-          'Foundation stewardship keeps the grammar public and revisable. Incorporation and founding-alliance seating are forward work described on the governance pages. The structural gap is real, the historical economics of handcrafted records were real, and automation offers a path — open definitions plus implementable libraries — that institutions and practitioners can evaluate on evidence.'
+          'Foundation stewardship keeps the grammar public and revisable. Incorporation and founding-alliance seating are forward work described on the governance pages. Open definitions plus implementable libraries give institutions and practitioners a path they can evaluate together on evidence.'
         ],
         bullets: [
           'Peak bodies can endorse and debate; they need not operate data pipelines to cite open field definitions',
@@ -292,7 +541,7 @@ export const FIELD_NOTES = Object.freeze([
         heading: 'Definitions should be argued about',
         paragraphs: [
           'A <em>living</em> vocabulary is one that is debated. What counts as “native” for a given project? When does a screening estimate become a claim? Which synonym is preferred, and which is merely tolerated? These are professional questions, and they deserve a published governance process — open proposals, request for comment, and versioned release.',
-          'So each term carries a way to propose a change. A practitioner who thinks a definition is wrong, incomplete, or out of date can open a proposal against that exact term; the interim working group triages it; substantive changes become a request for comment and, if adopted, a versioned release. The words move forward in the open, with a record of who argued what and why — the same standard of truth-telling the Foundation asks of the projects that use them.'
+          'So each term carries a way to propose a change. A practitioner who thinks a definition is wrong, incomplete, or out of date can open a proposal against that exact term; published review routes it into a request for comment and, if adopted, a versioned release. The words move forward in the open, with a record of who argued what and why — the same standard of truth-telling the Foundation asks of the projects that use them.'
         ],
         actions: [{ label: 'How governance works', href: GOVERNANCE_PATH }]
       },
@@ -380,7 +629,7 @@ export const FIELD_NOTES = Object.freeze([
         paragraphs: [
           'Every mature design discipline eventually faces the same tension: the words practitioners use to describe their work become embedded in software, templates, and enterprise libraries. At first this feels like convenience — predefined fields, consistent exports, faster documentation. Over time it becomes <em>dependency</em>. The taxonomy in the model is the taxonomy in the contract. Change vendor, and you change the grammar of the project archive.',
           'Landscape architecture is late to this conversation compared with building engineering, but not exempt from it. Nurseries, councils, climate analysts, and asset managers already ask for structured metadata on planting, performance, and maintenance. When those structures live only inside commercial products, practices pay twice: once for the tool, and again in switching costs, retraining, and lost comparability across projects and jurisdictions.',
-          'The cost is not only financial. When vocabulary is proprietary, professional debate moves off the <em>public record</em>. Associations cannot align continuing education with citable definitions. Researchers cannot reproduce planting-performance studies across cities. Graduates learn product-specific templates rather than transferable disclosure grammar — a hidden tax on mobility in an already international labour market.'
+          'The cost is not only financial. When vocabulary is proprietary, professional debate moves off the <em>public record</em>. Associations have less stable ground on which to align continuing education with citable definitions. Researchers struggle to reproduce planting-performance studies across cities. Graduates learn product-specific templates rather than transferable disclosure grammar — an unnecessary friction on mobility in an already international labour market.'
         ]
       },
       {

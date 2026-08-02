@@ -9,15 +9,15 @@ import {
 
 <BaseLayout
   title="Field Notes"
-  description="Essays and working-group explainers from The Landscape Archive Foundation — on shared vocabulary, data as design material, the economics of open standards, and honest project records."
+  description="Essays from The Landscape Archive Foundation — on shared vocabulary, data as design material, the economics of open standards, and honest project records."
   path="/articles"
 >
   <div class="page fieldnotes">
     <div class="fieldnotes__intro prose">
-      <p class="eyebrow">Field Notes</p>
+      <p class="eyebrow" data-i18n="articles.eyebrow">Field Notes</p>
       <h1>Essays on landscape data, meaning, and the open standard</h1>
-      <p class="fieldnotes__lead">
-        Writing from the Foundation and its working group — on shared vocabulary, definitional debate,
+      <p class="fieldnotes__lead" data-i18n="articles.lead">
+        Writing from the Foundation — on shared vocabulary, definitional debate,
         and what open metadata means for education, economics, and honest disclosure.
         Essays are published under CC BY-NC-ND 4.0. Self-serve validators are paused.
       </p>
@@ -32,9 +32,9 @@ import {
                 {article.topics?.map((topic) => <span class="note-card__topic">{topic}</span>)}
               </div>
               <h2 class="note-card__title">
-                <a href={`/articles/${article.slug}`}>{article.title}</a>
+                <a href={`/articles/${article.slug}`} data-i18n={`fn.${article.slug}.title`}>{article.title}</a>
               </h2>
-              <p class="note-card__dek">{article.dek}</p>
+              <p class="note-card__dek" data-i18n={`fn.${article.slug}.dek`}>{article.dek}</p>
               <p class="note-card__byline">
                 {formatArticleDate(article.date)}
                 {article.readingTime && <span> · {article.readingTime}</span>}

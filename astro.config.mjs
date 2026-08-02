@@ -17,12 +17,15 @@ export default defineConfig({
     sitemap({
       // Foundation pages live at the apex; the standard's canonical GitHub /
       // schema portal are external and excluded from our sitemap.
-      filter: (page) =>
-        !page.includes('/access/')
-        && !page.includes('/vault')
-        && !page.endsWith('/sign-in')
-        && !page.endsWith('/events')
-        && !page.endsWith('/media')
+      filter: (page) => {
+        if (page.includes('/access/')) return false
+        if (page.includes('/vault')) return false
+        if (page.includes('/directors/apply')) return false
+        if (page.endsWith('/sign-in')) return false
+        if (page.endsWith('/events')) return false
+        if (page.endsWith('/media')) return false
+        return true
+      }
     })
   ]
 })

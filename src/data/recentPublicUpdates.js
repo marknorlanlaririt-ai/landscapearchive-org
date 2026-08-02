@@ -15,20 +15,74 @@ import {
  * @typedef {{ date: string, title: string, summary: string, href: string, external?: boolean }} PublicUpdateItem
  */
 
-/** @type {readonly PublicUpdateItem[]} */
-export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
+/**
+ * Curated milestones. Display / JSON consumers sort newest first by `date`
+ * so insert order in this file cannot bury a later item mid-grid.
+ *
+ * @type {readonly PublicUpdateItem[]}
+ */
+const FOUNDATION_RECENT_PUBLIC_UPDATES_SOURCE = [
+  {
+    date: '2026-07-31',
+    title: 'Outsourcing truths: the nail and the agent',
+    summary:
+      'Field Note: a nail extends the hand; agentic software proposes what the hand should mean. On tools, budgets, labour, politics, time, and the line between living nature and digital nature.',
+    href: '/articles/outsourcing-truths-nail-and-agent'
+  },
+  {
+    date: '2026-07-30',
+    title: 'Foundation mission and digital twin potential',
+    summary:
+      'The Landscape Archive Foundation centres labour, liability, visibility, and dignity — and explores the potential that, once incorporated, it could help steward a digital twin commons for landscape architecture. EBDA and ELDX remain two distinct institutional instruments.',
+    href: '/governance#digital-twin-foundation'
+  },
+  {
+    date: '2026-07-30',
+    title: 'Creative Commons inheritance',
+    summary:
+      'The Foundation heralds Creative Commons for the future of landscape architecture: keeping the open metadata grammar public so practitioners seventy years from now can still cite and check honest project records. Stewardship succession.',
+    href: '/governance#creative-commons-inheritance'
+  },
+  {
+    date: '2026-07-30',
+    title: 'Landscape-native software initiative',
+    summary:
+      'Foundation programme under consultation: innovative in-studio coding knowledge and landscape architectural native software for the future of the industry, with open grammar so records stay citable across practices.',
+    href: '/governance#platform-adoption'
+  },
+  {
+    date: '2026-07-28',
+    title: 'What automation replaces in landscape practice',
+    summary:
+      'AI absorbs repetitive hygiene and generic drafting so the profession keeps judgment liability and the open systems that make records trustworthy.',
+    href: '/articles/what-automation-replaces-and-cannot-sign-for'
+  },
+  {
+    date: '2026-07-27',
+    title: 'Consequential data, time, and the infrastructure we cannot postpone',
+    summary:
+      'Landscape records do not become consequential because they are digital. They become consequential when time, infrastructure, and professional obligation meet, and that meeting is no longer optional.',
+    href: '/articles/consequential-data-time-and-infrastructure'
+  },
+  {
+    date: '2026-07-26',
+    title: 'TLA-185 registry integrity (SHA-256)',
+    summary:
+      'Public integrity registry for the open field-dictionary JSON: published SHA-256 digests so anyone can confirm they have the authentic snapshot.',
+    href: '/registry-integrity'
+  },
   {
     date: '2026-07-24',
     title: 'Institutional asks: EBDA and ELDX',
     summary:
-      'The Foundation asks for two proposed instruments beside TLA-185: EBDA (ecological & built-environment data stewardship gravity) and ELDX (cross-border land/landscape interchange). Asks in formation — not existing authorities.',
+      'The Foundation asks for two proposed instruments beside TLA-185: EBDA (ecological & built-environment data stewardship gravity) and ELDX (cross-border land/landscape interchange).',
     href: '/governance#institutional-asks'
   },
   {
     date: '2026-07-23',
     title: 'Evidence Checker wired to TLA-EVID (upload paused)',
     summary:
-      'Inspector recognises Draft TLA-EVID audit-pack JSON. Upload UI stays paused pending stewardship clarity; CC BY-NC-ND KEEP is settled. Local check ≠ Archive Seal.',
+      'Evidence Checker recognises Draft TLA-EVID audit-pack JSON. Upload remains unavailable while stewardship arrangements are clarified; the open specification remains under CC BY-NC-ND 4.0.',
     href: '/evidence-checker'
   },
   {
@@ -42,14 +96,14 @@ export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
     date: '2026-07-23',
     title: 'Draft orbit pages (SYN / EVID / ML)',
     summary:
-      'Public Draft — not normative HTML for TLA-SYN, TLA-EVID, and TLA-ML with golden JSON examples. Spine stays TLA-185; Archive Seal stays commercial.',
+      'Public draft HTML for TLA-SYN, TLA-EVID, and TLA-ML with golden JSON examples.',
     href: '/standards'
   },
   {
     date: '2026-07-23',
     title: 'Standards constellation (draft orbits)',
     summary:
-      'TLA-185 remains the published spine. Draft orbits TLA-SYN, TLA-EVID, and TLA-ML are named for consultation — not rival dictionaries; Archive Seal stays commercial.',
+      'TLA-185 remains the published spine. Draft orbits TLA-SYN, TLA-EVID, and TLA-ML are named for consultation.',
     href: '/governance#standards-constellation'
   },
   {
@@ -147,7 +201,7 @@ export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
     date: '2026-07-08',
     title: 'Founding charter consultation',
     summary:
-      'Draft constitution for The Landscape Archive Foundation (proposed CLG) — not incorporated, not legal advice. Review the draft and respond via founding alliance consultation.',
+      'Draft constitution for The Landscape Archive Foundation (proposed CLG). Consultation draft for founding-alliance review.',
     href: '/founding-charter'
   },
   {
@@ -165,4 +219,13 @@ export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze([
       'Category rubrics now describe how peer assessment references the field registry and published interchange profiles across architectural, civic, and engineering delivery streams.',
     href: '/awards#data-architecture-alignment'
   }
-])
+]
+
+/** @type {readonly PublicUpdateItem[]} */
+export const FOUNDATION_RECENT_PUBLIC_UPDATES = Object.freeze(
+  [...FOUNDATION_RECENT_PUBLIC_UPDATES_SOURCE].sort((a, b) => {
+    const byDate = String(b.date).localeCompare(String(a.date))
+    if (byDate !== 0) return byDate
+    return String(a.title).localeCompare(String(b.title))
+  })
+)

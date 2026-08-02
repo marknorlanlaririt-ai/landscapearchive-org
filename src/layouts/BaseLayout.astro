@@ -7,6 +7,23 @@ import ArchiveSessionBootstrap from '../components/ArchiveSessionBootstrap.astro
 import CookieNotice from '../components/CookieNotice.astro'
 import { SITE_ORIGIN, SITE_DESCRIPTION, FOUNDATION_DISPLAY_NAME, SCHEMA_PORTAL_URL } from '../data/site.js'
 import { OPEN_STANDARD_GITHUB_URL, isOpenStandardGithubPubliclyAvailable } from '../data/foundationWing.js'
+import { SUPPORTED_LOCALES, MESSAGES, DEFAULT_LOCALE } from '../i18n/locales.js'
+import { mergeSectionMessages } from '../i18n/sectionMessages.js'
+import { mergeFieldNotesChromeMessages } from '../i18n/fieldNotesChrome.js'
+
+const mergedMessages = mergeFieldNotesChromeMessages(mergeSectionMessages(MESSAGES))
+
+const i18nBootstrap = {
+  locales: SUPPORTED_LOCALES.map(({ code, nativeLabel, dir }) => ({
+    code,
+    nativeLabel,
+    ...(dir ? { dir } : {})
+  })),
+  messages: mergedMessages,
+  htmlLang: Object.fromEntries(SUPPORTED_LOCALES.map((entry) => [entry.code, entry.htmlLang])),
+  rtl: SUPPORTED_LOCALES.filter((entry) => entry.dir === 'rtl').map((entry) => entry.code),
+  defaultLocale: DEFAULT_LOCALE
+}
 
 interface Props {
   title: string
@@ -15,9 +32,15 @@ interface Props {
   path?: string
   ogImage?: string
   ogImageAlt?: string
+  /** Open Graph type — use "article" for Field Notes. */
+  ogType?: 'website' | 'article'
   showDraftBanner?: boolean
   /** When true, emit noindex and skip WebSite discovery hints. */
   noindex?: boolean
+  /** Optional article published time (ISO date) when ogType is article. */
+  articlePublishedTime?: string
+  /** Optional article author display name when ogType is article. */
+  articleAuthor?: string
 }
 
 const {
@@ -26,8 +49,11 @@ const {
   path = Astro.url.pathname,
   ogImage = '/og-foundation.png',
   ogImageAlt = 'The Landscape Archive Foundation — open TLA-185 landscape metadata standard',
+  ogType = 'website',
   showDraftBanner = true,
-  noindex = false
+  noindex = false,
+  articlePublishedTime = '',
+  articleAuthor = ''
 } = Astro.props
 
 const canonical = new URL(path === '/' ? '/' : path.replace(/\/+$/, ''), SITE_ORIGIN).toString()
@@ -51,7 +77,8 @@ const orgJsonLd = {
   logo: new URL('/tla-foundation-mark.svg', SITE_ORIGIN).toString(),
   sameAs: [
     ...(isOpenStandardGithubPubliclyAvailable() ? [OPEN_STANDARD_GITHUB_URL] : []),
-    SCHEMA_PORTAL_URL
+    SCHEMA_PORTAL_URL,
+    'https://landscapearchive.com.au'
   ]
 }
 
@@ -64,14 +91,26 @@ const websiteJsonLd = noindex
       url: SITE_ORIGIN,
       description: SITE_DESCRIPTION,
       publisher: { '@type': 'Organization', name: FOUNDATION_DISPLAY_NAME },
-      inLanguage: 'en'
+      inLanguage: 'en-AU'
     }
 
-const structuredData = websiteJsonLd ? [orgJsonLd, websiteJsonLd] : [orgJsonLd]
+const webPageJsonLd = noindex
+  ? null
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: fullTitle,
+      description,
+      url: canonical,
+      isPartOf: { '@type': 'WebSite', name: FOUNDATION_DISPLAY_NAME, url: SITE_ORIGIN },
+      inLanguage: 'en-AU'
+    }
+
+const structuredData = [orgJsonLd, websiteJsonLd, webPageJsonLd].filter(Boolean)
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -81,18 +120,45 @@ const structuredData = websiteJsonLd ? [orgJsonLd, websiteJsonLd] : [orgJsonLd]
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {
+      SUPPORTED_LOCALES.map((entry) => {
+        const localePath =
+          entry.code === DEFAULT_LOCALE
+            ? path === '/'
+              ? '/'
+              : path
+            : path === '/'
+              ? `/${entry.code}/`
+              : `/${entry.code}${path}`
+        const href = new URL(localePath, SITE_ORIGIN).toString()
+        return (
+          <link
+            rel="alternate"
+            hreflang={entry.htmlLang || entry.code}
+            href={href}
+          />
+        )
+      })
+    }
+    <link rel="alternate" hreflang="x-default" href={canonical} />
     <meta name="robots" content={robotsContent} />
     <meta name="theme-color" content="#343d4a" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={FOUNDATION_DISPLAY_NAME} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:alt" content={ogImageAlt} />
-    <meta property="og:locale" content="en" />
+    <meta property="og:locale" content="en_AU" />
+    {ogType === 'article' && articlePublishedTime && (
+      <meta property="article:published_time" content={articlePublishedTime} />
+    )}
+    {ogType === 'article' && articleAuthor && (
+      <meta property="article:author" content={articleAuthor} />
+    )}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -106,7 +172,7 @@ const structuredData = websiteJsonLd ? [orgJsonLd, websiteJsonLd] : [orgJsonLd]
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
     <SiteHeader activePath={path} />
     {showDraftBanner && <DraftBanner />}
     <main id="main">
@@ -115,6 +181,13 @@ const structuredData = websiteJsonLd ? [orgJsonLd, websiteJsonLd] : [orgJsonLd]
     <SiteFooter />
     <ArchiveSessionBootstrap />
     <CookieNotice />
+    <script
+      id="la-foundation-i18n-data"
+      type="application/json"
+      set:html={JSON.stringify(i18nBootstrap)}
+      is:inline
+    />
+    <script src="/scripts/foundation-i18n.js?v=20260726b" defer></script>
     <script src="/scripts/section-share.js?v=20260709c" defer></script>
     <script src="/scripts/foundation-chrome-mobile.js" defer></script>
 

@@ -2,6 +2,7 @@
 import { SITE_NAV_LINKS, FOUNDATION_DISPLAY_NAME } from '../data/site.js'
 import TlaLettermark from './TlaLettermark.astro'
 import FoundationSessionChrome from './FoundationSessionChrome.astro'
+import LanguageSwitcher from './LanguageSwitcher.astro'
 
 interface Props {
   activePath?: string
@@ -17,20 +18,26 @@ const contactLink = SITE_NAV_LINKS.find((link) => link.id === 'contact')
 <header class="site-header">
   <div class="site-header__inner">
     <div class="site-header__brand-row">
-      <a class="site-header__brand" href="/" aria-label={`${FOUNDATION_DISPLAY_NAME} home`}>
+      <a
+        class="site-header__brand"
+        href="/"
+        aria-label={`${FOUNDATION_DISPLAY_NAME} home`}
+        data-i18n-aria="brand.homeAria"
+      >
         <TlaLettermark class="site-header__logo" size={56} />
         <span class="site-header__wordmark">
-          <span class="site-header__word">The Landscape Archive</span>
-          <span class="site-header__word site-header__word--strong">Foundation</span>
+          <span class="site-header__word" data-i18n="brand.archive">The Landscape Archive</span>
+          <span class="site-header__word site-header__word--strong" data-i18n="brand.foundation">Foundation</span>
         </span>
       </a>
       <div class="site-header__session">
+        <LanguageSwitcher compact />
         <FoundationSessionChrome activePath={activePath} />
       </div>
     </div>
 
     <div class="site-header__end">
-      <nav class="site-header__nav" aria-label="Foundation navigation">
+      <nav class="site-header__nav" aria-label="Foundation navigation" data-i18n-aria="nav.aria">
         {
           primaryNavLinks.map((link) => (
             <a
@@ -38,6 +45,7 @@ const contactLink = SITE_NAV_LINKS.find((link) => link.id === 'contact')
               class:list={['site-header__link', { 'is-active': normalize(link.href) === current }]}
               aria-current={normalize(link.href) === current ? 'page' : undefined}
               data-animate-stagger
+              data-i18n={`nav.${link.id}`}
               data-member-only={link.requiresLogin ? '' : undefined}
               hidden={link.requiresLogin ? true : undefined}
             >
@@ -56,6 +64,7 @@ const contactLink = SITE_NAV_LINKS.find((link) => link.id === 'contact')
                 ]}
                 aria-current={normalize(contactLink.href) === current ? 'page' : undefined}
                 data-animate-stagger
+                data-i18n={`nav.${contactLink.id}`}
               >
                 {contactLink.label}
               </a>
@@ -63,6 +72,7 @@ const contactLink = SITE_NAV_LINKS.find((link) => link.id === 'contact')
           )
         }
       </nav>
+      <p class="site-header__lang-note" data-i18n-note hidden></p>
     </div>
   </div>
 </header>
@@ -108,8 +118,22 @@ const contactLink = SITE_NAV_LINKS.find((link) => link.id === 'contact')
   .site-header__session {
     display: inline-flex;
     align-items: center;
+    gap: 0.55rem;
     flex-shrink: 0;
     order: 3;
+  }
+
+  .site-header__lang-note {
+    display: none;
+    margin: 0;
+    width: 100%;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: rgba(238, 240, 244, 0.72);
+  }
+
+  .site-header__lang-note:not([hidden]) {
+    display: block;
   }
 
   .site-header__end {
@@ -235,6 +259,13 @@ const contactLink = SITE_NAV_LINKS.find((link) => link.id === 'contact')
         max-height 280ms ease,
         opacity 220ms ease,
         transform 280ms ease;
+    }
+
+    .site-header__session {
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      gap: 0.4rem;
+      max-width: 48%;
     }
 
     .site-header--chrome-collapsed .site-header__inner {
