@@ -1,0 +1,50 @@
+---
+/**
+ * Short, certain commercial-licence reminder (matches apex marketing home band).
+ */
+import { FOUNDATION_COMMERCIAL_LICENCE_REMINDER } from '../data/foundationWing.js'
+
+interface Props {
+  compact?: boolean
+}
+
+const { compact = false } = Astro.props
+---
+
+<aside
+  class:list={['commercial-licence-reminder', compact && 'commercial-licence-reminder--compact']}
+  aria-label="Commercial licence reminder"
+>
+  <p>
+    {FOUNDATION_COMMERCIAL_LICENCE_REMINDER}
+    {' '}
+    <a href="/licence">Licence &amp; scope</a>.
+  </p>
+</aside>
+
+<style>
+  .commercial-licence-reminder {
+    margin: 1.25rem 0 0;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-sm);
+    background: var(--paper-raised);
+    max-width: 40rem;
+  }
+
+  .commercial-licence-reminder--compact {
+    margin-top: 1rem;
+  }
+
+  .commercial-licence-reminder p {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .commercial-licence-reminder a {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+</style>

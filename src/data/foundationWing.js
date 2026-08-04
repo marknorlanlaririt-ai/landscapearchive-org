@@ -25,6 +25,9 @@ export const GOVERNANCE_PATH = '/governance'
 export const FOUNDING_CHARTER_PATH = '/founding-charter'
 export const ADOPT_PATH = '/adopt'
 export const REGISTRY_PATH = '/registry'
+/** Public SHA-256 / optional HMAC integrity registry for TLA-185 dictionary snapshots. */
+export const REGISTRY_INTEGRITY_PATH = '/registry-integrity'
+export const REGISTRY_INTEGRITY_JSON_PATH = '/foundation-wing/tla185-fields.integrity.json'
 export const SUPPORT_SECTION_ID = 'support'
 export const SUPPORT_PATH = `/support`
 
@@ -32,7 +35,7 @@ export const FOUNDATION_MARK_ASSET = '/foundation-mark.svg'
 
 // GitHub / schema portal — public-first: link directly (no sign-in gate) -----
 
-export const OPEN_STANDARD_GITHUB_TEMPORARILY_UNAVAILABLE = true
+export const OPEN_STANDARD_GITHUB_TEMPORARILY_UNAVAILABLE = false
 
 export const OPEN_STANDARD_GITHUB_UNAVAILABLE_NOTICE =
   'The public GitHub repository is temporarily unavailable while we review access controls and security posture. The TLA-185 specification remains documented on this site and through the schema portal.'
@@ -107,8 +110,12 @@ export const FOUNDATION_LICENCE_SUMMARY =
 export const FOUNDATION_COMMERCIAL_LICENCE_NOTICE =
   'Commercial use, Library, Hub, Landscape Archive Tools desktop apps, Archive Seal, TLA Brain, enterprise integration, Studio+™, Data API, and 3D assets require a separate licence and are not under Creative Commons. Open grammar citation is not a licensed Archive package or Seal.'
 
+/** Short reminder for home / licence surfaces — certain wording (no hedging). */
+export const FOUNDATION_COMMERCIAL_LICENCE_REMINDER =
+  'A written commercial licence is required to implement the standard in commercial products and workflows. Unauthorised commercial use infringes copyright and is unlawful.'
+
 export const FOUNDATION_HOSTING_NOTICE =
-  `${FOUNDATION_ASSIGNEE} is stewarded and powered by ${FOUNDATION_IP_HOLDER} — the IP holding company that owns the underlying software and holds the public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification copyright. The Foundation is not yet incorporated as an independent entity; copyright is intended for assignment to it once a suitable independent entity is established. Commercial products and support are operated by ${FOUNDATION_INTERIM_HOST}.`
+  `${FOUNDATION_ASSIGNEE} is stewarded and powered by ${FOUNDATION_IP_HOLDER} — the IP holding company that owns the underlying software and holds the public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification copyright. The Foundation is not yet incorporated as an independent entity; copyright is intended for assignment to it once a suitable independent entity is established. If and when incorporated, the Foundation remains a separate non-commercial steward of the open specification — not an industry association or professional institute. Commercial products and support are operated by ${FOUNDATION_INTERIM_HOST}.`
 
 /** Keep in sync with la-frontend/src/config/foundationWing.js and federation/portal/site-config.js */
 export const FOUNDATION_DRAFT_BANNER =

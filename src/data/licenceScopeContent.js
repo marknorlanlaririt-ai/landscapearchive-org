@@ -14,6 +14,7 @@ import {
   TLA169_DISPLAY_ID,
   TLA185_DISPLAY_ID
 } from './foundationWing.js'
+import { CC_INHERITANCE_PATH } from './creativeCommonsInheritance.js'
 
 export const LICENCE_PATH = '/licence'
 
@@ -29,7 +30,7 @@ export function buildLicenceScopeSections() {
       heading: 'Public specification',
       paragraphs: [
         `Public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification and schema documentation are published under ${FOUNDATION_LICENCE_LABEL}.`,
-        'Attribution is required. Non-commercial reference use is permitted without modification under that licence. Commercial implementation requires a separate Archive licence.'
+        'Attribution is required. Non-commercial reference use is permitted without modification under that licence. Commercial implementation requires a separate Archive licence. Unauthorised commercial use infringes copyright and is unlawful.'
       ],
       actions: [
         { label: FOUNDATION_LICENCE_LABEL, href: FOUNDATION_LICENCE_URL, external: true }
@@ -41,6 +42,21 @@ export function buildLicenceScopeSections() {
       paragraphs: [
         `Copyright in the public specification is held by ${FOUNDATION_IP_HOLDER}.`,
         `Copyright is intended for assignment to ${FOUNDATION_ASSIGNEE} when a suitable independent entity is established. Until then, the Foundation is stewarded and powered by ${FOUNDATION_IP_HOLDER}; commercial products and support are operated by ${FOUNDATION_INTERIM_HOST}.`
+      ],
+      actions: [
+        { label: 'Creative Commons inheritance', href: CC_INHERITANCE_PATH }
+      ]
+    },
+    {
+      id: 'inheritance',
+      heading: 'Inheritance horizon',
+      paragraphs: [
+        'The Foundation heralds Creative Commons so landscape architecture seventy years from now can still cite and check the open grammar. That horizon is stewardship succession.',
+        `${FOUNDATION_LICENCE_LABEL} remains the ongoing public licence. Formal wills, assignments, and succession instruments remain matters for counsel; the governance page states the public intention.`
+      ],
+      actions: [
+        { label: 'Creative Commons inheritance', href: CC_INHERITANCE_PATH },
+        { label: 'Interim stewardship', href: '/governance#interim-stewardship' }
       ]
     },
     {
@@ -48,7 +64,7 @@ export function buildLicenceScopeSections() {
       heading: 'Open grammar vs commercial tools',
       paragraphs: [
         `Citing the open ${TLA185_DISPLAY_ID} field dictionary and conformance rules under ${FOUNDATION_LICENCE_LABEL} is free. That Creative Commons notice does not licence Landscape Archive Tools desktop applications, filled Library depth, Hub / Revit delivery, Data API, Archive Seal attestation, or other commercial products of ${FOUNDATION_INTERIM_HOST}.`,
-        'Self-serve Foundation validators and Evidence Checker may remain paused. Local desktop Evidence checks and admin-operated Seal verification are Archive product surfaces — not the open Creative Commons grant. Binding Archive terms are published on the commercial site.'
+        'Self-serve Foundation validators and Evidence Checker may remain paused. Local desktop Evidence checks and admin-operated Seal verification are Archive product surfaces. Binding Archive terms are published on the commercial site.'
       ],
       actions: [
         { label: 'Archive Terms of Use', href: 'https://landscapearchive.com.au/legal?tab=terms-of-use', external: true },

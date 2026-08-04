@@ -5,6 +5,7 @@ import RecentUpdatesStrip from '../components/RecentUpdatesStrip.astro'
 import SectionShareLinks from '../components/SectionShareLinks.astro'
 import TlaLettermark from '../components/TlaLettermark.astro'
 import DirectorEasterEgg from '../components/DirectorEasterEgg.astro'
+import CommercialLicenceReminder from '../components/CommercialLicenceReminder.astro'
 import { buildFoundationHomeSections } from '../data/homeContent.js'
 import { FOUNDATION_CHARTER_PILLARS, FOUNDATION_PILLARS_LABEL } from '../data/charterPillars.js'
 import {
@@ -30,23 +31,24 @@ const sections = buildFoundationHomeSections()
     <div class="page hero__inner">
       <TlaLettermark class="hero__mark" size={72} title="The Landscape Archive Foundation" />
       <p class="hero__tagline">{SITE_TAGLINE}</p>
-      <h1 class="hero__title">Steward of the open landscape metadata specification.</h1>
-      <p class="hero__lead">
+      <h1 class="hero__title" data-i18n="home.hero.title">Steward of the open landscape metadata specification.</h1>
+      <p class="hero__lead" data-i18n-html="home.hero.lead">
         The Landscape Archive Foundation publishes <strong>{TLA185_DISPLAY_ID}</strong>
         ({TLA185_FIELD_COUNT} documented elements) under {FOUNDATION_LICENCE_LABEL}: field
         registry, schemas, and conformance criteria for botanical, climate, sustainability,
         cultural, and synthetic-nature claims in project records.
       </p>
       <div class="action-row">
-        <a class="btn btn--primary" href={GOVERNANCE_PATH}>Governance</a>
-        <a class="btn" href={REGISTRY_PATH}>Field registry</a>
-        <a class="btn" href="/seal-verifier">Archive Seal</a>
-        <a class="btn" href="/licence">Licence &amp; scope</a>
-        <a class="btn" href={`${FEDERATION_SCHEMA_PORTAL_URL}/dictionary`} rel="noopener">
+        <a class="btn btn--primary" href={GOVERNANCE_PATH} data-i18n="home.cta.governance">Governance</a>
+        <a class="btn" href={REGISTRY_PATH} data-i18n="home.cta.registry">Field registry</a>
+        <a class="btn" href="/seal-verifier" data-i18n="home.cta.seal">Archive Seal</a>
+        <a class="btn" href="/licence" data-i18n="home.cta.licence">Licence &amp; scope</a>
+        <a class="btn" href={`${FEDERATION_SCHEMA_PORTAL_URL}/dictionary`} rel="noopener" data-i18n="home.cta.dictionary">
           Field dictionary
         </a>
-        <a class="btn" href={ADOPT_PATH}>Adoption</a>
+        <a class="btn" href={ADOPT_PATH} data-i18n="home.cta.adopt">Adoption</a>
       </div>
+      <CommercialLicenceReminder compact />
     </div>
   </section>
 
@@ -58,7 +60,7 @@ const sections = buildFoundationHomeSections()
     <section class="section-block" id="foundation-pillars" aria-label={FOUNDATION_PILLARS_LABEL}>
       <div class="prose">
         <h2>{FOUNDATION_PILLARS_LABEL}</h2>
-        <p>
+        <p data-i18n="home.pillars.lead">
           Five domains of public reference work. Shared definitions and open governance mark the
           boundary between the public specification and commercial implementation. The standards
           constellation (TLA-185 spine plus draft orbits) is listed under Governance.

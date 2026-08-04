@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import CommercialLicenceReminder from '../components/CommercialLicenceReminder.astro'
 import DocsSection from '../components/DocsSection.astro'
 import {
   buildLicenceScopeSections,
@@ -25,6 +26,7 @@ const sections = buildLicenceScopeSections()
         Quiet record of what the Creative Commons notice covers — and what remains
         separately licensed. This page is reference copy, not a dual-licence campaign.
       </p>
+      <CommercialLicenceReminder compact />
       <div class="action-row">
         <a class="btn" href={GOVERNANCE_PATH}>Governance</a>
       </div>
