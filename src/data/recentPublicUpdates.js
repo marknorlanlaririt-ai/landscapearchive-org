@@ -23,6 +23,13 @@ import {
  */
 const FOUNDATION_RECENT_PUBLIC_UPDATES_SOURCE = [
   {
+    date: '2026-08-04',
+    title: 'From analogue to digital: collaboration, validation, and the centre twice removed',
+    summary:
+      'Field Note: digital work lengthens the chain of custody for meaning. On contact, stand-ins, belief as craft, and why collaboration is not the same verb as validation.',
+    href: '/articles/from-analogue-to-digital-centre-twice-removed'
+  },
+  {
     date: '2026-07-31',
     title: 'Outsourcing truths: the nail and the agent',
     summary:

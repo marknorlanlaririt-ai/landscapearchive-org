@@ -5,6 +5,81 @@
 
 const NOTES = [
   {
+    slug: 'from-analogue-to-digital-centre-twice-removed',
+    en: {
+      title: 'From analogue to digital: collaboration, validation, and the centre twice removed',
+      dek: 'Digital work does not replace contact with living plants. It lengthens the chain of custody for meaning. Between the walk and the viewport sits an interpretive middle, twice removed, where belief is made and too easily mistaken for observation.'
+    },
+    es: {
+      title: 'De lo analógico a lo digital: colaboración, validación y el centro dos veces alejado',
+      dek: 'El trabajo digital no reemplaza el contacto con plantas vivas. Alarga la cadena de custodia del significado. Entre el paseo y la ventana gráfica hay un medio interpretativo, dos veces alejado, donde se fabrica la creencia y se confunde demasiado fácil con observación.'
+    },
+    fr: {
+      title: 'De l’analogue au numérique : collaboration, validation et le centre deux fois éloigné',
+      dek: 'Le travail numérique ne remplace pas le contact avec les plantes vivantes. Il allonge la chaîne de custody du sens. Entre la marche et la fenêtre d’affichage se trouve un milieu interprétatif, deux fois éloigné, où la croyance se fabrique et se confond trop facilement avec l’observation.'
+    },
+    de: {
+      title: 'Vom Analogen zum Digitalen: Kollaboration, Validierung und das zweimal entfernte Zentrum',
+      dek: 'Digitale Arbeit ersetzt nicht den Kontakt mit lebenden Pflanzen. Sie verlängert die Kette der Bedeutungskontrolle. Zwischen Spaziergang und Viewport liegt eine interpretative Mitte, zweimal entfernt, wo Glaube hergestellt und zu leicht mit Beobachtung verwechselt wird.'
+    },
+    pt: {
+      title: 'Do analógico ao digital: colaboração, validação e o centro duas vezes removido',
+      dek: 'O trabalho digital não substitui o contacto com plantas vivas. Alonga a cadeia de custódia do significado. Entre a caminhada e a viewport há um meio interpretativo, duas vezes removido, onde a crença se fabrica e se confunde com observação com demasiada facilidade.'
+    },
+    zh: {
+      title: '从模拟到数字：协作、验证与被两次移开的中心',
+      dek: '数字工作并不取代与活体植物的接触。它延长了意义的保管链。在步行与视口之间，是被两次移开的解释性中间地带：信念在此被制造，又太容易被误认为观察。'
+    },
+    ja: {
+      title: 'アナログからデジタルへ：協働、検証、そして二度遠ざけられた中心',
+      dek: 'デジタル作業は生きた植物との接触を置き換えない。意味の保管連鎖を長くする。散歩とビューポートのあいだには、二度遠ざけられた解釈の中間があり、そこで信念が作られ、観察と取り違えられやすい。'
+    },
+    ko: {
+      title: '아날로그에서 디지털로: 협업, 검증, 그리고 두 번 멀어진 중심',
+      dek: '디지털 작업은 살아 있는 식물과의 접촉을 대체하지 않는다. 의미의 보관 사슬을 늘린다. 산책과 뷰포트 사이에는 두 번 멀어진 해석의 중간이 있고, 그곳에서 믿음이 만들어지며 관찰과 너무 쉽게 혼동된다.'
+    },
+    ms: {
+      title: 'Dari analog ke digital: kolaborasi, pengesahan, dan pusat yang dijauhkan dua kali',
+      dek: 'Kerja digital tidak menggantikan sentuhan dengan tumbuhan hidup. Ia memanjangkan rantaian jagaan makna. Antara jalan kaki dan viewport terletak tengah tafsiran, dijauhkan dua kali, di mana kepercayaan dibuat dan terlalu mudah disalah anggap sebagai pemerhatian.'
+    },
+    it: {
+      title: 'Dall’analogico al digitale: collaborazione, validazione e il centro due volte allontanato',
+      dek: 'Il lavoro digitale non sostituisce il contatto con le piante vive. Allunga la catena di custodia del significato. Tra la passeggiata e la viewport c’è un mezzo interpretativo, due volte allontanato, dove la credenza si fabbrica e si confonde troppo facilmente con l’osservazione.'
+    },
+    ar: {
+      title: 'من التناظري إلى الرقمي: التعاون والتحقق والمركز المُبعَد مرتين',
+      dek: 'العمل الرقمي لا يستبدل الاتصال بالنباتات الحية. إنه يطيل سلسلة حراسة المعنى. بين المشي ونافذة العرض وسط تفسيري مُبعَد مرتين، حيث تُصنَع القناعة ويُخلط بينها وبين الملاحظة بسهولة.'
+    },
+    hi: {
+      title: 'एनालॉग से डिजिटल तक: सहयोग, सत्यापन, और दो बार हटाया गया केंद्र',
+      dek: 'डिजिटल काम जीवित पौधों के संपर्क की जगह नहीं लेता। यह अर्थ की अभिरक्षा श्रृंखला को लंबा करता है। सैर और व्यूपोर्ट के बीच व्याख्यात्मक मध्य है, दो बार हटाया हुआ, जहाँ विश्वास बनता है और अवलोकन समझ लिया जाता है।'
+    },
+    id: {
+      title: 'Dari analog ke digital: kolaborasi, validasi, dan pusat yang dijauhkan dua kali',
+      dek: 'Kerja digital tidak menggantikan kontak dengan tumbuhan hidup. Ia memanjangkan rantai kustodi makna. Antara jalan kaki dan viewport ada tengah interpretatif, dijauhkan dua kali, tempat keyakinan dibuat dan terlalu mudah disangka observasi.'
+    },
+    nl: {
+      title: 'Van analoog naar digitaal: samenwerking, validatie en het tweemaal verwijderde centrum',
+      dek: 'Digitaal werk vervangt geen contact met levende planten. Het verlengt de keten van betekenisbewaring. Tussen wandeling en viewport ligt een interpretatief midden, tweemaal verwijderd, waar geloof wordt gemaakt en te makkelijk voor observatie wordt aangezien.'
+    },
+    ru: {
+      title: 'От аналогового к цифровому: сотрудничество, валидация и центр, удалённый дважды',
+      dek: 'Цифровая работа не заменяет контакт с живыми растениями. Она удлиняет цепочку хранения смысла. Между прогулкой и вьюпортом — интерпретативная середина, дважды удалённая, где вера производится и слишком легко принимается за наблюдение.'
+    },
+    tr: {
+      title: 'Analogdan dijitale: işbirliği, doğrulama ve iki kez uzaklaştırılmış merkez',
+      dek: 'Dijital çalışma canlı bitkilerle teması yerine koymaz. Anlamın zincirini uzatır. Yürüyüş ile görünüm penceresi arasında, iki kez uzaklaştırılmış yorumsal bir orta vardır; inanç orada üretilir ve gözlem sanılır.'
+    },
+    th: {
+      title: 'จากอนาล็อกสู่ดิจิทัล: การร่วมมือ การตรวจยืนยัน และศูนย์กลางที่ถูกย้ายออกสองครั้ง',
+      dek: 'งานดิจิทัลไม่ได้แทนที่การสัมผัสพืชมีชีวิต มันยืดห่วงโซ่การดูแลความหมาย ระหว่างการเดินกับวิวพอร์ตคือกลางแห่งการตีความที่ถูกย้ายออกสองครั้ง ที่ซึ่งความเชื่อถูกสร้างและสับสนกับการสังเกตได้ง่าย'
+    },
+    vi: {
+      title: 'Từ analog đến số: cộng tác, xác thực, và trung tâm bị đẩy xa hai lần',
+      dek: 'Công việc số không thay thế tiếp xúc với cây sống. Nó kéo dài chuỗi giám sát ý nghĩa. Giữa cuộc đi bộ và viewport là khoảng giữa diễn giải, bị đẩy xa hai lần, nơi niềm tin được tạo ra và dễ bị nhầm là quan sát.'
+    }
+  },
+  {
     slug: 'outsourcing-truths-nail-and-agent',
     en: {
       title: 'Outsourcing truths: the nail and the agent',

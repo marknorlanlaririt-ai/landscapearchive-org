@@ -44,6 +44,122 @@ export const FIELD_NOTES_NEXT_STEPS = Object.freeze({
 })
 export const FIELD_NOTES = Object.freeze([
   {
+    slug: 'from-analogue-to-digital-centre-twice-removed',
+    status: 'published',
+    title: 'From analogue to digital: collaboration, validation, and the centre twice removed',
+    dek: 'Digital work does not replace contact with living plants. It lengthens the chain of custody for meaning. Between the walk and the viewport sits an interpretive middle, twice removed, where belief is made and too easily mistaken for observation.',
+    author: 'Mark Norlan Laririt',
+    date: '2026-08-04',
+    readingTime: '9 min',
+    topics: ['Culture', 'Digital nature', 'Professional practice', 'Soft-launch'],
+    legalNote:
+      'This Field Note is Foundation commentary and opinion. It is not legal, professional, or investment advice.',
+    sections: [
+      {
+        heading: 'Contact before continuity',
+        paragraphs: [
+          'We still begin with something that can be held. A leaf pressed flat between sheets that will stain. A trunk measured with a tape that stretches and forgets. A photograph that yellows at the edges long before the memory does. Analogue is not purity. It is contact: friction, delay, the small humiliations of weather and hand. It records that someone was there, and that the world pushed back.',
+          'That contact has never been innocent. Field notes omit as much as they keep. A sketch privileges one silhouette. A herbarium sheet kills the plant in order to preserve an argument about it. Even so, analogue keeps a kind of honesty that digital work must labour to recover: the body was present, the site resisted, the record carries the mark of that resistance.'
+        ],
+        actions: [
+          {
+            label: 'Meaning between data and computation',
+            href: '/articles/meaning-between-data-and-computation'
+          },
+          {
+            label: 'Four things: land, art, technology, data',
+            href: '/articles/four-things-land-art-technology-data'
+          }
+        ]
+      },
+      {
+        heading: 'The second skin',
+        paragraphs: [
+          'Digital arrives as a second skin over that contact. It does not replace the walk. It relocates the argument. What was once settled by standing under the canopy is now settled, or unsettled, in a viewport, a recipe, a prior. The archive promises continuity: the same genus, the same habit, the same bark named again across projects and years. Continuity is valuable. Continuity is also already an interpretation.',
+          'The mesh is not the tree. The tip spray is not the flush. The stand-in leaf is an honest lie we agree to keep until a better cut-out arrives. These are not failures of software in the trivial sense. They are the grammar of representation. Landscape architecture has always worked through drawings that are not the ground. What changes in the digital turn is speed, density, and the ease with which a representation can travel without its lineage.',
+          'When a canopy looks surveyed, clients and colleagues are entitled to ask what kind of claim is being made. When a planting schedule fills itself, someone must still own what was filled. When a soft prior loads a genus into a workbench, the operator inherits a decision someone else already made about what “enough” looks like for that plant. The second skin is useful precisely because it is fast. It is dangerous for the same reason.'
+        ],
+        actions: [
+          {
+            label: 'Outsourcing truths: the nail and the agent',
+            href: '/articles/outsourcing-truths-nail-and-agent'
+          },
+          { label: 'TLA-SYN (synthetic provenance)', href: '/standards/tla-syn' }
+        ]
+      },
+      {
+        heading: 'The centre, twice removed',
+        paragraphs: [
+          'Between the living plant and the screen sits what this Foundation keeps returning to as the interpretive middle: the centre, twice removed.',
+          'Once removed when a person decides what matters. Which edge is petiole. Which stem is deadwood. Which density is enough for a crown that must read as a living canopy rather than a cloud of cards. That first removal is ordinary professional labour. It is judgment under conditions: brief, climate, protocol, fee, time.',
+          'Twice removed when that decision is encoded. Schema. Bootstrap. Soft prior. Toggle. A default that arrives before the eye has finished looking. A stand-in that remains after the eye has moved on. An honesty badge that is easy to skip because the picture already looks finished. The second removal is not evil. It is how shared tools scale. It is also how meaning leaves the room while everyone is still talking about geometry.',
+          'The centre is not a compromise between nature and software, as if those were equal parties negotiating a treaty. It is the place where belief is manufactured and then mistaken for observation. Keep that sentence uncomfortable. Soft-launch culture exists to keep it uncomfortable on purpose.'
+        ],
+        actions: [
+          {
+            label: 'Guidelines for honest project records',
+            href: '/articles/guidelines-for-honest-records'
+          }
+        ]
+      },
+      {
+        heading: 'Belief as craft material',
+        paragraphs: [
+          'Here the psychology shows. We do not only build models. We build conditions under which a model becomes believable.',
+          'Transformation is not the moment the geometry improves. Transformation is the moment the operator’s doubt goes quiet: when the bole tuft reads as epicormic, when the snag reads as age, when the petiole finally bridges the floating card and the mind says yes, that is how it attaches. Before that quiet, the scene is a pile of controls. After it, the scene becomes a plant. That shift is real, useful, and ethically loaded. It is the same shift a render makes for a client, and a twin layer makes for a council, except that in the workbench we can still see the seams if we refuse to sand them away.',
+          'Belief is a craft material. Soft-launch is an ethics of belief: show the scaffold, name the stand-in, refuse the fake flower that would buy conviction too cheaply. The refusal is not aesthetic purism. It is chain of custody. A cheap conviction in the studio becomes an expensive error outdoors, under real light, with real leaves that do not forgive a wrong petiole.',
+          'This is why “photoreal” is not a finish line. Photoreal without lineage is scenery with credentials. The Archive’s interest in synthetic provenance, stand-in honesty, and gated regional claims is not bureaucracy for its own sake. It is an attempt to keep belief expensive enough that it still costs something to spend.'
+        ],
+        actions: [
+          {
+            label: 'What automation replaces in landscape practice',
+            href: '/articles/what-automation-replaces-and-cannot-sign-for'
+          }
+        ]
+      },
+      {
+        heading: 'Collaboration is not validation',
+        paragraphs: [
+          'Collaboration versus validation is the fork that keeps cutting the work.',
+          'Collaboration says: bring your eye, your species list, your disagreement. The archive is a shared table. More hands make a denser record, a richer quarrel, a better chance that local knowledge interrupts a generic prior.',
+          'Validation says: prove it against a checklist, a clearance matrix, a founder gate, a green tick that ends the conversation. Without validation, collaboration becomes an infinite workshop. With only validation, the work becomes a court that never walks the site.',
+          'Both are necessary. Confused, they poison each other. Collaboration without validation becomes taste dressed as science. Validation without collaboration becomes compliance that has forgotten what the plant looked like in rain. The interpretive middle is where those two must meet without pretending they are the same verb.',
+          'In practice that means something plain. Let people contribute cut-outs, notes, and corrections in the open. Do not let contribution alone mint authority. Let clearance and founder gates protect claims that will travel into libraries, hubs, and paid surfaces. Do not let those gates pretend they can replace encounter. A green tick is a decision about readiness for a channel. It is not a certificate that the model has become the tree.'
+        ],
+        actions: [
+          {
+            label: 'Consequential data, time, and infrastructure',
+            href: '/articles/consequential-data-time-and-infrastructure'
+          },
+          { label: 'Cultural pillars on governance', href: `${GOVERNANCE_PATH}#cultural-pillars` }
+        ]
+      },
+      {
+        heading: 'Chain of custody for meaning',
+        paragraphs: [
+          'So the digital turn is not a departure from the analogue. It is a lengthening of the chain of custody for meaning. From bark to note to image to parameter to instance. Each link can honour the last, or quietly overwrite it.',
+          'Honour looks like this: a photograph still points to a walk; an outline still admits its source; a genus map still names a stand-in; a tip spray still declares itself a spray rather than a surveyed flush; a regional pack still waits for clearance before it claims to be live. Overwrite looks like the opposite: empty fields filled because emptiness looked unprofessional; a placeholder that survives into construction language; a twin vocabulary no one on the project owns; a belief that hardened in a viewport and then walked outdoors without anyone noticing the seam.',
+          'Studios already know this pattern from drawings and schedules. What is new is how many seams can close in a single afternoon, and how few of them leave a fingerprint. The workbench is not only a place where plants are made. It is a place where trust is rehearsed. Rehearsal is healthy. Mistaking rehearsal for performance is how digital nature inherits the authority of survey without earning it.'
+        ]
+      },
+      {
+        heading: 'Keeping the centre from vanishing',
+        paragraphs: [
+          'Our job, if we are serious, is to keep the seams visible. Let the centre remain a centre, not a vanishing point. Collaborate in the open. Validate without mistaking the model for the tree. Remember that every transformation of belief we engineer in the workbench is also a transformation of what people will later trust outdoors.',
+          'The leaf that yellows and the leaf that loads from a library are not enemies. They are two ends of one custody chain. The question is whether we can still feel the middle when the picture looks finished.'
+        ],
+        actions: [
+          { label: 'Studio Pilot Kit', href: '/adopt#studio-pilot' },
+          {
+            label: 'Archive for studios',
+            href: APEX_FOR_STUDIOS_URL,
+            external: true
+          }
+        ]
+      }
+    ]
+  },
+  {
     slug: 'outsourcing-truths-nail-and-agent',
     status: 'published',
     title: 'Outsourcing truths: the nail and the agent',
