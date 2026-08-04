@@ -20,6 +20,8 @@ const { article } = Astro.props
 const articlePath = `/articles/${article.slug}`
 const articleUrl = new URL(articlePath, Astro.site ?? 'https://landscapearchive.org').toString()
 
+const ogImageUrl = new URL('/og-foundation.png', Astro.site ?? 'https://landscapearchive.org').toString()
+const isPersonAuthor = /\s/.test(String(article.author || '').trim())
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -28,8 +30,15 @@ const articleJsonLd = {
   url: articleUrl,
   mainEntityOfPage: articleUrl,
   datePublished: article.date,
-  author: { '@type': 'Organization', name: article.author },
+  dateModified: article.date,
+  image: [ogImageUrl],
+  author: isPersonAuthor
+    ? { '@type': 'Person', name: article.author }
+    : { '@type': 'Organization', name: article.author },
   isAccessibleForFree: true,
+  ...(Array.isArray(article.topics) && article.topics.length
+    ? { articleSection: article.topics[0], keywords: article.topics.join(', ') }
+    : {}),
   publisher: {
     '@type': 'Organization',
     name: 'The Landscape Archive Foundation',
@@ -41,7 +50,14 @@ const articleJsonLd = {
 }
 ---
 
-<BaseLayout title={article.title} description={article.dek} path={articlePath}>
+<BaseLayout
+  title={article.title}
+  description={article.dek}
+  path={articlePath}
+  ogType="article"
+  articlePublishedTime={article.date}
+  articleAuthor={article.author}
+>
   <article class="page essay">
     <div class="essay__head prose">
       <p class="eyebrow"><a class="essay__back" href="/articles">Field Notes</a></p>
@@ -62,6 +78,15 @@ const articleJsonLd = {
 
     {article.sections.map((section) => <DocsSection {...section} sharePagePath={articlePath} />)}
     <DocsSection {...FIELD_NOTES_NEXT_STEPS} sharePagePath={articlePath} />
+
+    <aside class="essay__licence-reminder" aria-label="Licence reminder">
+      <p>
+        Commercial Archive products (Library, Hub, Tools, datasets, Seal, Studio+™, Data API)
+        require a separate licence. Unauthorised commercial use may infringe copyright and can be unlawful.
+        {' '}
+        <a href="/licence">Licence &amp; scope</a>.
+      </p>
+    </aside>
 
     <footer class="essay__foot">
       {
@@ -125,6 +150,27 @@ const articleJsonLd = {
     padding: 0.1rem 0;
     border-bottom: 1px solid var(--line);
     border-radius: 0;
+  }
+
+  .essay__licence-reminder {
+    margin: 2rem 0 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-sm);
+    background: var(--paper-raised);
+  }
+
+  .essay__licence-reminder p {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+
+  .essay__licence-reminder a {
+    color: var(--accent-strong);
+    font-weight: 600;
   }
 
   .essay__foot {
