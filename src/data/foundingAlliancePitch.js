@@ -15,9 +15,9 @@ export const FOUNDING_ALLIANCE_OUTREACH_SUMMARY = Object.freeze({
 
   problem: `Landscape projects often ship with implicit claims — "native planting," "climate resilient," "sustainable" — while BIM and GIS tools export incompatible vocabularies. Open metadata specifications stall when teams lack a mandated first use case, accessible validation tooling, and procurement-ready citation language. Governance documentation alone rarely changes day-to-day export workflows.`,
 
-  offer: `The Foundation publishes ${TLA185_DISPLAY_ID} as open reference infrastructure: field registry, JSON Schema modules, browser validator, worked examples, and jurisdiction crosswalks (UK, EU, US, Australia) at ${SCHEMA_PORTAL_URL}. Year-one reference materials are free to use — validate an example bundle, cite the registry in one brief or RFQ, run a single pilot export. Capability grant manifests let vendors declare integration scope without implying Council membership.`,
+  offer: `The Foundation publishes ${TLA185_DISPLAY_ID} as open reference infrastructure: field registry, JSON Schema modules, worked examples, and jurisdiction crosswalks (UK, EU, US, Australia) at ${SCHEMA_PORTAL_URL}. Year-one materials are free to cite — paste a procurement sentence / cite the registry in one brief (self-serve validators paused). Capability grant manifests let vendors declare integration scope without implying Council membership.`,
 
-  ask: `Organisations interested in the founding alliance model may review the draft constitution (consultation only — the Foundation is not yet incorporated) and nominate one organisational representative if they wish to be listed as a founding supporter when the standard launches publicly. Optional: commit to one pilot — validate the example bundle and add the procurement sentence to an upcoming studio brief or tender. Charter consultation: ${CONSULTATION_URL}`,
+  ask: `Organisations interested in the founding alliance model may review the draft constitution (consultation only — the Foundation is not yet incorporated) and nominate one organisational representative if they wish to be listed as a founding supporter when the standard launches publicly. Optional: commit to one pilot — cite the registry and add the procurement sentence to an upcoming studio brief or tender. Charter consultation: ${CONSULTATION_URL}`,
 
   whatWeDoNotAsk: [
     'Binding membership in an entity that does not yet exist',
@@ -25,7 +25,7 @@ export const FOUNDING_ALLIANCE_OUTREACH_SUMMARY = Object.freeze({
     'Transfer of proprietary project IP or client data',
     'Joint liability with other participants',
     'Endorsement that TLA-185 is an ISO or government standard',
-    'Logo placement without a documented pilot or validator run'
+    'Logo placement without a documented citation pilot'
   ],
 
   conflictRules: [
@@ -96,7 +96,7 @@ ${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.problem}
 
 ${FOUNDING_ALLIANCE_OUTREACH_SUMMARY.offer}
 
-Pilot step: validate one bundle (${SCHEMA_PORTAL_URL}/validate) and cite the registry in one deliverable — handover memo, climate appendix, or client-facing methods section. Adoption quickstart: ${ADOPT_URL}
+Pilot step: cite the registry and paste the procurement sentence into one deliverable — handover memo, climate appendix, or client-facing methods section. Self-serve validators remain paused; do not invent field keys. Adoption quickstart: ${ADOPT_URL}
 
 Mapping gaps surfaced in pilots are intended as public RFC feedback for the specification process.
 

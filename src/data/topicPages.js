@@ -115,21 +115,24 @@ export const foundationTopicPages = Object.freeze({
         heading: 'Teaching pack (week-1 handout)',
         paragraphs: [
           'Printable starting pack for university studios and practice CPD hours: one mandated citation deliverable. Validators stay paused — citation of the open dictionary and published paste clauses is the honest path.',
-          'Choose one paste surface for the cohort: RFQ / brief sentence, syllabus / methods line, or tender micro-clause. Pair with the Studio Pilot Kit brief and the RFQ checklist one-pager.'
+          'Week-1 flow: (1) pick one paste surface below, (2) put it in a real brief / methods line / tender appendix, (3) bring mapping gaps to draft consultation. Pair with the Studio Pilot Kit and the conference one-pager download when handouts help.'
         ],
         bullets: [
+          '<strong>Paste into a brief</strong> — primary RFQ / procurement sentence (start here)',
           '<strong>Studio Pilot Kit</strong> — copy-paste brief; one mandated deliverable per cohort',
           '<strong>RFQ checklist</strong> — printable tick list for briefs and methods appendices',
           '<strong>Syllabus / methods line</strong> — short uni week-1 / rubric citation',
           '<strong>Tender micro-clause</strong> — compact municipal / RFQ appendix insert',
+          '<strong>Conference one-pager</strong> — draft handout (Seal ≠ Approved; validators paused)',
           'Success signal: dictionary URL or paste clause appears in a real deliverable — then gaps → draft consultation'
         ],
         actions: [
+          { label: 'Paste into a brief', href: `${ADOPT_PATH}#procurement-sentence` },
           { label: 'Studio Pilot Kit', href: `${ADOPT_PATH}#studio-pilot` },
           { label: 'RFQ checklist', href: '#rfq-checklist' },
           { label: 'Syllabus / methods line', href: `${ADOPT_PATH}#syllabus-methods` },
           { label: 'Tender micro-clause', href: `${ADOPT_PATH}#tender-appendix` },
-          { label: 'Full RFQ sentence', href: `${ADOPT_PATH}#procurement-sentence` },
+          { label: 'Conference one-pager (.txt)', href: '/examples/tla185-conference-one-pager.txt' },
           { label: 'Open field dictionary', href: DICTIONARY_URL, external: true },
           { label: 'Outreach pack (3–5 studios)', href: `${ADOPT_PATH}#studio-pilot-outreach` }
         ]
@@ -239,7 +242,7 @@ export const foundationTopicPages = Object.freeze({
           'Foundation Approved will denote open-specification conformance when criteria and validators are published; it is not a live self-serve product today. Archive Certified training, when offered, is a separate paid vendor credential.'
         ],
         bullets: [
-          'One mandated deliverable per pilot — a validation, citation, or inspection outcome',
+          'One mandated deliverable per pilot — a citation or documented mapping-gap outcome (validation/inspection when tools reopen)',
           'Prefer published examples and the before/after conformance fixtures; use published registry field keys only',
           'Use the Studio Pilot outreach pack to invite 3–5 named studios (and optionally one uni contact)',
           'Awards and founding-alliance programmes remain in draft until rubrics and incorporation gates clear'

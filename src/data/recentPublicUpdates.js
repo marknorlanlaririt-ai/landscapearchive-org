@@ -201,7 +201,7 @@ const FOUNDATION_RECENT_PUBLIC_UPDATES_SOURCE = [
     date: '2026-07-08',
     title: 'Open standard adoption guide',
     summary:
-      'Reference adoption path: download the open pack, validate an example bundle, and add the procurement sentence to one deliverable. Documents why tooling and a mandated pilot deliverable precede governance outreach.',
+      'Reference adoption path: download the open pack, cite the registry, and add the procurement sentence to one deliverable (self-serve validators paused). Documents why a mandated pilot deliverable precedes governance outreach.',
     href: '/adopt'
   },
   {

@@ -101,7 +101,7 @@ export function buildFoundationGovernanceSections({
       ],
       facts: [
         { label: 'The Landscape Vault Pty Ltd', value: 'Private IP holding company. Proprietary IP: TLA Brain, 3D assets, databases, pipelines. Stewards and powers the Foundation until incorporation.' },
-        { label: 'The Landscape Archive Pty Ltd', value: 'Commercial operator; Vault→Archive intra-group licence is counsel draft until executed privately (not claimed as executed). Products, subscriptions, sales, support. Live regional hub: landscapearchive.com.au (Australian data portal). Additional hubs planned. Made in Australia; international customers welcome on published Terms. Independent of professional institutes and peak bodies unless stated in writing.' },
+        { label: 'The Landscape Archive Pty Ltd', value: 'Commercial operator; Vault→Archive intra-group licence is counsel draft until executed privately (not claimed as executed). Products, subscriptions, sales, support. Live regional hub: landscapearchive.com.au (Australian data portal). Additional hubs planned — not live. Made in Australia; international customers welcome on published Terms. Independent of professional institutes and peak bodies unless stated in writing.' },
         { label: 'The Landscape Archive Foundation', value: `Intended independent foundation (incorporation in preparation). Human and professional mission; potential steward of open ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} twin commons under CC BY-NC-ND 4.0.` },
         { label: 'EBDA / ELDX', value: 'Two separate institutional asks: public-interest data authority gravity, and cross-border land/landscape exchange.' }
       ]
@@ -132,7 +132,7 @@ export function buildFoundationGovernanceSections({
       id: 'foundation-vs-archive',
       heading: 'Foundation and Archive',
       paragraphs: [
-        'Foundation Approved is vendor-neutral open-specification conformance. Landscape Archive Certified is a paid practitioner credential — distinct from Foundation Approved.'
+        'Foundation Approved is intended as vendor-neutral open-specification conformance when criteria are published — not a live self-serve product today. Landscape Archive Certified is a paid practitioner credential — distinct from Foundation Approved.'
       ],
       facts: [
         { label: 'Vault — Brain, assets, datasets, pipelines', value: 'Proprietary IP — Vault-held' },
@@ -334,7 +334,7 @@ export function buildFoundationGovernanceSections({
       heading: '1 · Botanical truth and reference standard',
       paragraphs: [
         `Planting schedules often imply botanical knowledge without encoding it. ${TLA185_DISPLAY_ID} (${fieldCount} elements; extending ${TLA169_DISPLAY_ID} at ${baseFieldCount}) defines taxonomy, traits, botanical asset rows, and BIM delivery metadata as first-class interchange elements.`,
-        'A Foundation Approved bundle should carry at least one botanical asset row reconstructable without proprietary joins: taxon identifier, scientific name, native status, and growth form. Populated species matrices remain licensed Archive/Vault datasets.'
+        'When Foundation Approved criteria are published, a conforming bundle should carry at least one botanical asset row reconstructable without proprietary joins: taxon identifier, scientific name, native status, and growth form. That bar is not a live self-serve product today. Populated species matrices remain licensed Archive/Vault datasets.'
       ]
     },
     {

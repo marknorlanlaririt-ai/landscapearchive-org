@@ -149,7 +149,7 @@ export function buildFoundationHomeSections({
       heading: 'Commercial implementation',
       paragraphs: [
         'The field dictionary stays free to cite. Seats, Library depth, Landscape Archive Tools desktop apps, BIM / Hub delivery, Seal attestation, Evidence/compliance paths, and (when cleared) Data API / OEM redistribution are licensed through The Landscape Archive Pty Ltd under Archive Terms. See Archive Terms for free vs paid posture.',
-        'Foundation Approved denotes open-specification conformance. It is distinct from Archive Certified, a paid vendor credential, and from Archive Seal.'
+        'Foundation Approved will denote open-specification conformance when criteria and validators are published — not a live self-serve product today. It remains distinct from Archive Certified, a paid vendor credential, and from Archive Seal.'
       ],
       actions: [
         { label: 'Commercial licensing', href: FOUNDATION_COMMERCIAL_CONTACT_PATH, external: true },

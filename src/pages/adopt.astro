@@ -11,7 +11,7 @@ const outreachSummaryPlainText = formatFoundingAllianceOutreachSummaryPlainText(
 
 <BaseLayout
   title="Adopt the open standard"
-  description="Practitioner guide for referencing the open TLA-185 landscape metadata specification: download the open pack, validate an example bundle, and add the procurement sentence to one deliverable. Interim Foundation stewardship."
+  description="Practitioner guide for referencing the open TLA-185 landscape metadata specification: download the open pack, cite the registry, and add the procurement sentence to one deliverable (self-serve validators paused). Interim Foundation stewardship."
   path={ADOPT_PATH}
 >
   <div class="page adopt">
@@ -20,25 +20,25 @@ const outreachSummaryPlainText = formatFoundingAllianceOutreachSummaryPlainText(
       <h1>Adopt the open standard</h1>
       <p class="adopt__banner" role="note">
         <strong>Interim stewardship.</strong> The Landscape Archive Foundation is not yet incorporated.
-        This guide documents how to reference and validate the public specification using published
-        tooling — schema portal, validator, crosswalks, and worked examples.
+        This guide documents how to reference the public specification using published draft materials —
+        dictionary, registry, crosswalks, and worked examples. Self-serve validators remain paused.
       </p>
       <p>
-        Adoption depends on accessible reference tooling and a mandated first deliverable per pilot.
-        The sequence below — download the open pack, validate an example bundle, cite the registry in
-        one brief or procurement clause — is the published starting point for practitioners, studios,
+        Adoption depends on a mandated first deliverable per pilot.
+        The sequence below — download the open pack, cite the registry, and paste a procurement sentence
+        in one brief — is the published starting point for practitioners, studios,
         and public procurement teams. Studios can start from the
         <a href="#studio-pilot">Studio Pilot Kit</a> copy-paste brief.
       </p>
       <div class="action-row">
-        <a class="btn btn--primary" href={`${SCHEMA_PORTAL_URL}/validate`} rel="noopener" target="_blank">
-          Validate an example <span class="btn__ext" aria-hidden="true">↗</span>
-        </a>
+        <a class="btn btn--primary" href="#procurement-sentence">Paste into a brief</a>
         <a class="btn" href="#studio-pilot">Studio Pilot Kit</a>
-        <a class="btn" href="#procurement-sentence">Paste into a brief</a>
         <a class="btn" href="/industry-practice#teaching-pack">Teaching pack</a>
         <a class="btn" href={`${SCHEMA_PORTAL_URL}/schema/manifest.json`} rel="noopener" target="_blank">
           Download open pack <span class="btn__ext" aria-hidden="true">↗</span>
+        </a>
+        <a class="btn" href={`${SCHEMA_PORTAL_URL}/validate`} rel="noopener" target="_blank">
+          Public validator (paused) <span class="btn__ext" aria-hidden="true">↗</span>
         </a>
         <a class="btn" href="/founding-charter">Draft constitution</a>
       </div>
