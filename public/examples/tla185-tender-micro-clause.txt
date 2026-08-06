@@ -1,0 +1,27 @@
+LANDSCAPE METADATA — TENDER APPENDIX MICRO-CLAUSE (open reference)
+The Landscape Archive Foundation (interim stewardship pending incorporation)
+https://landscapearchive.org
+
+Paste into a municipal tender appendix, council RFQ schedule, or delivery checklist
+when the full RFQ sentence is too long.
+
+---
+
+Landscape metadata interchange shall reference the open TLA-185 registry at
+schema.landscapearchive.org (CC BY-NC-ND 4.0). Commercial Library, Hub, Studio+™,
+and Archive Seal remain separately licensed where the tender requires Archive-attested
+packages from an authorised organisation.
+
+Canonical links
+• Full RFQ sentence: https://landscapearchive.org/adopt#procurement-sentence
+• Tender micro-clause: https://landscapearchive.org/adopt#tender-appendix
+• RFQ checklist: https://landscapearchive.org/industry-practice#rfq-checklist
+• Authorised directory (commercial): https://landscapearchive.com.au/authorised
+• Licence: https://landscapearchive.org/licence
+
+Honesty
+• Self-serve Foundation validators / Evidence Checker upload remain paused.
+• Foundation Approved criteria are not a live self-serve product.
+• Archive Seal is a separate commercial attestation (not Foundation Approved).
+• No institute collaboration is claimed without a published MoU.
+• Live commercial hub: Australia (landscapearchive.com.au). Other hubs planned, not live.

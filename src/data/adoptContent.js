@@ -5,6 +5,9 @@ import {
   FOUNDING_CHARTER_PATH
 } from './foundationWing.js'
 import { SCHEMA_PORTAL_URL } from './site.js'
+import { PLATFORM_ADOPTION_PATH } from './platformAdoptionInitiative.js'
+import { CC_INHERITANCE_PATH } from './creativeCommonsInheritance.js'
+import { DIGITAL_TWIN_FOUNDATION_PATH } from './digitalTwinFoundation.js'
 
 export const ADOPT_PATH = '/adopt'
 
@@ -13,12 +16,28 @@ const SCHEMA_MANIFEST_URL = `${SCHEMA_PORTAL_URL}/schema/manifest.json`
 /** Public capability-scope declaration lives on the schema portal — not the auth-walled Archive grant UI. */
 const CAPABILITY_GRANT_URL = `${SCHEMA_PORTAL_URL}/dictionary`
 
-/** Paste-ready procurement sentence — open reference specification. */
+/** Paste-ready procurement sentence — open reference specification (RFQ / studio brief). */
 export const ADOPT_PROCUREMENT_SENTENCE =
   'Landscape metadata interchange shall use the open TLA-185 field registry and JSON Schema modules published at schema.landscapearchive.org. Vendor implementations may declare scope via published capability grant manifests. This is a non-commercial reference specification under CC BY-NC-ND 4.0 and does not require purchase of a specific commercial product. Where the brief requires Landscape Archive–attested deliverables, submit a licensed Landscape Archive package from an authorised organisation (see landscapearchive.com.au/authorised); Archive Seal marks may be required for pack attestation. Commercial Library, Hub, Studio+™, populated datasets, and software remain separately licensed.'
 
+/**
+ * Syllabus / methods line — uni week-1 or studio brief methods section.
+ * Same honesty posture as the RFQ sentence; shorter for rubrics.
+ */
+export const ADOPT_SYLLABUS_SENTENCE =
+  'Planting and landscape metadata in this studio must cite the open TLA-185 field dictionary and JSON Schema modules at schema.landscapearchive.org (CC BY-NC-ND 4.0). Use published registry keys only; do not invent field names. Citing the open grammar does not require purchase of a commercial product. Where a brief separately requires Landscape Archive–attested deliverables, follow that brief’s licensed-package instructions.'
+
+/**
+ * Tender appendix micro-clause — municipal / public procurement insert.
+ * Shorter than the full RFQ sentence; same open-vs-commercial boundary.
+ */
+export const ADOPT_TENDER_MICRO_CLAUSE =
+  'Landscape metadata interchange shall reference the open TLA-185 registry at schema.landscapearchive.org (CC BY-NC-ND 4.0). Commercial Library, Hub, Studio+™, and Archive Seal remain separately licensed where the tender requires Archive-attested packages from an authorised organisation.'
+
 const EVIDENCE_CHECKER_URL = 'https://landscapearchive.org/evidence-checker'
 const PROCUREMENT_ANCHOR_URL = 'https://landscapearchive.org/adopt#procurement-sentence'
+const SYLLABUS_ANCHOR_URL = 'https://landscapearchive.org/adopt#syllabus-methods'
+const TENDER_ANCHOR_URL = 'https://landscapearchive.org/adopt#tender-appendix'
 const STUDIO_PILOT_ANCHOR_URL = 'https://landscapearchive.org/adopt#studio-pilot'
 const BEFORE_AFTER_PACK_PATH = '/examples/before-after-conformance/'
 
@@ -42,7 +61,7 @@ export function formatStudioPilotBriefPlainText() {
     '3. Document one mapping gap against the draft registry (send to draft consultation).',
     '',
     'NOTE',
-    'Self-serve validator and Evidence Checker tools are paused — not available yet.',
+    'Self-serve validator and Evidence Checker tools are paused pending stewardship clarity.',
     'Draft dictionary and registry remain available for citation.',
     '',
     'CORE LINKS',
@@ -51,13 +70,17 @@ export function formatStudioPilotBriefPlainText() {
     `• Evidence Checker status (paused): ${EVIDENCE_CHECKER_URL}`,
     `• Licence & scope: https://landscapearchive.org/licence`,
     `• Procurement sentence: ${PROCUREMENT_ANCHOR_URL}`,
+    `• Syllabus / methods line: ${SYLLABUS_ANCHOR_URL}`,
+    `• Tender micro-clause: ${TENDER_ANCHOR_URL}`,
+    `• Teaching pack: https://landscapearchive.org/industry-practice#teaching-pack`,
     `• Industry & practice path: https://landscapearchive.org/industry-practice`,
     `• Dictionary & schema in plain language: https://landscapearchive.org/industry-practice#in-plain-language`,
     `• Procurement / RFQ checklist: https://landscapearchive.org/industry-practice#rfq-checklist`,
     '',
-    'PRACTICE CITATION LOOP',
-    'Cite the open field dictionary → validate one bundle → inspect in Evidence Checker',
-    '→ one procurement sentence in a deliverable. Gaps → draft consultation.',
+    'PRACTICE CITATION LOOP (honest path while validators are paused)',
+    'Cite the open field dictionary → paste one procurement sentence into a deliverable',
+    '→ document any mapping gap for draft consultation. Do not invent registry field keys.',
+    'When self-serve validators return, re-add structural check + Evidence Checker inspect.',
     '',
     'PROCUREMENT REFERENCE LANGUAGE (verbatim or adapt)',
     ADOPT_PROCUREMENT_SENTENCE,
@@ -140,20 +163,34 @@ export function buildAdoptSections() {
       heading: 'Why open specifications remain unused',
       paragraphs: [
         'Open metadata specifications often stall when teams lack a mandated first use case, accessible validation tooling, and procurement-ready citation language. Governance documentation alone rarely changes day-to-day export workflows when BIM, GIS, and spreadsheet tools already define their own field vocabularies.',
-        'Practical adoption requires <strong>one concrete deliverable per pilot</strong>: validate an example bundle, cite the registry in a studio brief or procurement clause, and export at least one conformance profile — supported by public reference tooling that requires no product registration.'
+        'Practical adoption requires <strong>one concrete deliverable per pilot</strong>: cite the registry in a studio brief or procurement clause, paste the published procurement sentence, and document any mapping gap for draft consultation. Interactive validators remain temporarily unavailable.'
       ],
       bullets: [
-        'Tooling gap — no clear download, validator, or worked example in the first session',
+        'Tooling gap — no clear download, worked example, or citation path in the first session',
         'No mandate — nothing in the brief, rubric, or handover checklist requires structured metadata',
         'Vendor default — teams ship native Revit/IFC fields instead of a shared interchange grammar',
         'Abstract documentation — governance copy without a published adoption sequence'
       ]
     },
     {
+      id: 'platform-adoption',
+      heading: 'Landscape-native software initiative',
+      paragraphs: [
+        'The future of landscape practice also needs software and coding literacy shaped for the discipline. The Foundation explores innovative in-studio coding knowledge and landscape architectural native software — so published metadata fields, living-systems claims, and authorship can travel in tools built for this work.',
+        'This consultation sits with the Foundation’s digital twin potential. Practices can still adopt the open grammar today by citing it in one deliverable while studio tooling matures.'
+      ],
+      actions: [
+        { label: 'Governance · Digital twin potential', href: DIGITAL_TWIN_FOUNDATION_PATH },
+        { label: 'Governance · Landscape-native software', href: PLATFORM_ADOPTION_PATH },
+        { label: 'International adoption', href: '/governance#international-adoption' },
+        { label: 'Institutional asks', href: '/governance#institutional-asks' }
+      ]
+    },
+    {
       id: 'three-steps',
       heading: 'Reference adoption path',
       paragraphs: [
-        'Follow three steps to reference the open specification. No account is required. Academic citation, studio briefs, and public-procurement reference language are free — the Foundation does not charge for the grammar. The Foundation operates under interim stewardship pending incorporation. Draft dictionary, registry, and schema documentation are available for citation; self-serve validators and package inspectors are paused.'
+        'Follow three steps to reference the open specification. No account is required. Academic citation, studio briefs, and public-procurement reference language are free — the Foundation does not charge for the grammar. The Foundation operates under interim stewardship pending incorporation. Draft dictionary, registry, and schema documentation are available for citation; interactive validators and package inspectors are temporarily unavailable.'
       ],
       facts: [
         {
@@ -200,7 +237,7 @@ export function buildAdoptSections() {
         },
         {
           label: 'Self-serve tools',
-          value: 'Validator and Evidence Checker are paused — not available yet'
+          value: 'Validator and Evidence Checker are paused pending stewardship clarity'
         },
         {
           label: 'Procurement sentence',
@@ -245,7 +282,7 @@ export function buildAdoptSections() {
         },
         {
           label: 'Success signal',
-          value: 'Validator output, cited procurement sentence, or Evidence Checker inspection note — then gaps → draft consultation'
+          value: 'Cited procurement sentence or registry URL in a real deliverable — then gaps → draft consultation'
         }
       ],
       bullets: [
@@ -265,34 +302,110 @@ export function buildAdoptSections() {
     },
     {
       id: 'procurement-sentence',
-      heading: 'Procurement reference language',
+      heading: 'Procurement reference language (RFQ / brief)',
       paragraphs: [
-        'Use verbatim or adapt for your jurisdiction. The sentence references the open specification and draft public grammar only — not commercial Archive products.'
+        'Use verbatim or adapt for your jurisdiction. Full RFQ / studio-brief paste block — same honesty as the syllabus and tender micro-clauses below. Self-serve validators remain paused; citation does not require them.'
       ],
       bullets: [ADOPT_PROCUREMENT_SENTENCE],
+      plainText: ADOPT_PROCUREMENT_SENTENCE,
+      plainTextLabel: 'RFQ / brief — copy-paste sentence',
       actions: [
+        {
+          label: 'Download RFQ clause (.txt)',
+          href: '/examples/tla185-rfq-clause.txt',
+          external: true
+        },
+        { label: 'Syllabus / methods line', href: '#syllabus-methods' },
+        { label: 'Tender micro-clause', href: '#tender-appendix' },
+        {
+          label: 'Download conference one-pager (.txt)',
+          href: '/examples/tla185-conference-one-pager.txt',
+          external: true
+        },
+        {
+          label: 'Archive — owners & delivery (commercial)',
+          href: 'https://landscapearchive.com.au/for-asset-owners',
+          external: true
+        },
         { label: 'Licence & scope', href: '/licence' },
-        { label: 'UK IFRS S2 crosswalk', href: '/crosswalk/uk-ifrs-s2' },
-        { label: 'EU CSRD / ESRS crosswalk', href: '/crosswalk/eu-csrd-esrs' },
-        { label: 'US SEC climate crosswalk', href: '/crosswalk/us-sec-climate' }
+        { label: 'RFQ checklist', href: '/industry-practice#rfq-checklist' }
+      ]
+    },
+    {
+      id: 'syllabus-methods',
+      heading: 'Syllabus / methods citation',
+      paragraphs: [
+        'Short paste for university week-1 handouts, studio methods sections, and assessment rubrics. Mandates citing the open dictionary — not purchase of commercial Archive products.'
+      ],
+      bullets: [ADOPT_SYLLABUS_SENTENCE],
+      plainText: ADOPT_SYLLABUS_SENTENCE,
+      plainTextLabel: 'Syllabus / methods — copy-paste line',
+      facts: [
+        {
+          label: 'Teaching pack',
+          value: 'Pair with Studio Pilot Kit + RFQ checklist on Industry & practice — one mandated citation deliverable per cohort'
+        },
+        {
+          label: 'Honesty',
+          value: 'Validators paused; Foundation Approved is not a live self-serve product; Archive Seal is separate commercial attestation'
+        }
+      ],
+      actions: [
+        {
+          label: 'Download syllabus line (.txt)',
+          href: '/examples/tla185-syllabus-clause.txt',
+          external: true
+        },
+        { label: 'Studio Pilot Kit', href: '#studio-pilot' },
+        { label: 'Teaching pack (Industry & practice)', href: '/industry-practice#teaching-pack' },
+        { label: 'Open field dictionary', href: `${SCHEMA_PORTAL_URL}/dictionary`, external: true },
+        { label: 'Licence & scope', href: '/licence' }
+      ]
+    },
+    {
+      id: 'tender-appendix',
+      heading: 'Tender appendix micro-clause',
+      paragraphs: [
+        'Compact insert for municipal tenders, council RFQs, and delivery appendices when the full procurement sentence is too long. Same open-vs-commercial boundary.'
+      ],
+      bullets: [ADOPT_TENDER_MICRO_CLAUSE],
+      plainText: ADOPT_TENDER_MICRO_CLAUSE,
+      plainTextLabel: 'Tender appendix — copy-paste micro-clause',
+      actions: [
+        {
+          label: 'Download tender micro-clause (.txt)',
+          href: '/examples/tla185-tender-micro-clause.txt',
+          external: true
+        },
+        { label: 'Full RFQ sentence', href: '#procurement-sentence' },
+        { label: 'RFQ checklist', href: '/industry-practice#rfq-checklist' },
+        {
+          label: 'Archive — authorised directory',
+          href: 'https://landscapearchive.com.au/authorised',
+          external: true
+        },
+        { label: 'Licence & scope', href: '/licence' }
       ]
     },
     {
       id: 'adoption-ladder',
       heading: 'Adoption ladder',
       paragraphs: [
-        'Move one rung at a time. Each step should yield a durable artefact — a cited brief, dictionary URL, or documented mapping gap — suitable for methods sections, studio assessment, or procurement files. Self-serve validators are paused.'
+        'Move one rung at a time. Each step should yield a durable artefact — a cited brief, dictionary URL, or documented mapping gap — suitable for methods sections, studio assessment, or procurement files. Interactive validators are temporarily unavailable.'
       ],
       facts: [
         { label: 'Read', value: 'Skim the field registry and one crosswalk relevant to your disclosure or procurement context' },
         { label: 'Cite dictionary', value: 'Include the open field dictionary URL in one brief or methods note' },
         { label: 'Cite in one deliverable', value: 'Studio brief, methods chapter, RFQ clause, or climate appendix — one sentence plus registry URL' },
         { label: 'Pilot', value: 'One project documents interchange metadata for handover or disclosure; note what mapped cleanly and what did not' },
+        { label: 'Platform conversation', value: 'Where you build or teach landscape-native digital methods, point colleagues to the Foundation’s landscape-native software initiative' },
         { label: 'Founding member', value: 'After a pilot, review the draft constitution and nominate an organisational representative — consultation only until incorporation' }
       ],
       actions: [
         { label: 'Open field dictionary', href: CAPABILITY_GRANT_URL, external: true },
+        { label: 'Landscape-native software', href: PLATFORM_ADOPTION_PATH },
         { label: 'Licence & scope', href: '/licence' },
+        { label: 'Creative Commons inheritance', href: CC_INHERITANCE_PATH },
         { label: 'Draft constitution', href: FOUNDING_CHARTER_PATH },
         {
           label: 'Charter consultation',
@@ -309,13 +422,16 @@ export function buildAdoptSections() {
       ],
       bullets: [
         'Draft schema portal dictionary, field registry, and example bundles — no login',
-        'Self-serve validators and Evidence Checker — paused until licence clarity improves',
+        'Interactive validators and Evidence Checker — temporarily unavailable while stewardship arrangements are clarified',
         'Jurisdiction crosswalks (Australia AASB S2, UK IFRS S2, EU CSRD, US SEC climate) mapping disclosure concepts to field slots',
         'Briefing call for university studios and public procurement teams — clear status on draft governance',
-        'Pilot feedback channel into RFC comment periods — mapping gaps become specification issues for public review'
+        'Pilot feedback channel into RFC comment periods — mapping gaps become specification issues for public review',
+        'Landscape-native software initiative — in-studio coding knowledge and native tools for the discipline'
       ],
       actions: [
         { label: 'International adoption roadmap', href: '/governance#international-adoption' },
+        { label: 'Landscape-native software', href: PLATFORM_ADOPTION_PATH },
+        { label: 'Creative Commons inheritance', href: CC_INHERITANCE_PATH },
         { label: 'UK IFRS S2 crosswalk', href: '/crosswalk/uk-ifrs-s2' },
         { label: 'AASB S2 crosswalk', href: '/crosswalk/aasb-s2' },
         { label: 'Founding alliance (draft)', href: '/governance#founding-alliance' },
@@ -327,7 +443,7 @@ export function buildAdoptSections() {
       heading: 'Current status',
       paragraphs: [
         FOUNDATION_DRAFT_BANNER,
-        `${TLA185_DISPLAY_ID} is an open landscape metadata specification under interim stewardship pending Foundation incorporation. Use draft dictionary and citation guidance; self-serve tools are paused. Treat founding-alliance language as draft consultation until registration completes.`
+        `${TLA185_DISPLAY_ID} is an open landscape metadata specification under interim stewardship pending Foundation incorporation. Use draft dictionary and citation guidance; interactive tools are temporarily unavailable. Treat founding-alliance language as draft consultation until registration completes.`
       ],
       actions: [
         { label: 'Full governance', href: '/governance' },

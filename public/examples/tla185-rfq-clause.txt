@@ -1,0 +1,35 @@
+LANDSCAPE METADATA INTERCHANGE (open reference)
+The Landscape Archive Foundation (interim stewardship pending incorporation)
+https://landscapearchive.org
+
+Paste into an RFQ, studio brief, methods section, or teaching brief.
+
+---
+
+Landscape metadata interchange shall use the open TLA-185 field registry and
+JSON Schema modules published at schema.landscapearchive.org. Vendor
+implementations may declare scope via published capability grant manifests.
+This is a non-commercial reference specification under CC BY-NC-ND 4.0 and does
+not require purchase of a specific commercial product. Where the brief requires
+Landscape Archive–attested deliverables, submit a licensed Landscape Archive
+package from an authorised organisation (see landscapearchive.com.au/authorised);
+Archive Seal marks may be required for pack attestation. Commercial Library,
+Hub, Studio+™, populated datasets, and software remain separately licensed.
+
+Canonical links
+• Field registry: https://landscapearchive.org/registry
+• Procurement sentence: https://landscapearchive.org/adopt#procurement-sentence
+• Syllabus / methods: https://landscapearchive.org/adopt#syllabus-methods
+• Tender micro-clause: https://landscapearchive.org/adopt#tender-appendix
+• Licence: https://landscapearchive.org/licence
+• Foundation Approved vs Archive Seal: https://landscapearchive.org/foundation-approved
+• Teaching pack: https://landscapearchive.org/industry-practice#teaching-pack
+• RFQ checklist: https://landscapearchive.org/industry-practice#rfq-checklist
+• Studio Pilot Kit: https://landscapearchive.org/adopt#studio-pilot
+
+Honesty
+• Self-serve Foundation validators / Evidence Checker upload remain paused.
+• Foundation Approved criteria are not a live self-serve product.
+• Archive Seal is a separate commercial attestation (not Foundation Approved).
+• No institute collaboration is claimed without a published MoU.
+• Live commercial hub: Australia (landscapearchive.com.au). Other hubs planned, not live.

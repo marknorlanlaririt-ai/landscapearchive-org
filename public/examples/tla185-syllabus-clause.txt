@@ -1,0 +1,27 @@
+LANDSCAPE METADATA — SYLLABUS / METHODS CITATION (open reference)
+The Landscape Archive Foundation (interim stewardship pending incorporation)
+https://landscapearchive.org
+
+Paste into a university week-1 handout, studio methods section, or assessment rubric.
+
+---
+
+Planting and landscape metadata in this studio must cite the open TLA-185 field
+dictionary and JSON Schema modules at schema.landscapearchive.org (CC BY-NC-ND 4.0).
+Use published registry keys only; do not invent field names. Citing the open grammar
+does not require purchase of a commercial product. Where a brief separately requires
+Landscape Archive–attested deliverables, follow that brief’s licensed-package
+instructions.
+
+Canonical links
+• Field dictionary: https://schema.landscapearchive.org/dictionary
+• Syllabus line: https://landscapearchive.org/adopt#syllabus-methods
+• Studio Pilot Kit: https://landscapearchive.org/adopt#studio-pilot
+• Teaching pack: https://landscapearchive.org/industry-practice#teaching-pack
+• Licence: https://landscapearchive.org/licence
+
+Honesty
+• Self-serve Foundation validators / Evidence Checker upload remain paused.
+• Foundation Approved criteria are not a live self-serve product.
+• Archive Seal is a separate commercial attestation (not Foundation Approved).
+• Live commercial hub: Australia (landscapearchive.com.au). Other hubs planned, not live.

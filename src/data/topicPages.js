@@ -81,7 +81,7 @@ export const foundationTopicPages = Object.freeze({
   'industry-practice': {
     slug: 'industry-practice',
     title: 'Industry & practice',
-    lead: `Education path for landscape practices and university studios: open field dictionary → Studio Pilot citation → draft consultation. Public draft reference materials for teaching and professional use under Foundation stewardship. Self-serve validators are paused.`,
+    lead: `Education path for landscape practices and university studios: open field dictionary → Teaching pack (Studio Pilot + RFQ checklist + paste clauses) → draft consultation. Public draft reference materials for teaching and professional use under Foundation stewardship. Self-serve validators are paused.`,
     placeholder: false,
     sections: [
       {
@@ -94,12 +94,13 @@ export const foundationTopicPages = Object.freeze({
         ],
         bullets: [
           '1. Open field dictionary — free public grammar (preferred labels and structural definitions)',
-          '2. Studio Pilot Kit — one mandated studio or practice citation deliverable',
+          '2. Teaching pack — Studio Pilot Kit + RFQ checklist + syllabus / tender paste clauses (one mandated citation deliverable)',
           '3. Draft consultation — send mapping gaps back into the public process',
           'Note: interactive validator / Evidence Checker — paused, not available yet',
           'When briefs require Archive-attested output: licensed package from an authorised org (landscapearchive.com.au/authorised)'
         ],
         actions: [
+          { label: 'Teaching pack (week-1)', href: '#teaching-pack' },
           { label: 'In plain language', href: '#in-plain-language' },
           { label: 'Open field dictionary', href: DICTIONARY_URL, external: true },
           { label: 'Studio Pilot Kit', href: `${ADOPT_PATH}#studio-pilot` },
@@ -107,6 +108,30 @@ export const foundationTopicPages = Object.freeze({
           { label: 'RFQ checklist', href: '#rfq-checklist' },
           { label: 'Archive Seal', href: '/seal-verifier' },
           { label: 'Draft consultation', href: `${GOVERNANCE_PATH}#draft-consultation` }
+        ]
+      },
+      {
+        id: 'teaching-pack',
+        heading: 'Teaching pack (week-1 handout)',
+        paragraphs: [
+          'Printable starting pack for university studios and practice CPD hours: one mandated citation deliverable. Validators stay paused — citation of the open dictionary and published paste clauses is the honest path.',
+          'Choose one paste surface for the cohort: RFQ / brief sentence, syllabus / methods line, or tender micro-clause. Pair with the Studio Pilot Kit brief and the RFQ checklist one-pager.'
+        ],
+        bullets: [
+          '<strong>Studio Pilot Kit</strong> — copy-paste brief; one mandated deliverable per cohort',
+          '<strong>RFQ checklist</strong> — printable tick list for briefs and methods appendices',
+          '<strong>Syllabus / methods line</strong> — short uni week-1 / rubric citation',
+          '<strong>Tender micro-clause</strong> — compact municipal / RFQ appendix insert',
+          'Success signal: dictionary URL or paste clause appears in a real deliverable — then gaps → draft consultation'
+        ],
+        actions: [
+          { label: 'Studio Pilot Kit', href: `${ADOPT_PATH}#studio-pilot` },
+          { label: 'RFQ checklist', href: '#rfq-checklist' },
+          { label: 'Syllabus / methods line', href: `${ADOPT_PATH}#syllabus-methods` },
+          { label: 'Tender micro-clause', href: `${ADOPT_PATH}#tender-appendix` },
+          { label: 'Full RFQ sentence', href: `${ADOPT_PATH}#procurement-sentence` },
+          { label: 'Open field dictionary', href: DICTIONARY_URL, external: true },
+          { label: 'Outreach pack (3–5 studios)', href: `${ADOPT_PATH}#studio-pilot-outreach` }
         ]
       },
       {
@@ -136,7 +161,7 @@ export const foundationTopicPages = Object.freeze({
         heading: 'Why free grammar / paid implementations elsewhere',
         paragraphs: [
           'The Landscape Archive Foundation (interim stewardship pending incorporation) stewards the public grammar: field dictionary, schemas, and draft reference documentation. Citing that grammar does not require a purchase.',
-          'Filled Library depth, Hub, membership seats, BIM connector delivery, Studio+™, Evidence/compliance product paths, and metered Data API / OEM redistribution (when clearance gates allow) are commercial products of The Landscape Archive Pty Ltd — not Creative Commons. Keeping the dictionary publicly citable supports procurement and curriculum reference independent of any single commercial implementation.'
+          'Filled Library depth, Hub, membership seats, BIM connector delivery, Studio+™, Evidence/compliance product paths, and metered Data API / OEM redistribution (when clearance gates allow) are commercial products of The Landscape Archive Pty Ltd. Keeping the dictionary publicly citable supports procurement and curriculum reference independent of any single commercial implementation.'
         ],
         actions: [
           { label: 'Open field dictionary', href: DICTIONARY_URL, external: true },
@@ -177,6 +202,11 @@ export const foundationTopicPages = Object.freeze({
           { label: 'Licence & scope', href: '/licence' },
           { label: 'Procurement sentence', href: `${ADOPT_PATH}#procurement-sentence` },
           { label: 'Studio Pilot Kit', href: `${ADOPT_PATH}#studio-pilot` },
+          {
+            label: 'Archive — owners & delivery (commercial)',
+            href: 'https://landscapearchive.com.au/for-asset-owners',
+            external: true
+          },
           { label: 'Draft consultation', href: `${GOVERNANCE_PATH}#draft-consultation` }
         ]
       },
@@ -225,7 +255,7 @@ export const foundationTopicPages = Object.freeze({
         id: 'scope-and-limits',
         heading: 'Scope',
         paragraphs: [
-          'This page is Foundation reference material for practice and teaching: field dictionary, schemas, validators, and citation guidance. Commercial products of The Landscape Archive Pty Ltd (Library seats, connectors, Data API) remain optional implementation layers.'
+          'This page is Foundation reference material for practice and teaching: field dictionary, schemas, and citation guidance. Self-serve validators remain paused. Commercial products of The Landscape Archive Pty Ltd (Library seats, connectors, Data API) remain optional implementation layers.'
         ],
         actions: [
           { label: 'Governance & licence', href: GOVERNANCE_PATH },
