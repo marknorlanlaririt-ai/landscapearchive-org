@@ -15,9 +15,18 @@ import {
   isOpenStandardGithubPubliclyAvailable
 } from './foundationWing.js'
 import {
-  INSTITUTIONAL_ASKS_HOME_BLURB,
   INSTITUTIONAL_ASKS_PATH
 } from './institutionalAsks.js'
+import {
+  PLATFORM_ADOPTION_PATH
+} from './platformAdoptionInitiative.js'
+import {
+  CC_INHERITANCE_PATH
+} from './creativeCommonsInheritance.js'
+import {
+  DIGITAL_TWIN_FOUNDATION_HOME_BLURB,
+  DIGITAL_TWIN_FOUNDATION_PATH
+} from './digitalTwinFoundation.js'
 
 const ARCHIVE_SEAL_URL = `${ARCHIVE_ORIGIN}/archive-seal`
 const ARCHIVE_AUTHORISED_URL = `${ARCHIVE_ORIGIN}/authorised`
@@ -38,7 +47,7 @@ export function buildFoundationHomeSections({
       bullets: [
         'Purchase Seal and compare plans on the Archive site',
         'Authorised organisations directory lists who may deliver licensed packages',
-        'Founding membership remains available for eligible practices',
+        'Founding member applications follow Archive pricing status (currently closed on the commercial site)',
         'Seal authenticity is admin-verified by Landscape Archive'
       ],
       actions: [
@@ -53,32 +62,39 @@ export function buildFoundationHomeSections({
       id: 'mission-draft',
       heading: 'Mission',
       paragraphs: [
-        `Draft public purpose: steward open, citable digital infrastructure for landscape architecture so institutions and companies can keep honest project records over time. Botanical authenticity, climate disclosure, cultural-protocol metadata, and synthetic-nature provenance are encoded in the public ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} specification.`,
-        'Four consultation commitments: human stewardship of that infrastructure; a published structure for storing and citing landscape metadata internationally; renewal paths that respect institutional budget limits; and treating landscape project records as registerable professional assets. This is not a securities offer or endowment prospectus.',
-        'Incorporation, grant programmes, and any future capital structures remain forward work. Live publishing today is the open specification, adoption language, and related trust tooling. Commercial seats and Archive Seal renewals on the Australian hub fund ongoing labour separately.',
-        INSTITUTIONAL_ASKS_HOME_BLURB
+        'Draft public purpose: advance landscape architecture as an ecological, cultural, and digital discipline — protecting the human conditions of practice while publishing open grammar so living systems, design intent, and evidence can remain citable across time.',
+        'Mark Norlan Laririt founded this work from studio and research practice: botanical and ecological knowledge given the same documentary care as the drawing; digital methods that can be tested and improved; and educational pathways in which students and practitioners learn to bind representation to claim. The Archive grew from wanting authorship, evidence, and living systems to travel together.',
+        'Landscape architecture already works at the intersection of land science, design judgement, technology, and public accountability. The Foundation’s draft mission therefore holds several avenues at once: ecological literacy encoded in shared fields; digital testing and advancement of twin-ready interchange; educational programmes that treat metadata as part of design method; and a professional economy in which skilled labour, durable records, and open infrastructure can compound value for the discipline.',
+        DIGITAL_TWIN_FOUNDATION_HOME_BLURB
       ],
       bullets: [
-        'People — support labour that keeps shared digital infrastructure usable',
-        'Structure — citable grammar and storage-facing shapes beyond one vendor cycle',
-        'Renewal — steady renewal and predictable pricing paths for institutions on shared infrastructure',
-        'Records as assets — open grammar, integrity digests, renewable Seal attestation where required'
+        'Ecological knowledge — taxon, site context, climate, and performance claims remain citable with method and evidence',
+        'Digital advancement — testable schemas, integrity digests, and twin-ready interchange that improve through use',
+        'Education — studio, university, and continuing pathways that teach records as part of design literacy',
+        'Professional economy — recognise labour and shared infrastructure that keep practices and institutions viable',
+        'Visibility and liability — authorship and responsibility stay legible in lasting project records',
+        'Inheritance — a profession that remembers its people, places, and methods across generations'
       ],
       actions: [
         { label: 'Full mission (governance)', href: `${GOVERNANCE_PATH}#draft-mission` },
-        { label: 'Mission boundaries', href: `${GOVERNANCE_PATH}#draft-mission-boundaries` },
-        { label: 'Foundation Approved vs Archive Seal', href: '/foundation-approved' },
-        { label: 'Institutional asks', href: INSTITUTIONAL_ASKS_PATH }
+        { label: 'Founding warrant', href: `${GOVERNANCE_PATH}#founding-warrant` },
+        { label: 'Digital twin potential', href: DIGITAL_TWIN_FOUNDATION_PATH },
+        { label: 'Institutional asks', href: INSTITUTIONAL_ASKS_PATH },
+        { label: 'Landscape-native software', href: PLATFORM_ADOPTION_PATH },
+        { label: 'Creative Commons inheritance', href: CC_INHERITANCE_PATH }
       ]
     },
     {
       id: 'about-us',
       heading: 'About',
       paragraphs: [
-        'Landscape project records must remain legible after handover: species, site context, evidence for claims, restricted cultural material, and custody of synthetic assets. The open specification supplies a shared vocabulary for those declarations.',
-        `Three entities separate roles. The Landscape Vault holds proprietary IP and, in the interim, stewards and powers the Foundation; The Landscape Archive Pty Ltd is the commercial operator (products, subscriptions, support), with landscapearchive.com.au as the live Australian commercial hub; the Foundation (once incorporated) stewards the public specification internationally at landscapearchive.org. Additional regional hubs are planned and not live. We do not claim ownership of landscapearchive.com. Populated datasets and client records remain licensed separately; the field dictionary and conformance rules stay citable under CC BY-NC-ND 4.0.`
+        'The Landscape Archive Foundation centres people in landscape architecture: labour, liability, visibility, and dignity. Landscape project records must also remain legible across time — species, site context, evidence, restricted cultural material, and custody of synthetic assets.',
+        `The Landscape Vault holds proprietary IP and, in the interim, stewards and powers the Foundation; The Landscape Archive Pty Ltd is the commercial operator (products, subscriptions, support), with landscapearchive.com.au as the Australian commercial hub. The Foundation — still unincorporated — may, upon incorporation, help steward the open ${TLA185_DISPLAY_ID} / ${TLA169_DISPLAY_ID} commons under CC BY-NC-ND 4.0. EBDA and ELDX remain two further, separate institutional asks.`
       ],
-      actions: [{ label: 'Governance', href: GOVERNANCE_PATH }]
+      actions: [
+        { label: 'Governance', href: GOVERNANCE_PATH },
+        { label: 'Digital twin potential', href: DIGITAL_TWIN_FOUNDATION_PATH }
+      ]
     },
     {
       id: 'truth-telling',
@@ -119,11 +135,12 @@ export function buildFoundationHomeSections({
       id: 'governance',
       heading: 'Governance and licence',
       paragraphs: [
-        'The Landscape Archive Foundation is the intended independent steward of the public specification. In the interim it is stewarded and powered by The Landscape Vault Pty Ltd (IP holding company) pending an independent entity.',
+        'The Landscape Archive Foundation is intended as a human and professional foundation that may, upon incorporation, help steward a digital twin commons for landscape architecture. In the interim the open grammar remains published here, stewarded and powered by The Landscape Vault Pty Ltd.',
         'Public specification and schema documentation: CC BY-NC-ND 4.0. Library, Hub, Landscape Archive Tools desktop apps, Archive Seal, Studio+™, Data API, and populated datasets are licensed separately and are not under Creative Commons.'
       ],
       actions: [
         { label: 'Governance', href: GOVERNANCE_PATH },
+        { label: 'Digital twin potential', href: DIGITAL_TWIN_FOUNDATION_PATH },
         { label: 'Licence & scope', href: '/licence' }
       ]
     },

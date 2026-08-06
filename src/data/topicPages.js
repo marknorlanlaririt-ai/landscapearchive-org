@@ -235,8 +235,8 @@ export const foundationTopicPages = Object.freeze({
         id: 'studios-and-education',
         heading: 'Studios, universities, and CPD-minded practice',
         paragraphs: [
-          'Teaching studios and practices can mandate one concrete outcome per cohort: validate an example bundle, cite the procurement reference language in a methods section or brief, or inspect an open artefact in the Evidence Checker.',
-          'Foundation Approved denotes open-specification conformance when declared against the public validator. Archive Certified training, when offered, is a separate paid vendor credential.'
+          'Teaching studios and practices can mandate one concrete outcome per cohort: cite the procurement reference language in a methods section or brief, work from a published example bundle, or — when tools reopen — inspect an open artefact in the Evidence Checker (currently paused).',
+          'Foundation Approved will denote open-specification conformance when criteria and validators are published; it is not a live self-serve product today. Archive Certified training, when offered, is a separate paid vendor credential.'
         ],
         bullets: [
           'One mandated deliverable per pilot — a validation, citation, or inspection outcome',
